@@ -1535,7 +1535,7 @@
 
 /* block_newsletter */
     .block_newsletter{
-
+    	display: none;
     }
     .block_newsletter #custom-tnp-email{
         border-radius: 6px;
@@ -1593,7 +1593,7 @@
 
 /* row_grid_brand */
 	.section_brand{
-		background-color: #e88f0c;
+		background-color: #028cd0;
 		background-image:linear-gradient(-180deg, #05c0ea 0%, #028cd0 100%);
 	}
 	.section_brand .wpb_single_image .vc_figure {
@@ -1621,6 +1621,9 @@
     .row_grid_advice .vc_custom_heading{
         color: #ffffff;
     }
+    .row_grid_advice .vc_gitem-zone-mini {
+	    min-height: 400px;
+	}
     .row_grid_advice .vc_gitem-zone-a .vc_gitem-zone-mini{
         height: 100%;
         background: radial-gradient(ellipse at center, rgba(0,0,0,0.5) 30%, rgba(255,255,255,0.5) 150%);
@@ -1689,7 +1692,9 @@
     .row_grid_product .right_side_hover p{
         top: 181px;
         position: absolute;
-        left: 6%;
+        left: 0;
+	    text-align: center;
+	    width: 100%;
     }
     .row_grid_product button.row_grid_product_button {
         background-image: linear-gradient(-90deg, #fdcc83 0%, #e88f0c 100%);
@@ -1700,6 +1705,9 @@
         font-size: 10px;
     }
 
+    .row_grid_product button.row_grid_product_button_2{
+    	display: none;
+    }
     .row_grid_product button.row_grid_product_button_1:before {
         content: url(../images/1.png);
         margin-right: 10px;
@@ -1971,6 +1979,10 @@
 /* ontex_custom_home_sidebar */
     .ontex_custom_home_sidebar{
         margin-bottom: 0!important;
+    }
+    .ontex_custom_home_sidebar.product_three_clicks{
+    	background-image: linear-gradient(-90deg, #fdcc83 0%, #e88f0c 100%);
+    	border-radius: 5px;
     }
 /* ontex_custom_home_sidebar */
 

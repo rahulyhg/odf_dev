@@ -3,7 +3,7 @@
   Plugin Name: WP Live Chat Support
   Plugin URI: http://www.wp-livechat.com
   Description: The easiest to use website live chat plugin. Let your visitors chat with you and increase sales conversion rates with WP Live Chat Support.
-  Version: 8.0.21
+  Version: 8.0.23
   Author: WP-LiveChat
   Author URI: http://www.wp-livechat.com
   Text Domain: wplivechat
@@ -11,6 +11,15 @@
 */
 
 /**
+ * 8.0.23 - 2019-02-05 - Low priority
+ * Fixed access to new dashboard for non admin agents
+ * Fixed documentation suggestions not working (Pro)
+ *
+ * 8.0.22 - 2019-02-04 - Low priority
+ * Introduced a new dashboard that showcases latest blog posts, the latest podcast episode and the system status
+ * Moved GDPR warnings for first time users to the settings page only
+ * Moved the warning regarding desktop notifications to the settings page only
+ * 
  * 8.0.21 - 2018-12-18 - Low priority
  * Readme Update: Coming soon features
  * Readme Update: Features list
@@ -91,606 +100,6 @@
  *
  * 8.0.11 - 2018-05-28 - High priority
  * Fixed a bug that caused a fatal error on PHP 5.3 and below
- *
- * 8.0.10 - 2018-05-25 - Medium priority
- * Resyncs files for GDPR modules to load correctly
- *
- * 8.0.09 - 2018-05-25 - High priority
- * Added GDPR Compliance
- * Added GDPR Options
- * Added GDPR Admin page
- *
- * 8.0.08 - 2018-05-14 - High priority
- * XSS vulnerability fixes thanks to Riccardo Ten cate
- * Fixed REST Storage Issue
- * Add pagination to History, Missed Chats and Offline Messages admin pages
- * Fix for Disable Emojis setting not displaying when Pro is active
- * Fix for timestamp not displaying correctly
- * Fix for WP Rocket comaptibility
- * Fix for chat box not popping up for returning visitors that had previously minimized
- *
- * 8.0.07 - 2018-03-23 - Low priority
- * Fixed a "direct user to page" bug
- *
- * 8.0.06 - 2018-03-23 - High priority
- * XSS vulnerability fixes thanks to https://www.gubello.me/blog/
- * Fixed a chat width styling bug on the front end
- *
- * 8.0.05 - 2018-03-09 - Medium priority
- * Chat minimize is now respected
- * GIF integration support (Giphy, Tenor)
- * Fixed get correct rest api endpoint urls
- * Fixed chat box header not respecting Use WordPress name instead option
- * Fixes CSS issue in dashboard with the action column
- * Fixes chat history styling
- * Mac style fix (front end)
- * Email transcript integrated
- *
- * 8.0.04 - 2018-02-12 - Low priority
- * Allowed strings from the front end to be translated
- * Fixed the iPhone Safari display bug (zooming in to the chat box)
- * Added support for the agent to detect and connect to the closest chat server
- *
- * 8.0.03 - 2018-01-30 - Medium priority
- * Fixed a CSS bug
- * Corrected a bug with the default theme not being set correctly.
- *
- * 8.0.02 - 2018-01-29 - Medium priority
- * Fixed a PHP warning
- * Modified rest_url filter to no longer use anonymous function
- * Fixed styling conflicts between our settings and other pages in WordPress admin
- * Fixed issues with file uploads (Bleeper core)
- * Fixed hints in settings area
- * Fixed links in chat bubbles not being clearly visible
- * Fixed assets loading on all admin pages when option is disabled
- * Fixed the bug that caused issues if your folder name was not wp-live-chat-support
- * Fixed issue where inactive chat status is not removed when new message from that chat is received
- * Welcome page styling fixed
- *
- * 8.0.01 - 2018-01-24 - High priority
- * Massive improvements to the performance of the plugin
- * New, modern dashboard
- * The dashboard can now be added to all admin pages
- * Dynamic visitor filtering
- * Improved REST API Security
- * OS identification
- * Better Browser identification
- * Mobile/desktop identification
- * Country identification (API)
- * Inline link handling
- * Security patches
- * Gutenberg support
- * Full WPML Support
- * Showcase user's timezone
- * Emoticons
- * New API endpoints
- * Refactor JS code – backend and frontend to make use of events
- * Store messages using sessionStorage to avoid unnecessary DB calls
- * Better polling system for visitor tracking
- * Better history UI
- *
- *
- * 7.1.02 - 2017-06-21 - Low priority
- * Fixed a compat issue between pro and basic with regards to the agent social profiles
- * Fixed undefined variables when using social profiles, a bio and tag line
- * Fixed a bug that caused some messages to not get recorded
- *
- * 7.1.01 - 2017-06-18 - Low priority
- * Small bug fix for agent profiles
- *
- * 7.1.00 - 2017-06-18 - Medium priority
- * Modernised the live chat box
- * Fixed a bug that caused the wrong agent name to show up in the "typing" element after a chat was transferred
- * Other minor bug fixes
- * Added better support for caching systems (style sheets now have a version tag)
- * Added additional support for the new features of the Cloud server
- * Replaced all appropriate references of get_option('siteurl'); with site_url(); to embrace SSL where needed
- * Images are now preloaded on the front end for a better user experience
- * Fixed a fatal error found on some installations (https://github.com/CodeCabin/wp-live-chat-support/issues/329)
- * Fixed a bug that cause the "Retry chat" to not work with the modern chat box
- * Fixed a bug with the missed chat functionality - when an agent missed the chat, the chat ID would change and the agent would not be able to communicate with the visitor
- * Fixed a bug with the listing of all missed chats
- * Fixed a bug that sent pings to the node server when it was not necessary, causing an overload of the node server
- * Fixed a bug that did not allow you to view the chat history of a missed chat
- * Fixed a bug that caused the 'display name' and 'display avatar' to behave erratically
- * Fixed a bug that caused the time and date display functionality to behave erratically
- * Fixed a bug that caused a JavaScript error on the admin chat dashboard when a single visitor leaves the site
- * Fixed a bug that caused the chat widow to appear before the chat circle when engaged in a chat and moving from page to page
- * The visitor can now restart any chat that has been ended by an agent
- * You can now customize the text "The chat has been ended by the operator"
- * Fixed a bug that caused duplicate loading of messages
- * When using a custom element to open the chat window, that element now has a cursor pointer styled to it by default
- * Fixed a bug that incorrectly fired off ajax events when minimizing or maximizing the offline message box
- * Fixed a bug that caused the offline message box to show up incorrectly after being dragged
- * Fixed a bug that caused "maximize" notifications to not get sent through to agents when using the Node server
- * Fixed a bug that did not allow single missed chats to be deleted
- * Fixed a bug that caused the text input field to continually be focused on thereby causing issues
- *
- * 7.0.08 - 2017-05-21 - Low priority
- * Fixed the powered by link
- * Added supporting code for new extensions
- *
- * 7.0.07 - 2017-05-15 - Medium priority
- * You can now change the text of the offline message button
- * You can now change the text of the close chat button
- * Added a notification to the chat dashboard to help agents identify if the chat box is not showing up on the front end, and provide a reason
- * Added ability to set a default visitor name
- * Added ability to choose which user fields are required (name, email or both)
- * Added visual aid when new message is sent and chat is minimized (user's side)
- * Fixed a security issue in the back end (thank you JPCERT Coordination Center (https://www.jpcert.or.jp/english/))
- * Fixed a bug that caused a sound to be played on every page load of a visitor
- * Fixed a bug that stopped a user from sending a message when the admin initiated a chat
- * Fixed the bug that showed the incorrect icon for IE
- * Fixed a bug that caused empty button without remove/delete icon in Missed Chats
- * Fixed a bug that caused attached images to not display correctly
- * Fixed a bug that caused notifications to show up in the front end when the agent is testing a chat with him or herself
- * Fixed a bug that caused the visitor count to flash when the visitor count had not changed
- *
- * 7.0.06 -2017-03-13 - Low Priority
- * Enhancement: 'Open Chat' button changes to 'Chat Accepted' once a chat is active
- * Bug Fix: Compatibility bug fix for decryption in the Pro version
- *
- * 7.0.05 - 2017-03-01 - Low priority
- * Fixed broken links on the plugins page
- *
- * 7.0.04 - 2017-02-15 - Medium Priority
- * Fixed a bug that caused messages to be returned encoded after refreshing the page
- * Fixed a bug that caused the incorrect agent name to be used in the chat window
- * Fixed a bug that caused the 'No Answer' text to not save and show in the chat window
- *
- *
- * 7.0.03 - 2017-02-06 - Medium Priority
- * Fixed a bug that caused the name of the agent to disappear after refreshing the page
- * Fixed a bug that caused the agent name to display twice in the chat window
- *
- * 7.0.02 - 2017-01-26 - High priority
- * PHPMailer vulnerability patch (removed our version of PHPMailer and are now using WP's built-in version)
- * Added the ability for plugin users to subscribe to our mailing list
- *
- * 7.0.01 - 2017-01-03 - Medium priority
- * Fixed a bug that caused the chat to disappear after being opened for some users
- * Changes made to the language files
- * PHPMailer has been updated to the latest version
- *
- * 7.0.00 - 2016-12-14 - Medium priority
- * Major performance improvements - 300% reduction in DB calls
- * Node Server Integration (Experimental)
- * Users no longer have to wait for an agent to answer a chat, they can start typing immediately
- * Users can send a request a new chat if a chat times out or an agent doesnt answer
- * Changed tabs in the settings page to be vertical
- * Removed deprecated functions
- * JavaScript errors fixed when using IE
- * Ability to enable a powered by link on the chat
- * Ability to enable/disable the visitor name and/or gravatar
- * Chat history page columns styling fixes
- * Ability to show the date and/or time in the chat window
- * Styling improvements made to the settings page
- * Ability to redirect to a thank you page after the chat has ended
- * You can now start a new chat after refreshing the page instead of waiting 24 hours
- * Fixed a bug that caused an error in the dashboard when using the PHP cloud server
- * Fixed the styling within the admin chat window to suit the theme chosen
- * Fixed a bug that caused duplicate loading of messages when the user started typing before the admin chat screen was open
- * Integrated with Contact Form Ready to allow for custom forms to be used for the offline message form
- * Google Analytics Integration
- * Ability to change the subject of the offline message
- * Ability to add custom CSS and JavaScript in the settings page
- *
- * 6.2.11 - 2016-10-27 - Medium Priority
- * Fixed a bug that caused issues with the User JS file when being minified
- * Fixed a bug that caused the 'Congratulations' message to never clear when using the Cloud Server
- * Fixed a bug that caused new TLD's to return invalid when starting a new chat
- * Fixed a variety of strings that were using the incorrect text domain
- * Italian translation updated - Thank you Angelo Giammarresi
- * HTML is now rendered in the Input replacement field of the Classic chat window
- *
- * 6.2.10 - 2016-10-18 - High priority for IE users
- * IE bug fix - fixed the bug that stopped the chat window from opening when clicking on it
- * Fixed the bug that caused user messages to not be sent on some websites due to non-unique function names being used in the md5.js file
- * Translations
- *   Italian translation updated - thank you Angelo Giammarresi and Eta Entropy and Denny Biasiolli
- *   Estonian translation added - thank you Joonas Kessel
- *   Chinese translation updated - thank you Wan Kit
- *   Missing translation strings added in all languages
- *
- * 6.2.09 - 2016-09-15 - High priority for cloud users
- * Further cloud server bug fixes
- *
- * 6.2.08 - 2016-09-15 - High priority for cloud users
- * Fixed a bug that caused no visitors to be displayed when using the cloud server
- *
- * 6.2.07 - 2016-09-15 - Medium priority
- * Fixed a bug that caused a fatal error on older PHP version
- *
- * 6.2.06 - 2016-09-14 - Medium Priority
- * Added Rest API functionality (Accept chat, end chat, get messages, send message, get sessions)
- * Added 'Device' type logging to live chat dashboard area.
- * Minified User Side JavaScript
- * Added Connection Handling (User), which will now retry to establish connection upon fail
- * Added Connection Handling (Admin), which will retry to establish connection upon fail
- * Fixed a PHP warning on the feedback page
- * Fixed a bug where offline strings weren't translating when localization option was checked
- *
- * 6.2.05 - 2016-08-19 - Medium priority
- * Added compatibility for Pro triggers
- * Added Classic Theme's Hovercard (Will only show with triggers)
- * Fixed a bug which prevented the online/offline mode to affect the 'start chat' button
- * Fixed Responsive issues with modern theme
- * Ability to delete individual Missed Chats
- * Ability to delete individual Chats from History
- * Minor Styling Conflicts Resolved
- * Fixed the bug that caused "start chat" to be added to the button in the live chat box when offline
- * Fixed a bug that showed slashes when apostrophes were used
- * Added various filters/actions for use in Pro
- * Added ability to open chat box using an elements ID/Class (Click/Hover)
- *
- * 6.2.04 - 2016-08-01 - High priority
- * Security patches in the offline message storing function (securify.nl/advisory/SFY20190709/stored_cross_site_scripting_vulnerability_in_wp_live_chat_support_wordpress_plugin.html)
- *
- * 6.2.03 - 2016-07-19 - Low priority
- * Italian translation updated - thank you Angelo Giammarresi
- * Fixed Danish translation bug
- * Minor UI fixes
- * Edge browser bug fix when opening chats
- *
- * 6.2.02 - 2016-07-11 - High priority
- * XSS Security patch - Thank you Han Sahin!
- *
- * 6.2.01 - 2016-07-07 - Low priority
- * Surveys/Polls added - you can now add a survey/poll to your chat box either before or after a chat session
- *
- * 6.2.00 - 2016-06-10 - High priority
- * Cloud server bug fix
- * Offline messages bug fix
- * Internet explorer and Edge browser bug fix which caused the chat to not display
- * Fixed the bug that stopped email addresses such as "name@domain.tld" from validating
- * Advanced options to control the long poll variables
- * Support added for many new pro features
- *
- * 6.1.02 - 2016-04-13 - Low Priority
- * Tested on WordPress 4.5
- * Fixed a bug that sent offline messages to the wrong email address
- *
- * 6.1.01 - 2016-04-07 - Low Priority
- * You can now delete inidividual offline messages from your history
- * Code improvements done to the way scripts are loaded when displaying the chat
- * Fixed a bug that returned an undefined index when recording a visitors IP address
- * Fixed a bug that displayed chat messages over the logo
- * Code improvement - A visitors name will display if filled out automatically, instead of 'Guest'
- * WHOIS for IP Address now opens in a new window
- * Fixed a bug that caused issues when downloading the chat history containing non UTF-8 characters
- * Fixed a bug that displayed the incorrect Gravatar images in the chat messages
- * Translations:
- *  - German Updated (Thank you Benjamin Schindler)
- *  - Brazilian Portuguese Updated (Thank you Luis Simioni)
- *  - Farsi Added(Thank you Maisam)
- *  - Norwegian Updated (Thank you Ole Petter Holthe-Berg)
- *  - Croatian Added(Thank you Petar Garzina)
- *  - Italian Updated (Thank you Angelo Giammarresi)
- *  - Danish Updated (Thank you Kasper Jensen)
- *  - Spanish Updated (Thank you Olivier Gantois)
- *  - French Updated (Thank you Olivier Gantois)
- *
- * 6.1.00 - 2016-03-18 - Medium priority
- * Fixed a bug that caused the chat agent to be nullified if you saved the settings
- * NEW: Introduced a new modern theme
- * Fixed the bug that caused the chat box to not open again if you minimized it while in chat
- * Fixed a style bug on the admin chat box
- * Performance improvements for the basic version - there are no longer regular longpoll requests when using the basic version. Long polling only starts once a chat has been started
- * Fixed a styling bug in the settings page
- * Longpoll requests no longer run when you're offline - this will introduce significant performance imporvements
- * We have removed the "X" on the chat box and it will now only show up when there is an active chat on the user's side. This avoids the confusion when the user presses "X" and the chat hides for 24 hours.
- * Images of the chat agent and user now show up correctly in the chat box
- * Fixed a bug that added slashes to apostrophes in the chat window
- * Fixed a bug that caused an error when trying to load the chat box when a banned user visited the site
- * Fixed a bug that still displayed the offline message window even if the setting was set to false
- *
- * 6.0.07 - 2016-03-11 - High priority
- * Bug fix - agent status was lost when saving settings
- *
- * 6.0.06 - 2016-03-04 - Medium priority
- * More stable fix for the menu item bug that has been experienced lately
- *
- * 6.0.05 - 2016-02-23 - Medium priority
- * Fixed the bug that caused the menu item to not display for some users
- *
- * 6.0.04 - 2016-02-16 - Low priority
- * Offline message bug fix with the cloud server extension
- * Choose when online bug fix
- * Agent bug fix
- * Styling adjustment for viewpots of 481px and below
- * All content now loaded and pushed via SSL links
- *
- * 6.0.03 - 2016-02-04 - Low priority
- * Fixed a bug that caused a warning if an incorrect IP address was in the banned IP address field
- * Offline messaging bug fixed
- *
- * 6.0.02 - 2016-02-03 - Low priority
- * Added a new filter to fix a bug with WP Live Chat Support - Advanced Chat Box Control Extension
- *
- * 6.0.01 - 2016-02-02 - High priority
- * Crucial bug fix that stopped the live chat from working in some instances
- * New filter to fix the bug with the WP Live Chat Choose When Online bug
- *
- * 6.0.00 -2016-01-26 - Freedom of Speech Update - Medium Priority
- * New functionality
- *  Unlimited simultaneous chats now available
- *  Offline messages are now available
- * Many new filters added
- * jQuery.cookie updated to version 2.1
- *
- * 5.0.14 - 2016-01-13 - High priority
- * Bug fix: When activating WP Live Chat Support, a table is created with a shared MySQL column name which caused issues on some servers. The column name has been changed
- *
- * 5.0.13 - 2016-01-05 - High priority
- * UTF8 encoding bug fixed
- *
- * 5.0.12 - 2016-01-04 - Low priority
- * Tested with WP 4.4
- *
- * 5.0.11 - 2015-10-14 - Low priority
- * Translation string changes
- *
- * 5.0.10 - 2015-10-12 - Low priority
- * Updates to the extension page
- *
- * 5.0.9
- * New hook: wplc_hook_admin_menu_layout - Target the area above the normal menu layout
- * Style bug fix with the "DATA" section of the live chat dashboard
- *
- * 5.0.8
- * Introduced new hooks:
- *  wplc_hook_admin_visitor_info_display_before - Allows you to add HTML at the beginning of the vistior details DIV in the live chat window
- *  wplc_hook_admin_visitor_info_display_after - Allows you to add HTML at the end of the vistior details DIV in the live chat window
- *  wplc_hook_admin_javascript_chat - Allows you to add Javascript enqueues at the end of the javascript section of the live chat window
- *  wplc_hook_admin_settings_main_settings_after - Allows you to add more options to the main chat settings table in the settings page, after the first main table
- *  wplc_hook_admin_settings_save - Hook into the save settings head section. i.e. where we handle POST data from the live chat settings page
- *
- * 5.0.7 - 2015-10-06 - Low priority
- * Added a live chat extension page
- * Corrected internationalization
- *
- * 5.0.6 - 2015-09-17 - Low priority
- * You can now choose to disable the sound that is played when a new live chat message is received
- * Fixed a bug that caused some live chat settings to revert back to default when updating the plugin
- *
- * 5.0.5 - 2015-09-09 - Low Priority
- * Fixed a bug that displayed an error message to update the live chat plugin while using the latest version (Pro)
- * Fixed a bug where the mobile detect class would only work if the Pro was enabled
- * Fixed a bug where the live chat window would move to the bottom left of the page when being minimized
- * You can now see the visitors IP address on the Live Chat dashboard
- * Alert message removed when a user was made a live chat agent on the settings page (Pro)
- * Fixed a bug that would prevent the user from typing if they had a previous live chat session (Pro)
- *
- * 5.0.4 - 2015-08-06 - Medium priority
- * WP Live Chat Support is now compatible with all caching plugins
- * Fixed a bug that set the wrong permissions for the default agent
- * Fixed the bug that shows the status of undefined if the user minimized the chat
- *
- *
- * 5.0.3 - 2015-08-05 - High Priority
- * Small bug fix
- *
- * 5.0.2 - 2015-08-05 - High Priority
- * Fixed a bug that caused a fatal error
- *
- * 5.0.1 - 2015-08-05 - Medium Priority
- * Refactored the code so that the live chat box will show up even if there is a JS error from another plugin or theme
- * Live chat box styling fixes: top image padding; centered the "conneting, please be patient" message and added padding
- * The live chat long poll connection will not automatically reinitialize if the connection times out or returns a 5xx error
- *
- * 5.0.0 - 2015-07-29 - Doppio update - Medium Priority
- * New, modern chat dashboard
- * Better user handling (chat long polling)
- * Added a welcome page to the live chat dashboard
- * The live hat dashboard is now fully responsive
- * You are now able to see who is a new visitor and who is a returning visitor
- * Bug fixes in the javascript that handles the live chat controls
- * Fixed the bug that stopped the chats from timing out after a certain amount of time
- *
- * 4.4.4 - 2015-07-20 - Low Priority
- * Bug Fix: Big fixed that would cause the live chat to timeout during a conversation
- *
- * 4.4.3 - 2015-07-16 - Low Priority
- * Bug Fix: Ajax URL undefined in some versions of WordPress
- * Improvement: Warning messages limited to the Settings page only
- *
- * 4.4.2 - 2015-07-13 - Low Priority
- * Improvement: Gravatar images will load on sites using SSL without any issues
- * Improvement: Hungarian live chat translation file name fixed
- * Improvement: Styling improvements on the live chat dashboard
- * New Translations:
- *  Turkish (Thank you Yavuz Aksu)
- *
- * 4.4.1 - 2015-07-08 - Critical Priority
- * Major security update. Please ensure you update to this version to eliminate previous vulnerabilities.
- *
- * 4.3.5 Espresso - 2015-07-03 - Low Priority
- * Enhancement: Provision made for live chat encryption in the Pro version (compatibility)
- * Updated Translations:
- *  Hungarian (Thank you Andor Molnar)
- *
- * 4.3.4 Ristretto - 2015-06-26 - Low Priority
- * Improvement: 404 errors for images in admin panel fixed
- * Translation Fix: Mistakes fixed in German Translation file.
- *
- * 4.3.3 2015-06-11 - Low Priority
- * Security enhancements
- * New Translations:
- *  Polish (Thank you Sebastian Kajzer)
- *
- * 4.3.2 2015-05-28 - Medium Priority
- * Bug Fix: Fixed PHP error
- *
- * 4.3.1 2015-05-22 - Low Priority
- * New Translations:
- *  Finnish (Thank you Arttu Piipponen)
- *
- * Translations Updated:
- *  French (Thank you Marcello Cavalucci)
- *  Dutch (Thank you Niek Groot Bleumink)
- *
- * Bug Fix: Exclude Functionality (Pro)
- *
- * 4.3.0 2015-04-13 - Low Priority
- * Enhancement: Animations settings have been moved to the 'Styling' tab.
- * New Feature: Blocked User functionality has been moved to the Free version
- * Enhancement: All descriptions have been put into tooltips for a cleaner page
- * New Feature: Functionality added in to handle Chat Experience Ratings (Premium Add-on)
- *
- * 4.2.12 2015-03-24 - Low Priority
- * Bug Fix: Warning to update showing erroneously
- *
- * 4.2.11 2015-03-23 - Low Priority
- * Bug Fix: Bug in the banned user functionality
- * Enhancement: Stying improvement on the Live Chat dashboard
- * Enhancement: Strings are handled better for localization plugins (Pro)
- * Updated Translation Files:
- *  Spanish (Thank you Ana Ayelen Martinez)
- *
- * 4.2.10 2015-03-16 - Low Priority
- * Bug Fix: Mobile Detect class caused Fatal error on some websites
- * Bug Fix: PHP Errors when editing user page
- * Bug Fix: Including and Excluding the chat window caused issues on some websites
- * Bug Fix: Online/Offline Toggle Switch did not work in some browsers (Pro)
- * New Feature: You can now Ban visitors from chatting with you based on IP Address (Pro)
- * New Feature: You can now choose if you want users to make themselves an agent (Pro)
- * Bug Fix: Chat window would not hide when selecting the option to not accept offline messages (Pro)
- * Enhancement: Support page added
- * Updated Translations:
- *  French (Thank you Marcello Cavallucci)
- * New Translations added:
- *  Norwegian (Thank you Robert Nilsen)
- *  Hungarian (Thank you GInception)
- *  Indonesian (Thank you Andrie Willyanta)
- *
- * 4.2.9 2015-02-18 - Low Priority
- * New Feature: You can now choose to record your visitors IP address or not
- * New Feature: You can now send an offline message to more than one email address (Pro)
- * New Feature: You can now specify if you want to be online or not (Pro)
- *
- * 4.2.8 2015-02-12 - Low Priority
- * New Feature: You can now apply an animation to the chat window on page load
- * New Feature: You can now choose from 5 colour schemes for the chat window
- * Enhancement: Aesthetic Improvement to list of agents (Pro)
- * Code Improvement: PHP error fixed
- * Updated Translations:
- *  German (Thank you Dennis Klinger)
- *
- * 4.2.7 2015-02-10 - Low Priority
- * New Live Chat Translation added:
- *  Greek (Thank you Peter Stavropoulos)
- *
- * 4.2.6 2015-01-29 - Low Priority
- * New feature: Live Chat dashboard has a new layout and design
- * Code Improvement: jQuery Cookie updated to the latest version
- * Code Improvement: More Live Chat strings are now translatable
- * New Live Chat Translation added:
- *  Spanish (Thank you Ana Ayel�n Mart�nez)
- *
- *
- * 4.2.5 2015-01-21 - Low Priority
- * New Feature: You can now view any live chats you have missed
- * New Pro Feature: You can record offline messages when live chat is not online
- * Code Improvements: Labels added to buttons
- * Code Improvements: PHP Errors fixed
- *
- * Updated Translations:
- *  Italian (Thank You Angelo Giammarresi)
- *
- * 4.2.4 2014-12-17 - Low Priority
- * New feature: The chat window can be hidden when offline (Pro only)
- * New feature: Desktop notifications added
- * Bug fix: Email address gave false validation error when not required.
- *
- * Translations Added:
- * Dutch (Thank you Elsy Aelvoet)
- *
- *
- * 4.2.3 2014-12-11 - Low Priority
- * Updated Translations:
- * French (Thank you Marcello Cavallucci)
- * Italian (Thank You Angelo Giammarresi)
- *
- * 4.2.2 2014-12-10 - Low Priority
- * New feature: You can now toggle between displaying or hiding the users name in your Live Chat messages
- * New feature: You can now choose to display the Live Chat window to all or only registered users
- * New feature: A user image will now display in the Live Chat message
- * Code Improvement: jQuery UI CSS is loaded from a local source
- * Bug Fix: Only Admin users can make users Live Chat agents
- *
- * Translations added:
- * Mongolian (Thank you Monica Batuskh)
- * Romanian (Thank you Sergiu Balaes)
- * Czech (Thank you Pavel Cvejn)
- * Danish (Thank you Mikkel Jeppesen Juhl)
- *
- * Updated Translations:
- * German (Thank you Dennis Klinger)
- *
- * 4.2.1 2014-11-24 - High Priority
- * Bug Fix: PHP Error on agent side in chat window
- *
- *
- * 4.2.0 2014-11-20 - Medium priority
- * Chat UI Improvements
- * Small bug fixes
- *
- * 4.1.10 2014-10-29 - Low priority
- * Code Improvements: (Checks for DONOTCACHE)
- * New Pro Feature: You can now include or exclude the chat window on certain pages
- *
- * 4.1.9 2014-10-10 - Low priority
- * Bug fix: Mobile Detect class caused an error if it existed in another plugin or theme. A check has been put in place.
- *
- * 4.1.8 2014-10-08 - Low priority
- * New feature: There is now an option if you do not require the user to input their name and email address before sending a chat request
- * New feature: Logged in users do not have to enter their details prior to sending the chat request.
- * New feature: Turn the chat on/off on a mobile device (smart phone and tablets)
- *
- * 4.1.7 2014-10-06 - Low priority
- * Bug fix: sound was not played when user received a message from the admin
- * Internationalization update
- * New WP Live Chat Support Translation added:
- *  * Swedish (Thank You Tobias Sernhede)
- *  * French (Thank You Marcello Cavallucci)
- *
- *
- * 4.1.6
- * Code improvements (JavaScript errors fixed in IE)
- * New WP Live Chat Support Translations Added:
- *  * Slovakian (Thank You Dana Kadarova)
- *  * German (Thank You Dennis Klingr)
- *  * Hebrew (Thank You David Cohen)
- *
- * 4.1.5
- * Code improvements (PHP warnings - set_time_limit caused warnings on some hosts)
- *
- * 4.1.4
- * Significant performance improvements
- * Brazilian translation added - thank you Gustavo Silva
- *
- * 4.1.3
- * Code improvements (PHP warnings)
- *
- * 4.1.2
- * DB bug fix
- *
- * 4.1.1
- * Significant performance improvements
- * Live chat window will now only show in one window (if user has multiple tabs open on your site)
- * You can now see the browser of the live chat user
- * Improved the UI of the backend
- * Bug fixes
- *
- * 4.1.0
- * New feature: You can now show the chat box on the left or right
- * Vulnerability fix (JS injections). Thank you Patrik @ www.it-securityguard.com
- * Fixed 403 bug when saving settings
- * Fixed Ajax Time out error (Lowered From 90 to 28)
- * Fixed IE8 bug
- * Added option to auto pop up chat window
- * Added Italian language files. Thanks to Davide
- *
  */
 
 //error_reporting(E_ERROR);
@@ -713,7 +122,7 @@ global $debug_start;
 $wplc_tblname_offline_msgs = $wpdb->prefix . "wplc_offline_messages";
 $wplc_tblname_chats = $wpdb->prefix . "wplc_chat_sessions";
 $wplc_tblname_msgs = $wpdb->prefix . "wplc_chat_msgs";
-$wplc_version = "8.0.21";
+$wplc_version = "8.0.23";
 
 define('WPLC_BASIC_PLUGIN_DIR', dirname(__FILE__));
 define('WPLC_BASIC_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
@@ -1067,6 +476,30 @@ function wplc_filter_control_menu_control() {
     return $array;
 }
 
+add_action('admin_init', 'wplc_metric_dashboard_redirect');
+function wplc_metric_dashboard_redirect(){
+    try{
+        $cap = apply_filters("wplc_ma_filter_menu_control",array());
+        if(current_user_can($cap[1])){
+            if (isset($_GET['page'])) {
+                if ($_GET['page'] === 'wplivechat-menu') {
+                    // check if we are overriding this redirect because the user pressed the "Chat now" button in the dashboard
+                    if (isset($_GET['subaction']) && $_GET['subaction'] == 'override') { } else {
+                        if(!isset($_COOKIE['wplcfirstsession'])) {
+                            @setcookie("wplcfirstsession", true, time() + (60 * 10)); // 60 seconds ( 1 minute) * 20 = 20 minutes
+                            @Header("Location: ./admin.php?page=wplivechat-menu-dashboard");
+                            exit();
+                        }
+                    }
+
+                }
+            }
+        }
+    } catch (Exception $ex){
+
+    }
+}
+
 function wplc_admin_menu() {
 
     $cap = apply_filters("wplc_ma_filter_menu_control",array());
@@ -1077,6 +510,7 @@ function wplc_admin_menu() {
     /* If user is either an agent or an admin, access the page. */
     if( get_user_meta( $wplc_current_user, 'wplc_ma_agent', true ) || current_user_can("wplc_ma_agent")){
       $wplc_mainpage = add_menu_page('WP Live Chat', __('Live Chat', 'wplivechat'), $cap[0], 'wplivechat-menu', 'wplc_admin_menu_layout', 'dashicons-format-chat');
+      add_submenu_page('wplivechat-menu', __('Dashboard', 'wplivechat'), __('Dashboard', 'wplivechat'), $cap[1], 'wplivechat-menu-dashboard', 'wplc_admin_dashboard_layout');
       add_submenu_page('wplivechat-menu', __('Settings', 'wplivechat'), __('Settings', 'wplivechat'), $cap[1], 'wplivechat-menu-settings', 'wplc_admin_settings_layout');
       add_submenu_page('wplivechat-menu', __('Surveys', 'wplivechat'), __('Surveys', 'wplivechat'). $survey_new, $cap[2], 'wplivechat-menu-survey', 'wplc_admin_survey_layout');
     }
@@ -3114,72 +2548,75 @@ function wplc_admin_output_js() {
 }
 
 function wplc_admin_menu_layout() {
+    
+	
 
-    do_action("wplc_hook_admin_menu_layout");
-    if (function_exists("wplc_register_pro_version")) {
-        global $wplc_pro_version;
-        if (floatval($wplc_pro_version) < 4 || $wplc_pro_version == "4.1.0" || $wplc_pro_version == "4.1.1") {
-            ?>
-            <div class='error below-h1'>
 
-                <p><?php _e("Dear Pro User", "wplivechat") ?><br /></p>
-                <p><?php _e("You are using an outdated version of <strong>WP Live Chat Support Pro</strong>. Please", "wplivechat") ?> <a href="https://wp-livechat.com/get-updated-version/" target=\"_BLANK\"><?php _e("update to at least version", "wplivechat") ?> 4.0</a> <?php _e("to ensure all functionality is in working order", "wplivechat") ?>.</p>
-                <p><strong><?php _e("You're live chat box on your website has been temporarily disabled until the Pro plugin has been updated. This is to ensure a smooth and hassle-free user experience for both yourself and your visitors.", "wplivechat") ?></strong></p>
-                <p><?php _e("You can update your plugin <a href='./update-core.php'>here</a>, <a href='./plugins.php'>here</a> or <a href='https://wp-livechat.com/get-updated-version/' target='_BLANK'>here</a>.", "wplivechat") ?></strong></p>
-                <p><?php _e("If you are having difficulty updating the plugin, please contact", "wplivechat") ?> nick@wp-livechat.com</p>
+	    do_action("wplc_hook_admin_menu_layout");
+	    if (function_exists("wplc_register_pro_version")) {
+	        global $wplc_pro_version;
+	        if (floatval($wplc_pro_version) < 4 || $wplc_pro_version == "4.1.0" || $wplc_pro_version == "4.1.1") {
+	            ?>
+	            <div class='error below-h1'>
 
-            </div>
-            <?php
-        }
-        $wplc_ver = str_replace('.', '', $wplc_pro_version);
-        $wplc_ver = intval($wplc_ver);
-        if ($wplc_ver < 501) {
-            ?>
-            <div class='error below-h1'>
+	                <p><?php _e("Dear Pro User", "wplivechat") ?><br /></p>
+	                <p><?php _e("You are using an outdated version of <strong>WP Live Chat Support Pro</strong>. Please", "wplivechat") ?> <a href="https://wp-livechat.com/get-updated-version/" target=\"_BLANK\"><?php _e("update to at least version", "wplivechat") ?> 4.0</a> <?php _e("to ensure all functionality is in working order", "wplivechat") ?>.</p>
+	                <p><strong><?php _e("You're live chat box on your website has been temporarily disabled until the Pro plugin has been updated. This is to ensure a smooth and hassle-free user experience for both yourself and your visitors.", "wplivechat") ?></strong></p>
+	                <p><?php _e("You can update your plugin <a href='./update-core.php'>here</a>, <a href='./plugins.php'>here</a> or <a href='https://wp-livechat.com/get-updated-version/' target='_BLANK'>here</a>.", "wplivechat") ?></strong></p>
+	                <p><?php _e("If you are having difficulty updating the plugin, please contact", "wplivechat") ?> nick@wp-livechat.com</p>
 
-                <p><?php _e("Dear Pro User", "wplivechat") ?><br /></p>
-                <p><?php _e("You are using an outdated version of <strong>WP Live Chat Support Pro</strong>.", "wplivechat") ?></p>
-                <p>
-                    <strong><?php _e("Please update to the latest version of WP Live Chat Support Pro", 'wplivechat'); ?>
-                        <a href="https://wp-livechat.com/get-updated-version/" target=\"_BLANK\"> <?php _e("Version 5.0.1", "wplivechat"); ?></a>
-                        <?php _e("to ensure everything is working correctly.", "wplivechat"); ?>
-                    </strong>
-                </p>
-                <p><?php _e("You can update your plugin <a href='./update-core.php'>here</a>, <a href='./plugins.php'>here</a> or <a href='https://wp-livechat.com/get-updated-version/' target='_BLANK'>here</a>.", "wplivechat") ?></strong></p>
-                <p><?php _e("If you are having difficulty updating the plugin, please contact", "wplivechat") ?> nick@wp-livechat.com</p>
+	            </div>
+	            <?php
+	        }
+	        $wplc_ver = str_replace('.', '', $wplc_pro_version);
+	        $wplc_ver = intval($wplc_ver);
+	        if ($wplc_ver < 501) {
+	            ?>
+	            <div class='error below-h1'>
 
-            </div>
-            <?php
-        }
-    }
-    if ( ( get_option("WPLC_V8_FIRST_TIME") == true && !class_exists("APC_Object_Cache") ) || ( isset( $_GET['action'] ) && ( $_GET['action'] == 'welcome' || $_GET['action'] == 'credits' ) ) ){
-        include 'includes/welcome_page.php';
-        update_option('WPLC_V8_FIRST_TIME', false);
-    } else {
+	                <p><?php _e("Dear Pro User", "wplivechat") ?><br /></p>
+	                <p><?php _e("You are using an outdated version of <strong>WP Live Chat Support Pro</strong>.", "wplivechat") ?></p>
+	                <p>
+	                    <strong><?php _e("Please update to the latest version of WP Live Chat Support Pro", 'wplivechat'); ?>
+	                        <a href="https://wp-livechat.com/get-updated-version/" target=\"_BLANK\"> <?php _e("Version 5.0.1", "wplivechat"); ?></a>
+	                        <?php _e("to ensure everything is working correctly.", "wplivechat"); ?>
+	                    </strong>
+	                </p>
+	                <p><?php _e("You can update your plugin <a href='./update-core.php'>here</a>, <a href='./plugins.php'>here</a> or <a href='https://wp-livechat.com/get-updated-version/' target='_BLANK'>here</a>.", "wplivechat") ?></strong></p>
+	                <p><?php _e("If you are having difficulty updating the plugin, please contact", "wplivechat") ?> nick@wp-livechat.com</p>
 
-        update_option('WPLC_V8_FIRST_TIME', false);
-        $wplc_settings = get_option("WPLC_SETTINGS");
-        if ( isset( $wplc_settings['wplc_use_node_server'] ) && $wplc_settings['wplc_use_node_server'] == 1 ) {
-            //Node in use, load remote dashboard
-            if ( $_GET['page'] === 'wplivechat-menu') {
-                wplc_admin_dashboard_layout_node('dashboard');
+	            </div>
+	            <?php
+	        }
+	    }
+	    if ( ( get_option("WPLC_V8_FIRST_TIME") == true && !class_exists("APC_Object_Cache") ) || ( isset( $_GET['action'] ) && ( $_GET['action'] == 'welcome' || $_GET['action'] == 'credits' ) ) ){
+	        include 'includes/welcome_page.php';
+	        update_option('WPLC_V8_FIRST_TIME', false);
+	    } else {
 
-                if( isset($_GET['action']) ){
-                    wplc_admin_menu_layout_display();
-                }
-            } else {
-                // we'll control this in admin_footer
-                //wplc_admin_dashboard_layout_node('other');
-            }
+	        update_option('WPLC_V8_FIRST_TIME', false);
+	        $wplc_settings = get_option("WPLC_SETTINGS");
+	        if ( isset( $wplc_settings['wplc_use_node_server'] ) && $wplc_settings['wplc_use_node_server'] == 1 ) {
+	            //Node in use, load remote dashboard
+	            if ( $_GET['page'] === 'wplivechat-menu') {
+	                wplc_admin_dashboard_layout_node('dashboard');
 
-        } else {
-            if (function_exists("wplc_register_pro_version")) {
-                wplc_pro_admin_menu_layout_display();
-            } else {
-                wplc_admin_menu_layout_display();
-            }
-        }
-    }
+	                if( isset($_GET['action']) ){
+	                    wplc_admin_menu_layout_display();
+	                }
+	            } else {
+	                // we'll control this in admin_footer
+	                //wplc_admin_dashboard_layout_node('other');
+	            }
+
+	        } else {
+	            if (function_exists("wplc_register_pro_version")) {
+	                wplc_pro_admin_menu_layout_display();
+	            } else {
+	                wplc_admin_menu_layout_display();
+	            }
+	        }
+	    }
 }
 
 
@@ -4326,7 +3763,7 @@ function wplc_add_admin_stylesheet() {
     wp_register_style( 'wplc-font-awesome', plugins_url('css/font-awesome.min.css', __FILE__ ), false, $wplc_version );
     wp_enqueue_style( 'wplc-font-awesome' );
 
-	if (isset($_GET['page']) && ($_GET['page'] == 'wplivechat-menu' ||  $_GET['page'] == 'wplivechat-menu-api-keys-page' ||  $_GET['page'] == 'wplivechat-menu-extensions-page' || $_GET['page'] == 'wplivechat-menu-settings' || $_GET['page'] == 'wplivechat-menu-offline-messages' || $_GET['page'] == 'wplivechat-menu-history' || $_GET['page'] == 'wplivechat-menu-missed-chats')) {
+	if (isset($_GET['page']) && ($_GET['page'] == 'wplivechat-menu' ||  $_GET['page'] == 'wplivechat-menu-api-keys-page' ||  $_GET['page'] == 'wplivechat-menu-extensions-page' || $_GET['page'] == 'wplivechat-menu-settings' || $_GET['page'] == 'wplivechat-menu-offline-messages' || $_GET['page'] == 'wplivechat-menu-history' || $_GET['page'] == 'wplivechat-menu-missed-chats' || $_GET['page'] == 'wplivechat-menu-dashboard')) {
         wp_register_style( 'wplc-jquery-ui', plugins_url( '/css/jquery-ui.css', __FILE__ ), false, $wplc_version );
         wp_enqueue_style( 'wplc-jquery-ui' );
 
@@ -4416,6 +3853,14 @@ $gutenberg_default_html = '<!-- Default HTML -->
  */
 function wplc_admin_settings_layout() {
     wplc_settings_page_basic();
+}
+
+/**
+ * Loads the dashboard page
+ * @return void
+ */
+function wplc_admin_dashboard_layout() {
+    include 'includes/dashboard_page.php';
 }
 
 add_action("wplc_hook_history_draw_area","wplc_hook_control_history_draw_area",10,1);
@@ -6343,10 +5788,13 @@ add_action( "admin_enqueue_scripts", "wplc_custom_scripts_scripts" );
  */
 function wplc_custom_scripts_scripts(){
 
-	if( isset( $_GET['page'] ) && $_GET['page'] == 'wplivechat-menu-settings' ){
-
-		wp_enqueue_script( "wplc-custom-script-tab-ace",'//cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js', array('jquery') );
-
+	if ( isset( $_GET['page'] ) ) {
+		if ( $_GET['page'] == 'wplivechat-menu-settings' ) {
+			wp_enqueue_script( "wplc-custom-script-tab-ace",'//cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js', array('jquery') );
+		} else if ( $_GET['page'] == 'wplivechat-menu-dashboard' ) {
+			wp_enqueue_script( 'wplc-custom-script-dashboard', plugins_url( '/js/wplc_dashboard.js', __FILE__ ), array('jquery'), null, true );
+		}
+		
 	}
 
 }
@@ -6636,7 +6084,7 @@ add_action( 'admin_notices', 'wplc_browser_notifications_admin_warning' );
  */
 function wplc_browser_notifications_admin_warning() {
 
-    if ( ! is_ssl() && isset( $_GET['page'] ) && strpos( $_GET['page'], 'wplivechat' ) !== false ) {
+    if ( ! is_ssl() && isset( $_GET['page'] ) && $_GET['page'] === 'wplivechat-menu-settings' ) {
 
         if ( isset( $_GET['wplc_dismiss_notice_bn'] ) && 'true' === $_GET['wplc_dismiss_notice_bn'] ) {
 

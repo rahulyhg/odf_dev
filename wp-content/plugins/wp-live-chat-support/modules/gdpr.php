@@ -660,7 +660,7 @@ function wplc_gdpr_disabled_warning(){
   }
 
   if(isset($_GET['page'])){
-    if(strpos($_GET['page'], 'wplivechat') !== FALSE){
+    if($_GET['page'] === 'wplivechat-menu-settings'){
       $wplc_settings = get_option("WPLC_SETTINGS");
       if(!isset($wplc_settings['wplc_gdpr_enabled']) || $wplc_settings['wplc_gdpr_enabled'] != '1'){
         $gdpr_disabled_warning_dismissed = get_option('WPLC_GDPR_DISABLED_WARNING_DISMISSED', false);

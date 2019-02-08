@@ -68,7 +68,7 @@ function wplc_node_server_token_regenerate(){
  * @return string (or false on fail)
 */
 function wplc_node_server_post($route, $form_data){
-    $url = BLEEPER_NODE_SERVER_URL . BLEEPER_NODE_END_POINTS_ROUTE . $route;
+    $url = trailingslashit(BLEEPER_NODE_SERVER_URL) . trailingslashit(BLEEPER_NODE_END_POINTS_ROUTE) . $route;
 
     $wplc_end_point_override = get_option("wplc_end_point_override");
     if($wplc_end_point_override !== false && $wplc_end_point_override !== ""){

@@ -313,3 +313,137 @@
     width: 100%;
     background-color: #fff;
 }
+
+/* Dashboard Page Styles */
+#wplc_dashboard_container {
+  box-sizing: border-box;
+}
+.wplc_panel_col {
+  display: inline-block !important;
+  box-sizing: border-box;
+  vertical-align: top;
+  padding: 15px;
+  margin: 0 !important;
+}
+
+.wplc_col_12 {
+  width: 100%;
+}
+
+.wplc_col_6 {
+  width: 50%;
+}
+
+.wplc_col_4 {
+  width: 32%;
+}
+
+.wplc_dashboard_row {
+  white-space: nowrap;
+  
+}
+.wplc-center {
+  text-align: center;
+}
+span.smaller {
+    font-size: 0.7em;
+}
+span.wplc-stat {
+    font-size: 4em;
+}
+
+.wplc_material_panel {
+  background: #fff;
+  box-sizing: border-box;
+  padding: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.00), 0 1px 15px rgba(0, 0, 0, 0.04);
+  border-radius: 2px;
+  overflow: auto;
+  max-width: 100%;
+  width: 100%;
+  white-space: normal;
+}
+
+.wplc_panel_title {
+  margin-top: 0;
+}
+
+.wplc_panel_row {
+  display: block !important;
+  width: 100% !important;
+}
+
+.wplc_panel_row iframe {
+  display: block !important;
+}
+
+.wplc_post,
+.wplc_post_excerpt{
+  width: 100%;
+  max-width: 100%;
+}
+.wplc_post_readmore a,
+.wplc_readmore{
+  color: orange !important;
+  text-decoration: none;
+}
+
+.wplc_post_readmore a:hover,
+.wplc_readmore:hover {
+  text-decoration: underline;
+}
+
+.wplc_readmore {
+  padding: 10px;
+  padding-top: 0;
+  display: block;
+}
+
+.wplc_post {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+
+.wplc_post:last-of-type {
+  border: none !important;
+}
+
+.wplc_post_title {
+  font-weight: 800;
+  color: #656565;
+  font-size: 14px;
+}
+
+.wplc_panel_row {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.wplc_panel_inner_title {
+  font-weight: 800;
+  font-size: 15px;
+  margin-bottom: 10px;
+  display: block;
+}
+.wplc_incident {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.wplc_incident_info {
+margin-top: 10px !important;
+}
+
+
+.wplc_incident_value,
+.wplc_module_value{
+  
+  text-transform: capitalize;
+}
+
+#wplc_dashboard_page_title {
+  padding: 15px;
+  padding-bottom: 0;
+}

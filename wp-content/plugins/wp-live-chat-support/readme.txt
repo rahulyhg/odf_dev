@@ -258,6 +258,20 @@ We have patched the PHPMailer vulnerability. Please update to version 7.0.02.
 
 
 == Changelog ==
+= 8.0.23 - 2019-02-05 - Low priority =
+
+* Fixed access to new dashboard for non admin agents
+* Fixed documentation suggestions not working (Pro)
+
+
+= 8.0.22 - 2019-02-04 - Low priority =
+
+* Introduced a new dashboard that showcases latest blog posts, the latest podcast episode and the system status
+
+* Moved GDPR warnings for first time users to the settings page only
+
+* Moved the warning regarding desktop notifications to the settings page only
+
 
 = 8.0.21 - 2018-12-18 - Low priority =
 * Readme Update: Coming soon features

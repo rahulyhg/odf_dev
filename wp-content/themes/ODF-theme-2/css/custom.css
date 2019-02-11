@@ -1995,7 +1995,7 @@
 
 /* ontex_custom_home_sidebar */
     .ontex_custom_home_sidebar{
-        margin-bottom: 0!important;
+        margin-bottom: 0!important;        
     }
     .ontex_custom_home_sidebar.product_three_clicks{
     	background-image: linear-gradient(-90deg, #fdcc83 0%, #e88f0c 100%);
@@ -2081,6 +2081,62 @@
     }
     .block_sliders_and_sidebar .vc_btn3-container {
         margin-bottom: 17px !important;
+    }
+
+    .block_find_a_local_shop {
+		margin-left: 20px !important;
+	    margin-right: 20px !important;
+	    border: 1px solid #b8b8ba;
+	    border-radius: 5px;
+	    padding: 9px;
+	}
+    .find_a_local_shop {x;
+	    padding: 9px;
+	    margin: 0 5px;
+	}
+    .find_a_local_shop_titre h5 {
+    	color : #e88f0c; 
+	    font-size: 30px;
+	    margin-top: 0px !important;
+	    margin-bottom: 20px !important;
+	}
+    .find_a_local_shop label{
+    	color: #b8b8ba;
+    	display: block;
+    	font-size: 15px;
+    }
+    .find_a_local_shop .block_location_within{
+    	margin-top: 20px;
+    }
+    .find_a_local_shop #your_location,
+    .find_a_local_shop #location_within{
+	    width: 100%;
+	    border: 1px solid #b8b8ba;
+	    border-radius: 5px;
+	    height: 40px;
+	    color: #b8b8ba;
+	    background: transparent;
+	}
+	.find_a_local_shop #your_location::placeholder {
+        color: #b8b8ba;
+        opacity: 1; 
+    }
+
+    .find_a_local_shop #your_location:-ms-input-placeholder { 
+        color: #b8b8ba;
+    }
+
+    .find_a_local_shop #your_location::-ms-input-placeholder { 
+        color: #b8b8ba;
+    }    
+    #input_location_submit{
+		width: 100%;
+		height: 40px;
+		border-radius: 5px;
+		background-color: #ffffff;
+		color: #75208e;
+		margin-top: 30px;
+		text-transform: inherit;
     }
 /* block_sliders_and_sidebar */
 
@@ -2507,16 +2563,6 @@
             display: inline-block;
         }
 
-        .find_a_local_shop {
-		    border: 1px solid #b8b8ba;
-		    border-radius: 5px;
-		    padding: 9px;
-		    margin: 0 5px;
-		}
-        .find_a_local_shop_tite h5 {
-        	color : #e88f0c; 
-        }
-
         .row_grid_testimonial .vc_grid.vc_grid-owl-theme .vc_grid-owl-dots.vc_grid-point_dots.vc_grid-owl-dots-color-white .vc_grid-owl-dot span{
             background-color: #0292d3!important;
         }
@@ -2533,4 +2579,6 @@
     @media (max-width: 320px){
 
     }
-/*** Responsives **
+/*** Responsives ***/
+
+@import url("custom_2.css");

@@ -961,12 +961,12 @@ if ( ! function_exists( 'odf_is_woocommerce_activated' ) ) {
 add_shortcode('find_a_local_shop','find_a_local_shop');
 function find_a_local_shop(){
 	?>
-	<div class="find_a_local_shop">
+	<form class="find_a_local_shop"  action="/" method="get" accept-charset="utf-8">
 		<div class="find_a_local_shop_titre">
-			<div class="vc_col-sm-4">
+			<div class="vc_col-sm-2">
 				<img width="19" height="27" src="<?php echo get_template_directory_uri() ?>/images/f.png" class="vc_single_image-img attachment-thumbnail" alt="">
 			</div>
-			<div class="vc_col-sm-8">
+			<div class="vc_col-sm-10">
 				<h5><span> Find a local shop</span></h5>
 			</div>
 
@@ -984,8 +984,9 @@ function find_a_local_shop(){
 				<option value="15">15 miles</option>
 			</select>
 		</div>
+		<input id="input_location_submit" type="submit" name="submit" value="Find shop">
 		
-	</div>
+	</form>
 
 	<?php
 }

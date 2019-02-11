@@ -956,3 +956,35 @@ if ( ! function_exists( 'odf_is_woocommerce_activated' ) ) {
 		if ( class_exists( 'woocommerce' ) ) { return true; } else { return false; }
 	}
 }
+
+add_shortcode('find_a_local_shop','find_a_local_shop');
+function find_a_local_shop(){
+	?>
+	<div class="find_a_local_shop">
+		<div class="find_a_local_shop_titre">
+			<div class="vc_col-sm-2">
+				<img width="19" height="27" src="<?php echo get_template_directory_uri() ?>/images/f.png" class="vc_single_image-img attachment-thumbnail" alt="">
+			</div>
+			<div class="vc_col-sm-10">
+				<h5><span> Find a local shop</span></h5>
+			</div>
+
+		</div>
+		<div class="block_your_location">
+			<label for="your_location">Your location</label>
+			<input id="your_location" type="text" name="location" value="" placeholder="EnterCity, State or Portal code">
+		</div>
+		
+		<div class="block_location_within">
+			<label for="location_within">Within</label>
+			<select id="location_within" name="location_within">
+				<option value="5">5 miles</option>
+				<option value="10">10 miles</option>
+				<option value="15">15 miles</option>
+			</select>
+		</div>
+		
+	</div>
+
+	<?php
+}

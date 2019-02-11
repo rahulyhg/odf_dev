@@ -45,7 +45,7 @@ ehthumbs.db
 #  Main ignored items
 #------------------------
 
-wp-config.php
+#wp-config.php
 .maintenance
 versionpress.maintenance
 /.htaccess
@@ -89,8 +89,8 @@ ehthumbs.db
 #  Main ignored items
 #------------------------
 
-/../wp-config.php
-/wp-config.php
+#/../wp-config.php
+#/wp-config.php
 .maintenance
 versionpress.maintenance
 /.htaccess

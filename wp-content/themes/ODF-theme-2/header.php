@@ -20,11 +20,12 @@
 	<?php endif; ?>
 	<?php wp_head(); ?>
 
-	<?php echo wp_enqueue_style( 'custom', get_template_directory_uri() . '/css/custom.css' ); ?>
-
 	<?php //if(file_exists ( "/wp-content/plugins/js_composer/assets/css/js_composer.min.css" )){ ?>
 		<link rel="stylesheet" id="js_composer_front-css" href="/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=5.6" type="text/css" media="all">
 	<?php //} ?>
+
+	<?php echo wp_enqueue_style( 'custom', get_template_directory_uri() . '/css/custom.css' ); ?>
+	<?php echo wp_enqueue_style( 'custom2', get_template_directory_uri() . '/css/custom_2.css' ); ?>
 </head>
 
 <?php global $test_theme; ?>
@@ -114,10 +115,27 @@
 					<?php echo do_shortcode('[wpml_language_switcher][/wpml_language_switcher]'); ?>
 				</div>
 				<div class="vc_col-sm-2 header-right header-search">
-					<a href="#">
+					<a href="#" id="div_header_mon_compte">
 						<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-search-orange.png">
 					</a>
 				</div>
+
+
+
+				<div class="widget woocommerce widget_product_search" id="div_searchform" style="display: none;">
+					<form role="search" method="get" id="searchform" action="/">
+						<div>
+
+							<i class="fa fa-times ic_search" aria-hidden="true" style="display: inline;"></i>
+							<input type="text" value="" name="s" id="s" placeholder="Recherche des produits">
+							<input type="submit" id="searchsubmit" value="">
+							<input type="hidden" name="post_type" value="product">
+						</div>
+					</form>
+				</div>
+
+
+
 			</div>
 		</div>
 		<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentysixteen' ); ?></a>

@@ -990,3 +990,130 @@ function find_a_local_shop(){
 
 	<?php
 }
+
+// add_action('woocommerce_after_shop_loop_item', 'my_print_stars' );
+add_shortcode('show_product_rating_stars','show_product_rating_stars');
+function show_product_rating_stars(){
+    global $wpdb;
+    global $post;
+    $count = $wpdb->get_var("
+	    SELECT COUNT(meta_value) FROM $wpdb->commentmeta
+	    LEFT JOIN $wpdb->comments ON $wpdb->commentmeta.comment_id = $wpdb->comments.comment_ID
+	    WHERE meta_key = 'rating'
+	    AND comment_post_ID = $post->ID
+	    AND comment_approved = '1'
+	    AND meta_value > 0
+	");
+
+	$rating = $wpdb->get_var("
+	    SELECT SUM(meta_value) FROM $wpdb->commentmeta
+	    LEFT JOIN $wpdb->comments ON $wpdb->commentmeta.comment_id = $wpdb->comments.comment_ID
+	    WHERE meta_key = 'rating'
+	    AND comment_post_ID = $post->ID
+	    AND comment_approved = '1'
+	");
+
+	if ( $count > 0 ) {
+
+	    $average = number_format($rating / $count, 2);
+
+	    echo '<div class="starwrapper" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
+
+	    echo '<span class="star-rating" title="'.sprintf(__('Rated %s out of 5', 'woocommerce'), $average).'"><span style="width:'.($average*16).'px"><span itemprop="ratingValue" class="rating">'.$average.'</span> </span></span>';
+
+	    echo '</div>';
+    }
+    $average = 1;
+    echo '<div class="starwrapper" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
+
+	    echo '<span class="star-rating" title="'.sprintf(__('Rated %s out of 5', 'woocommerce'), $average).'"><span style="width:'.($average*16).'px"><span itemprop="ratingValue" class="rating">'.$average.'</span> </span></span>';
+
+	    echo '</div>';
+
+}
+
+add_shortcode('slider_button_details_product','slider_button_details_product');
+function slider_button_details_product(){
+
+    global $product;
+    
+    echo '<a href="'.get_post_permalink($product).'" class="slider_button_details_product">Details</a>';
+}
+
+add_shortcode('slider_button_buy_product','slider_button_buy_product');
+function slider_button_buy_product(){
+
+    global $product;
+    
+    echo '<a href="'.get_post_permalink($product).'" class="slider_button_buy_product">Buy</a>';
+}
+
+add_shortcode('button_catalog_access','button_catalog_access');
+function button_catalog_access(){
+
+    global $product;
+    
+    echo '<a href="'.get_post_permalink($product).'" class="button_catalog_access">Catalog access</a>';
+}
+
+add_shortcode('theme2_all_advice','theme2_all_advice');
+function theme2_all_advice(){
+    ?>
+    <div class="theme2_all_advice">
+    	<div class="vc_col-sm-8">
+    		<div class="alladvices block_header">
+    			ALL ADVICES
+    		</div>
+    		<h3>TITLE ADVICE 1</h3>
+    		<p>
+	    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	    	</p>
+    	</div>
+    	<div class="vc_col-sm-4">
+    		
+    	</div>
+    </div>
+    <?php
+}
+
+add_shortcode('theme2_faq','theme2_faq');
+function theme2_faq(){
+    ?>
+    <div class="theme2_faq">
+    	<div class="vc_col-sm-12" style="margin-bottom: 10px;">
+    		<div class="vc_col-sm-6 block_header">
+    			FAQ
+    		</div>
+    		<div class="vc_col-sm-6">
+    			<a href="/page-is-under-construction/" class="button_allfaq">ALL FAQ</a>
+    		</div>
+    	</div>
+    	<div class="vc_col-sm-12 div_lorem_ipsum_plus">
+    		<p>Le lorem Ipsum </p>
+    		<span>+</span>
+    	</div>
+    	<div class="vc_col-sm-12 div_lorem_ipsum_plus">
+    		<p>Le lorem Ipsum </p>
+    		<span>+</span>
+    	</div>
+    	<div class="vc_col-sm-12 div_lorem_ipsum_plus">
+    		<p>Le lorem Ipsum </p>
+    		<span>+</span>
+    	</div>
+    	<div class="vc_col-sm-12 div_lorem_ipsum_plus">
+    		<p>Le lorem Ipsum </p>
+    		<span>+</span>
+    	</div>
+    </div>
+    <?php
+}
+
+
+add_shortcode('custom_page_products_list','custom_page_products_list');
+function custom_page_products_list(){
+	get_template_part('template-parts/custom', 'products_list');
+}
+add_shortcode('custom_page_single_product','custom_page_single_product');
+function custom_page_single_product(){
+	get_template_part('template-parts/custom', 'single_product');
+}

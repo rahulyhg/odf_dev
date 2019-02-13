@@ -1,4 +1,4 @@
-
+<?php echo wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.css' ); ?>
   <div class="form-request">
     <div>
       <h2>Sample request</h2>
@@ -74,11 +74,11 @@
         <div class="picture-product">
           <br>
           <br><br><br>
-          <img src="img/product1.png" />
+          <img src="/wp-content/themes/ODF-theme-2/template-parts/img/product1.png" />
           <br>
           <br>
           <br>
-          <img src="img/product2.png" />
+          <img src="/wp-content/themes/ODF-theme-2/template-parts/img/product2.png" />
         </div>
       </form>
     </div>

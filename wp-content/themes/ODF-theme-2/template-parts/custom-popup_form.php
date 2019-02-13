@@ -1,4 +1,4 @@
-
+<?php echo wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.css' ); ?>
   <div class="form-request">
     <div>
       <h2>Sample request</h2>

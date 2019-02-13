@@ -235,36 +235,20 @@
   font-size: 45px;
 }
 .after-demo-product .span-h2{
-  font-size: 45px;
-  position: absolute;
-  right: 615px;
-  top: 122px;
-  font-weight: lighter;
+	font-size: 35px;
+    position: absolute;
+    right: 563px;
+    top: 82px;
+    font-weight: lighter;
+    display: block;
 }
 .after-demo-product .description{
-  font-size: 14px;
-  width: 360px;
-  display: block;
-  position: absolute;
-  left: 90px;
-  bottom: 70px;
-}
-.feedback{
-  width: 800px;
-  margin:0 auto;
-  position: relative;
-  margin-top:100px;
-}
-.feedback-content-body h4{
-  color:#0060b2;
-  text-transform: uppercase;
-}
-.feedback-content-body p{
-  color:#b2b2b2;
-}
-.feedback-img{
-  width: 230px;
-  float:left;
+	font-size: 14px;
+    width: 360px;
+    display: block;
+    position: absolute;
+    left: 90px;
+    top: 255px;
 }
 .carrousel-prev{
   background: url(../template-parts/img/feedback-prev.png) no-repeat;
@@ -311,12 +295,15 @@
 /*****************************************************************************/
 .submit-btn{
   width:180px;
-  height: 40px;
   margin:0 auto;
   border:none;
   background: #dbdbdb;
   border-radius: 20px;
   color:#007ecc;
+}
+.submit-btn:hover{
+  background: #dbdbdb;
+  color:#000;
 }
 .submit-conteneur{
   text-align: center;
@@ -410,9 +397,9 @@
   clear:both;
 }
 .icon-btn{
-  position: relative;
-  left: -7px;
-  top: -3px;
+	position: relative;
+	left: -6px;
+	top: 1px;
 }
 .single-product .icon-btn{
   position: relative;
@@ -441,4 +428,57 @@
   position: absolute;
   top: 80px;
   left: 190px;
+}
+.btns-single-product a span{
+	display:block;
+	float:left;
+	margin-left: 3px;
+}
+.feedback{
+  width: 800px;
+  margin:0 auto;
+  position: relative;
+  margin-top:100px;
+}
+.feedback-content-body h4{
+  color:#0060b2;
+  text-transform: uppercase;
+}
+.feedback-content-body p{
+  color:#b2b2b2;
+}
+.feedback-img{
+  width: 230px;
+  float:left;
+}
+.btns-single-product{
+	width:800px;
+}
+.btns-single-product a{
+	display: block;
+	float:left;
+}
+.after-demo-product h2{
+	position: absolute;
+    top: 30px;
+    left: 420px;
+    display: block;
+    width: 410px;
+}
+.after-demo-product span{
+	position: absolute;
+    top: 30px;
+    left: 420px;
+    display: block;
+    width: 410px;
+}
+.after-demo-product{
+	position:relative;
+}
+.feedback-content-body{
+	width: 550px;
+    float: left;
+}
+.feedback-content-body h4{
+	margin:10px 0;
 }

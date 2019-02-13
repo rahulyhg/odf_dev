@@ -268,6 +268,8 @@ function twentysixteen_scripts() {
 	wp_enqueue_script( 'twentysixteen-html5', get_template_directory_uri() . '/js/html5.js', array(), '3.7.3' );
 	wp_script_add_data( 'twentysixteen-html5', 'conditional', 'lt IE 9' );
 
+	wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js', array(), '3.7.3' );
+
 	// wp_enqueue_script( 'twentysixteen-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20160816', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -963,10 +965,10 @@ function find_a_local_shop(){
 	?>
 	<form class="find_a_local_shop"  action="/" method="get" accept-charset="utf-8">
 		<div class="find_a_local_shop_titre">
-			<div class="vc_col-sm-2">
+			<div class="vc_col-sm-4">
 				<img width="19" height="27" src="<?php echo get_template_directory_uri() ?>/images/f.png" class="vc_single_image-img attachment-thumbnail" alt="">
 			</div>
-			<div class="vc_col-sm-10">
+			<div class="vc_col-sm-8">
 				<h5><span> Find a local shop</span></h5>
 			</div>
 
@@ -1037,7 +1039,7 @@ function slider_button_details_product(){
 
     global $product;
     
-    echo '<a href="'.get_post_permalink($product).'" class="slider_button_details_product">Details</a>';
+    echo '<a href="/product/" class="slider_button_details_product">Details</a>';
 }
 
 add_shortcode('slider_button_buy_product','slider_button_buy_product');
@@ -1045,7 +1047,7 @@ function slider_button_buy_product(){
 
     global $product;
     
-    echo '<a href="'.get_post_permalink($product).'" class="slider_button_buy_product">Buy</a>';
+    echo '<a href="/product/" class="slider_button_buy_product">Buy</a>';
 }
 
 add_shortcode('button_catalog_access','button_catalog_access');
@@ -1053,7 +1055,7 @@ function button_catalog_access(){
 
     global $product;
     
-    echo '<a href="'.get_post_permalink($product).'" class="button_catalog_access">Catalog access</a>';
+    echo '<a href="/catalog/" class="button_catalog_access">Catalog access</a>';
 }
 
 add_shortcode('theme2_all_advice','theme2_all_advice');
@@ -1113,7 +1115,13 @@ add_shortcode('custom_page_products_list','custom_page_products_list');
 function custom_page_products_list(){
 	get_template_part('template-parts/custom', 'products_list');
 }
+
 add_shortcode('custom_page_single_product','custom_page_single_product');
 function custom_page_single_product(){
 	get_template_part('template-parts/custom', 'single_product');
+}
+
+add_shortcode('custom_page_single_product_sheet','custom_page_single_product_sheet');
+function custom_page_single_product_sheet(){
+	get_template_part('template-parts/custom', 'single_product_sheet');
 }

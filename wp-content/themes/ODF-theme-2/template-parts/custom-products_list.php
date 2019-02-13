@@ -1,4 +1,6 @@
-<div class="pagination">
+<div class="products-content">
+<div class="paginationc">
+
   <select>
     <option>Filter</option>
     <option>Option1</option>
@@ -16,6 +18,7 @@
     <span>....</span>
     <a href="#">15</a>
     <a href="#">Suivant</a>
+
   </div>
 </div>
 <div class="produit-containeur">
@@ -23,6 +26,7 @@
   <div class="produit">
     <h3>Product 1</h3>
     <img src="/wp-content/themes/ODF-theme-2/template-parts/img/produit1.png" />
+
     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr ipsum dolor sit amet, consetetur</p>
     <div class="containeur-vote">
       <a href="#"><img src="/wp-content/themes/ODF-theme-2/template-parts/img/vote.png" /></a>
@@ -32,7 +36,12 @@
         <a href="#" class="buy">Buy</a>
       </div>
       <div class="btn-produit-b">
-        <a href="#">Détails</a>
+
+
+
+
+        <a href="/product/">Détails</a>
+
       </div>
     </div>
   </div>
@@ -41,6 +50,7 @@
   <div class="produit">
     <h3>Product 2</h3>
     <img src="/wp-content/themes/ODF-theme-2/template-parts/img/produit3.png" />
+
     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr ipsum dolor sit amet, consetetur</p>
     <div class="containeur-vote">
       <a href="#"><img src="/wp-content/themes/ODF-theme-2/template-parts/img/vote.png" /></a>
@@ -50,7 +60,12 @@
         <a href="#" class="buy">Buy</a>
       </div>
       <div class="btn-produit-b">
-        <a href="#">Détails</a>
+
+
+
+
+        <a href="/product-sheet/">Détails</a>
+
       </div>
     </div>
   </div>
@@ -59,6 +74,7 @@
   <div class="produit">
     <h3>Product 3</h3>
     <img src="/wp-content/themes/ODF-theme-2/template-parts/img/produit3.png" />
+
     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr ipsum dolor sit amet, consetetur</p>
     <div class="containeur-vote">
       <a href="#"><img src="/wp-content/themes/ODF-theme-2/template-parts/img/vote.png" /></a>
@@ -68,7 +84,12 @@
         <a href="#" class="buy">Buy</a>
       </div>
       <div class="btn-produit-b">
-        <a href="#">Détails</a>
+
+
+
+
+        <a href="/product/">Détails</a>
+
       </div>
     </div>
   </div>
@@ -77,6 +98,7 @@
   <div class="produit">
     <h3>Product 4</h3>
     <img src="/wp-content/themes/ODF-theme-2/template-parts/img/produit2.png" />
+
     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr ipsum dolor sit amet, consetetur</p>
     <div class="containeur-vote">
       <a href="#"><img src="/wp-content/themes/ODF-theme-2/template-parts/img/vote.png" /></a>
@@ -86,7 +108,12 @@
         <a href="#" class="buy">Buy</a>
       </div>
       <div class="btn-produit-b">
-        <a href="#">Détails</a>
+
+
+
+
+        <a href="/product-sheet/">Détails</a>
+
       </div>
     </div>
   </div>
@@ -95,6 +122,7 @@
   <div class="produit">
     <h3>Product 5</h3>
     <img src="/wp-content/themes/ODF-theme-2/template-parts/img/produit3.png" />
+
     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr ipsum dolor sit amet, consetetur</p>
     <div class="containeur-vote">
       <a href="#"><img src="/wp-content/themes/ODF-theme-2/template-parts/img/vote.png" /></a>
@@ -104,7 +132,12 @@
         <a href="#" class="buy">Buy</a>
       </div>
       <div class="btn-produit-b">
-        <a href="#">Détails</a>
+
+
+
+
+        <a href="/product/">Détails</a>
+
       </div>
     </div>
   </div>
@@ -113,6 +146,7 @@
   <div class="produit">
     <h3>Product 6</h3>
     <img src="/wp-content/themes/ODF-theme-2/template-parts/img/produit1.png" />
+
     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr ipsum dolor sit amet, consetetur</p>
     <div class="containeur-vote">
       <a href="#"><img src="/wp-content/themes/ODF-theme-2/template-parts/img/vote.png" /></a>
@@ -122,13 +156,18 @@
         <a href="#" class="buy">Buy</a>
       </div>
       <div class="btn-produit-b">
-        <a href="#">Détails</a>
+
+
+
+
+        <a href="/product-sheet/">Détails</a>
+
       </div>
     </div>
   </div>
 
 </div>
-<div class="pagination pagination-footer">
+<div class="paginationc pagination-footer">
   <select>
     <option>Filter</option>
     <option>Option1</option>
@@ -146,5 +185,21 @@
     <span>....</span>
     <a href="#">15</a>
     <a href="#">Suivant</a>
+
   </div>
+</div>
+</div>
+<div class="categories">
+  <h4>Category 1</h4>
+  <input type="checkbox" id="subcategory1" class="form-check-input" /><label class="form-check-label" for="subcategory1">Sub category 1</label><br>
+  <input type="checkbox" id="subcategory2" class="form-check-input" /><label class="form-check-label" for="subcategory2">Sub category 2</label><br>
+  <input type="checkbox" id="subcategory3" class="form-check-input" /><label class="form-check-label" for="subcategory3">Sub category 3</label><br>
+  <h4>Category 2</h4>
+  <input type="checkbox" id="subcategory21" class="form-check-input" /><label class="form-check-label" for="subcategory21">Sub category 1</label><br>
+  <input type="checkbox" id="subcategory22" class="form-check-input" /><label class="form-check-label" for="subcategory22">Sub category 2</label><br>
+  <input type="checkbox" id="subcategory23" class="form-check-input" /><label class="form-check-label" for="subcategory23">Sub category 3</label><br>
+  <h4>Category 3</h4>
+  <input type="checkbox" id="subcategory31" class="form-check-input" /><label class="form-check-label" for="subcategory31">Sub category 1</label><br>
+  <input type="checkbox" id="subcategory32" class="form-check-input" /><label class="form-check-label" for="subcategory32">Sub category 2</label><br>
+  <input type="checkbox" id="subcategory33" class="form-check-input" /><label class="form-check-label" for="subcategory33">Sub category 3</label><br>
 </div>

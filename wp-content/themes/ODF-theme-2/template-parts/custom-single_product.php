@@ -99,3 +99,9 @@
       <a class="carrousel-next" href="#"></a>
     </div>
   </div>
+
+  <div class="pagination_product_details">
+    <a href="#" rel="next"></a>  
+    <a href="/catalog/" class="pagination_product_details_all">All</a>
+    <a href="#" rel="prev"></a>
+  </div>

@@ -119,17 +119,15 @@
 						<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-search-orange.png">
 					</a>
 				</div>
-
-
-
-				<div class="widget woocommerce widget_product_search" id="div_searchform" style="display: none;">
+				
+				<div id="div_searchform" style="display: none;">
 					<form role="search" method="get" id="searchform" action="/">
 						<div>
 
 							<i class="fa fa-times ic_search" aria-hidden="true" style="display: inline;"></i>
-							<input type="text" value="" name="s" id="s" placeholder="Recherche des produits">
+							<input type="text" value="" name="s" id="s" placeholder="Search">
 							<input type="submit" id="searchsubmit" value="">
-							<input type="hidden" name="post_type" value="product">
+							<!-- <input type="hidden" name="post_type" value="product"> -->
 						</div>
 					</form>
 				</div>

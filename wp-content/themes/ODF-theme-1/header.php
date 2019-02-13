@@ -25,6 +25,7 @@
 	<?php //} ?>
 	
 	<?php echo wp_enqueue_style( 'custom', get_template_directory_uri() . '/css/custom.css' ); ?>
+	<?php echo wp_enqueue_style( 'custom2', get_template_directory_uri() . '/css/custom_2.css' ); ?>
 
 </head>
 
@@ -115,9 +116,21 @@
 					<?php echo do_shortcode('[wpml_language_switcher][/wpml_language_switcher]'); ?>
 				</div>
 				<div class="vc_col-sm-2 header-right header-search">
-					<a href="#">
+					<a href="#" id="div_header_mon_compte">
 						<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-search-move.png">
 					</a>
+				</div>
+				
+				<div id="div_searchform" style="display: none;">
+					<form role="search" method="get" id="searchform" action="/">
+						<div>
+
+							<i class="fa fa-times ic_search" aria-hidden="true" style="display: inline;"></i>
+							<input type="text" value="" name="s" id="s" placeholder="Search">
+							<input type="submit" id="searchsubmit" value="">
+							<!-- <input type="hidden" name="post_type" value="product"> -->
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

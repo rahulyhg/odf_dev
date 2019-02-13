@@ -274,6 +274,8 @@ function twentysixteen_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
+	wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js', array(), '3.7.3' );
+	
 	/*if ( is_singular() && wp_attachment_is_image() ) {
 		wp_enqueue_script( 'twentysixteen-keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20160816' );
 	}*/
@@ -988,4 +990,19 @@ function find_a_local_shop(){
 	</form>
 
 	<?php
+}
+
+add_shortcode('custom_page_products_list','custom_page_products_list');
+function custom_page_products_list(){
+	get_template_part('template-parts/custom', 'products_list');
+}
+
+add_shortcode('custom_page_single_product','custom_page_single_product');
+function custom_page_single_product(){
+	get_template_part('template-parts/custom', 'single_product');
+}
+
+add_shortcode('custom_page_single_product_sheet','custom_page_single_product_sheet');
+function custom_page_single_product_sheet(){
+	get_template_part('template-parts/custom', 'single_product_sheet');
 }

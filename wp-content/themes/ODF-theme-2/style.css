@@ -3991,3 +3991,23 @@ p > video {
 		padding: 0;
 	}
 }
+.feedback{
+  width: 800px;
+  margin:0 auto;
+  position: relative;
+  margin-top:100px;
+}
+.feedback-content-body h4{
+  color:#0060b2;
+  text-transform: uppercase;
+}
+.feedback-content-body p{
+  color:#b2b2b2;
+}
+.feedback-img{
+  width: 230px;
+  float:left;
+}
+.btns-single-product{
+	width:50px;
+}

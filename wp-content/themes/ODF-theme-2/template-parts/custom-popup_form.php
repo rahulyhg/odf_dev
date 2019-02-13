@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Page Title</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" id="js_composer_front-css" href="css/js_composer.min.css" type="text/css" media="all">
-</head>
-<body>
 
   <div class="form-request">
     <div>
@@ -83,13 +74,11 @@
         <div class="picture-product">
           <br>
           <br><br><br>
-          <img src="img/product1.png" />
+          <img src="/wp-content/themes/ODF-theme-2/template-parts/img/product1.png" />
           <br>
           <br>
           <br>
-          <img src="img/product2.png" />
+          <img src="/wp-content/themes/ODF-theme-2/template-parts/img/product2.png" />
         </div>
       </form>
     </div>
-</body>
-</html>

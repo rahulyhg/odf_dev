@@ -8,7 +8,7 @@
 
 
 .paginationc{
-  height: 28px;
+  height: auto;
   padding-top: 8px;
   padding-left: 8px;
   padding-right: 8px;
@@ -250,7 +250,7 @@
   bottom: 70px;
 }
 .feedback{
-  width: 850px;
+  width: 800px;
   margin:0 auto;
   position: relative;
   margin-top:100px;
@@ -287,6 +287,69 @@
   color:#fff;
 }
 
+/***************************************************************************/
+.categories{
+  width: 200px;
+  float:left;
+  color:#8b8b8b;
+  border:1px solid #e0e0e0;
+  text-transform: uppercase;
+  padding: 20px;
+  border-radius: 15px;
+  margin-left:20px;
+}
+.categories input{
+  margin-left:20px;
+}
+.categories h4,.categories label{
+  color:#8b8b8b;
+}
+.products-content{
+  float:left;
+  margin-bottom: 50px;
+}
+/*****************************************************************************/
+.submit-btn{
+  width:180px;
+  height: 40px;
+  margin:0 auto;
+  border:none;
+  background: #dbdbdb;
+  border-radius: 20px;
+  color:#007ecc;
+}
+.submit-conteneur{
+  text-align: center;
+}
+.form-check-input{
+  margin-left:0!important;
+}
+.form-group label{
+  margin-left:20px;
+}
+.formulaire-sample-request{
+  padding:30px;
+  background:#04a5dd;
+  border-bottom-left-radius: 30px;
+  float:left;
+  color:#fff;
+}
+.form-request {
+  border: 1px solid #b2b2b2;
+  border-top: 1px solid #b2b2b2;
+  border-right: 1px solid #b2b2b2;
+  border-radius: 30px;
+  background: #fff;
+  color: #000;
+  overflow: hidden;
+  padding: 20px;
+}
+.form-request h2,.form-request h4{
+  text-align: center;
+}
+.picture-product{
+  float:right;
+}
 /***********************************************************************/
 .img-medium-product{
   border:1px solid #a6a6a6;
@@ -379,4 +442,3 @@
   top: 80px;
   left: 190px;
 }
-

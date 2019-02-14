@@ -2575,6 +2575,20 @@
 	}
 /* comments*/
 
+/* contact us */
+	input.wpcf7-form-control {
+		padding: 5px 0.4375em !important;
+	}
+	.wpcf7-form-control {
+	    margin: 10px auto;
+    	border-radius: 5px !important;
+	}
+	.wpcf7-form-control.wpcf7-submit {
+		padding: 10px 30px !important;
+		background-image: linear-gradient(-90deg, #2791ce 0%, #263878 100%);
+	}
+/* contact us */
+
 /* footer */
 	.entry-footer{
 		display: none;

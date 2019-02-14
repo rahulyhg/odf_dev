@@ -112,14 +112,12 @@
 					</div>
 				</div>
 				<div class="vc_col-sm-2 header-right">
-					<?php 
-
+					<?php
 						// include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 						if ( is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) ) {
 							echo do_shortcode('[wpml_language_switcher][/wpml_language_switcher]');
 						}
 					?>
-					<?php //echo do_shortcode('[wpml_language_switcher][/wpml_language_switcher]'); ?>
 				</div>
 				<div class="vc_col-sm-2 header-right header-search">
 					<a href="#" id="div_header_mon_compte">

@@ -2329,6 +2329,39 @@
 	}
 /* comments*/
 
+/* contact us */
+	input.wpcf7-form-control {
+		padding: 5px 0.4375em !important;
+	}
+	.wpcf7-form-control {
+	    margin: 10px auto;
+    	border-radius: 5px !important;
+	}
+	.wpcf7-form-control.wpcf7-submit {
+		padding: 10px 30px !important;
+		background-image: linear-gradient(-90deg, #2791ce 0%, #263878 100%);
+	}
+	#moove_gdpr_cookie_info_bar .moove-gdpr-info-bar-container .moove-gdpr-info-bar-content span.change-settings-button {
+	    font-size: 18px;
+	}
+	#moove_gdpr_cookie_modal .moove-gdpr-modal-content .moove-gdpr-tab-main .moove-gdpr-tab-main-content a, #moove_gdpr_cookie_modal .moove-gdpr-modal-content .moove-gdpr-tab-main .moove-gdpr-tab-main-content button, #moove_gdpr_cookie_modal .moove-gdpr-modal-content .moove-gdpr-tab-main .moove-gdpr-tab-main-content li, #moove_gdpr_cookie_modal .moove-gdpr-modal-content .moove-gdpr-tab-main .moove-gdpr-tab-main-content p {
+	    font-size: 20px;
+	}
+	div.wpcf7 {
+		margin-bottom: 70px;
+	}
+/* contact us */
+
+/* cookies */
+	#moove_gdpr_cookie_info_bar.moove-gdpr-dark-scheme {
+	    background-color: #2892d3 !important;
+	}
+	#moove_gdpr_cookie_info_bar .moove-gdpr-info-bar-container .moove-gdpr-info-bar-content p, 
+	#moove_gdpr_cookie_info_bar .moove-gdpr-info-bar-container .moove-gdpr-info-bar-content p a {
+	    font-weight: 100;
+	}
+/* cookies */
+
 /* footer */
 	.entry-footer{
 		display: none;

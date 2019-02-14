@@ -1,6 +1,10 @@
 <?php echo wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.css' ); ?>
-  <div class="form-request">
-    <div>
+
+<?php echo wp_enqueue_style( 'remodal-default-theme', get_template_directory_uri() . '/css/remodal-default-theme.css' ); ?>
+<?php echo wp_enqueue_style( 'remodal', get_template_directory_uri() . '/css/remodal.css' ); ?>
+<div class="remodal form-request" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+  <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+    <div> 	
       <h2>Sample request</h2>
       <h4>Complete the form below to send us your request</h4>
       <br>
@@ -68,6 +72,10 @@
           </div>
           <div class="submit-conteneur">
             <button type="submit" class="submit-btn">Send message</button>
+			
+			  <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+			  <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+
           </div>
           <br><br>
         </div>
@@ -82,3 +90,10 @@
         </div>
       </form>
     </div>
+<script src="/wp-content/themes/ODF-theme-1/template-parts/remodal.min.js" ></script>
+<script>
+jQuery(document).ready(function(){
+	
+});
+</script>
+

@@ -1006,3 +1006,8 @@ add_shortcode('custom_page_single_product_sheet','custom_page_single_product_she
 function custom_page_single_product_sheet(){
 	get_template_part('template-parts/custom', 'single_product_sheet');
 }
+
+add_shortcode('custom_popup_form','custom_popup_form');
+function custom_popup_form(){
+	get_template_part('template-parts/custom', 'popup_form');
+}

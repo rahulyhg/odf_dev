@@ -2,7 +2,12 @@
 
 <?php echo wp_enqueue_style( 'remodal-default-theme', get_template_directory_uri() . '/css/remodal-default-theme.css' ); ?>
 <?php echo wp_enqueue_style( 'remodal', get_template_directory_uri() . '/css/remodal.css' ); ?>
+  <a href="#modal">Modal №1</a><br>
+<div class="remodal-bg remodal-is-closed">
+  
+</div>
 <div class="remodal form-request" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+
   <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
     <div> 	
       <h2>Sample request</h2>
@@ -72,9 +77,11 @@
           </div>
           <div class="submit-conteneur">
             <button type="submit" class="submit-btn">Send message</button>
-			
+<?php
+/*			
 			  <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
 			  <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+*/?>
 
           </div>
           <br><br>
@@ -90,7 +97,7 @@
         </div>
       </form>
     </div>
-<script src="/wp-content/themes/ODF-theme-1/template-parts/remodal.min.js" ></script>
+<script src="/wp-content/themes/ODF-theme-1/js/remodal.min.js" ></script>
 <script>
 jQuery(document).ready(function(){
 	

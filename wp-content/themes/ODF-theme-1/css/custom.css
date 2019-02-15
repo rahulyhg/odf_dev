@@ -1749,6 +1749,9 @@
     .row_grid_advice .vc_grid-item{
         padding-bottom: 0 !important;
     }
+    .row_grid_advice .vc_gitem-row-position-middle{
+    	margin-top: 40px !important;
+    }
     .row_grid_advice select{
         -webkit-appearance: button;
         background-image: url(../images/select_arrow_white.png);
@@ -1763,6 +1766,11 @@
         padding-left: 15px;
         background-color: transparent;
         margin-bottom: 20px !important;
+        outline: none;
+    }
+    .slider_all_advices_selectbox{
+    	padding-right: 10px !important;
+    	padding-top: 7px !important;
     }
 /* our brand */
 
@@ -2229,6 +2237,64 @@
     }
 /* block_sliders_and_sidebar */
 
+/* Advice-details-pagre */
+	.avice-details-content p{
+		line-height: 22px;
+	}
+	.advice-details-accordion{
+	    color: #8b8b8b;
+	    border: 1px solid #e0e0e0;
+	    padding: 10px 30px;
+	    border-radius: 15px;
+	    min-height: 90vh;
+	    margin-bottom: 100px;
+	}
+
+	.advice-details-accordion .vc_tta-panel-heading,
+	.advice-details-accordion .vc_tta-panel-body {
+	    border-color: transparent !important;
+	}
+	.advice-details-accordion .vc_tta-panel-heading {
+	    border-bottom: 1px solid #e0e0e0 !important;
+		background-color: transparent !important;
+	}
+	.advice-details-accordion h6 {
+	    margin-bottom: 0;
+	    margin-top: 10px;
+	    color: #a8a8a8;
+	    font-size: 16px;
+	    font-style: normal;
+	    font-weight: normal;
+	    letter-spacing: 0;
+	}
+	.advice-details-accordion .vc_tta-title-text{
+		text-transform: capitalize
+	}
+	.advice_div_block_accordion>.vc_column-inner{
+		padding-top: 0 !important;
+	}
+/* Advice-details-page */
+
+/* search page */
+	.vc_custom_1550230179944000 {
+	    margin-top: 50px !important;
+	    padding-top: 200px !important;
+	    padding-bottom: 200px !important;
+	    background-image: url(../images/search_background_page.png) !important;
+	    background-position: center !important;
+	    background-repeat: no-repeat !important;
+	    background-size: cover !important;
+	    border-radius: 10px !important;
+	}
+	.search.no-sidebar .post-thumbnail img {
+	    margin: 0 auto;
+	    width: 150px;
+	}
+	.search article {
+	    border-bottom: 1px solid #e0e0e0 !important;
+	}
+/* search page */
+
 /*menu */
 	/* admin menu */
 	#wpadminbar {
@@ -2250,6 +2316,10 @@
         /* margin-bottom: 20px !important; */
         background-image: linear-gradient(-90deg, #cb16fb 0%, #4e215a 100%);
     }
+    .wpml-ls-legacy-dropdown .wpml-ls-sub-menu a {
+	    background-image: linear-gradient(-90deg, #cb16fb 0%, #4e215a 100%);
+	    color: #ffffff;
+	}
 
     .wpml-ls-legacy-dropdown a.wpml-ls-item-toggle{
 	    background-image: url(../images/select_arrow_white.png);

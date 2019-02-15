@@ -114,7 +114,7 @@
 				</div>
 				<div class="vc_col-sm-2 header-right">
 					<?php 
-						// include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+						include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 						if ( is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) ) {
 							echo do_shortcode('[wpml_language_switcher][/wpml_language_switcher]');
 						}
@@ -133,7 +133,7 @@
 							<i class="fa fa-times ic_search" aria-hidden="true" style="display: inline;"></i>
 							<input type="text" value="" name="s" id="s" placeholder="Search">
 							<input type="submit" id="searchsubmit" value="">
-							<!-- <input type="hidden" name="post_type" value="product"> -->
+							<input type="hidden" name="post_type" value="product">
 						</div>
 					</form>
 				</div>

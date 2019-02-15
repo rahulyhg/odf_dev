@@ -14,9 +14,23 @@ get_header(); ?>
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
+			<!-- <header class="page-header">
 				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentysixteen' ), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h1>
-			</header><!-- .page-header -->
+			</header> --><!-- .page-header -->
+
+			<div data-vc-full-width="true" data-vc-full-width-init="true" data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid">
+			   <div class="wpb_column vc_column_container vc_col-sm-12">
+			      <div class="vc_column-inner">
+			         <div class="wpb_wrapper">
+			            <div class="wpb_text_column wpb_content_element  vc_custom_1550230179944000">
+			               <div class="wpb_wrapper">
+			                  <h1 style="text-align: center;"><span style="color: #ffffff;"></span></h1>
+			               </div>
+			            </div>
+			         </div>
+			      </div>
+			   </div>
+			</div>
 
 			<?php
 			// Start the loop.

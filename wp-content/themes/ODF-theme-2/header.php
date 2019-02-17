@@ -62,7 +62,13 @@
 				<?php endif; ?>
 			</div><!-- .site-branding -->
 			<div class="vc_row vc_row_header">
-				<div class="vc_col-sm-4">			
+				<?php 
+					include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+					if ( !is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) ) {
+						echo '<div class="vc_col-sm-2></div>';
+					}
+				?>
+				<div class="vc_col-sm-4">
 					<div class="vc_row">
 						<a class="vc_col-sm-4 header_appli" href="https://www.apple.com/fr/ios/app-store/" target="_blanc">
 							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-phone-blue.png">
@@ -77,7 +83,6 @@
 							<span>Appli 2</span>
 						</a>
 					</div>		
-					
 				</div>
 				<div class="vc_col-sm-4 header_social">
 					<div class="vc_row">
@@ -113,7 +118,6 @@
 				</div>
 				<div class="vc_col-sm-2 header-right">
 					<?php
-						// include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 						if ( is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) ) {
 							echo do_shortcode('[wpml_language_switcher][/wpml_language_switcher]');
 						}

@@ -1,7 +1,7 @@
 <br><br><br>
     <div class="product-detail-2">
       <div class="img-medium-product">
-        <img src="/wp-content/themes/ODF-theme-2/template-parts/img/product-2.png" />
+        <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/product-2.png" />
       </div>
       <div class="detail-product">
         <h1>Product sheet 1</h1>
@@ -14,19 +14,19 @@
         </p>
         <div class="details-product">
             <div class="detail-product-icon">
-              <img src="/wp-content/themes/ODF-theme-2/template-parts/img/detail-product-1.png" />
+              <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/detail-product-1.png" />
               <span>Icon Name</span>
             </div>
             <div class="detail-product-icon">
-              <img src="/wp-content/themes/ODF-theme-2/template-parts/img/detail-product-2.png" />
+              <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/detail-product-2.png" />
               <span>Icon Name</span>
             </div>
             <div class="detail-product-icon">
-              <img src="/wp-content/themes/ODF-theme-2/template-parts/img/detail-product-3.png" />
+              <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/detail-product-3.png" />
               <span>Icon Name</span>
             </div>
             <div class="detail-product-icon">
-              <img src="/wp-content/themes/ODF-theme-2/template-parts/img/detail-product-4.png" />
+              <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/detail-product-4.png" />
               <span>Icon Name</span>
             </div>
         </div>
@@ -44,14 +44,14 @@
     </div>
     <div class="clear"></div>
     <div class="btns-single-product">
-      <a href="#" class="request-sample"><span class="icon-btn"><img src="/wp-content/themes/ODF-theme-2/template-parts/img/btn1-detail-product.png" /></span><span>Request sample</span></a>
-      <a href="#" class="buy"><span class="icon-btn"><img src="/wp-content/themes/ODF-theme-2/template-parts/img/btn3-detail-product.png" /></span><span>Buy</span></a>
-      <a href="#" class="find-shop"><span class="icon-btn"><img src="/wp-content/themes/ODF-theme-2/template-parts/img/btn2-detail-product.png" /></span><span>Find shop</span></a>
+      <a href="#" class="request-sample"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn1-detail-product.png" /></span><span>Request sample</span></a>
+      <a href="#" class="buy"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn3-detail-product.png" /></span><span>Buy</span></a>
+      <a href="#" class="find-shop"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn2-detail-product.png" /></span><span>Find shop</span></a>
     </div>
 	<div class="clear"></div>
     <h2 class="demo-product">DEMO PRODUCT</h2>
     <div class="demo-product-2">
-      <img src="/wp-content/themes/ODF-theme-2/template-parts/img/demo-product-2.png" />
+      <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/demo-product-2.png" />
     </div>
 
 <div class="form-request" style="display:none">
@@ -129,11 +129,11 @@
         <div class="picture-product">
           <br>
           <br><br><br>
-          <img src="/wp-content/themes/ODF-theme-2/template-parts/img/product1.png" />
+          <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/product1.png" />
           <br>
           <br>
           <br>
-          <img src="/wp-content/themes/ODF-theme-2/template-parts/img/product2.png" />
+          <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/product2.png" />
         </div>
       </form>
     </div>

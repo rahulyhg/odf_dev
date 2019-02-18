@@ -53,7 +53,12 @@
 				<?php if ( is_front_page() && is_home() ) : ?>
 					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<?php else : ?>
-					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo $test_theme['logo-ontex']['url']; ?>" /></a></p>
+					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+						<?php if( !empty($test_theme['logo-ontex']['url'])){ ?>
+							<img src="<?php echo $test_theme['logo-ontex']['url']; ?>" /></a></p>
+						<?php }else{ ?>
+							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/img-logo.png" /></a></p>
+						<?php } ?>
 				<?php endif;
 
 				$description = get_bloginfo( 'description', 'display' );

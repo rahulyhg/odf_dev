@@ -24,10 +24,10 @@
 
       <div class="produit">
         <h3>Product 1</h3>
-        <img src="/wp-content/themes/ODF-theme-2/template-parts/img/produit1.png" />
+        <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/produit1.png" />
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr ipsum dolor sit amet, consetetur</p>
         <div class="containeur-vote">
-          <a href="#"><img src="/wp-content/themes/ODF-theme-2/template-parts/img/vote.png" /></a>
+          <a href="#"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/vote.png" /></a>
         </div>
         <div class="btn-produit">
           <div class="btn-produit-a">
@@ -42,10 +42,10 @@
 
       <div class="produit">
         <h3>Product 2</h3>
-        <img src="/wp-content/themes/ODF-theme-2/template-parts/img/produit3.png" />
+        <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/produit3.png" />
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr ipsum dolor sit amet, consetetur</p>
         <div class="containeur-vote">
-          <a href="#"><img src="/wp-content/themes/ODF-theme-2/template-parts/img/vote.png" /></a>
+          <a href="#"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/vote.png" /></a>
         </div>
         <div class="btn-produit">
           <div class="btn-produit-a">
@@ -60,10 +60,10 @@
 
       <div class="produit">
         <h3>Product 3</h3>
-        <img src="/wp-content/themes/ODF-theme-2/template-parts/img/produit3.png" />
+        <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/produit3.png" />
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr ipsum dolor sit amet, consetetur</p>
         <div class="containeur-vote">
-          <a href="#"><img src="/wp-content/themes/ODF-theme-2/template-parts/img/vote.png" /></a>
+          <a href="#"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/vote.png" /></a>
         </div>
         <div class="btn-produit">
           <div class="btn-produit-a">
@@ -78,10 +78,10 @@
 
       <div class="produit">
         <h3>Product 4</h3>
-        <img src="/wp-content/themes/ODF-theme-2/template-parts/img/produit2.png" />
+        <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/produit2.png" />
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr ipsum dolor sit amet, consetetur</p>
         <div class="containeur-vote">
-          <a href="#"><img src="/wp-content/themes/ODF-theme-2/template-parts/img/vote.png" /></a>
+          <a href="#"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/vote.png" /></a>
         </div>
         <div class="btn-produit">
           <div class="btn-produit-a">
@@ -96,10 +96,10 @@
 
       <div class="produit">
         <h3>Product 5</h3>
-        <img src="/wp-content/themes/ODF-theme-2/template-parts/img/produit3.png" />
+        <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/produit3.png" />
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr ipsum dolor sit amet, consetetur</p>
         <div class="containeur-vote">
-          <a href="#"><img src="/wp-content/themes/ODF-theme-2/template-parts/img/vote.png" /></a>
+          <a href="#"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/vote.png" /></a>
         </div>
         <div class="btn-produit">
           <div class="btn-produit-a">
@@ -114,10 +114,10 @@
 
       <div class="produit">
         <h3>Product 6</h3>
-        <img src="/wp-content/themes/ODF-theme-2/template-parts/img/produit1.png" />
+        <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/produit1.png" />
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr ipsum dolor sit amet, consetetur</p>
         <div class="containeur-vote">
-          <a href="#"><img src="/wp-content/themes/ODF-theme-2/template-parts/img/vote.png" /></a>
+          <a href="#"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/vote.png" /></a>
         </div>
         <div class="btn-produit">
           <div class="btn-produit-a">

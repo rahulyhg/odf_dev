@@ -34,7 +34,7 @@
             <a href="#" class="buy">Buy</a>
           </div>
           <div class="btn-produit-b">
-            <a href="/product/">Détails</a>
+            <a href="?page_id=777">Détails</a>
           </div>
         </div>
       </div>
@@ -52,7 +52,7 @@
             <a href="#" class="buy">Buy</a>
           </div>
           <div class="btn-produit-b">
-            <a href="/product-sheet/">Détails</a>
+            <a href="?page_id=793">Détails</a>
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@
             <a href="#" class="buy">Buy</a>
           </div>
           <div class="btn-produit-b">
-            <a href="/product/">Détails</a>
+            <a href="?page_id=777">Détails</a>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@
             <a href="#" class="buy">Buy</a>
           </div>
           <div class="btn-produit-b">
-            <a href="/product-sheet/">Détails</a>
+            <a href="?page_id=793">Détails</a>
           </div>
         </div>
       </div>

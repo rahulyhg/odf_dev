@@ -265,8 +265,8 @@ function twentysixteen_scripts() {
 	wp_style_add_data( 'twentysixteen-ie7', 'conditional', 'lt IE 8' );
 
 	// Load the html5 shiv.
-	wp_enqueue_script( 'twentysixteen-html5', get_template_directory_uri() . '/js/html5.js', array(), '3.7.3' );
-	wp_script_add_data( 'twentysixteen-html5', 'conditional', 'lt IE 9' );
+	/*wp_enqueue_script( 'twentysixteen-html5', get_template_directory_uri() . '/js/html5.js', array(), '3.7.3' );
+	wp_script_add_data( 'twentysixteen-html5', 'conditional', 'lt IE 9' );*/
 
 	wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js', array(), '3.7.3' );
 
@@ -1039,7 +1039,7 @@ function slider_button_details_product(){
 
     global $product;
     
-    echo '<a href="/product/" class="slider_button_details_product">Details</a>';
+    echo '<a href="?page_id=777" class="slider_button_details_product">Details</a>';
 }
 
 add_shortcode('slider_button_buy_product','slider_button_buy_product');
@@ -1047,7 +1047,7 @@ function slider_button_buy_product(){
 
     global $product;
     
-    echo '<a href="/product/" class="slider_button_buy_product">Buy</a>';
+    echo '<a href="?page_id=777" class="slider_button_buy_product">Buy</a>';
 }
 
 add_shortcode('button_catalog_access','button_catalog_access');

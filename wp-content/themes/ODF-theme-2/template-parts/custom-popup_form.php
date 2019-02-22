@@ -1,11 +1,17 @@
 <?php echo wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.css' ); ?>
-<div class="form-request">
+<?php echo wp_enqueue_style( 'remodal-default-theme', get_template_directory_uri() . '/css/remodal-default-theme.css' ); ?>
+<?php echo wp_enqueue_style( 'remodal', get_template_directory_uri() . '/css/remodal.css' ); ?>
+<a href="#modal">Modal №1</a><br>
+<div class="remodal-bg remodal-is-closed">
+</div>
+<div class="remodal form-request" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+   <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
    <div>
       <h2>Sample request</h2>
       <h4>Complete the form below to send us your request</h4>
       <br>
    </div>
-   <div class="formulaire-sample-request col-md-8">
+   <div class="formulaire-sample-request">
       <form>
          <div class="form-row">
             <div class="form-group col-md-6">
@@ -65,16 +71,17 @@
          <div class="submit-conteneur">
             <button type="submit" class="submit-btn">Send message</button>
          </div>
-      </form>
-      <br><br>
+         <br><br>
    </div>
-   <div class="picture-product col-md-4">
-      <br>
-      <br><br><br>
-      <img src="/wp-content/themes/ODF-theme-2/template-parts/img/product1.png" />
-      <br>
-      <br>
-      <br>
-      <img src="/wp-content/themes/ODF-theme-2/template-parts/img/product2.png" />
+   <div class="picture-product">
+   <br>
+   <br><br><br>
+   <img src="/wp-content/themes/ODF-theme-2/template-parts/img/product1.png" />
+   <br>
+   <br>
+   <br>
+   <img src="/wp-content/themes/ODF-theme-2/template-parts/img/product2.png" />
    </div>
+   </form>
 </div>
+<script src="/wp-content/themes/ODF-theme-1/js/remodal.min.js" ></script>

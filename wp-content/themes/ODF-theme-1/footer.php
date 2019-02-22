@@ -26,11 +26,11 @@
 
 							?>
 					</div>
-					<div class="vc_col-sm-2">
+					<div class="vc_col-sm-2 mobile_50">
 						<h5>Our details</h5>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 					</div>
-					<div class="vc_col-sm-2">
+					<div class="vc_col-sm-2 mobile_50">
 						<h5>Products</h5>
 						<ul>
 							<li>Product 1</li>
@@ -39,7 +39,7 @@
 							<li>Product 4</li>
 						</ul>
 					</div>
-					<div class="vc_col-sm-2">
+					<div class="vc_col-sm-2 mobile_50">
 						<h5>Our firm</h5>
 						<ul>
 							<li>Page 1</li>
@@ -48,7 +48,7 @@
 							<li>Page 4</li>
 						</ul>
 					</div>
-					<div class="vc_col-sm-2">
+					<div class="vc_col-sm-2 mobile_50">
 						<h5>Blog</h5>
 						<ul>
 							<li>Legal notice</li>

@@ -1,9 +1,9 @@
 .figure_woocomerce .full-width{
-	width:100%;
-	height:100%;
-	object-fit:cover;
-	object-position:center;
-	
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  
 }
 
 
@@ -235,7 +235,7 @@
   font-size: 45px;
 }
 .after-demo-product .span-h2{
-	font-size: 35px;
+  font-size: 35px;
     position: absolute;
     right: 563px;
     top: 82px;
@@ -243,7 +243,7 @@
     display: block;
 }
 .after-demo-product .description{
-	font-size: 14px;
+  font-size: 14px;
     width: 360px;
     display: block;
     position: absolute;
@@ -317,7 +317,6 @@
 .formulaire-sample-request{
   padding:30px;
   background:#04a5dd;
-  border-bottom-left-radius: 30px;
   float:left;
   color:#fff;
 }
@@ -336,7 +335,6 @@
 }
 .picture-product{
   float:right;
-  text-align: center;
 }
 /***********************************************************************/
 .img-medium-product{
@@ -398,9 +396,9 @@
   clear:both;
 }
 .icon-btn{
-	position: relative;
-	left: -6px;
-	top: 1px;
+  position: relative;
+  left: -6px;
+  top: 1px;
 }
 .single-product .icon-btn{
   position: relative;
@@ -431,9 +429,9 @@
   left: 190px;
 }
 .btns-single-product a span{
-	display:block;
-	float:left;
-	margin-left: 3px;
+  display:block;
+  float:left;
+  margin-left: 3px;
 }
 .feedback{
   width: 800px;
@@ -453,33 +451,59 @@
   float:left;
 }
 .btns-single-product{
-	width:800px;
+  width:800px;
 }
 .btns-single-product a{
-	display: block;
-	float:left;
+  display: block;
+  float:left;
 }
 .after-demo-product h2{
-	position: absolute;
+  position: absolute;
     top: 30px;
     left: 420px;
     display: block;
     width: 410px;
 }
 .after-demo-product span{
-	position: absolute;
+  position: absolute;
     top: 30px;
     left: 420px;
     display: block;
     width: 410px;
 }
 .after-demo-product{
-	position:relative;
+  position:relative;
 }
 .feedback-content-body{
-	width: 550px;
+  width: 550px;
     float: left;
 }
 .feedback-content-body h4{
-	margin:10px 0;
+  margin:10px 0;
+}
+.formulaire-sample-request{
+    width: 580px;
+}
+
+
+.remodal-overlay {
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+.remodal-wrapper {
+    top: 30px !important;
+    padding: 12px 10px 0 !important;
+}
+.remodal{
+    padding: 10px 0 0 !important;
+    border-radius: 20px !important;
+}
+.remodal .form-control {
+    font-size: 1rem !important;
+    border-radius: 5px !important;
+    padding: 5px 0.4375em !important;
+}
+.remodal-close {
+    top: 5px !important;
+    right: 5px !important;
+    left: auto !important;
 }

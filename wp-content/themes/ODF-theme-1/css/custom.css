@@ -2386,6 +2386,12 @@
 	#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link{
 		font-size: 24px;
 	}
+	.menu_item_small a {
+	    font-size: 16px !important;
+	}
+	.menu_item_small_last{
+		margin-top: 0 !important;
+	}
 /*menu */
 
 /* woocommerce products list*/

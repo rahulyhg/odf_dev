@@ -2869,6 +2869,9 @@
 		.block_sliders_and_sidebar .vc_custom_1548702916565 p {
 		    line-height: 25px;
 		}
+		.wpml-ls-legacy-dropdown a.wpml-ls-item-toggle {
+		    width: 80px;
+		}
     }
     @media (max-width: 425px){
     	#mega-menu-wrap-primary .mega-menu-toggle + #mega-menu-primary {
@@ -3005,6 +3008,12 @@
 		}
 		.logo_mobile_id img {
 		    left: 21%;
+		}
+		.row_grid_advice .vc_gitem_row.vc_gitem-row-position-bottom .vc_gitem-col {
+		    padding: 0px 50px 10px;
+		}
+		.row_grid_advice .vc_gitem_row .vc_gitem-col {
+		    padding: 50px 0px 10px;
 		}
     }
     @media (max-width: 375px){

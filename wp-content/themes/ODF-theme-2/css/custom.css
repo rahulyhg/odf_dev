@@ -2627,6 +2627,9 @@
 	.menu_item_small a {
 	    font-size: 16px !important;
 	}
+	.menu_item_small_last{
+		margin-top: 0 !important;
+	}
 /*menu */
 
 /* woocommerce products list*/
@@ -3164,6 +3167,9 @@
 		}
 		.vc_custom_1550586703049 {
 		    margin-top: 0 !important;
+		}
+		.wpml-ls-legacy-dropdown a.wpml-ls-item-toggle {
+		    width: 80px;
 		}
 
     }

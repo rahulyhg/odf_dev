@@ -9,15 +9,100 @@
  * @since ODF-theme-1 1.0
  */
 
-?><!DOCTYPE html>
+?>
+<?php global $test_theme; ?>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="icon" href="<?php echo $test_theme['favicon-ontex']['url'] ?>" />
 	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif; ?>
+
+	<style>
+		
+		/************ loader **********/
+		#preloader {
+		    position: fixed;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+			z-index: 9999999999999;			
+		    background: #ffffff;
+		    opacity: 0.9;
+		}
+		#loader {
+		    display: block;
+		    position: relative;
+		    left: 50%;
+		    top: 50%;
+		    width: 150px;
+		    height: 150px;
+		    margin: -75px 0 0 -75px;
+		    border-radius: 50%;
+		    border: 3px solid transparent;
+		    border-top-color: #9370DB;
+		    -webkit-animation: spin 2s linear infinite;
+		    animation: spin 2s linear infinite;
+		}
+		#loader:before {
+		    content: "";
+		    position: absolute;
+		    top: 5px;
+		    left: 5px;
+		    right: 5px;
+		    bottom: 5px;
+		    border-radius: 50%;
+		    border: 3px solid transparent;
+		    border-top-color: #BA55D3;
+		    -webkit-animation: spin 3s linear infinite;
+		    animation: spin 3s linear infinite;
+		}
+		#loader:after {
+		    content: "";
+		    position: absolute;
+		    top: 15px;
+		    left: 15px;
+		    right: 15px;
+		    bottom: 15px;
+		    border-radius: 50%;
+		    border: 3px solid transparent;
+		    border-top-color: #FF00FF;
+		    -webkit-animation: spin 1.5s linear infinite;
+		    animation: spin 1.5s linear infinite;
+		}
+		@-webkit-keyframes spin {
+		    0%   {
+		        -webkit-transform: rotate(0deg);
+		        -ms-transform: rotate(0deg);
+		        transform: rotate(0deg);
+		    }
+		    100% {
+		        -webkit-transform: rotate(360deg);
+		        -ms-transform: rotate(360deg);
+		        transform: rotate(360deg);
+		    }
+		}
+		@keyframes spin {
+		    0%   {
+		        -webkit-transform: rotate(0deg);
+		        -ms-transform: rotate(0deg);
+		        transform: rotate(0deg);
+		    }
+		    100% {
+		        -webkit-transform: rotate(360deg);
+		        -ms-transform: rotate(360deg);
+		        transform: rotate(360deg);
+		    }
+		}
+		/**************************************************************************/
+
+	</style>
+	
 	<?php wp_head(); ?>
 
 	<?php //if(file_exists ( "/wp-content/plugins/js_composer/assets/css/js_composer.min.css" )){ ?>
@@ -29,18 +114,16 @@
 
 </head>
 
-<?php global $test_theme; ?>
 
 <body <?php body_class(); ?>>
 
-<!-- <div id="preloader" style="">
-      <div id="loader"></div>
-    </div>
+
+<div id="preloader" style="display: block">
+  <div id="loader"></div>
+</div>
 <script>
-	jQuery(document).ready(function() {
-	 	jQuery("#preloader").hide();
-	});
-</script> -->
+	document.getElementById('preloader').style.display = 'block';
+</script>
 
 
 <div id="page" class="site">

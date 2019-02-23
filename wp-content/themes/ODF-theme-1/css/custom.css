@@ -423,15 +423,18 @@
 	.logo_mobile_id{
 		display: none;
 	}
-	.logo_mobile_id img{
+	.logo_mobile_id img {
 	    z-index: 99999;
 	    width: 100px;
-	    position: absolute;
-	    left: 6%;
-	    top: 23px;
+	    position: fixed;
+	    left: 11%;
+	    top: 57px;
 	}
 	.mega-menu-primary-mobile-open .logo_mobile_id{
 		display: block;
+	}
+	#mega-menu-wrap-primary .mega-menu-toggle.mega-menu-open .mega-toggle-block-1:before {
+	    content: url(../images/header_icon_menu_close.png) !important;
 	}
 /* header */
 
@@ -2367,12 +2370,13 @@
 	    top: 0;
 	    padding: 20px;
 	    padding-top: 160px;
+	    opacity: 0.98;
 	}
 	#mega-menu-wrap-primary .mega-menu-open .mega-toggle-block-1:before {
 		color: #ffffff;
 		z-index: 999999999;
 		position: fixed;
-		left: 25px;
+		left: 31px;
 		top: 70px;
 		font-size: 50px;
 	}
@@ -2788,9 +2792,9 @@
     }
     @media (max-width: 768px){
     	#mega-menu-wrap-primary .mega-menu-open .mega-toggle-block-1:before {
-		    position: fixed;
-		    left: 0;
-		    top: 80px;
+		   	position: fixed;
+		    left: 10px;
+		    top: 72px;
 		}
     	.header_appli img{
     		max-width: 60%;
@@ -3002,7 +3006,7 @@
 		    font-size: 12px;
 		}
 		#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1:before {
-		    font-size: 25px;
+		    font-size: 50px;
 		}
         .row_grid_product .vc_grid.vc_grid-owl-theme .vc_grid-owl-dots.vc_grid-point_dots {
             top: 590px;

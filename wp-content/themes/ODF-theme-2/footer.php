@@ -118,12 +118,15 @@
 			</div>
 </div><!-- .site -->
 
-
-
-
-
-
 <?php wp_footer(); ?>
+
+<script>
+	jQuery(document).ready(function() {
+		jQuery(window).load(function () {
+			jQuery("#preloader").hide();
+		});
+	});		
+</script>
 
 </body>
 </html>

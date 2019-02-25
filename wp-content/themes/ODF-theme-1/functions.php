@@ -1011,3 +1011,13 @@ add_shortcode('custom_popup_form','custom_popup_form');
 function custom_popup_form(){
 	get_template_part('template-parts/custom', 'popup_form');
 }
+
+
+add_action('init', 'odf_change_default_front_page');
+function odf_change_default_front_page(){
+	if(get_option( 'template' ) == 'ODF-theme-1'){
+		update_option( 'page_on_front', '204' );
+	}elseif(get_option( 'template' ) == 'ODF-theme-2'){
+		update_option( 'page_on_front', '648' );
+	}
+}

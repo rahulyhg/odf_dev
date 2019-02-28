@@ -1,3 +1,62 @@
+<?php
+  /*$args = array(
+        'post_type'      => 'product',
+        'posts_per_page' => 9,
+        'post_status'    => 'publish'
+        // 'post__in'       => array( $input)
+  );
+
+  $loop = new WP_Query( $args );
+
+  $product_array = array();
+
+  if( $loop->have_posts() ) {
+
+    while ($loop->have_posts()) : $loop->the_post();
+
+
+      global $product;
+
+      echo '<br>'; echo $stock_status = $product->get_stock_status();
+
+      echo '<br>'; echo $product_id = $product->get_id();
+
+      echo '<br>'; echo $title = $product->get_title();
+
+      echo '<br>'; echo $price = $product->get_price_html();
+
+      echo '<br>'; echo $image = woocommerce_get_product_thumbnail();
+
+      echo '<br>'; echo $stock = $product->get_stock_quantity();
+
+      echo '<br>'; echo $type = $product->get_type();
+
+      echo '<br>'; echo $permalink = get_permalink();
+
+      $product_array = array(
+        'product_id'  => $product_id,
+        'title'       => $title,
+        'price'       => $price,
+        'image'       => $image,
+        'stock'       => $stock,
+        'variations'  => $variation
+      );
+      echo '<br>';
+
+    endwhile;
+
+  }
+*/
+// wp_send_json( $product_array );
+
+?>
+
+<style>
+  .woof_term_20{
+    display: none;
+  }
+</style>
+
 <div class="vc_row row_product_list">
   <div class="products-content vc_col-sm-8">
     <div class="paginationc">

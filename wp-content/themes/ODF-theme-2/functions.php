@@ -1164,34 +1164,136 @@ function my_general_section()
 {
     add_settings_section(
         'my_settings_section', // Section ID
-        'Logo', // Section Title
+        'Theme options', // Section Title
         'my_section_options_callback', // Callback
         'general' // What Page?  This makes the section show up on the General Settings Page
     );
 
     add_settings_field( // Option 1
-        'header_background', // Option ID
+        'logo_url', // Option ID
         'Logo URL', // Label
-        'my_textbox_callback', // !important - This is where the args go!
+        'logo_url_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
         'my_settings_section', // Name of our section
         array( // The $args
-            'header_background' // Should match Option ID
+            'logo_url' // Should match Option ID
         )
     );
 
-    register_setting('general', 'header_background', 'esc_attr');
+    add_settings_field( // Option 1
+        'favicon_url', // Option ID
+        'Favicon URL', // Label
+        'favicon_url_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_section', // Name of our section
+        array( // The $args
+            'favicon_url' // Should match Option ID
+        )
+    );
+
+    register_setting('general', 'logo_url', 'esc_attr');
+    register_setting('general', 'favicon_url', 'esc_attr');
 }
 
 function my_section_options_callback()
 { // Section Callback
     // echo '<p>Header background settings</p>';
+    ?>
+    <style type="text/css" media="screen">
+		.settings_input_media_url {
+		    width: 50%;
+		}
+	</style>
+    <?php
 }
 
-function my_textbox_callback($args)
+function logo_url_callback($args)
 {  // Textbox Callback
     $option = get_option($args[0]);
-    echo '<input type="text" id="' . $args[0] . '" name="' . $args[0] . '" value="' . $option . '" />';
+    echo '<input type="text" class="settings_input_media_url" id="' . $args[0] . '" name="' . $args[0] . '" value="' . $option . '" />';
+}
+function favicon_url_callback($args)
+{  // Textbox Callback
+    $option = get_option($args[0]);
+    echo '<input type="text" class="settings_input_media_url" id="' . $args[0] . '" name="' . $args[0] . '" value="' . $option . '" />';
 }
 
 
+
+
+
+/*
+add_action('admin_init', 'my_general_section');  
+function my_general_section() {  
+    add_settings_section(  
+        'my_settings_section', // Section ID 
+        'My Options Title', // Section Title
+        'my_section_options_callback', // Callback
+        'general' // What Page?  This makes the section show up on the General Settings Page
+    );
+
+    add_settings_field( // Option 1
+        'option_1', // Option ID
+        'Option 1', // Label
+        'my_textbox_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_section', // Name of our section
+        array( // The $args
+            'option_1' // Should match Option ID
+        )  
+    ); 
+
+    add_settings_field( // Option 2
+        'option_2', // Option ID
+        'Option 2', // Label
+        'my_textbox_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed
+        'my_settings_section', // Name of our section (General Settings)
+        array( // The $args
+            'option_2' // Should match Option ID
+        )  
+    ); 
+
+    register_setting('general','option_1', 'esc_attr');
+    register_setting('general','option_2', 'esc_attr');
+}
+
+function my_section_options_callback() { // Section Callback
+    echo '<p>A little message on editing info</p>';  
+}
+
+function my_textbox_callback($args) {  // Textbox Callback
+    $option = get_option($args[0]);
+    echo '<input type="text" id="'. $args[0] .'" name="'. $args[0] .'" value="' . $option . '" />';
+}*/
+
+
+/**
+ * Change number or products per row to 3
+ */
+add_filter('loop_shop_columns', 'loop_columns', 11);
+if (!function_exists('loop_columns')) {
+	function loop_columns() {
+		return 3; // 3 products per row
+	}
+}
+
+/**
+ * Change number of products that are displayed per page (shop page)
+ */
+/*add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 20 );
+
+function new_loop_shop_per_page( $cols ) {
+  // $cols contains the current number of products per page based on the value stored on Options -> Reading
+  // Return the number of products you wanna show per page.
+  $cols = 9;
+  return $cols;
+}
+*/
+
+add_filter( 'loop_shop_per_page', 'perpage_shop_products', 20 );
+function perpage_shop_products()
+{
+    $product_per_page=9; //change according to your need
+    return $product_per_page;
+}

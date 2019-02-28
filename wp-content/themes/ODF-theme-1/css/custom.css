@@ -2400,7 +2400,32 @@
 	    border: 1px solid #827f7f;
 	    border-radius: 5px;
 	    padding: 9px;
-	    min-height: 460px;
+	    height: 460px;
+	}
+	.woof_shortcode_output{
+		width: 70%;
+		display: inline-block;
+		float: left;
+	}
+	.woof_sid{
+	    width: 25%;
+	    display: inline-block;
+	    float: right;
+	    margin-left: 4%;
+	}
+	.woof_sid_auto_shortcode .woof_container {
+	    float: left;
+	    width: 100%;
+	}
+	.woocommerce ul.products li.product a img {
+	    width: auto !important;
+	    height: 100px !important;
+	    margin: 0 auto !important;
+	}
+	.woocommerce nav.woocommerce-pagination {
+	    border: solid 1px #dedede;
+	    height: 38px;
+	    margin-bottom: 20px;
 	}
 /* woocommerce products list*/
 

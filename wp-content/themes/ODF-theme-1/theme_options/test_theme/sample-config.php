@@ -125,7 +125,7 @@
         // If true, shows the default value next to each field that is not the default value.
         'default_mark'         => '',
         // What to print by the field's title if the value shown is default. Suggested: *
-        'show_import_export'   => true,
+        'show_import_export'   => false,
         // Shows the Import/Export panel when not used as a field.
 
         // CAREFUL -> These options are for advanced use only
@@ -279,7 +279,7 @@
      */
 
         // -> START Basic Fields
-        Redux::setSection( $opt_name, array(
+        /*Redux::setSection( $opt_name, array(
             'title'            => __( 'General', 'redux-framework-demo' ),
             'id'               => 'general',
             'desc'             => __( 'Thbis is general options', 'redux-framework-demo' ),
@@ -322,18 +322,18 @@
                     //    'content'   => 'This is a <b>hint</b> for the media field with a Title.',
                     //)
                 ),
-                /*array(
-                    'id' => 'ontex_color_scheme',
-                    'type' => 'select',
-                    'title' => __('Choose Color Scheme', 'redux-framework-demo'),
-                    'options' => array(
-                        'blue' => 'Blue',
-                        'green' => 'Green',
-                        'pink' => 'Pink',
-                        'yellow' => 'Yellow'
-                    ),
-                    'default' => 'yellow',
-                ),*/
+                // array(
+                //     'id' => 'ontex_color_scheme',
+                //     'type' => 'select',
+                //     'title' => __('Choose Color Scheme', 'redux-framework-demo'),
+                //     'options' => array(
+                //         'blue' => 'Blue',
+                //         'green' => 'Green',
+                //         'pink' => 'Pink',
+                //         'yellow' => 'Yellow'
+                //     ),
+                //     'default' => 'yellow',
+                // ),
 
                 array(
                     'id'       => 'ontex-palette-color',
@@ -379,46 +379,45 @@
                             '#Teal',
                             '#17A5A2',
                         ),
-                        /*
+                        
 
-                            // correct color
-                            "#2799D6" , "Baby Care",              
-                            "#e73182" , "Feminine Care",          
-                            "#89bd23" , "Mature Markets Retail",  
-                            "#7b2584" , "Healthcare",              
-                            "#f18904" , "Growth Markets",         
-                            "#009a83" , "Americas Retail",        
-                            "#022169" , "dark blue",              
-                            "#FFCD00" , "yellow",                 
-                            "#17A5A2" , "teal "                   
-                        */
-                        /*
-                        '#e74582'  => array(
-                            'MENA',
-                            '#e74582',
-                        ),'#7b2584'  => array(
-                            'Incontinence Care',
-                            '#7b2584',
-                        ),
-                        'red'  => array(
-                            '#ef9a9a',
-                            '#f44336',
-                            '#ff1744',
-                        ),
-                        'pink' => array(
-                            '#fce4ec',
-                            '#f06292',
-                            '#e91e63',
-                            '#ad1457',
-                            '#f50057',
-                        ),
-                        'cyan' => array(
-                            '#e0f7fa',
-                            '#80deea',
-                            '#26c6da',
-                            '#0097a7',
-                            '#00e5ff',
-                        ),*/
+                        //     // correct color
+                        //     "#2799D6" , "Baby Care",              
+                        //     "#e73182" , "Feminine Care",          
+                        //     "#89bd23" , "Mature Markets Retail",  
+                        //     "#7b2584" , "Healthcare",              
+                        //     "#f18904" , "Growth Markets",         
+                        //     "#009a83" , "Americas Retail",        
+                        //     "#022169" , "dark blue",              
+                        //     "#FFCD00" , "yellow",                 
+                        //     "#17A5A2" , "teal "                   
+                        
+                        // '#e74582'  => array(
+                        //     'MENA',
+                        //     '#e74582',
+                        // ),'#7b2584'  => array(
+                        //     'Incontinence Care',
+                        //     '#7b2584',
+                        // ),
+                        // 'red'  => array(
+                        //     '#ef9a9a',
+                        //     '#f44336',
+                        //     '#ff1744',
+                        // ),
+                        // 'pink' => array(
+                        //     '#fce4ec',
+                        //     '#f06292',
+                        //     '#e91e63',
+                        //     '#ad1457',
+                        //     '#f50057',
+                        // ),
+                        // 'cyan' => array(
+                        //     '#e0f7fa',
+                        //     '#80deea',
+                        //     '#26c6da',
+                        //     '#0097a7',
+                        //     '#00e5ff',
+                        // ),
                     ),
 
                 ),
@@ -495,7 +494,7 @@
                     'title' => __('Show social share in the header', 'redux-framework-demo'),
                     'default' => false,
                 ),
-                /*array(
+                array(
                     'id'      => 'ontex-select-header',
                     'type'    => 'select_image',
                     'title'   => __( 'Header wave', 'redux-framework-demo' ),
@@ -531,7 +530,7 @@
                         ),
                     ),
                     'default' =>  get_template_directory_uri() . '/images/wave1.png',
-                ),*/
+                ),
             )
         ) );
         Redux::setSection( $opt_name, array(
@@ -565,7 +564,6 @@
                 ),
             )
         ) );
-
         Redux::setSection($opt_name, array(
             'title' => __('Blog Settings', 'turbowp-helper'),
             'id' => 'ontex-turbowp-blog-settings',
@@ -597,7 +595,6 @@
                 ),
             )
         ) );
-
         Redux::setSection( $opt_name, array(
             'title'            => __( 'Fonts', 'redux-framework-demo' ),
             'id'               => 'fonts',
@@ -734,7 +731,7 @@
                     ),
                 ),
             )
-        ) );
+        ) );*/
 
         Redux::setSection( $opt_name, array(
             'title'            => __( 'Social', 'redux-framework-demo' ),
@@ -870,7 +867,7 @@
 
 
 
-        if ( file_exists( dirname( __FILE__ ) . '/../README.md' ) ) {
+        /*if ( file_exists( dirname( __FILE__ ) . '/../README.md' ) ) {
             $section = array(
                 'icon'   => 'el el-list-alt',
                 'title'  => __( 'Documentation', 'redux-framework-demo' ),
@@ -885,7 +882,7 @@
                 ),
             );
             Redux::setSection( $opt_name, $section );
-        }
+        }*/
 
     /*
      * <--- END SECTIONS

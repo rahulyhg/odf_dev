@@ -171,6 +171,7 @@ jQuery(function ($) {
 	    shortcode: 'woof_nothing', //we do not need get any products, seacrh form data only
 	    woof_shortcode: shortcode
 	};
+       console.log(data);
 	jQuery.post(woof_ajaxurl, data, function (content) {
 	    content = jQuery.parseJSON(content);
 	    jQuery('div.woof_redraw_zone').replaceWith(jQuery(content.form).find('.woof_redraw_zone'));
@@ -185,8 +186,9 @@ jQuery(function ($) {
     var str = window.location.href;
     window.onpopstate = function (event) {
 	try {
+            console.log(woof_current_values)
 	    if (Object.keys(woof_current_values).length) {
-                
+
 		var temp = str.split('?');
                 var get1="";
                 if(temp[1]!=undefined){
@@ -195,9 +197,12 @@ jQuery(function ($) {
 		var str2 = window.location.href;
 		var temp2 = str2.split('?');
                 if(temp2[1]==undefined){
-                    return false;
+                    //return false;
+                    var get2={0:"",1:""};
+                    
+                }else{
+                    var get2 = temp2[1].split('#');
                 }
-		var get2 = temp2[1].split('#');
 
 		if (get2[0] != get1[0]) {
 		    woof_show_info_popup(woof_lang_loading);
@@ -230,8 +235,11 @@ jQuery(function ($) {
     //+++
     woof_draw_products_top_panel();
     woof_shortcode_observer();
+	
+	//tooltip  
+	woof_init_tooltip();
 
-
+ 
 //+++
     //if we use redirect attribute in shortcode [woof is_ajax=0]
     //not for ajax, for redirect mode only
@@ -290,24 +298,32 @@ function woof_redirect_init() {
 
 function woof_init_orderby() {
     jQuery('form.woocommerce-ordering').life('submit', function () {
-	return false;
+        /* woo3.3 */
+        if(!jQuery("#is_woo_shortcode").length){ 
+            return false;
+        }
+        /* +++ */
     });
     jQuery('form.woocommerce-ordering select.orderby').life('change', function () {
-	woof_current_values.orderby = jQuery(this).val();
-	woof_ajax_page_num = 1;
-	woof_submit_link(woof_get_submit_link());
-	return false;
+        /* woo3.3 */
+        if(!jQuery("#is_woo_shortcode").length){
+            woof_current_values.orderby = jQuery(this).val();
+            woof_ajax_page_num = 1;
+            woof_submit_link(woof_get_submit_link());
+            return false;
+        }
+        /* +++ */
     });
 }
 
 function woof_init_reset_button() {
-    jQuery('.woof_reset_search_form').life('click', function () {
+    jQuery('.woof_reset_search_form').on('click', function () {       
 	//var link = jQuery(this).data('link');
 	woof_ajax_page_num = 1;
+        woof_ajax_redraw = 0; 
 	if (woof_is_permalink) {
-	    woof_current_values = {};
+	    woof_current_values = {};           
 	    woof_submit_link(woof_get_submit_link().split("page/")[0]);
-	    //woof_submit_link(woof_get_submit_link());
 	} else {
 	    var link = woof_shop_page;
 	    if (woof_current_values.hasOwnProperty('page_id')) {
@@ -338,20 +354,27 @@ function woof_init_pagination() {
 	    var l = jQuery(this).attr('href');
 
 	    if (woof_ajax_first_done) {
-		//http://woocommerce-filter.pluginus.net/wp-admin/admin-ajax.php?paged=2
+		//wp-admin/admin-ajax.php?paged=2
 		var res = l.split("paged=");
 		if (typeof res[1] !== 'undefined') {
 		    woof_ajax_page_num = parseInt(res[1]);
 		} else {
 		    woof_ajax_page_num = 1;
 		}
+                var res2 = l.split("product-page=");
+                if (typeof res2[1] !== 'undefined') {
+		    woof_ajax_page_num = parseInt(res2[1]);
+		}
 	    } else {
-		//http://woocommerce-filter.pluginus.net/tester/page/2/
 		var res = l.split("page/");
 		if (typeof res[1] !== 'undefined') {
 		    woof_ajax_page_num = parseInt(res[1]);
 		} else {
 		    woof_ajax_page_num = 1;
+		}
+                var res2 = l.split("product-page=");
+                if (typeof res2[1] !== 'undefined') {
+		    woof_ajax_page_num = parseInt(res2[1]);
 		}
 	    }
 
@@ -386,8 +409,9 @@ function woof_init_search_form() {
 
     //+++
     jQuery('.woof_submit_search_form').click(function () {
+
 	if (woof_ajax_redraw) {
-	    //[woof redirect="http://www.dev.woocommerce-filter.com/test-all/" autosubmit=1 ajax_redraw=1 is_ajax=1 tax_only="locations" by_only="none"]
+	    //[woof redirect="http://test-all/" autosubmit=1 ajax_redraw=1 is_ajax=1 tax_only="locations" by_only="none"]
 	    woof_ajax_redraw = 0;
 	    woof_is_ajax = 0;
 	}
@@ -419,6 +443,7 @@ function woof_submit_link(link) {
     woof_show_info_popup(woof_lang_loading);
 
     if (woof_is_ajax === 1 && !woof_ajax_redraw) {
+        
 	woof_ajax_first_done = true;
 	var data = {
 	    action: "woof_draw_products",
@@ -427,6 +452,7 @@ function woof_submit_link(link) {
 	    shortcode: jQuery('#woof_results_by_ajax').data('shortcode'),
 	    woof_shortcode: jQuery('div.woof').data('shortcode')
 	};
+     
 	jQuery.post(woof_ajaxurl, data, function (content) {
 	    content = jQuery.parseJSON(content);
 	    if (jQuery('.woof_results_by_ajax_shortcode').length) {
@@ -454,6 +480,10 @@ function woof_submit_link(link) {
 	    woof_js_after_ajax_done();
             //***  change  link  in button "add to cart"
             woof_change_link_addtocart();
+			
+		/*tooltip*/
+        woof_init_tooltip();
+			
 	});
 
     } else {
@@ -484,7 +514,7 @@ function woof_submit_link(link) {
 function woof_remove_empty_elements() {
     // lets check for empty drop-downs
     jQuery.each(jQuery('.woof_container select'), function (index, select) {
-	var size = jQuery(select).find('option').size();
+	var size = jQuery(select).find('option').length;
 	if (size === 0) {
 	    jQuery(select).parents('.woof_container').remove();
 	}
@@ -492,7 +522,7 @@ function woof_remove_empty_elements() {
     //+++
     // lets check for empty checkboxes, radio, color conatiners
     jQuery.each(jQuery('ul.woof_list'), function (index, ch) {
-	var size = jQuery(ch).find('li').size();
+	var size = jQuery(ch).find('li').length;
 	if (size === 0) {
 	    jQuery(ch).parents('.woof_container').remove();
 	}
@@ -585,7 +615,7 @@ function woof_get_submit_link() {
 		index = 'paged';//for right pagination if copy/paste this link and send somebody another by email for example
 	    }
 
-	    //http://www.dev.woocommerce-filter.com/?swoof=1&woof_author=3&woof_sku&woof_text=single
+	    //http://dev.products-filter.com/?swoof=1&woof_author=3&woof_sku&woof_text=single
 	    //avoid links where values is empty
 	    if (typeof value !== 'undefined') {
 		if ((typeof value && value.length > 0) || typeof value == 'number')
@@ -665,15 +695,12 @@ function woof_draw_products_top_panel() {
 	var is_price_in = false;
 	//lets show this on the panel
 	jQuery.each(woof_current_values, function (index, value) {
-
 	    //lets filter data for the panel
 	    if (jQuery.inArray(index, woof_accept_array) == -1) {
 		return;
 	    }
 
-
 	    //***
-
 
 	    if ((index == 'min_price' || index == 'max_price') && is_price_in) {
 		return;
@@ -729,6 +756,7 @@ function woof_draw_products_top_panel() {
 			try {
 			    //txt = jQuery('.woof_n_' + index + '_' + v).val();
 			    txt = jQuery("input[data-anchor='woof_n_" + index + '_' + v + "']").val();
+                            //console.log("input[data-anchor='woof_n_" + index + '_' + v + "']")
 			} catch (e) {
 			    console.log(e);
 			}
@@ -762,7 +790,7 @@ function woof_draw_products_top_panel() {
     }
 
 
-    if (jQuery(panel).find('li').size() == 0 || !jQuery('.woof_products_top_panel').length) {
+    if (jQuery(panel).find('li').length == 0 || !jQuery('.woof_products_top_panel').length) {
 	panel.hide();
     }
 
@@ -806,8 +834,20 @@ function woof_draw_products_top_panel() {
 
 //control conditions if proucts shortcode uses on the page
 function woof_shortcode_observer() {
-    if (jQuery('.woof_shortcode_output').length  ||( typeof woof_not_redirect!== 'undefined' && woof_not_redirect==1 )) {
-	woof_current_page_link = location.protocol + '//' + location.host + location.pathname;
+  
+    var redirect=true;
+    if(jQuery('.woof_shortcode_output').length || (jQuery('.woocommerce .products').length && !jQuery('.single-product').length)){
+        redirect=false;
+    }
+    if(jQuery('.woocommerce .woocommerce-info').length ){
+        redirect=false;
+    }   
+    if( typeof woof_not_redirect!== 'undefined' && woof_not_redirect==1 ){
+        redirect=false;
+    }
+    
+    if (!redirect) {
+        woof_current_page_link = location.protocol + '//' + location.host + location.pathname;
     }
 
     if (jQuery('#woof_results_by_ajax').length) {
@@ -897,7 +937,7 @@ function woof_init_hide_auto_form() {
 function woof_checkboxes_slide() {
     if (woof_checkboxes_slide_flag == true) {
 	var childs = jQuery('ul.woof_childs_list');
-	if (childs.size()) {
+	if (childs.length) {
 	    jQuery.each(childs, function (index, ul) {
 
 		if (jQuery(ul).parents('.woof_no_close_childs').length) {
@@ -958,7 +998,7 @@ function woof_checkboxes_slide() {
 function woof_init_ion_sliders() {
     jQuery.each(jQuery('.woof_range_slider'), function (index, input) {
 	try {
-
+            
 	    jQuery(input).ionRangeSlider({
 		min: jQuery(input).data('min'),
 		max: jQuery(input).data('max'),
@@ -973,8 +1013,9 @@ function woof_init_ion_sliders() {
 		grid: true,
 		step: jQuery(input).data('step'),
 		onFinish: function (ui) {
-		    woof_current_values.min_price = parseInt(ui.from, 10);
-		    woof_current_values.max_price = parseInt(ui.to, 10);
+                    var tax=jQuery(input).data('taxes');
+		    woof_current_values.min_price = (parseInt(ui.from, 10)/tax);
+		    woof_current_values.max_price = (parseInt(ui.to, 10)/tax);
 		    //woocs adaptation
 		    if (typeof woocs_current_currency !== 'undefined') {
 			woof_current_values.min_price = Math.ceil(woof_current_values.min_price / parseFloat(woocs_current_currency.rate));
@@ -1061,8 +1102,8 @@ function woof_reinit_native_woo_price_filter() {
 	    }
 
 	    //+++
-	    label_min = number_format(label_min, 2, '.', ',');
-	    label_max = number_format(label_max, 2, '.', ',');
+	    label_min = woof_front_number_format(label_min, 2, '.', ',');
+	    label_max = woof_front_number_format(label_max, 2, '.', ',');
 	    if (jQuery.inArray(woocs_current_currency.name, woocs_array_no_cents) || woocs_current_currency.hide_cents == 1) {
 		label_min = label_min.replace('.00', '');
 		label_max = label_max.replace('.00', '');
@@ -1396,6 +1437,34 @@ function woof_change_link_addtocart(){
     });
     
 }
+//https://github.com/kvz/phpjs/blob/master/functions/strings/number_format.js
+function woof_front_number_format(number, decimals, dec_point, thousands_sep) {
+    number = (number + '')
+	    .replace(/[^0-9+\-Ee.]/g, '');
+    var n = !isFinite(+number) ? 0 : +number,
+	    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+	    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+	    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+	    s = '',
+	    toFixedFix = function (n, prec) {
+		var k = Math.pow(10, prec);
+		return '' + (Math.round(n * k) / k)
+			.toFixed(prec);
+	    };
+// Fix for IE parseFloat(0.55).toFixed(0) = 0;
+    s = (prec ? toFixedFix(n, prec) : '' + Math.round(n))
+	    .split('.');
+    if (s[0].length > 3) {
+	s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+    }
+    if ((s[1] || '')
+	    .length < prec) {
+	s[1] = s[1] || '';
+	s[1] += new Array(prec - s[1].length + 1)
+		.join('0');
+    }
+    return s.join(dec);
+}
 
 //additional function to check local storage
 
@@ -1405,4 +1474,12 @@ function woof_supports_html5_storage() {
 } catch (e) {
     return false;
   }
+}
+
+function woof_init_tooltip(){
+    jQuery(".woof_tooltip_header").tooltipster({
+            theme: 'tooltipster-noir',
+            side: 'right'
+        });
+
 }

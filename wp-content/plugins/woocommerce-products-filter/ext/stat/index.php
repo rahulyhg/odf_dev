@@ -2,7 +2,7 @@
 if (!defined('ABSPATH'))
     die('No direct access allowed');
 
-//29-11-2016
+//20-06-2018
 final class WOOF_EXT_STAT extends WOOF_EXT {
 
     private $table_stat_buffer = 'woof_stat_buffer';
@@ -20,12 +20,14 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
     public $cron = NULL;
     public $wp_cron_period = 'daily';
     public $max_items_per_graph = 10;
-
+    public $updated_table=false;
+    public $meta_keys=array();
     //***
 
     public function __construct()
     {
         parent::__construct();
+
         global $wpdb;
         $this->table_stat_buffer = $wpdb->prefix . $this->table_stat_buffer;
         $this->table_stat_tmp = $wpdb->prefix . $this->table_stat_tmp;
@@ -33,6 +35,16 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
         if (isset($this->woof_settings['woof_stat']['is_enabled']))
         {
             $this->is_enabled = (bool) $this->woof_settings['woof_stat']['is_enabled'];
+        }
+        //****
+        $this->updated_table=get_option('woof_stat_updated_table',false);
+         
+        if(!$this->updated_table ){
+            global $wpdb;
+            $table_name = $this->table_stat_tmp;
+            if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+                update_option('woof_stat_updated_table',true); 
+            }
         }
         //***
         $cache_folder = '_woof_stat_cache';
@@ -85,6 +97,7 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
         //***
         $this->cache_folder = WP_CONTENT_DIR . '/' . $cache_folder . '/';
         add_filter('woof_get_request_data', array($this, 'woof_get_request_data'));
+        $this->meta_keys=$this->get_meta_keys();
         //***
         $this->init();
         //***
@@ -124,6 +137,7 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
         add_action('wp_ajax_woof_get_stat_data', array($this, 'woof_get_stat_data'));
         add_action('wp_ajax_woof_get_top_terms', array($this, 'woof_get_top_terms'));
         add_action('wp_ajax_woof_stat_check_connection', array($this, 'woof_stat_check_connection'));
+        add_action('wp_ajax_woof_stat_update_db', array($this, 'woof_stat_update_db'));     
     }
 
     public function get_ext_path()
@@ -155,10 +169,23 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
         } catch (PDOException $e) {
             die(__("Database not connected!    ERROR! ", 'woocommerce-products-filter'));
             // More info!
-            //die(__("Database not connected!    ERROR:  ",'meta-data-filter').$e->getMessage());
+            //die(__("Database not connected!    ERROR:  ",'woocommerce-products-filter').$e->getMessage());
         }
         die(__("Database successfully connected!!!", 'woocommerce-products-filter'));
     }
+    public function woof_stat_update_db(){
+        global $wpdb;
+        $row = $wpdb->get_results(  "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = '".$this->table_stat_buffer."' AND column_name = 'meta_value'"  );
+        if(empty($row)){
+           $result=$wpdb->query("ALTER TABLE ".$this->table_stat_buffer." ADD meta_value text COLLATE utf8_unicode_ci NOT NULL");
+           if($result===false){
+               die(__("Somthing wrong!", 'woocommerce-products-filter'));
+           }
+        }
+        update_option('woof_stat_updated_table',true); 
+        die(__("Database successfully updated!!!", 'woocommerce-products-filter'));
+    }
+
     public function woof_print_applications_tabs()
     {
         ?>
@@ -235,6 +262,7 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
         $data['table_stat_tmp'] = $this->table_stat_tmp;
         $data['folder_name'] = $this->folder_name;
         $data['woof_settings'] = $this->woof_settings;
+        $data['updated_table'] = $this->updated_table;
         //$data['stat_weight'] = WOOF_HELPER::recurse_dirsize($this->cache_folder);
         //$data['stat_min_date'] = $this->get_stat_min_date();//for file system only
 
@@ -526,6 +554,7 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
                             }
                         }
                         //***
+                        
                         $operative_data3 = array();
                         $search_template_count = count($search_template);
 
@@ -545,9 +574,17 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
                                         break;
                                     }
 
-                                    $item['tax_name'] = $taxonomies[$item['taxonomy']];
-                                    $t = get_term_by('id', $item['value'], $item['taxonomy']);
-                                    $item['value_name'] = $t->name;
+                                    if(class_exists('WOOF_META_FILTER') AND in_array($item['taxonomy'],$this->meta_keys) ){
+                                        
+                                        
+                                        $item['tax_name'] = WOOF_META_FILTER::get_meta_filter_name($item['taxonomy']);
+                                        $item['value_name'] = WOOF_META_FILTER::get_meta_filter_option_name($item['taxonomy'],$item['value']); 
+                                        
+                                    }else{
+                                        $item['tax_name'] = $taxonomies[$item['taxonomy']];
+                                        $t = get_term_by('id', $item['value'], $item['taxonomy']);
+                                        $item['value_name'] = $t->name; 
+                                    }
 
                                     unset($tax_should_be[$item['taxonomy']]);
                                 }
@@ -654,6 +691,27 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
                     $taxonomies[urldecode($slug)] = $t->labels->name;
                 }
             }
+            //meta filter
+            if(class_exists('WOOF_META_FILTER')){
+                $meta_keys=array();
+                $meta_fields=$this->woof_settings['meta_filter'];
+                if (!empty($meta_fields))
+                {
+                    foreach ($meta_fields as $key => $meta)
+                    {
+                        if($meta['meta_key']=="__META_KEY__"){
+                            continue;
+                        } 
+                        $slug= $meta["search_view"]."_".$meta['meta_key'];
+                        if(!in_array($slug,$this->items_for_stat)){
+                            continue;
+                        }
+                        $meta_keys[]=$slug;
+                        $taxonomies[urldecode($slug)]=WOOF_HELPER::wpml_translate(null, $meta['title'], 0);
+                    }
+                }  
+            }
+
             //***
             if (!empty($stat_data))
             {
@@ -715,6 +773,8 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
                             }
                             $block_tax_diff[$tn]+=$count;
                         }
+                    }else{
+                        
                     }
                 }
 
@@ -735,6 +795,20 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
                         $block_tax_each[$tax_slug]['terms'] = array();
                         if (!empty($block))
                         {
+                            if(class_exists('WOOF_META_FILTER')){
+                                if(in_array($tax_slug,$meta_keys)){
+                                    foreach ($block as $term_id => $count)
+                                    {
+                                       $val_name= WOOF_META_FILTER::get_meta_filter_option_name($tax_slug,$term_id);
+                                       if($val_name){
+                                           $block_tax_each[$tax_slug]['terms'][$val_name] = $count;
+                                       }else{
+                                           $block_tax_each[$tax_slug]['terms'][$term_id] = $count;
+                                       }
+                                    }                                
+                                    continue;
+                                }
+                            }
                             foreach ($block as $term_id => $count)
                             {
                                 $t = get_term_by('id', $term_id, $tax_slug);
@@ -978,12 +1052,32 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
 
                     if (!empty($data))
                     {
-                        foreach ($data as $taxonomy => $term_slug)
-                        {
+                        foreach ($data as $taxonomy => $term_slugs)
+                        {   
+                            $terms= explode(',',$term_slugs);
+                            foreach($terms as $term_slug){
                             $value = 0;
+                            $meta_value="";
                             $term_slug = urldecode($term_slug);
                             $taxonomy = urldecode($taxonomy);
                             $exclude = array('min_price', 'max_price');
+                            $meta_key=array();
+                            if(class_exists('WOOF_META_FILTER')){
+                             
+                                $meta_fields=$this->woof_settings['meta_filter'];
+                                if (!empty($meta_fields))
+                                {
+                                    foreach ($meta_fields as $key => $meta)
+                                    {
+                                        if($meta['meta_key']=="__META_KEY__"){
+                                            continue;
+                                        } 
+                                        $slug= $meta["search_view"]."_".$meta['meta_key'];
+                                        $meta_key[]=urldecode($slug);
+                                        $exclude = array_merge($exclude,$meta_key); 
+                                    }
+                                }                                
+                            }
                             if (!in_array($taxonomy, $exclude))
                             {
                                 if (!isset($terms[$taxonomy . '_' . $term_slug]))
@@ -1003,7 +1097,15 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
                                 }
                             } else
                             {
-                                $value = $term_slug;
+                               if(in_array($taxonomy,$meta_key)){
+                                   $meta_value=$term_slug;// do that 
+                                   $value=0;
+                               }else{
+                                   $value = $term_slug;
+                                   
+                               }
+                                
+                                
                             }
                             $data_sql=array(
                                 array(
@@ -1024,6 +1126,10 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
                                 ),
                                 array(
                                     'type'=>'string',
+                                    'val'=>$meta_value,
+                                ),                                
+                                array(
+                                    'type'=>'string',
                                     'val'=>$row['page'],
                                 ),
                                 array(
@@ -1035,8 +1141,11 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
                                     'val'=>$row['time'],
                                 ),
                             ); 
-                            $insert = WOOF_HELPER::woof_prepare("(%s, %s, %s, %d, %s, %d, %d)", $data_sql);
-                            $wpdb->query("INSERT INTO {$this->table_stat_buffer} (hash,user_ip,taxonomy,value,page,tax_page_term_id,time) VALUES " . $insert);
+                            $insert = WOOF_HELPER::woof_prepare("(%s, %s, %s, %d,%s,%s, %d, %d)", $data_sql);
+                            $wpdb->query("INSERT INTO {$this->table_stat_buffer} (hash,user_ip,taxonomy,value,meta_value,page,tax_page_term_id,time) VALUES " . $insert);
+                        
+                            }
+                            
                         }
                     }
                     $data_sql=array(
@@ -1114,7 +1223,7 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
                     if (!empty($res))
                     {
                         $time = $res[0]['time'];
-
+                      
                         //PDO here
                         if (!is_null($this->pdo))
                         {
@@ -1153,10 +1262,18 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
 
                             foreach ($res as $row)
                             {
+                                if(class_exists('WOOF_META_FILTER')){
+                                    if(in_array($row['taxonomy'],$this->meta_keys)){
+                                        if($row['value']==0){
+                                            $row['value']=$row['meta_value'];
+                                        }
+                                    }
+                                }
+                                $tax=urlencode($row['taxonomy']);
                                 $stmt = $this->pdo->prepare($sql);
                                 $stmt->bindParam(':hash', $row['hash'], PDO::PARAM_STR);
                                 $stmt->bindParam(':user_ip', $row['user_ip'], PDO::PARAM_STR);
-                                $stmt->bindParam(':taxonomy', urlencode($row['taxonomy']), PDO::PARAM_STR);
+                                $stmt->bindParam(':taxonomy', $tax, PDO::PARAM_STR);
                                 $stmt->bindParam(':value', $row['value'], PDO::PARAM_STR);
                                 $stmt->bindParam(':page', $row['page'], PDO::PARAM_STR);
                                 $stmt->bindParam(':tax_page_term_id', $row['tax_page_term_id'], PDO::PARAM_INT);
@@ -1490,6 +1607,32 @@ final class WOOF_EXT_STAT extends WOOF_EXT {
             $ip = $_SERVER['REMOTE_ADDR'];
         }
         return $ip;
+    }
+    public function get_meta_keys(){
+        if(class_exists('WOOF_META_FILTER')){
+            $meta_keys=array();
+            $meta_fields=array();
+            if(isset($this->woof_settings['meta_filter'])){
+                $meta_fields=$this->woof_settings['meta_filter'];
+            }
+            if (!empty($meta_fields))
+            {
+                foreach ($meta_fields as $key => $meta)
+                {
+                    if($meta['meta_key']=="__META_KEY__"){
+                        continue;
+                    } 
+                    $slug= $meta["search_view"]."_".$meta['meta_key'];
+                    if(!in_array($slug,$this->items_for_stat)){
+                        continue;
+                    }
+                    $meta_keys[]=$slug;
+                }
+            }  
+            return $meta_keys;
+        }else{
+            return array();
+        }
     }
 
 }

@@ -25,8 +25,20 @@ if (!defined('ABSPATH'))
 
         <div class="content-wrap">
             <section id="woof-stat-1">
+                <?php if(!$updated_table):?>
+                <div class="woof-control-section">
 
+                    <h4 style="color: orange;"><?php _e('Notice:', 'woocommerce-products-filter') ?></h4>
 
+                    <div class="woof-control-container">
+
+                        <p class="description">
+                            <?php _e('Please update database: ', 'woocommerce-products-filter') ?>
+                            <button id="woof_update_db"><?php _e('Update', 'woocommerce-products-filter') ?></button>
+                        </p>
+                    </div>
+                </div><!--/ .woof-control-section-->
+                <?php endif; ?>
 
                 <div class="woof-control-section">
 
@@ -84,7 +96,24 @@ if (!defined('ABSPATH'))
                                     $all_items[urldecode($slug)] = $t->labels->name;
                                 }
                             }
-
+                            if(class_exists('WOOF_META_FILTER') AND $updated_table AND isset($WOOF->settings['meta_filter'])){
+                                  $all_meta_items = array();
+                                  //***
+                                  global $WOOF;
+                                  $meta_fields=$WOOF->settings['meta_filter'];
+                                  if (!empty($meta_fields))
+                                  {
+                                      foreach ($meta_fields as $key => $meta)
+                                      {
+                                          if($meta['meta_key']=="__META_KEY__" OR $meta["search_view"]=='textinput'){
+                                              continue;
+                                          } 
+                                          $slug= $meta["search_view"]."_".$meta['meta_key'];
+                                          $all_meta_items[urldecode($slug)] = $meta['title'];
+                                      }
+                                     $all_items= array_merge($all_items,$all_meta_items); 
+                                  }
+                              }
                             asort($all_items);
                             //***
 
@@ -167,19 +196,6 @@ if (!defined('ABSPATH'))
             </section>
 
             <section id="woof-stat-2">
-
-                <div class="woof-control-section">
-
-                    <h4 style="color: orange;"><?php _e('Notice:', 'woocommerce-products-filter') ?></h4>
-
-                    <div class="woof-control-container">
-
-                        <p class="description">
-                            <?php _e('This extension is experimental but with finished arhitecture of collection and keeping the data! If you have an idea about how to improve representation of the statistic data in your shop, I mean how do you want to see processed data on the graphs, types of graphs, etc. - create topic <a href="https://wordpress.org/support/plugin/woocommerce-products-filter" target="_blank">here</a> to discuss it! Be sure that your PHP version is not lower than 5.4.', 'woocommerce-products-filter') ?>
-                        </p>
-                    </div>
-                </div><!--/ .woof-control-section-->
-
                 <div class="woof-control-section">
 
                     <h4><?php _e('Statistics collection:', 'woocommerce-products-filter') ?></h4>
@@ -264,7 +280,7 @@ if (!defined('ABSPATH'))
                             <p class="description">
                                 <?php _e('This data is very important for assembling statistics data, so please fill fields very responsibly. To collect statistical data uses a separate MySQL table.', 'woocommerce-products-filter') ?><br />
                                 <br />
-                                <a href="http://www.woocommerce-filter.com/extencion/statistic/" target="_blank" class="button"><?php _e('Read about the Statistic extension here', 'woocommerce-products-filter') ?></a>
+                                <a href="https://products-filter.com/extencion/statistic/" target="_blank" class="button"><?php _e('Read about the Statistic extension here', 'woocommerce-products-filter') ?></a>
                             </p>
                             
                             
@@ -297,7 +313,24 @@ if (!defined('ABSPATH'))
                                     $all_items[urldecode($slug)] = $t->labels->name;
                                 }
                             }
-
+                            if(class_exists('WOOF_META_FILTER') AND $updated_table AND isset($WOOF->settings['meta_filter'])){
+                                $all_meta_items = array();
+                                //***
+                                global $WOOF;
+                                $meta_fields=$WOOF->settings['meta_filter'];
+                                if (!empty($meta_fields))
+                                {
+                                    foreach ($meta_fields as $key => $meta)
+                                    {
+                                        if($meta['meta_key']=="__META_KEY__" OR $meta["search_view"]=='textinput'){
+                                            continue;
+                                        } 
+                                        $slug= $meta["search_view"]."_".$meta['meta_key'];
+                                        $all_meta_items[urldecode($slug)] = $meta['title'];
+                                    }
+                                   $all_items= array_merge($all_items,$all_meta_items); 
+                                }
+                            }
                             asort($all_items);
                             //***
 
@@ -320,10 +353,11 @@ if (!defined('ABSPATH'))
                         </div>
                         <div class="woof-description">
                             <p class="description">
-                                <?php _e('Select taxonomies which you want to track', 'woocommerce-products-filter') ?>
+                                <?php _e('Select taxonomies and meta keys which you want to track', 'woocommerce-products-filter') ?>
                             </p>
                         </div>
                     </div>
+                    
                 </div><!--/ .woof-control-section-->
 
 
@@ -502,7 +536,7 @@ if (!defined('ABSPATH'))
                                 'daily' => __('daily', 'woocommerce-products-filter'),
                                 'week' => __('weekly', 'woocommerce-products-filter'),
                                 'month' => __('monthly', 'woocommerce-products-filter'),
-                                    //'min1' => __('min1', 'woocommerce-products-filter')
+                                 'min1' => __('min1', 'woocommerce-products-filter')
                             );
 
                             if (!isset($woof_settings['woof_stat']['wp_cron_period']))
@@ -583,6 +617,7 @@ if (!defined('ABSPATH'))
                         `user_ip` text COLLATE utf8_unicode_ci NOT NULL,
                         `taxonomy` text COLLATE utf8_unicode_ci NOT NULL,
                         `value` int(11) NOT NULL,
+                        `meta_value` text COLLATE utf8_unicode_ci NOT NULL,
                         `page` text COLLATE utf8_unicode_ci NOT NULL,
                         `tax_page_term_id` int(11) NOT NULL DEFAULT '0',
                         `time` int(11) NOT NULL,
@@ -731,6 +766,14 @@ if (!defined('ABSPATH'))
             woof_stat_name: jQuery("input[name='woof_settings[woof_stat][server_options][host_db_name]']").val(),
             woof_stat_pswd: jQuery("input[name='woof_settings[woof_stat][server_options][host_pass]']").val(),
 
+        };
+        jQuery.post(ajaxurl, data, function (content) {
+            alert(content);
+        });
+    });
+        jQuery('#woof_update_db').click(function () {
+        var data = {
+            action: "woof_stat_update_db",
         };
         jQuery.post(ajaxurl, data, function (content) {
             alert(content);

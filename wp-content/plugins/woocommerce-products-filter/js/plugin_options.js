@@ -97,7 +97,8 @@
 	    base.support = {
 		touch: Modernizr.touch
 	    };
-	    base.eventtype = base.support.touch ? 'touchstart' : 'click';
+	   // base.eventtype = base.support.touch ? 'touchstart' : 'click';
+            base.eventtype='click';
 	    base.loadPopup();
 	},
 	loadPopup: function () {
@@ -175,14 +176,21 @@
 	},
 	add_behavior: function (key, name, content, info, type) {
 	    var base = this;
-
+            
 	    base.modal.on(base.eventtype + base.namespace, '.woof-modal-save', function (e) {
 		e.preventDefault();
 		base.on_close_callback(key, name, content, info, type);
 		base.closeModal();
 	    });
+             $(document).keydown(function(e) {
+                // ESCAPE key pressed
+                if (e.keyCode == 27) {
+                    base.closeModal();
+                }
+            });
 
 	    base.modal.on(base.eventtype + base.namespace, '.woof-modal-close', function (e) {
+                console.log(key);
 		e.preventDefault();
 		base.closeModal();
 	    });
@@ -244,6 +252,7 @@
 var woof_sort_order = [];
 
 (function ($) {
+
 
     jQuery.fn.life = function (types, data, fn) {
 	jQuery(this.context).on(types, this.selector, data, fn);

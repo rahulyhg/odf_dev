@@ -131,9 +131,9 @@
 	<div class="site-inner">
 		<div class="block_header">
 
-			<?php if( !empty($test_theme['logo-ontex']['url'])){ ?>
+			<?php if( !empty(get_option( 'header_background' ))){ ?>
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="logo_mobile_id">
-					<img src="<?php echo $test_theme['logo-ontex']['url']; ?>" />
+					<img src="<?php echo get_option( 'header_background' ); ?>" />
 				</a>
 			<?php }else{ ?>
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="logo_mobile_id">
@@ -149,8 +149,8 @@
 					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<?php else : ?>
 					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-						<?php if( !empty($test_theme['logo-ontex']['url'])){ ?>
-							<img src="<?php echo $test_theme['logo-ontex']['url']; ?>" /></a></p>
+						<?php if( !empty(get_option( 'header_background' ))){ ?>
+							<img src="<?php echo get_option( 'header_background' ); ?>" /></a></p>
 						<?php }else{ ?>
 							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/img-logo.png" /></a></p>
 						<?php } ?>

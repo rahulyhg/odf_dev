@@ -2,6 +2,7 @@
 #  Main ignored items
 #------------------------
 
+wp-content/wflogs
 .maintenance
 versionpress.maintenance
 /.htaccess

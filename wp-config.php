@@ -1,20 +1,5 @@
 <?php
 
-// Configuration common to all environments
-include_once __DIR__ . '/wp-config.common.php';
-
-
-// Configuration common to all environments
-include_once __DIR__ . '/wp-config.common.php';
-
-
-// Configuration common to all environments
-include_once __DIR__ . '/wp-config.common.php';
-
-
-// Configuration common to all environments
-include_once __DIR__ . '/wp-config.common.php';
-
 /**
  * La configuration de base de votre installation WordPress.
  *

@@ -1140,3 +1140,58 @@ function odf_change_default_front_page(){
 		update_option( 'page_on_front', '648' );
 	}
 }
+
+
+
+
+
+
+
+function load_custom_wp_admin_style()
+{
+	wp_enqueue_media();
+    wp_register_script('childscript-custom-admin', get_stylesheet_directory_uri() . '/js/custom_admin.js');
+    wp_enqueue_script('childscript-custom-admin');
+}
+
+add_action('admin_enqueue_scripts', 'load_custom_wp_admin_style');
+
+
+
+
+add_action('admin_init', 'my_general_section');
+function my_general_section()
+{
+    add_settings_section(
+        'my_settings_section', // Section ID
+        'Logo', // Section Title
+        'my_section_options_callback', // Callback
+        'general' // What Page?  This makes the section show up on the General Settings Page
+    );
+
+    add_settings_field( // Option 1
+        'header_background', // Option ID
+        'Logo URL', // Label
+        'my_textbox_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_section', // Name of our section
+        array( // The $args
+            'header_background' // Should match Option ID
+        )
+    );
+
+    register_setting('general', 'header_background', 'esc_attr');
+}
+
+function my_section_options_callback()
+{ // Section Callback
+    // echo '<p>Header background settings</p>';
+}
+
+function my_textbox_callback($args)
+{  // Textbox Callback
+    $option = get_option($args[0]);
+    echo '<input type="text" id="' . $args[0] . '" name="' . $args[0] . '" value="' . $option . '" />';
+}
+
+

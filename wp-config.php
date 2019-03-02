@@ -99,6 +99,6 @@ require_once(ABSPATH . 'wp-settings.php');
 
 
 @ini_set('log_errors', 1);
-@ini_set('display_errors', 1); /* enable or disable public display of errors (use 'On' or 'Off') */
+@ini_set('display_errors', 0); /* enable or disable public display of errors (use 'On' or 'Off') */
 @ini_set('error_log', dirname(__FILE__) . '/wp-content/logs/php-errors.log'); /* path to server-writable log file */
 @ini_set( 'error_reporting', E_ALL ^ E_NOTICE );

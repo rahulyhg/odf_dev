@@ -14,7 +14,7 @@
  
 	</div><!-- .site-inner -->
 
-			<?php global $test_theme; ?>
+			<?php global $test_theme, $wpdb; ?>
 
 			<div class="div_footer">
 				<div class="vc_row">
@@ -27,46 +27,50 @@
 							?>
 					</div>
 					<div class="vc_col-sm-2 mobile_50">
-						<h5>Our details</h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						<?php dynamic_sidebar( 'footer-custom-column-1' ); ?>
 					</div>
 					<div class="vc_col-sm-2 mobile_50">
-						<h5>Products</h5>
-						<ul>
-							<li>Product 1</li>
-							<li>Product 2</li>
-							<li>Product 3</li>
-							<li>Product 4</li>
-						</ul>
+						<?php dynamic_sidebar( 'footer-custom-column-2' ); ?>
 					</div>
 					<div class="vc_col-sm-2 mobile_50">
-						<h5>Our firm</h5>
-						<ul>
-							<li>Page 1</li>
-							<li>Page 2</li>
-							<li>Page 3</li>
-							<li>Page 4</li>
-						</ul>
+						<?php dynamic_sidebar( 'footer-custom-column-3' ); ?>
 					</div>
 					<div class="vc_col-sm-2 mobile_50">
-						<h5>Blog</h5>
-						<ul>
-							<li>Legal notice</li>
-							<li>Cookies</li>
-							<li>Provacy policy</li>
-						</ul>
+						<?php dynamic_sidebar( 'footer-custom-column-4' ); ?>
 					</div>
 					<div class="vc_col-sm-2">				
 						<div class="vc_row">
-							<a class="vc_col-sm-4 footer_appli" href="https://www.apple.com/fr/ios/app-store/" target="_blanc">
+							<?php 
+								// $applications  = $wpdb->get_results( "SELECT * FROM wp_posts WHERE post_type = 'application' and post_status = 'publish'", OBJECT );
+								// foreach($applications as $key => $application){
+									
+									// echo $application->post_title;echo '<br>';
+									// echo get_field( "icon_footer", $application->ID );echo '<br>';
+
+									/*echo '<pre>';
+									// print_r(get_field( "icon_footer", $application->ID ));
+									// print_r(get_post_meta( $application->ID, 'icon_footer', true ));
+									echo '</pre>';*/
+									
+									// echo get_the_post_thumbnail_url($application->ID);echo '<br>';
+									?>
+									<!-- <a class="footer_appli" href="https://www.apple.com/fr/ios/app-store/" target="_blanc">
+										<img src="<?php echo get_the_post_thumbnail_url($application->ID); ?>" width="20">
+										<span><?php echo $application->post_title; ?></span>
+									</a> -->
+									<?php
+								// }
+							?>
+							
+							<a class="footer_appli" href="https://www.apple.com/fr/ios/app-store/" target="_blanc">
 								<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-phone-white.png">
 								<span>IOT</span>
 							</a>
-							<a class="vc_col-sm-4 footer_appli" href="https://play.google.com/store/apps?hl=fr" target="_blanc">
+							<a class="footer_appli" href="https://play.google.com/store/apps?hl=fr" target="_blanc">
 								<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-phone-white.png">
 								<span>Appli 1</span>
 							</a>
-							<a class="vc_col-sm-4 footer_appli" href="https://www.microsoft.com/en-us/store/apps" target="_blanc">
+							<a class="footer_appli" href="https://www.microsoft.com/en-us/store/apps" target="_blanc">
 								<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-phone-white.png">
 								<span>Appli 2</span>
 							</a>
@@ -86,24 +90,19 @@
 						</div>
 					</div>
 					<div class="vc_col-sm-1 footer_social">
-						<?php if($test_theme['twitter-check-button']==1) {?>
-							<a href="<?php echo $test_theme['twitter-header-ontex'] ?>" target="_blank">
+						<?php if(get_option( 'youtube_check' )=="on") {?>
+							<a href="<?php echo get_option( 'youtube_url' ) ?>" target="_blank">
 								<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-youtube-white.png">
 							</a>
 						<?php } ?>
-						<?php if($test_theme['facebook-check-button']==1) {?>
-							<a href="<?php echo $test_theme['facebook-header-ontex'] ?>" target="_blank">
+						<?php if(get_option( 'facebook_check' )=="on") {?>
+							<a href="<?php echo get_option( 'facebook_url' ) ?>" target="_blank">
 								<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-facebook-white.png">
 							</a>
 						<?php } ?>
-						<?php if($test_theme['instagram-check-button']==1) {?>
-							<a href="<?php echo $test_theme['instagram-header-ontex'] ?>" target="_blank">
+						<?php if(get_option( 'instagram_check' )=="on") {?>
+							<a href="<?php echo get_option( 'instagram_url' ) ?>" target="_blank">
 								<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-instagram-white.png">
-							</a>
-						<?php } ?>
-						<?php if($test_theme['linkedin-check-button']==1) {?>
-							<a href="<?php echo $test_theme['linkedin-header-ontex'] ?>" target="_blank">
-								<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-linkedin-white.png">
 							</a>
 						<?php } ?>
 					</div>
@@ -111,7 +110,7 @@
 				<div class="vc_row">
 					<div class="vc_col-sm-12">
 						<hr>
-						<p class="copyright">Copyright ©<?php echo date("Y");?>, ID Ontex</p>
+						<?php dynamic_sidebar( 'footer-custom-bottom' ); ?>
 					</div>
 				</div>
 

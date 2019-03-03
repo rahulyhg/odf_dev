@@ -45,7 +45,8 @@ $j(document).ready(function() {
         });
         $j('#logo_url_div .remove-image').click(function(e) {
             $j('#logo_url').attr('value', "");
-            $j('#logo_url_div .screenshot img').hide();
+            $j('#logo_url_div .screenshot img').remove();
+            $j('#logo_url_div .screenshot').hide();
             $j(this).hide();
         });
 
@@ -82,7 +83,8 @@ $j(document).ready(function() {
         });
         $j('#favicon_url_div .remove-image').click(function(e) {
             $j('#favicon_url').attr('value', "");
-            $j('#favicon_url_div .screenshot img').hide();
+            $j('#favicon_url_div .screenshot img').remove();
+            $j('#favicon_url_div .screenshot').hide();
             $j(this).hide();
         });
 

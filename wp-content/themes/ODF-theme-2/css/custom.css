@@ -199,7 +199,7 @@
 		position: absolute;
 	    right: 30px;
 	    top: 8px;
-	    width: 60%;
+	    width: 40%;
 		z-index: 9;
 	}
 	.header_social{
@@ -241,6 +241,9 @@
 	.wpml-ls-slot-15.wpml-ls-current-language, .wpml-ls-slot-15.wpml-ls-current-language a, .wpml-ls-slot-15.wpml-ls-current-language a:visited {
 	    background-image: linear-gradient(-90deg, #fdcc83 0%, #e88f0c 100%);
 	    border-radius: 10px;
+	}
+	.wpml-ls-legacy-dropdown>ul {
+	    float: right;
 	}
 	.hr_costom_header{
 		background-color: #2e94d4;
@@ -298,6 +301,10 @@
 	.div_footer .vc_col-sm-1 {
 	    width: 8.33333333%;
 	}*/
+	.div_footer .widget{
+		border: 0;
+		padding-top: 0;
+	}
 
 	.navbar{
 		-webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.25);
@@ -637,7 +644,8 @@
 		text-align:center;
 		color:var(--main-color);
 		font-size:18px;
-		margin: 30px 0;
+		margin: 0;
+		padding-top: 0;
 	}
 /* footer */
 
@@ -2774,20 +2782,33 @@
         padding-left: 5px;
     }
     .div_footer ul li{
-        list-style-type: none; 
+        list-style-type: none;
+		padding: 4px 0;
+		font-size: 15px;
+    }
+    .div_footer ul li a{
+    	color: #ffffff;
+    	font-weight: 100 !important;
+    }
+    .div_footer .attachment-woocommerce_thumbnail{
+    	display: none;
     }
     .div_footer .footer_appli{
         padding-right: 0 !important;
         padding-left: 0 !important;
         text-align: center;
-        color: #ffffff;
+        color: #ffffff;  
+	    width: 32.33333333%;
+	    display: inline-block;
     }
     .div_footer .footer_appli img{
         display: block;    
         margin: 0 auto;
         margin-bottom: 10px;
     }
-
+	.div_footer>.vc_row>.vc_col-sm-2 {
+	    vertical-align: top;
+	}
     .div_footer .footer_form_search{
         margin: 0 auto;
         margin-top: 30px;
@@ -2948,6 +2969,9 @@
 		}
 		.find_a_local_shop #your_location, .find_a_local_shop #location_within {
 		    font-size: 13px;
+		}
+		.vc_row_header {
+		    width: 50%;
 		}
 	}
 	@media (max-width: 1350px) {
@@ -3231,7 +3255,7 @@
         .div_footer .footer_appli {
 		    font-size: 14px;
 		    display: inline-block;
-		    margin: 30px 20px 0;
+		    margin: 30px 0 0;
 		}
         .div_footer .vc_col-sm-1 {
 		    text-align: center;
@@ -3314,7 +3338,6 @@
         .div_footer .footer_appli {
 		    font-size: 14px;
 		    display: inline-block;
-		    margin: 30px 20px 0;
 		}
         .div_footer .vc_col-sm-1 {
 		    text-align: center;

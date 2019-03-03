@@ -166,7 +166,7 @@
 				<?php 
 					include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 					if ( !is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) ) {
-						echo '<div class="vc_col-sm-2"></div>';
+						echo '<div class="vc_col-sm-3"></div>';
 					}
 				?>
 				<div class="vc_col-sm-4">
@@ -189,7 +189,7 @@
 					<div class="vc_row">
 						<div class="vc_col-sm-3 header_appli">
 							<?php if(get_option( 'mailto_check' )=="on") {?>
-								<a href="mailto:<?php echo get_option( 'mailto_url' ) ?>" target="_blank">
+								<a href="mailto:<?php echo get_option( 'mailto_url' ) ?>" target="_top">
 									<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-mail-move.png">
 								</a>
 							<?php } ?>
@@ -219,12 +219,12 @@
 				</div>
 				<?php
 					if ( is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) ) {
-						echo '<div class="vc_col-sm-2 header-right">';
+						echo '<div class="vc_col-sm-3 header-right">';
 						echo do_shortcode('[wpml_language_switcher][/wpml_language_switcher]');
 						echo'</div>';
 					}
 				?>				
-				<div class="vc_col-sm-2 header-right header-search">
+				<div class="vc_col-sm-1 header-right header-search">
 					<a href="javascript:void(0)" id="div_header_mon_compte">
 						<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-search-move.png">
 					</a>

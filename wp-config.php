@@ -1,5 +1,4 @@
 <?php
-
 /**
  * La configuration de base de votre installation WordPress.
  *
@@ -17,29 +16,29 @@
  *
  * @package WordPress
  */
-
 include_once __DIR__ . '/wp-config.common.php';
 // ** Réglages MySQL - Votre hébergeur doit vous fournir ces informations. ** //
-/** Nom de la base de données de WordPress. */
-define('DB_NAME', 'app_brandwebsite_database_preprod');
-
-/** Utilisateur de la base de données MySQL. */
-define('DB_USER', 'mysqladmin@app-shared-dbserver01');
-
-/** Mot de passe de la base de données MySQL. */
-define('DB_PASSWORD', 'Azerty007');
-
-/** Adresse de l’hébergement MySQL. */
-define('DB_HOST', 'app-shared-dbserver01.mysql.database.azure.com');
-
+$DB_NAME = getenv("CUSTOMCONNSTR_DB_NAME");
+$DB_USER = getenv("CUSTOMCONNSTR_DB_USER");
+$DB_PASSWORD = getenv("CUSTOMCONNSTR_DB_PASSWORD");
+$DB_HOST = getenv("CUSTOMCONNSTR_DB_HOST");
+if($DB_NAME!="" && $DB_USER!="" && $DB_PASSWORD!="" && $DB_HOST!=""){
+	define('DB_NAME', $DB_NAME);
+	define('DB_USER', $DB_USER);
+	define('DB_PASSWORD', $DB_PASSWORD);
+	define('DB_HOST', $DB_HOST);
+}else{
+	define('DB_NAME', 'app_brandwebsite_database_preprod');
+	define('DB_USER', 'mysqladmin@app-shared-dbserver01');
+	define('DB_PASSWORD', 'Azerty007');
+	define('DB_HOST', 'app-shared-dbserver01.mysql.database.azure.com');
+}
 /** Jeu de caractères à utiliser par la base de données lors de la création des tables. */
 define('DB_CHARSET', 'utf8mb4');
-
 /** Type de collation de la base de données.
   * N’y touchez que si vous savez ce que vous faites.
   */
 define('DB_COLLATE', '');
-
 /**#@+
  * Clés uniques d’authentification et salage.
  *
@@ -60,16 +59,14 @@ define('SECURE_AUTH_SALT', '1ZN!#Pf/<sdgm =g5LS`?I3@??F#=@3uQ_0l+g_CdcT7^o$LY/E%
 define('LOGGED_IN_SALT',   '-3u.j_~(_CM5T%RoilX|oOUYicT2b0Li_bkjLeg/:#z<g1g.;/3d<Z+~1{K&P6db');
 define('NONCE_SALT',       'IpKPVBBt#+f>t?OgQ]8ZWEiWWpREp(oI|PK$+,X,W85]=##iI745x63JK%SJgJv&');
 /**#@-*/
-
 /**
  * Préfixe de base de données pour les tables de WordPress.
  *
  * Vous pouvez installer plusieurs WordPress sur une seule base de données
  * si vous leur donnez chacune un préfixe unique.
- * N’utilisez que des chiffres, des lettres non-accentuées, et des caractères soulignés !
+ * N’utilisez que des chiffres, des lettres non-accentuées, et des caractères soulignés !
  */
 $table_prefix = 'wp_';
-
 /**
  * Pour les développeurs : le mode déboguage de WordPress.
  *
@@ -85,19 +82,13 @@ $table_prefix = 'wp_';
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
 define('WP_DEBUG', false);
-
 define('VP_ENVIRONMENT', 'default');
 /* C’est tout, ne touchez pas à ce qui suit ! */
-
 /** Chemin absolu vers le dossier de WordPress. */
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
-
 /** Réglage des variables de WordPress et de ses fichiers inclus. */
 require_once(ABSPATH . 'wp-settings.php');
-
-
-
 @ini_set('log_errors', 1);
 @ini_set('display_errors', 0); /* enable or disable public display of errors (use 'On' or 'Off') */
 @ini_set('error_log', dirname(__FILE__) . '/wp-content/logs/php-errors.log'); /* path to server-writable log file */

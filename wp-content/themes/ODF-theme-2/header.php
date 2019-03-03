@@ -17,7 +17,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<link rel="icon" href="<?php echo $test_theme['favicon-ontex']['url'] ?>" />
+	<link rel="icon" href="<?php echo get_option( 'favicon_url' ) ?>" />
 	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif; ?>
@@ -187,29 +187,29 @@
 				<div class="vc_col-sm-4 header_social">
 					<div class="vc_row">
 						<div class="vc_col-sm-3 header_appli">
-							<?php if($test_theme['linkedin-check-button']==1) {?>
-								<a href="<?php echo $test_theme['linkedin-header-ontex'] ?>" target="_blank">
+							<?php if(get_option( 'mailto_check' )=="on") {?>
+								<a href="mailto:<?php echo get_option( 'mailto_url' ) ?>" target="_blank">
 									<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-mail-orange.png">
 								</a>
 							<?php } ?>
 						</div>
 						<div class="vc_col-sm-3 header_appli">
-							<?php if($test_theme['twitter-check-button']==1) {?>
-								<a href="<?php echo $test_theme['twitter-header-ontex'] ?>" target="_blank">
+							<?php if(get_option( 'youtube_check' )=="on") {?>
+								<a href="<?php echo get_option( 'youtube_url' ) ?>" target="_blank">
 									<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-youtube-orange.png">
 								</a>
 							<?php } ?>
 						</div>
 						<div class="vc_col-sm-3 header_appli">
-							<?php if($test_theme['facebook-check-button']==1) {?>
-								<a href="<?php echo $test_theme['facebook-header-ontex'] ?>" target="_blank">
+							<?php if(get_option( 'facebook_check' )=="on") {?>
+								<a href="<?php echo get_option( 'facebook_url' ) ?>" target="_blank">
 									<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-facebook-orange.png">
 								</a>
 							<?php } ?>
 						</div>
 						<div class="vc_col-sm-3 header_appli">
-							<?php if($test_theme['instagram-check-button']==1) {?>
-								<a href="<?php echo $test_theme['instagram-header-ontex'] ?>" target="_blank">
+							<?php if(get_option( 'instagram_check' )=="on") {?>
+								<a href="<?php echo get_option( 'instagram_url' ) ?>" target="_blank">
 									<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-instagram-orange.png">
 								</a>
 							<?php } ?>

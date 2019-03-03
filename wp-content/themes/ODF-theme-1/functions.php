@@ -439,26 +439,6 @@ add_filter( 'widget_tag_cloud_args', 'twentysixteen_widget_tag_cloud_args' );
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/theme_options/ReduxCore/framework.php' ) ) {
-    require_once( dirname( __FILE__ ) . '/theme_options/ReduxCore/framework.php' );
-}
-if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/theme_options/test_theme/sample-config.php' ) ) {
-    require_once( dirname( __FILE__ ) . '/theme_options/test_theme/sample-config.php' );
-}
-
-
 //show block last post
 function ontex_post($atts){
     $news_atts = shortcode_atts( array(
@@ -1071,9 +1051,106 @@ function my_general_section()
             'favicon_url' // Should match Option ID
         )
     );
+    
+    add_settings_field( // Option 1
+        'facebook_url', // Option ID
+        'Facebook URL', // Label
+        'facebook_url_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_section', // Name of our section
+        array( // The $args
+            'facebook_url' // Should match Option ID
+        )
+    );
+    add_settings_field( // Option 1
+        'facebook_check', // Option ID
+        'Enable Facebook icon ?', // Label
+        'facebook_check_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_section', // Name of our section
+        array( // The $args
+            'facebook_check' // Should match Option ID
+        )
+    );
+
+    add_settings_field( // Option 1
+        'youtube_url', // Option ID
+        'Youtube URL', // Label
+        'youtube_url_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_section', // Name of our section
+        array( // The $args
+            'youtube_url' // Should match Option ID
+        )
+    );
+    add_settings_field( // Option 1
+        'youtube_check', // Option ID
+        'Enable Youtube icon ?', // Label
+        'youtube_check_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_section', // Name of our section
+        array( // The $args
+            'youtube_check' // Should match Option ID
+        )
+    );
+    
+    add_settings_field( // Option 1
+        'instagram_url', // Option ID
+        'Instagram URL', // Label
+        'instagram_url_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_section', // Name of our section
+        array( // The $args
+            'instagram_url' // Should match Option ID
+        )
+    );
+    add_settings_field( // Option 1
+        'instagram_check', // Option ID
+        'Enable Instagram icon ?', // Label
+        'instagram_check_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_section', // Name of our section
+        array( // The $args
+            'instagram_check' // Should match Option ID
+        )
+    );
+    
+    add_settings_field( // Option 1
+        'mailto_url', // Option ID
+        'Set the mail', // Label
+        'mailto_url_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_section', // Name of our section
+        array( // The $args
+            'mailto_url' // Should match Option ID
+        )
+    );
+    add_settings_field( // Option 1
+        'mailto_check', // Option ID
+        'Enable Send Mail icon ?', // Label
+        'mailto_check_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_section', // Name of our section
+        array( // The $args
+            'mailto_check' // Should match Option ID
+        )
+    );
 
     register_setting('general', 'logo_url', 'esc_attr');
     register_setting('general', 'favicon_url', 'esc_attr');
+
+    register_setting('general', 'facebook_url', 'esc_attr');
+    register_setting('general', 'facebook_check', 'esc_attr');
+
+    register_setting('general', 'youtube_url', 'esc_attr');
+    register_setting('general', 'youtube_check', 'esc_attr');
+
+    register_setting('general', 'instagram_url', 'esc_attr');
+    register_setting('general', 'instagram_check', 'esc_attr');
+
+    register_setting('general', 'mailto_url', 'esc_attr');
+    register_setting('general', 'mailto_check', 'esc_attr');
+
 }
 
 function my_section_options_callback()
@@ -1091,63 +1168,79 @@ function my_section_options_callback()
 function logo_url_callback($args)
 {  // Textbox Callback
     $option = get_option($args[0]);
-    echo '<input type="text" class="settings_input_media_url" id="' . $args[0] . '" name="' . $args[0] . '" value="' . $option . '" />';
+    echo '	<div id="logo_url_div">
+    			<input readonly type="text" class="settings_input_media_url" id="' . $args[0] . '" name="' . $args[0] . '" value="' . $option . '" />
+    			<div class="upload_button_div">
+    			<div class="hide screenshot" style="display: none; width: 160px; border: 1px solid #c7c5c5; border-radius: 5px; padding: 5px; margin: 10px 0; text-align: center;">    				
+    			</div>
+				   <span class="button media_upload_button" id="logo-ontex-media">Upload</span>
+				   <span class="button remove-image" id="reset_logo-ontex" rel="logo-ontex" style="display: none">Remove</span>
+				</div>
+    		</div>
+    ';
 }
 function favicon_url_callback($args)
 {  // Textbox Callback
     $option = get_option($args[0]);
-    echo '<input type="text" class="settings_input_media_url" id="' . $args[0] . '" name="' . $args[0] . '" value="' . $option . '" />';
+    echo '	<div id="favicon_url_div">
+    			<input readonly type="text" class="settings_input_media_url" id="' . $args[0] . '" name="' . $args[0] . '" value="' . $option . '" />
+    			<div class="upload_button_div">
+    			<div class="hide screenshot" style="display: none; width: 50px; border: 1px solid #c7c5c5; border-radius: 5px; padding: 5px; margin: 10px 0; text-align: center;">    				
+    			</div>
+				   <span class="button media_upload_button" id="logo-ontex-media">Upload</span>
+				   <span class="button remove-image" id="reset_logo-ontex" rel="logo-ontex" style="display: none">Remove</span>
+				</div>
+    		</div>
+    ';
 }
 
-
-
-
-
-/*
-add_action('admin_init', 'my_general_section');  
-function my_general_section() {  
-    add_settings_section(  
-        'my_settings_section', // Section ID 
-        'My Options Title', // Section Title
-        'my_section_options_callback', // Callback
-        'general' // What Page?  This makes the section show up on the General Settings Page
-    );
-
-    add_settings_field( // Option 1
-        'option_1', // Option ID
-        'Option 1', // Label
-        'my_textbox_callback', // !important - This is where the args go!
-        'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
-        array( // The $args
-            'option_1' // Should match Option ID
-        )  
-    ); 
-
-    add_settings_field( // Option 2
-        'option_2', // Option ID
-        'Option 2', // Label
-        'my_textbox_callback', // !important - This is where the args go!
-        'general', // Page it will be displayed
-        'my_settings_section', // Name of our section (General Settings)
-        array( // The $args
-            'option_2' // Should match Option ID
-        )  
-    ); 
-
-    register_setting('general','option_1', 'esc_attr');
-    register_setting('general','option_2', 'esc_attr');
-}
-
-function my_section_options_callback() { // Section Callback
-    echo '<p>A little message on editing info</p>';  
-}
-
-function my_textbox_callback($args) {  // Textbox Callback
+function facebook_url_callback($args) {
     $option = get_option($args[0]);
-    echo '<input type="text" id="'. $args[0] .'" name="'. $args[0] .'" value="' . $option . '" />';
-}*/
+	echo '<input type="text" class="settings_input_media_url" id="' . $args[0] . '"  name="' . $args[0] . '" value="' . $option . '" />';
+}
 
+function facebook_check_callback($args) {
+	$options = get_option('plugin_options');
+    $option = get_option($args[0]);
+	if($option) { $checked = ' checked="checked" '; }
+	echo '<input "'.$checked.'" id="' . $args[0] . '" name="' . $args[0] . '" type="checkbox" />';
+}
+
+function youtube_url_callback($args) {
+    $option = get_option($args[0]);
+	echo '<input type="text" class="settings_input_media_url" id="' . $args[0] . '"  name="' . $args[0] . '" value="' . $option . '" />';
+}
+
+function youtube_check_callback($args) {
+	$options = get_option('plugin_options');
+    $option = get_option($args[0]);
+	if($option) { $checked = ' checked="checked" '; }
+	echo '<input "'.$checked.'" id="' . $args[0] . '" name="' . $args[0] . '" type="checkbox" />';
+}
+
+function instagram_url_callback($args) {
+    $option = get_option($args[0]);
+	echo '<input type="text" class="settings_input_media_url" id="' . $args[0] . '"  name="' . $args[0] . '" value="' . $option . '" />';
+}
+
+function instagram_check_callback($args) {
+	$options = get_option('plugin_options');
+    $option = get_option($args[0]);
+	if($option) { $checked = ' checked="checked" '; }
+	echo '<input "'.$checked.'" id="' . $args[0] . '" name="' . $args[0] . '" type="checkbox" />';
+}
+
+function mailto_url_callback($args) {
+    $option = get_option($args[0]);
+	echo '<input type="text" class="settings_input_media_url" id="' . $args[0] . '"  name="' . $args[0] . '" value="' . $option . '" />';
+}
+
+function mailto_check_callback($args) {
+	$options = get_option('plugin_options');
+    $option = get_option($args[0]);
+	if($option) { $checked = ' checked="checked" '; }
+	echo '<input "'.$checked.'" id="' . $args[0] . '" name="' . $args[0] . '" type="checkbox" />';
+}
 
 /**
  * Change number or products per row to 3
@@ -1162,16 +1255,6 @@ if (!function_exists('loop_columns')) {
 /**
  * Change number of products that are displayed per page (shop page)
  */
-/*add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 20 );
-
-function new_loop_shop_per_page( $cols ) {
-  // $cols contains the current number of products per page based on the value stored on Options -> Reading
-  // Return the number of products you wanna show per page.
-  $cols = 9;
-  return $cols;
-}
-*/
-
 add_filter( 'loop_shop_per_page', 'perpage_shop_products', 20 );
 function perpage_shop_products()
 {

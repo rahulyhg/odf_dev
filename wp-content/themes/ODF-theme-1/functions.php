@@ -1277,3 +1277,50 @@ function perpage_shop_products()
     $product_per_page=9; //change according to your need
     return $product_per_page;
 }
+
+
+
+//Nj 
+  
+add_action( 'loop_shop_columns', 'fcn_nj_loop_shop_columns',90 );  
+function fcn_nj_loop_shop_columns($columns){ 
+	if(isset($_GET['columns'])){
+		return $_GET['columns'];
+	}
+	return 3;    
+}
+  
+add_action( 'wp', 'nj_hook_remove' );
+
+function nj_hook_remove() {  
+if(is_shop()){
+	remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 10 );
+	add_action( 'woocommerce_after_shop_loop', 'nj_woocommerce_pagination', 10 );
+}
+
+}
+
+
+function nj_woocommerce_pagination(){  
+
+		if ( ! wc_get_loop_prop( 'is_paginated' ) || ! woocommerce_products_will_display() ) {
+			return;
+		}
+
+		$args = array(
+			'total'   => wc_get_loop_prop( 'total_pages' ),
+			'current' => wc_get_loop_prop( 'current_page' ),
+			'base'    => esc_url_raw( add_query_arg( 'product-page', '%#%', false ) ),
+			'format'  => '?product-page=%#%',
+		);
+
+		if ( ! wc_get_loop_prop( 'is_shortcode' ) ) {  
+			$args['format'] = '';
+			$args['base']   = esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) );
+		}
+
+		wc_get_template( 'loop/nj-pagination.php', $args );
+}
+
+
+

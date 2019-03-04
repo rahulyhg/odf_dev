@@ -107,7 +107,7 @@
 
 
 	<?php //if(file_exists ( "/wp-content/plugins/js_composer/assets/css/js_composer.min.css" )){ ?>
-		<link rel="stylesheet" id="js_composer_front-css" href="/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=5.6" type="text/css" media="all">
+		<link rel="stylesheet" id="js_composer_front-css" href="<?php echo get_site_url(); ?>/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=5.6" type="text/css" media="all">
 	<?php //} ?>
 
 	<?php echo wp_enqueue_style( 'custom', get_template_directory_uri() . '/css/custom.css' ); ?>
@@ -162,69 +162,50 @@
 				<?php endif; ?>
 			</div><!-- .site-branding -->
 			<div class="vc_row vc_row_header">
-				<?php 
-					include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-					if ( !is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) ) {
-						echo '<div class="vc_col-sm-3"></div>';
-					}
-				?>
-				<div class="vc_col-sm-4">
-					<div class="vc_row block_header_appli">
-						<?php 
-							$applicationsh  = $wpdb->get_results( "SELECT * FROM wp_posts WHERE post_type = 'application' and post_status = 'publish'", OBJECT );
-							foreach($applicationsh as $key => $applicationh){
-								if(get_field("show_hide", $applicationh->ID) == "yes"){
-									?>
-									<a class="header_appli" href="<?php echo get_field( 'appli_url', $applicationh->ID ) ?>" target="_blanc">
-										<img src="<?php echo get_field( "icon_header", $applicationh->ID ); ?>" width="20">
-										<span><?php echo $applicationh->post_title; ?></span>
-									</a>
-									<?php
-								}
+				<div class="float_right">
+					<?php 
+						$applicationsh  = $wpdb->get_results( "SELECT * FROM wp_posts WHERE post_type = 'application' and post_status = 'publish'", OBJECT );
+						foreach($applicationsh as $key => $applicationh){
+							if(get_field("show_hide", $applicationh->ID) == "yes"){
+								?>
+								<a class="header_appli text-center" href="<?php echo get_field( 'appli_url', $applicationh->ID ) ?>" target="_blanc">
+									<img src="<?php echo get_field( "icon_header", $applicationh->ID ); ?>" width="20">
+									<span><?php echo $applicationh->post_title; ?></span>
+								</a>
+								<?php
 							}
-						?>
-					</div>		
-				</div>
-				<div class="vc_col-sm-4 header_social">
-					<div class="vc_row">
-						<div class="vc_col-sm-3 header_appli">
-							<?php if(get_option( 'mailto_check' )=="on") {?>
-								<a href="<?php echo get_option( 'mailto_url' ) ?>" target="_blank">
-									<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-mail-orange.png">
-								</a>
-							<?php } ?>
-						</div>
-						<div class="vc_col-sm-3 header_appli">
-							<?php if(get_option( 'youtube_check' )=="on") {?>
-								<a href="<?php echo get_option( 'youtube_url' ) ?>" target="_blank">
-									<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-youtube-orange.png">
-								</a>
-							<?php } ?>
-						</div>
-						<div class="vc_col-sm-3 header_appli">
-							<?php if(get_option( 'facebook_check' )=="on") {?>
-								<a href="<?php echo get_option( 'facebook_url' ) ?>" target="_blank">
-									<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-facebook-orange.png">
-								</a>
-							<?php } ?>
-						</div>
-						<div class="vc_col-sm-3 header_appli">
-							<?php if(get_option( 'instagram_check' )=="on") {?>
-								<a href="<?php echo get_option( 'instagram_url' ) ?>" target="_blank">
-									<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-instagram-orange.png">
-								</a>
-							<?php } ?>
-						</div>
-					</div>
-				</div>
-				<?php
-					if ( is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) ) {
-						echo '<div class="vc_col-sm-3 header-right">';
-						echo do_shortcode('[wpml_language_switcher][/wpml_language_switcher]');
-						echo'</div>';
-					}
-				?>	
-				<div class="vc_col-sm-1 header-right header-search">
+						}
+					?>
+
+					<?php if(get_option( 'mailto_check' )=="on") {?>
+						<a href="<?php echo get_option( 'mailto_url' ) ?>" target="_blank" class="header_social text-center">
+							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-mail-orange.png">
+						</a>
+					<?php } ?>
+					<?php if(get_option( 'youtube_check' )=="on") {?>
+						<a href="<?php echo get_option( 'youtube_url' ) ?>" target="_blank" class="header_social text-center">
+							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-youtube-orange.png">
+						</a>
+					<?php } ?>
+					<?php if(get_option( 'facebook_check' )=="on") {?>
+						<a href="<?php echo get_option( 'facebook_url' ) ?>" target="_blank" class="header_social text-center">
+							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-facebook-orange.png">
+						</a>
+					<?php } ?>
+					<?php if(get_option( 'instagram_check' )=="on") {?>
+						<a href="<?php echo get_option( 'instagram_url' ) ?>" target="_blank" class="header_social text-center">
+							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-instagram-orange.png">
+						</a>
+					<?php } ?>
+
+					<?php
+						if ( is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) ) {
+							echo '<div class="header-right">';
+							echo do_shortcode('[wpml_language_switcher][/wpml_language_switcher]');
+							echo'</div>';
+						}
+					?>
+
 					<a href="javascript:void(0)" id="div_header_mon_compte">
 						<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-search-orange.png">
 					</a>
@@ -236,13 +217,10 @@
 							<i class="fa fa-times ic_search" id="ic_search_icon" aria-hidden="true" style="display: inline;"></i>
 							<input type="text" value="" name="s" id="s" placeholder="Search">
 							<input type="submit" id="searchsubmit" value="">
-							<!-- <input type="hidden" name="post_type" value="product"> -->
+							<input type="hidden" name="post_type" value="product">
 						</div>
 					</form>
 				</div>
-
-
-
 			</div>
 		</div>
 		<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentysixteen' ); ?></a>

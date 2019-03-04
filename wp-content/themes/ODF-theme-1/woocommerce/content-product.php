@@ -23,6 +23,7 @@ global $product;
 if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
+if(false){
 ?>
 <li <?php wc_product_class(); ?>>
 	<?php
@@ -67,5 +68,27 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 */
 	do_action( 'woocommerce_after_shop_loop_item' );
 	?>
+</li>
+<?php } 
+?>
+<li <?php wc_product_class(); ?>>  
+<div class="produit">
+        <h3><?php echo $product->get_title(); ?></h3>  
+        <?php woocommerce_template_loop_product_thumbnail() ?>
+        <p><?php echo get_the_excerpt($product->get_id()); ?></p>
+        <div class="containeur-vote">  
+          <?php echo ns_product_rating_woocommerce_add_stars( "" ); ?>
+        </div>    
+        <div class="btn-produit">
+          <div class="btn-produit-a">
+		  
+            <a href="<?php echo get_home_url() ?>?post_type=product&add-to-cart=<?php echo $product->get_id() ?>" class="buy">Buy</a>
+          </div>
+          <div class="btn-produit-b">
+            <a href="<?php echo get_post_permalink($product->get_id()) ?>">Détails</a>
+          </div>
+        </div>
+      </div>
+
 </li>
 

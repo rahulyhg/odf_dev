@@ -5,8 +5,8 @@
  * Contains the closing of the #content div and all content after
  *
  * @package WordPress
- * @subpackage ODF-theme-1
- * @since ODF-theme-1 1.0
+ * @subpackage ODF-theme-2
+ * @since ODF-theme-2 1.0
  */
 ?>
 
@@ -14,7 +14,7 @@
  
 	</div><!-- .site-inner -->
 
-			<?php global $test_theme; ?>
+			<?php global $test_theme, $wpdb; ?>
 
 			<div class="div_footer">
 				<div class="vc_row">
@@ -38,20 +38,21 @@
 					<div class="vc_col-sm-2 mobile_50">
 						<?php dynamic_sidebar( 'footer-custom-column-4' ); ?>
 					</div>
-					<div class="vc_col-sm-2">				
+					<div class="vc_col-sm-2 text-center">				
 						<div class="vc_row">
-							<a class="footer_appli" href="https://www.apple.com/fr/ios/app-store/" target="_blanc">
-								<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-phone-white.png">
-								<span>IOT</span>
-							</a>
-							<a class="footer_appli" href="https://play.google.com/store/apps?hl=fr" target="_blanc">
-								<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-phone-white.png">
-								<span>Appli 1</span>
-							</a>
-							<a class="footer_appli" href="https://www.microsoft.com/en-us/store/apps" target="_blanc">
-								<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-phone-white.png">
-								<span>Appli 2</span>
-							</a>
+							<?php 
+								$applications  = $wpdb->get_results( "SELECT * FROM wp_posts WHERE post_type = 'application' and post_status = 'publish'", OBJECT );
+								foreach($applications as $key => $application){
+									if(get_field("show_hide", $application->ID) == "yes"){
+										?>
+										<a class="footer_appli" href="<?php echo get_field( 'appli_url', $application->ID ) ?>" target="_blanc">
+											<img src="<?php echo get_field( "icon_footer", $application->ID ); ?>" width="20">
+											<span><?php echo $application->post_title; ?></span>
+										</a>
+										<?php
+									}
+								}
+							?>
 						</div>			
 						<div class="vc_row">
 							<div class="vc_col-sm-12">

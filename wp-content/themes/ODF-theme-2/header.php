@@ -169,26 +169,27 @@
 					}
 				?>
 				<div class="vc_col-sm-4">
-					<div class="vc_row">
-						<a class="vc_col-sm-4 header_appli" href="https://www.apple.com/fr/ios/app-store/" target="_blanc">
-							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-phone-blue.png">
-							<span>IOT</span>
-						</a>
-						<a class="vc_col-sm-4 header_appli" href="https://play.google.com/store/apps?hl=fr" target="_blanc">
-							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-phone-blue.png">
-							<span>Appli 1</span>
-						</a>
-						<a class="vc_col-sm-4 header_appli" href="https://www.microsoft.com/en-us/store/apps" target="_blanc">
-							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-phone-blue.png">
-							<span>Appli 2</span>
-						</a>
+					<div class="vc_row block_header_appli">
+						<?php 
+							$applicationsh  = $wpdb->get_results( "SELECT * FROM wp_posts WHERE post_type = 'application' and post_status = 'publish'", OBJECT );
+							foreach($applicationsh as $key => $applicationh){
+								if(get_field("show_hide", $applicationh->ID) == "yes"){
+									?>
+									<a class="header_appli" href="<?php echo get_field( 'appli_url', $applicationh->ID ) ?>" target="_blanc">
+										<img src="<?php echo get_field( "icon_header", $applicationh->ID ); ?>" width="20">
+										<span><?php echo $applicationh->post_title; ?></span>
+									</a>
+									<?php
+								}
+							}
+						?>
 					</div>		
 				</div>
 				<div class="vc_col-sm-4 header_social">
 					<div class="vc_row">
 						<div class="vc_col-sm-3 header_appli">
 							<?php if(get_option( 'mailto_check' )=="on") {?>
-								<a href="mailto:<?php echo get_option( 'mailto_url' ) ?>" target="_top">
+								<a href="<?php echo get_option( 'mailto_url' ) ?>" target="_blank">
 									<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-mail-orange.png">
 								</a>
 							<?php } ?>
@@ -303,3 +304,8 @@
 		</header><!-- .site-header -->
 
 		<div id="content" class="site-content">
+			<?php
+			if ( function_exists('yoast_breadcrumb') ) {
+			  yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
+			}
+			?>

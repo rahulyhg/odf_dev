@@ -1040,8 +1040,8 @@ add_action('admin_init', 'my_general_section');
 function my_general_section()
 {
     add_settings_section(
-        'my_settings_section', // Section ID
-        'Theme options', // Section Title
+        'my_settings_theme_options_section', // Section ID
+        '<span style="border-bottom: 1px solid #c7c5c5; margin-top: 20px; padding: 10px 0;">Theme options</span>', // Section Title
         'my_section_options_callback', // Callback
         'general' // What Page?  This makes the section show up on the General Settings Page
     );
@@ -1051,7 +1051,7 @@ function my_general_section()
         'Logo URL', // Label
         'logo_url_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'logo_url' // Should match Option ID
         )
@@ -1062,7 +1062,7 @@ function my_general_section()
         'Favicon URL', // Label
         'favicon_url_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'favicon_url' // Should match Option ID
         )
@@ -1073,7 +1073,7 @@ function my_general_section()
         'Facebook URL', // Label
         'facebook_url_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'facebook_url' // Should match Option ID
         )
@@ -1083,7 +1083,7 @@ function my_general_section()
         'Enable Facebook icon ?', // Label
         'facebook_check_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'facebook_check' // Should match Option ID
         )
@@ -1094,7 +1094,7 @@ function my_general_section()
         'Youtube URL', // Label
         'youtube_url_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'youtube_url' // Should match Option ID
         )
@@ -1104,7 +1104,7 @@ function my_general_section()
         'Enable Youtube icon ?', // Label
         'youtube_check_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'youtube_check' // Should match Option ID
         )
@@ -1115,7 +1115,7 @@ function my_general_section()
         'Instagram URL', // Label
         'instagram_url_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'instagram_url' // Should match Option ID
         )
@@ -1125,7 +1125,7 @@ function my_general_section()
         'Enable Instagram icon ?', // Label
         'instagram_check_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'instagram_check' // Should match Option ID
         )
@@ -1136,7 +1136,7 @@ function my_general_section()
         'Set the mail', // Label
         'mailto_url_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'mailto_url' // Should match Option ID
         )
@@ -1146,7 +1146,7 @@ function my_general_section()
         'Enable Send Mail icon ?', // Label
         'mailto_check_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'mailto_check' // Should match Option ID
         )
@@ -1167,6 +1167,26 @@ function my_general_section()
     register_setting('general', 'mailto_url', 'esc_attr');
     register_setting('general', 'mailto_check', 'esc_attr');
 
+
+
+    add_settings_section(
+        'my_settings_catalog_section', // Section ID
+        '<span style="border-bottom: 1px solid #c7c5c5; margin-top: 20px; padding: 10px 0;">Catalog settings</span>', // Section Title
+        'my_section_catalog_callback', // Callback
+        'general' // What Page?  This makes the section show up on the General Settings Page
+    );
+    add_settings_field( // Option 1
+        'enable_button_buy', // Option ID
+        'Enable Button buy ?', // Label
+        'enable_button_buy_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_catalog_section', // Name of our section
+        array( // The $args
+            'enable_button_buy' // Should match Option ID
+        )
+    );
+    register_setting('general', 'enable_button_buy', 'esc_attr');
+
 }
 
 function my_section_options_callback()
@@ -1179,6 +1199,10 @@ function my_section_options_callback()
 		}
 	</style>
     <?php
+}
+function my_section_catalog_callback()
+{ 
+	// Section Callback
 }
 
 function logo_url_callback($args)
@@ -1258,6 +1282,16 @@ function mailto_check_callback($args) {
 	echo '<input "'.$checked.'" id="' . $args[0] . '" name="' . $args[0] . '" type="checkbox" />';
 }
 
+function enable_button_buy_callback($args) {
+	$options = get_option('plugin_options');
+    $option = get_option($args[0]);
+	if($option) { $checked = ' checked="checked" '; }
+	echo '<input "'.$checked.'" id="' . $args[0] . '" name="' . $args[0] . '" type="checkbox" />';
+}
+
+
+
+
 /**
  * Change number or products per row to 3
  */
@@ -1322,5 +1356,34 @@ function nj_woocommerce_pagination(){
 		wc_get_template( 'loop/nj-pagination.php', $args );
 }
 
+//Texo Term
+include get_template_directory() .'/inc/texo-term-meta.php';  
 
 
+
+add_filter( 'template_include', 'portfolio_page_template', 99 );
+
+function portfolio_page_template( $template ) {
+global $post;
+	if ( is_product()) {
+		
+		$terms =  get_the_terms( $post->ID, 'product_cat' );
+		if ( $terms && ! is_wp_error( $terms ) ) {
+			foreach($terms as $term){
+				$product_model = get_term_meta( $term->term_id, 'product_model', true );
+			
+				if($product_model && $product_model != "model-default"){
+					$file= get_template_directory()."/template-parts/product-single/".$product_model.".php";   
+					if(file_exists ($file)){
+						return $file;
+					}     
+				}
+			}
+			
+			
+		}
+	
+	}
+
+	return $template;
+}

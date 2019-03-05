@@ -82,7 +82,8 @@ if(false){
         <div class="btn-produit">
           <div class="btn-produit-a">
 		  
-            <a href="<?php echo get_home_url() ?>?post_type=product&add-to-cart=<?php echo $product->get_id() ?>" class="buy">Buy</a>
+            <a href="<?php echo get_home_url() ?>?post_type=product&add-to-cart=<?php echo $product->get_id() ?>" class="buy odf_display_botton_buy">Buy</a>
+            <?php echo get_field('button_buy_url',$product->ID); ?>
           </div>
           <div class="btn-produit-b">
             <a href="<?php echo get_post_permalink($product->get_id()) ?>">Détails</a>

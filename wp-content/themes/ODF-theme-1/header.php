@@ -22,7 +22,16 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif; ?>
 
-	<style>
+	<style type="text/css">
+		:root {
+	    	--odf-display-botton-buy: <?php 
+	    		if(get_option( 'enable_botton_buy' ) == "on") {
+		    		echo 'block;';
+		    	}else{
+		    		echo 'none;';
+		    	}
+	    	 ?>; 
+	    }
 		
 		/************ loader **********/
 		#preloader {
@@ -116,7 +125,6 @@
 
 
 <body <?php body_class(); ?>>
-
 
 <div id="preloader" style="display: block">
   <div id="loader"></div>

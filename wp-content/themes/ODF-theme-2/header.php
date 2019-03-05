@@ -23,6 +23,15 @@
 	<?php endif; ?>
 
 	<style>
+		:root {
+	    	--odf-display-botton-buy: <?php 
+	    		if(get_option( 'enable_botton_buy' ) == "on") {
+		    		echo 'block;';
+		    	}else{
+		    		echo 'none;';
+		    	}
+	    	 ?>; 
+	    }
 		
 		/************ loader **********/
 		#preloader {

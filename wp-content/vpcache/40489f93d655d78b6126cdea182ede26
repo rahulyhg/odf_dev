@@ -1,0 +1,8 @@
+[VP] Updated plugin 'Strong Testimonials'
+
+VP-Action: plugin/update/strong-testimonials/strong-testimonials.php
+VP-Plugin-Name: Strong Testimonials
+
+
+X-VP-Version: 4.0-beta
+X-VP-Environment: default

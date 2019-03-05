@@ -1,0 +1,10 @@
+[VP] Updated usermeta 'wplc_chat_agent_online'
+
+VP-Action: usermeta/update/000D20C8D4DC4C43A494DC3733CFDDAA
+VP-User-Id: CB40BDBEB8BC43C3BEC746EECFC407E2
+VP-UserMeta-Key: wplc_chat_agent_online
+VP-User-Login: 
+
+
+X-VP-Version: 4.0-beta
+X-VP-Environment: default

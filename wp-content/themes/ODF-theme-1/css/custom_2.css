@@ -1,3 +1,4 @@
+/*theme1*/
 .figure_woocomerce .full-width{
   width:100%;
   height:100%;
@@ -77,7 +78,7 @@
 }
 .btn-produit-a,.btn-produit-b{
   border-right: 1px #e1e1e1 solid ;
-  width: 114px;
+  width: 49%;
   float:left;
   padding-top:7px;
   text-align: center;
@@ -438,9 +439,10 @@
   width: 120px;
 }
 .btns-single-product a span{
-  display:block;
-  float:left;
-  margin-left: 3px;
+	text-align: center;
+	display: block;
+	float: left;
+	width: 141px;
 }
 .feedback{
   width: 800px;
@@ -816,4 +818,12 @@ div#ns-rating-woocom-post-rate-div-897 {
 		}
     }
 /*** Responsives ***/
-
+.single-product .icon-btn{
+	width:20px!important;
+}
+.btns-single-product a span{
+	
+}
+.button_allfaq{
+	display:none!important;
+}

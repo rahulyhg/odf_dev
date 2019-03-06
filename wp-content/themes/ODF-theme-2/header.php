@@ -25,7 +25,7 @@
 	<style>
 		:root {
 	    	--odf-display-botton-buy: <?php 
-	    		if(get_option( 'enable_botton_buy' ) == "on") {
+	    		if(get_option( 'enable_button_buy' ) == "on") {
 		    		echo 'block;';
 		    	}else{
 		    		echo 'none;';

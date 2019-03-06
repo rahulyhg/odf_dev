@@ -1402,6 +1402,15 @@ if (!function_exists('loop_columns')) {
 	}
 }
 
+function enable_button_buy_callback($args) {
+	$options = get_option('plugin_options');
+    $option = get_option($args[0]);
+	if($option) { $checked = ' checked="checked" '; }
+	echo '<input "'.$checked.'" id="' . $args[0] . '" name="' . $args[0] . '" type="checkbox" />';
+}
+
+
+
 /**
  * Change number of products that are displayed per page (shop page)
  */

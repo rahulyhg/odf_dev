@@ -2317,7 +2317,7 @@
     	height: 458px !important;
     }
     .row_grid_product_2 .vc_gitem-row-position-top .vc_gitem-post-data-source-post_excerpt{
-		margin-top: 77px;
+		margin-top: 0;
     }
 
     .row_grid_product_2 .vc_gitem-zone-mini{
@@ -2336,6 +2336,14 @@
 	    font-size: 14px;
 	    line-height: 20px;
 	    margin-top: 20px;
+		overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: -webkit-box;
+	    line-height: 16px;
+	    max-height: 46px;
+	    -webkit-line-clamp: 3;
+	    -webkit-box-orient: vertical;
+	    margin-bottom: 89px;
 	}
     .row_grid_product_2_column h3{
     	color: #028dd1;
@@ -2343,7 +2351,8 @@
 		margin-top: 15px !important;
     }
     .row_grid_product_2_column .vc_gitem-row-position-top img {
-	    max-height: 115px;
+	    max-height: 110px;
+		width: auto !important;
 	}
     .row_grid_product_2_column .vc_gitem-row-position-bottom .vc_col-sm-6.vc_gitem-col {
 	    text-align: center;
@@ -2668,8 +2677,13 @@
 	.btn-produit-b-center {
 	    border-right: none!important;
 	    margin: 0 auto;
-	    float: none;
+	    float: none !important;
 	}
+
+	.products.columns-4 .produit p {
+	    line-height: 17px;
+	}
+
 /* woocommerce products list*/
 
 /* woocommerce product details*/
@@ -2748,6 +2762,49 @@
 	    left: 10px;
 	}
 /* woocommerce product details*/
+
+
+
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+    border: initial;
+    border-radius: initial;
+    padding: initial;
+    height: initial;
+}
+
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product .produit {
+    width: 100%;
+}
+
+
+.woocommerce-page ul.products li.product .produit img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail {
+    width: auto;
+    height: 120px;
+}
+
+.containeur-vote {
+    position: relative !important;
+    bottom: 0px !important;
+    padding-left: 0px !important;
+}
+
+div#ns-rating-woocom-post-rate-div-897 {
+    height: 50px !important;
+}
+
+.ns-rating-woocom-rate-info {
+    display: none !important;
+}
+
+.pagination-footer {
+    margin-top: 0 !important;  
+}
+   
+.woocommerce ul.products.columns-4 li.product, .woocommerce-page ul.products.columns-4 li.product {
+    width: 22%;
+}
+
+
 
 /* comments*/
 	.single-product .comments-area{

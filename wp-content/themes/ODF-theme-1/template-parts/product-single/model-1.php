@@ -56,9 +56,7 @@ global $product, $wpdb;
 <div class="clear"></div>
 <h2 class="demo-product">DEMO PRODUCT</h2>
 <div class="demo-product-2">
-   <!-- <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/demo-product-2.png" /> -->
-
-   <?php echo do_shortcode('[wr360embed name="view01" width="100%" height="500px" config="'.get_stylesheet_directory_uri().'/webrotate/config.xml"]'); ?>
+   <?php echo do_shortcode('[wr360embed name="view01" width="100%" height="500px" config="'.get_field('_wr360config', $product->get_id()).'"]'); ?>
 </div>
 
 <div class="pagination_product_details">

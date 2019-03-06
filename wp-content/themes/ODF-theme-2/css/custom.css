@@ -1894,6 +1894,9 @@
     .vc_gitem-zone-a .vc_gitem-row-position-bottom, .vc_gitem-zone-b .vc_gitem-row-position-bottom{
         position: relative !important;
     }
+    .vc_gitem-zone-a .vc_gitem-row-position-bottom {
+	    top: 36px;
+	}
     .vc_row {
         margin-bottom: 0!important;
     }
@@ -2318,6 +2321,7 @@
     }
     .row_grid_product_2 .vc_gitem-row-position-top .vc_gitem-post-data-source-post_excerpt{
 		margin-top: 0;
+		height: 70px;
     }
 
     .row_grid_product_2 .vc_gitem-zone-mini{
@@ -2336,14 +2340,14 @@
 	    font-size: 14px;
 	    line-height: 20px;
 	    margin-top: 20px;
-		overflow: hidden;
+		/*overflow: hidden;
 	    text-overflow: ellipsis;
 	    display: -webkit-box;
 	    line-height: 16px;
 	    max-height: 46px;
 	    -webkit-line-clamp: 3;
 	    -webkit-box-orient: vertical;
-	    margin-bottom: 70px;
+	    margin-bottom: 70px;*/
 	}
     .row_grid_product_2_column h3{
     	color: #028dd1;

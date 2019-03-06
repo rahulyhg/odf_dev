@@ -42,7 +42,7 @@
 		    height: 100%;
 			z-index: 9999999999999;			
 		    background: #ffffff;
-		    opacity: 0.9;
+		    opacity: 0.96;
 		}
 		#loader {
 		    display: block;

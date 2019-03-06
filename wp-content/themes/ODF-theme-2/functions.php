@@ -1496,3 +1496,19 @@ global $post;
 
 	return $template;
 }
+
+
+
+
+add_filter('avf_postgrid_excerpt_length','avf_postgrid_excerpt_length_mod', 10, 1);
+function avf_postgrid_excerpt_length_mod($length)
+{
+   $length = 3;
+   return $length;
+}
+
+
+function custom_excerpt_length( $length ) {
+    return 25;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );

@@ -1386,3 +1386,12 @@ global $post;
 
 	return $template;
 }
+
+
+
+add_filter('avf_postgrid_excerpt_length','avf_postgrid_excerpt_length_mod', 10, 1);
+function avf_postgrid_excerpt_length_mod($length)
+{
+   $length = 3;
+   return $length;
+}

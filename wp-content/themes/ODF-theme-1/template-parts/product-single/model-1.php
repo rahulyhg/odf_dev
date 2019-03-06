@@ -8,27 +8,9 @@
  */
 
 get_header(); 
-global $product;
-
-/*$products_caracteristics = get_field('product_caracteristics_multiple', $product->get_id());
-foreach ($products_caracteristics as $product_caracteristic) {
-   echo $product_caracteristic->post_title;
-   echo '<img src="'.get_field("custom_icon_product", $product_caracteristic->ID).'">';
-   echo '<img src="'.get_the_post_thumbnail_url($product_caracteristic->ID).'">';
-   echo $product_caracteristic->post_content;
-   echo '<br>';
-}*/
-
+global $product, $wpdb;
 
 ?>
-
-<div id="primary" class="content-area">
-	<main id="main" class="site-main" role="main">
-		Model 1 
-	</main>
-</div>
-
-
 <div class="product-detail-2">
    <div class="img-medium-product">
       <img src="<?php echo get_the_post_thumbnail_url($product->get_id()); ?>" />
@@ -68,13 +50,15 @@ foreach ($products_caracteristics as $product_caracteristic) {
 <div class="clear"></div>
 <div class="btns-single-product">
    <a href="#modal" class="request-sample"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn1-detail-product.png" /></span><span>Request sample</span></a>
-   <a href="#" class="buy"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn3-detail-product.png" /></span><span>Buy</span></a>
+   <a href="<?php echo get_field('button_buy_url',$product->get_id()); ?>" class="buy odf_display_botton_buy"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn3-detail-product.png" /></span><span>Buy</span></a>
    <a href="#" class="find-shop"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn2-detail-product.png" /></span><span>Find shop</span></a>
 </div>
 <div class="clear"></div>
 <h2 class="demo-product">DEMO PRODUCT</h2>
 <div class="demo-product-2">
-   <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/demo-product-2.png" />
+   <!-- <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/demo-product-2.png" /> -->
+
+   <?php echo do_shortcode('[wr360embed name="view01" width="100%" height="500px" config="'.get_stylesheet_directory_uri().'/webrotate/config.xml"]'); ?>
 </div>
 
 <div class="pagination_product_details">

@@ -8,15 +8,9 @@
  */
 
 get_header();
-global $product;
+global $product, $wpdb;
 
 ?>
-
-<div id="primary" class="content-area">
-	<main id="main" class="site-main" role="main">
-		Model 2
-	</main>
-</div>
 
 <div class="single-product">
    <h1><?php echo $product->get_title(); ?></h1>
@@ -28,7 +22,7 @@ global $product;
    </p>
    <div class="btns-single-product">
       <a href="#modal" class="request-sample"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn1-detail-product.png" /></span><span>Request sample</span></a>
-      <a href="#" class="buy"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn3-detail-product.png" /></span><span>Buy</span></a>
+      <a href="<?php echo get_field('button_buy_url',$product->get_id()); ?>" class="buy odf_display_botton_buy"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn3-detail-product.png" /></span><span>Buy</span></a>
       <a href="#" class="find-shop"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn2-detail-product.png" /></span><span>Find shop</span></a>
    </div>
    <br><br>
@@ -56,33 +50,53 @@ global $product;
       <h2>Demo product</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut commodo odio eros, eget placerat libero venenatis posuere. Mauris scelerisque dignissim lacus ac molestie. Sed a elit est. Donec in eros eu metus eleifend aliquet. Pellentesque non nibh turpis. Aenean eget dui interdum, facilisis justo sit amet, commodo lectus. Integer placerat, erat vitae auctor ornare, est nunc tempus leo, vel molestie lacus felis vitae tellus.</p>
       <h3 class="title-demo-product">Product size</h3>
+
+
+      <div class="img-above-360">
+         <?php echo '<img src="'.get_field('product_small_image', $product->get_id()).'" width="150" />'; ?>
+         <?php echo '<img src="'.get_field('product_medium_image', $product->get_id()).'" width="300" />'; ?>
+         <?php echo '<img src="'.get_field('product_large_image', $product->get_id()).'" width="500" />'; ?>
+      </div>
       <div class="img-360">
+         <?php echo do_shortcode('[wr360embed name="view01" width="100%" height="500px" config="/wp-content/plugins/webrotate-360-product-viewer/360_assets/sampleshoe/config.xml"]'); ?>
+         <?php echo get_field('_wr360config', $product->get_id()); ?>
          <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/demo-product.png" />
       </div>
    </div>
    <div class="after-demo-product">
-      <h2>Le Lorem Ipsum est</h2>
-      <span class="span-h2">simplement du faux texte</span>
+      <h2><?php echo get_field('title_middle_page', $product->get_id()); ?></h2>
+      <!-- <span class="span-h2">simplement du faux texte</span> -->
       <span class="description">
-      Depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles,
+         <?php echo get_field('description_middle_page', $product->get_id()); ?>
       </span>
-      <img class="logo-id" src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/logo-id.png" />
-      <img class="canbebe-3-box" src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/canbebe-3-box.png" />
+      <img class="logo-id" src="<?php echo get_field('logo_middle_page', $product->get_id()); ?>" />
+      <img class="canbebe-3-box" src="<?php echo get_field('image_middle_page', $product->get_id()); ?>" />
    </div>
-   <div class="feedback">
-      <a class="carrousel-prev" href="#"></a>
-      <div class="feedback-content">
-         <div class="feedback-img">
-            <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/img1-feedback.png" />
-         </div>
-         <div class="feedback-content-body">
-            <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/feedback.png" />
-            <h4>Alexander havard</h4>
-            <p>Depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles,</p>
-         </div>
-      </div>
-      <a class="carrousel-next" href="#"></a>
-   </div>
+
+
+<div class="feedback-carousel owl-carousel">
+   <?php
+      $wpm_testimonials = $wpdb->get_results("select * from {$wpdb->prefix}posts where post_status = 'publish' and post_type = 'wpm-testimonial' ");
+      foreach ($wpm_testimonials as $wpm_testimonial) {
+         ?>
+         <div class="feedback">
+            <div class="feedback-content">
+               <div class="feedback-img">
+                  <img src="<?php echo get_the_post_thumbnail_url($wpm_testimonial->ID); ?>" />
+               </div>
+               <div class="feedback-content-body">
+                  <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/feedback.png" />
+                  <h4><?php echo $wpm_testimonial->post_title; ?></h4>
+                  <p><?php echo get_the_excerpt($wpm_testimonial->ID); ?></p>
+               </div>
+            </div>
+         </div> 
+
+         <?php
+      }
+   ?>
+</div>
+
 </div>
 <br><br><br>
 
@@ -92,5 +106,31 @@ global $product;
    <?php previous_post_link('%link', ''); ?>
 </div>
 
+
+<?php echo wp_enqueue_style( 'carouselcss', get_template_directory_uri() . '/css/owl.carousel.min.css' ); ?>
+<?php 
+wp_register_script('carouseljs', get_stylesheet_directory_uri() . '/js/owl.carousel.min.js');
+    wp_enqueue_script('carouseljs');
+    ?>
+<script>
+   jQuery(document).ready(function(){
+        jQuery('.owl-carousel').owlCarousel({
+          loop:true,
+          margin:10,
+          nav:true,
+          responsive:{
+              0:{
+                  items:1
+              },
+              600:{
+                  items:1
+              },
+              1000:{
+                  items:1
+              }
+          }
+      })
+});
+</script>
 
 <?php get_footer(); ?>

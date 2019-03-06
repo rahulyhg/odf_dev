@@ -746,71 +746,6 @@ function custom_post_type() {
         )
     );
 
-
-
-    /*// products details
-    $labels_product_details = array(
-        'name'                  => _x( 'Products Details', 'Post Type General Name', 'text_domain' ),
-        'singular_name'         => _x( 'Product Details', 'Post Type Singular Name', 'text_domain' ),
-        'menu_name'             => __( 'Products Details', 'text_domain' ),
-        'name_admin_bar'        => __( 'Products Details', 'text_domain' ),
-        'archives'              => __( 'Product Details Archives', 'text_domain' ),
-        'attributes'            => __( 'Product Details Attributes', 'text_domain' ),
-        'parent_item_colon'     => __( 'Parent Product Details:', 'text_domain' ),
-        'all_items'             => __( 'All Products Details', 'text_domain' ),
-        'add_new_item'          => __( 'Add New Product Details', 'text_domain' ),
-        'add_new'               => __( 'Add New', 'text_domain' ),
-        'new_item'              => __( 'New Product Details', 'text_domain' ),
-        'edit_item'             => __( 'Edit Product Details', 'text_domain' ),
-        'update_item'           => __( 'Update Product Details', 'text_domain' ),
-        'view_item'             => __( 'View Product Details', 'text_domain' ),
-        'view_items'            => __( 'View Products Details', 'text_domain' ),
-        'search_items'          => __( 'Search Product Details', 'text_domain' ),
-        'not_found'             => __( 'Not found', 'text_domain' ),
-        'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
-        'featured_image'        => __( 'Featured Image', 'text_domain' ),
-        'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
-        'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
-        'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
-        'insert_into_item'      => __( 'Insert into product details', 'text_domain' ),
-        'uploaded_to_this_item' => __( 'Uploaded to this product details', 'text_domain' ),
-        'items_list'            => __( 'Products Details list', 'text_domain' ),
-        'items_list_navigation' => __( 'Products Details list navigation', 'text_domain' ),
-        'filter_items_list'     => __( 'Filter products details list', 'text_domain' ),
-    );
-    $args_product_details = array(
-        'label'                 => __( 'Product Details', 'text_domain' ),
-        'description'           => __( 'Product Details Description', 'text_domain' ),
-        'labels'                => $labels_product_details,
-        'supports'              => array( 'title', 'editor', 'thumbnail' ),
-            'taxonomies' => array( 'product_details_category', 'product_details_tag' ),
-        'hierarchical'          => false,
-        'public'                => true,
-        'show_ui'               => true,
-        'show_in_menu'          => true,
-        'menu_position'         => 5,
-        'show_in_admin_bar'     => true,
-        'show_in_nav_menus'     => true,
-        'can_export'            => true,
-        'has_archive'           => true,
-        'exclude_from_search'   => false,
-        'publicly_queryable'    => true,
-        'capability_type'       => 'page',
-    );
-    register_post_type( 'product_details', $args_product_details );
-    register_taxonomy( 'product_details_category', // register custom taxonomy - quote category
-        'products_details',
-        array( 'hierarchical' => true,
-            'label' => __( 'products_details categories' )
-        )
-    );
-    register_taxonomy( 'product_details_tag', // register custom taxonomy - quote tag
-        'products_details',
-        array( 'hierarchical' => false,
-            'label' => __( 'products_details tags' )
-        )
-    );*/
-
     // products Caracteristics
     $labels_product_caracteristics = array(
         'name'                  => _x( 'Products Caracteristics', 'Post Type General Name', 'text_domain' ),
@@ -848,7 +783,7 @@ function custom_post_type() {
         'supports'              => array( 'title', 'editor', 'thumbnail' ),
             'taxonomies' => array( 'product_caracteristics_category', 'product_caracteristics_tag' ),
         'hierarchical'          => false,
-        'public'                => true,
+        'public'                => false,
         'show_ui'               => true,
         'show_in_menu'          => true,
         'menu_position'         => 5,
@@ -856,8 +791,9 @@ function custom_post_type() {
         'show_in_nav_menus'     => true,
         'can_export'            => true,
         'has_archive'           => true,
-        'exclude_from_search'   => false,
-        'publicly_queryable'    => true,
+        'exclude_from_search'   => true,
+        'publicly_queryable'    => false,
+        'rewritre'				=> false,
         'capability_type'       => 'page',
     );
     register_post_type( 'product_details', $args_product_caracteristics );
@@ -1206,7 +1142,7 @@ function my_general_section()
     );
     add_settings_field( // Option 1
         'mailto_check', // Option ID
-        'Enable Send Mail icon ?', // Label
+        'Enable Blog icon ?', // Label
         'mailto_check_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
         'my_settings_theme_options_section', // Name of our section
@@ -1371,7 +1307,7 @@ if (!function_exists('loop_columns')) {
 add_filter( 'loop_shop_per_page', 'perpage_shop_products', 20 );
 function perpage_shop_products()
 {
-    $product_per_page=9; //change according to your need
+    $product_per_page=12; //change according to your need
     return $product_per_page;
 }
 

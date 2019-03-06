@@ -58,8 +58,9 @@ global $product, $wpdb;
          <?php echo '<img src="'.get_field('product_large_image', $product->get_id()).'" width="500" />'; ?>
       </div>
       <div class="img-360">
-         <?php echo do_shortcode('[wr360embed name="view01" width="100%" height="500px" config="'.get_stylesheet_directory_uri().'/webrotate/config.xml"]'); ?>
-         <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/demo-product.png" />
+         <?php echo do_shortcode('[wr360embed name="view01" width="100%" height="500px" config="/wp-content/plugins/webrotate-360-product-viewer/360_assets/sampleshoe/config.xml"]'); ?>
+         <?php echo get_field('_wr360config', $product->get_id()); ?>
+         <!-- <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/demo-product.png" /> -->
       </div>
    </div>
    <div class="after-demo-product">

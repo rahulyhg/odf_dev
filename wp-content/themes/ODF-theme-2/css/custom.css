@@ -2695,7 +2695,7 @@
 	}
 	.btns-single-product a {
 	    font-size: 20px;
-	    width: 204px;
+	    width: 204px !important;
 	}
 	.wr360_player .container {
 		margin: 0 auto !important;

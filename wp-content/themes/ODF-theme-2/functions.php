@@ -1259,7 +1259,7 @@ function my_general_section()
     );
     add_settings_field( // Option 1
         'mailto_check', // Option ID
-        'Enable Send Mail icon ?', // Label
+        'Enable Blog icon ?', // Label
         'mailto_check_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
         'my_settings_section', // Name of our section
@@ -1282,6 +1282,24 @@ function my_general_section()
 
     register_setting('general', 'mailto_url', 'esc_attr');
     register_setting('general', 'mailto_check', 'esc_attr');
+
+    add_settings_section(
+        'my_settings_catalog_section', // Section ID
+        '<span style="border-bottom: 1px solid #c7c5c5; margin-top: 20px; padding: 10px 0;">Catalog settings</span>', // Section Title
+        'my_section_catalog_callback', // Callback
+        'general' // What Page?  This makes the section show up on the General Settings Page
+    );
+    add_settings_field( // Option 1
+        'enable_button_buy', // Option ID
+        'Enable Button buy ?', // Label
+        'enable_button_buy_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_catalog_section', // Name of our section
+        array( // The $args
+            'enable_button_buy' // Should match Option ID
+        )
+    );
+    register_setting('general', 'enable_button_buy', 'esc_attr');
 
 }
 

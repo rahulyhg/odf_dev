@@ -23,6 +23,7 @@ global $product;
 if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
+if(false){
 ?>
 <li <?php wc_product_class(); ?>>
 	<?php
@@ -47,6 +48,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_product_title - 10
 	 */
 	do_action( 'woocommerce_shop_loop_item_title' );
+	
 
 	/**
 	 * Hook: woocommerce_after_shop_loop_item_title.
@@ -55,6 +57,8 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_price - 10
 	 */
 	do_action( 'woocommerce_after_shop_loop_item_title' );
+
+	echo get_the_excerpt($product->get_id());
 
 	/**
 	 * Hook: woocommerce_after_shop_loop_item.
@@ -65,4 +69,27 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	do_action( 'woocommerce_after_shop_loop_item' );
 	?>
 </li>
+<?php } 
+?>
+<li <?php wc_product_class(); ?>>  
+<div class="produit">
+        <h3><?php echo $product->get_title(); ?></h3>  
+        <?php woocommerce_template_loop_product_thumbnail() ?>
+        <p><?php echo get_the_excerpt($product->get_id()); ?></p>
+        <div class="containeur-vote">  
+          <?php echo ns_product_rating_woocommerce_add_stars( "" ); ?>
+        </div>    
+        <div class="btn-produit">
+          <div class="btn-produit-a odf_display_botton_buy">
+            <!-- <a href="<?php echo get_home_url() ?>?post_type=product&add-to-cart=<?php echo $product->get_id() ?>" class="buy odf_display_botton_buy">Buy</a> -->
+            <a href="<?php echo get_field('button_buy_url',$product->ID); ?>" class="buy odf_display_botton_buy" target="_blanc">Buy</a>
+          </div>
+          <div class="btn-produit-b <?php if(get_option( 'enable_button_buy' ) != 'on') { echo 'btn-produit-b-center'; } ?>">
+            <a href="<?php echo get_post_permalink($product->get_id()) ?>">Détails</a>
+          </div>
+        </div>
+      </div>
 
+</li>
+
+<!-- btn-produit-b-center -->

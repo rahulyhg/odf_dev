@@ -1249,7 +1249,7 @@ function my_general_section()
     
     add_settings_field( // Option 1
         'mailto_url', // Option ID
-        'Set the mail', // Label
+        'Set blog url', // Label
         'mailto_url_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
         'my_settings_section', // Name of our section
@@ -1428,7 +1428,9 @@ function perpage_shop_products()
 add_action( 'loop_shop_columns', 'fcn_nj_loop_shop_columns',90 );  
 function fcn_nj_loop_shop_columns($columns){ 
 	if(isset($_GET['columns'])){
-		return $_GET['columns'];
+		if($_GET['columns'] > 1 ){
+			return $_GET['columns'];
+		}
 	}
 	return 3;    
 }
@@ -1499,16 +1501,119 @@ global $post;
 
 
 
-
-add_filter('avf_postgrid_excerpt_length','avf_postgrid_excerpt_length_mod', 10, 1);
-function avf_postgrid_excerpt_length_mod($length)
-{
-   $length = 3;
-   return $length;
-}
-
-
 function custom_excerpt_length( $length ) {
     return 25;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+
+
+add_shortcode('show_slider_product_rating', 'show_slider_product_rating');
+function show_slider_product_rating(){
+	global $product, $post;
+
+	echo '--<pre>';
+	print_r($product);
+	print_r($post);
+	echo '</pre>';
+	
+	echo ns_product_rating_woocommerce_add_stars( "" );
+}
+
+add_filter( 'vc_grid_item_shortcodes', 'my_module_add_grid_shortcodes1' );
+function my_module_add_grid_shortcodes1( $shortcodes ) {
+ $shortcodes['vc_say_hello'] = array(
+ 'name' => __( 'Say Hello', 'my-text-domain' ),
+ 'base' => 'vc_say_hello',
+ 'category' => __( 'Content', 'my-text-domain' ),
+ 'description' => __( 'Just outputs Hello World', 'my-text-domain' ),
+ 'post_type' => Vc_Grid_Item_Editor::postType(),
+  );
+ return $shortcodes;
+}
+ 
+add_shortcode( 'vc_say_hello', 'vc_say_hello_render' );
+function vc_say_hello_render() {
+ //return '<h2>{{ post_data:ID }}</h2>';
+ // global $product, $post;   
+	echo do_shortcode("[product_start id='{{ post_data:ID }}' req='select meta_value from wp_postmeta where post_id = {{ post_data:ID }} and meta_key = \"_ns_prw_post_rate\"' ]");   
+	//return ns_product_rating_woocommerce_add_stars('{{ post_data }}');
+	// print_r($product);
+	// print_r($post);
+	// print_r($post_data);
+
+
+	// return ns_product_rating_woocommerce_add_stars( $post_data );
+	
+}
+
+   
+add_shortcode( 'product_start', 'fcn_product_start' );
+function fcn_product_start($attr){ 
+
+	$post=new stdClass;     
+
+	$post->ID = $attr['id'];
+	$customproductid = $attr['id'];
+
+	global $wpdb;
+	$tttt = $wpdb->get_var($attr['req'], OBJECT);
+
+	$post_rate_    =  get_field('_ns_prw_post_rate', $customproductid) ;
+	$rating_count_ =  get_field('_ns_prw_post_rate_count', $customproductid) ;
+	$post_rate    = floatval( get_post_meta( $customproductid, '_ns_prw_post_rate', true ) );
+	$rating_count = intval( get_post_meta( $customproductid, '_ns_prw_post_rate_count', true ) );
+	$post_rate = 3.5;
+	?>
+	<style>
+		.rating_color_yellow {
+			color: #FFED85 !important;
+		}
+	</style>
+	<div class="ns-rating-woocom-post-rate" id="ns-rating-woocom-post-rate-div-<?php echo $post->ID ?>">
+	    <div id="ns-rating-woocom-rating-container-<?php echo $post->ID ?>" class="ns-rating-woocom-rating">
+	        <form method="post" id="ns-rating-woocom-post-rate-<?php echo $post->ID ?>" class="ns-rating-woocom-form">
+
+	            <span class="ns-rating-woocom-fieldset-read">
+	                <input  disabled="disabled"  type="radio" id="star5-<?php echo $post->ID ?>" name="rate<?php echo $post->ID ?>" value="5" />
+	                <label class=" <?php if($post_rate >= 5) echo 'rating_color_yellow';  ?> ns-rating-woocom-full" for="star5-<?php echo $post->ID ?>" title="Perfect - 5 stars"></label>
+
+	                <input  disabled="disabled" type="radio" id="star4half-<?php echo $post->ID ?>" name="rate<?php echo $post->ID ?>" value="4.5" />
+	                <label class=" <?php if($post_rate >= 4.5) echo 'rating_color_yellow';  ?> ns-rating-woocom-half" for="star4half-<?php echo $post->ID ?>" title="Excellent - 4.5 stars"></label>
+
+	                <input  disabled="disabled" type="radio" id="star4-<?php echo $post->ID ?>" name="rate<?php echo $post->ID ?>" value="4" />
+	                <label class=" <?php if($post_rate >= 4) echo 'rating_color_yellow';  ?> ns-rating-woocom-full" for="star4-<?php echo $post->ID ?>" title="Very Good - 4 stars"></label>
+
+	                <input  disabled="disabled" type="radio" id="star3half-<?php echo $post->ID ?>" name="rate<?php echo $post->ID ?>" value="3.5" />
+	                <label class=" <?php if($post_rate >= 3.5) echo 'rating_color_yellow';  ?> ns-rating-woocom-half" for="star3half-<?php echo $post->ID ?>" title="Good - 3.5 stars"></label>
+
+	                <input disabled="disabled" type="radio" id="star3-<?php echo $post->ID ?>" name="rate<?php echo $post->ID ?>" value="3" />
+	                <label class=" <?php if($post_rate >= 3) echo 'rating_color_yellow';  ?> ns-rating-woocom-full" for="star3-<?php echo $post->ID ?>" title="Average - 3 stars"></label>
+
+	                <input disabled="disabled" type="radio" id="star2half-<?php echo $post->ID ?>" name="rate<?php echo $post->ID ?>" value="2.5" />
+	                <label class=" <?php if($post_rate >= 2.5) echo 'rating_color_yellow';  ?> ns-rating-woocom-half" for="star2half-<?php echo $post->ID ?>" title="More than enough - 2.5 stars"></label>
+
+	                <input disabled="disabled" type="radio" id="star2-<?php echo $post->ID ?>" name="rate<?php echo $post->ID ?>" value="2" />
+	                <label class=" <?php if($post_rate >= 2) echo 'rating_color_yellow';  ?> ns-rating-woocom-full" for="star2-<?php echo $post->ID ?>" title="Poor - 2 stars"></label>
+
+	                <input disabled="disabled" type="radio" id="star1half-<?php echo $post->ID ?>" name="rate<?php echo $post->ID ?>" value="1.5" />
+	                <label class=" <?php if($post_rate >= 1.5) echo 'rating_color_yellow';  ?> ns-rating-woocom-half" for="star1half-<?php echo $post->ID ?>" title="Very Poor - 1.5 stars"></label>
+
+	                <input disabled="disabled" type="radio" id="star1-<?php echo $post->ID ?>" name="rate<?php echo $post->ID ?>" value="1" />
+	                <label class=" <?php if($post_rate >= 1) echo 'rating_color_yellow';  ?> ns-rating-woocom-full" for="star1-<?php echo $post->ID ?>" title="Awful - 1 star"></label>
+
+	                <input disabled="disabled" type="radio" id="starhalf-<?php echo $post->ID ?>" name="rate<?php echo $post->ID ?>" value="0.5" />
+	                <label class=" <?php if($post_rate >= 0.5) echo 'rating_color_yellow';  ?> ns-rating-woocom-half" for="starhalf-<?php echo $post->ID ?>" title="Very Awful - 0.5 stars"></label>
+
+	            </span>
+	            <input type="hidden" id="post-id-<?php echo $post->ID ?>" name="post_id" value="<?php echo $post->ID ?>" />
+	            <?php if ( ! empty( $post_rate ) ) : ?>
+	            <input type="hidden" id="rate-id-place-<?php echo $post->ID ?>" name="rate_id-<?php echo $post->ID ?>" value="<?php echo number_format( $post_rate, 2, ',', '.' ); ?>" />
+	            <?php endif; ?>
+	        </form>
+
+	    </div>
+	</div>
+	<?php
+}
+

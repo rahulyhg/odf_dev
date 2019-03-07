@@ -75,7 +75,7 @@ if(false){
 <div class="produit">
         <h3><?php echo $product->get_title(); ?></h3>  
         <?php woocommerce_template_loop_product_thumbnail() ?>
-        <p><?php echo get_the_excerpt($product->get_id()); ?></p>
+        <p><?php echo wp_trim_words( get_the_excerpt($product->get_id()), 20); ?></p>
         <div class="containeur-vote">  
           <?php echo ns_product_rating_woocommerce_add_stars( "" ); ?>
         </div>    

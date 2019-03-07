@@ -17,6 +17,7 @@ global $product, $wpdb;
    <div class="full-img-product">
       <img src="<?php echo get_the_post_thumbnail_url($product->get_id()); ?>" width="100%" />
    </div>
+   <?php echo ns_product_rating_woocommerce_add_stars( "" ); ?>
    <p class="product-description">
       <?php echo get_the_excerpt($product->get_id()); ?>
    </p>

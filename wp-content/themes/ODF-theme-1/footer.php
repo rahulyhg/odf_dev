@@ -19,11 +19,6 @@
 			<div class="div_footer">
 				<div class="vc_row">
 					<div class="vc_col-sm-1">
-						<?php //if($test_theme['facebook-check-botton']==1) {
-							/*if(!empty($test_theme['ontex-footer-logo']['url'])){
-								echo '<img class="logo_footer" src="'.$test_theme['ontex-footer-logo']['url'].'" width="140">';
-							}*/
-						?>
 						<?php if( !empty(get_option( 'logo_url' ))){ ?>
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="">
 								<img src="<?php echo get_option( 'logo_url' ); ?>" />

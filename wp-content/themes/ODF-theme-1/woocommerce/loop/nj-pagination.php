@@ -41,7 +41,6 @@ if ( $total <= 1 ) {
 <div class="paginationc pagination-footer">
 	<select class="Woo_view_model_change">
         <option>View</option>
-        <option value="<?php echo $link."1" ?>">1</option> 
         <option value="<?php echo $link."2" ?>">2</option>
         <option value="<?php echo $link."3" ?>">3</option>
         <option value="<?php echo $link."4" ?>">4</option>  

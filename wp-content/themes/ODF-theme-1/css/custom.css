@@ -2426,10 +2426,25 @@
 	    float: none !important;
 	}
 
+	.products.columns-1 .produit p {
+
+	}
+	.products.columns-2 .produit p {
+
+	}
+	.products.columns-3 .produit p {
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: -webkit-box;
+	    line-height: 23px;
+	    max-height: 65px;
+	    -webkit-line-clamp: 3;
+	    -webkit-box-orient: vertical;
+	}
 	.products.columns-4 .produit p {
 	    line-height: 17px;
 	}
-	
+
 /* woocommerce products list*/
 
 /* woocommerce product details*/

@@ -24,15 +24,70 @@ class Texo_Term_Meta {
 		$product_model = '';
 
 
-		echo '<div class="form-field term-product_model-wrap">';  
+		echo '<style>';
+		echo '  .taxonomy-product_cat .input-group {
+				    position: relative;
+				    display: -ms-flexbox;
+				    display: flex;
+				    -ms-flex-wrap: wrap;
+				    flex-wrap: wrap;
+				    -ms-flex-align: stretch;
+				    align-items: stretch;
+				    width: 100%;
+				    text-align: center;
+				}
+				.taxonomy-product_cat .select-theme {
+				    margin: 0 auto;
+				    display: inline-block;
+				}
+				.taxonomy-product_cat .select-theme p{
+					margin-top: 5px;
+					margin-bottom: 5px;
+				}
+				.taxonomy-product_cat [type=radio]:checked + img {
+				    outline: 2px solid #f00;
+				    padding: 8px;
+				}
+				.taxonomy-product_cat [type=radio] + img {
+				    cursor: pointer;
+				    padding: 12px;
+				}
+				.taxonomy-product_cat [type=radio] {
+				    position: absolute;
+				    opacity: 0;
+				    width: 0;
+				    height: 0;
+				}';
+		echo '</style>'; 
+		echo '<tr class="form-field term-product_model-wrap">';
+		echo '<th scope="row">';
 		echo '	<label for="product_model">' . __( 'Product Theme Model', 'text_domain' ) . '</label>';
-		echo '	<select id="product_model" name="product_model">';
-		// echo '		<option value="model-default" ' . selected( $product_model, 'model-default', false ) . '> ' . __( 'Default', 'text_domain' ) . '</option>';
-		echo '		<option value="model-1" ' . selected( $product_model, 'model-1', false ) . '> ' . __( 'Model 1', 'text_domain' ) . '</option>';
-		echo '		<option value="model-2" ' . selected( $product_model, 'model-2', false ) . '> ' . __( 'Model 2', 'text_domain' ) . '</option>';
-		echo '	</select>';
-		echo '	<p class="description">' . __( 'The HTML tag used to show the title.', 'text_domain' ) . '</p>';
-		echo '</div>';
+		echo '</th>';  
+		echo '<td>';
+		// echo '	<select id="product_model" name="product_model">';
+		// echo '		<option value="model-1-1" ' . selected( $product_model, 'model-1-1', false ) . '> ' . __( 'Theme 1 Model 1', 'text_domain' ) . '</option>';
+		// echo '		<option value="model-1" ' . selected( $product_model, 'model-1', false ) . '> ' . __( 'Theme 2 Model 1', 'text_domain' ) . '</option>';
+		// echo '		<option value="model-2" ' . checked( $product_model, 'model-2', false ) . '> ' . __( 'Theme 2 Model 2', 'text_domain' ) . '</option>';
+		// echo '	</select>';
+
+		echo ' <div class="input-group select-theme-container">';
+        echo '   <label class="select-theme"> <p>' . __( 'Theme 1 Model 1', 'text_domain' ) . '</p>';
+        echo '     <input type="radio" name="product_model" value="model-1-1" ' . checked( $product_model, 'model-1-1', false ) . '>';
+        echo '     <img src="'.get_stylesheet_directory_uri() . '/images/product_sheet_the_1_model_1.png" width="150">';
+        echo '   </label>';
+        echo '   <label class="select-theme"> <p>' . __( 'Theme 2 Model 1', 'text_domain' ) . '</p>';
+        echo '     <input type="radio" name="product_model" value="model-1" ' . checked( $product_model, 'model-1', false ) . '>';
+        echo '     <img src="'.get_stylesheet_directory_uri() . '/images/product_sheet_the_2_model_1.png" width="150">';
+        echo '   </label>';
+        echo '   <label class="select-theme"> <p>' . __( 'Theme 2 Model 2', 'text_domain' ) . '</p>';
+        echo '     <input type="radio" name="product_model" value="model-2" ' . checked( $product_model, 'model-2', false ) . '>';
+        echo '     <img src="'.get_stylesheet_directory_uri() . '/images/product_sheet_the_2_model_2.png" width="150">';
+        echo '   </label>';
+        echo ' </div>';
+
+		echo '	<p class="description">' . __( '', 'text_domain' ) . '</p>';
+		echo '</td>';
+		echo '</tr>';
 
 	
 	}
@@ -47,16 +102,67 @@ class Texo_Term_Meta {
 		if( empty( $product_model ) ) $product_model = '';
   
 
+		echo '<style>';
+		echo '  .taxonomy-product_cat .input-group {
+				    position: relative;
+				    display: -ms-flexbox;
+				    display: flex;
+				    -ms-flex-wrap: wrap;
+				    flex-wrap: wrap;
+				    -ms-flex-align: stretch;
+				    align-items: stretch;
+				    width: 100%;
+				    text-align: center;
+				}
+				.taxonomy-product_cat .select-theme {
+				    margin: 0 auto;
+				    display: inline-block;
+				}
+				.taxonomy-product_cat .select-theme p{
+					margin-top: 5px;
+					margin-bottom: 5px;
+				}
+				.taxonomy-product_cat [type=radio]:checked + img {
+				    outline: 2px solid #f00;
+				    padding: 8px;
+				}
+				.taxonomy-product_cat [type=radio] + img {
+				    cursor: pointer;
+				    padding: 12px;
+				}
+				.taxonomy-product_cat [type=radio] {
+				    position: absolute;
+				    opacity: 0;
+				    width: 0;
+				    height: 0;
+				}';
+		echo '</style>'; 
 		echo '<tr class="form-field term-product_model-wrap">';
 		echo '<th scope="row">';
 		echo '	<label for="product_model">' . __( 'Product Theme Model', 'text_domain' ) . '</label>';
 		echo '</th>';  
 		echo '<td>';
-		echo '	<select id="product_model" name="product_model">';     
-		// echo '		<option value="model-default" ' . selected( $product_model, 'model-default', false ) . '> ' . __( 'Default', 'text_domain' ) . '</option>';
-		echo '		<option value="model-1" ' . selected( $product_model, 'model-1', false ) . '> ' . __( 'Model 1', 'text_domain' ) . '</option>';
-		echo '		<option value="model-2" ' . selected( $product_model, 'model-2', false ) . '> ' . __( 'Model 2', 'text_domain' ) . '</option>';
-		echo '	</select>';
+		// echo '	<select id="product_model" name="product_model">';
+		// echo '		<option value="model-1-1" ' . selected( $product_model, 'model-1-1', false ) . '> ' . __( 'Theme 1 Model 1', 'text_domain' ) . '</option>';
+		// echo '		<option value="model-1" ' . selected( $product_model, 'model-1', false ) . '> ' . __( 'Theme 2 Model 1', 'text_domain' ) . '</option>';
+		// echo '		<option value="model-2" ' . checked( $product_model, 'model-2', false ) . '> ' . __( 'Theme 2 Model 2', 'text_domain' ) . '</option>';
+		// echo '	</select>';
+
+		echo ' <div class="input-group select-theme-container">';
+        echo '   <label class="select-theme"> <p>' . __( 'Theme 1 Model 1', 'text_domain' ) . '</p>';
+        echo '     <input type="radio" name="product_model" value="model-1-1" ' . checked( $product_model, 'model-1-1', false ) . '>';
+        echo '     <img src="'.get_stylesheet_directory_uri() . '/images/product_sheet_the_1_model_1.png" width="150">';
+        echo '   </label>';
+        echo '   <label class="select-theme"> <p>' . __( 'Theme 2 Model 1', 'text_domain' ) . '</p>';
+        echo '     <input type="radio" name="product_model" value="model-1" ' . checked( $product_model, 'model-1', false ) . '>';
+        echo '     <img src="'.get_stylesheet_directory_uri() . '/images/product_sheet_the_2_model_1.png" width="150">';
+        echo '   </label>';
+        echo '   <label class="select-theme"> <p>' . __( 'Theme 2 Model 2', 'text_domain' ) . '</p>';
+        echo '     <input type="radio" name="product_model" value="model-2" ' . checked( $product_model, 'model-2', false ) . '>';
+        echo '     <img src="'.get_stylesheet_directory_uri() . '/images/product_sheet_the_2_model_2.png" width="150">';
+        echo '   </label>';
+        echo ' </div>';
+
 		echo '	<p class="description">' . __( '', 'text_domain' ) . '</p>';
 		echo '</td>';
 		echo '</tr>';

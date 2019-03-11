@@ -72,7 +72,7 @@ global $product, $wpdb;
    </div>
 
 
-<div class="feedback-carousel owl-carousel">
+<!-- <div class="feedback-carousel owl-carousel">
    <?php
       $wpm_testimonials = $wpdb->get_results("select * from {$wpdb->prefix}posts where post_status = 'publish' and post_type = 'wpm-testimonial' ");
       foreach ($wpm_testimonials as $wpm_testimonial) {
@@ -82,10 +82,10 @@ global $product, $wpdb;
                <div class="feedback-img">
                   <img src="<?php echo get_the_post_thumbnail_url($wpm_testimonial->ID); ?>" />
                </div>
-               <div class="feedback-content-body">
-                  <img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/feedback.png" />
-                  <h4><?php echo $wpm_testimonial->post_title; ?></h4>
-                  <p><?php echo get_the_excerpt($wpm_testimonial->ID); ?></p>
+               <div class="feedback-content-body">					
+					<?php echo do_shortcode('[testimonial_average_rating]{stars}[/testimonial_average_rating]'); ?>                  
+                  	<h4><?php echo $wpm_testimonial->post_title; ?></h4>
+                  	<p><?php echo get_the_excerpt($wpm_testimonial->ID); ?></p>
                </div>
             </div>
          </div> 
@@ -93,7 +93,9 @@ global $product, $wpdb;
          <?php
       }
    ?>
-</div>
+</div> -->
+
+<?php //echo do_shortcode('[testimonial_view id="2"]'); ?>
 
 </div>
 <br><br><br>

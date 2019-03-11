@@ -59,6 +59,8 @@ global $product, $wpdb;
    <?php echo do_shortcode('[wr360embed name="view01" width="100%" height="500px" config="'.get_field('_wr360config', $product->get_id()).'"]'); ?>
 </div>
 
+<?php //echo do_shortcode('[testimonial_view id="2"]'); ?>
+
 <div class="pagination_product_details">
    <?php next_post_link('%link', ''); ?>  
    <a href="/?page_id=168" class="pagination_product_details_all">All</a>

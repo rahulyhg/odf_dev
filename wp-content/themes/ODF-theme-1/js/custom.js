@@ -12,6 +12,15 @@ jQuery(document).ready(function() {
 	    jQuery('#div_searchform').hide();
 	});
 
+	jQuery('.row_grid_advice .vc_gitem-zone-img').attr('src', '');
+
+	setTimeout(function(){ 
+		jQuery('.row_grid_advice .vc_gitem-zone-img').attr('src', '');
+		jQuery('.row_grid_advice .vc_gitem-zone-img').remove();
+	}, 3000);
+
+	// catalog: duplicat pagination block
+	jQuery('.products').prepend(jQuery('.woocommerce-pagination').clone().css('width','100%'));
 
 });
 

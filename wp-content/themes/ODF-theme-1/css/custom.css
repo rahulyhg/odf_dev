@@ -117,6 +117,9 @@
 	.odf_display_botton_buy{
 		display: var(--odf-display-botton-buy);
 	}
+	.odf_display_rating{
+		display: var(--odf-display-rating);
+	}
 /* general setting */
 
 /* header */
@@ -1821,6 +1824,10 @@
     .vc_btn3.vc_btn3-size-md.vc_btn3-style-outline, .vc_btn3.vc_btn3-size-md.vc_btn3-style-outline-custom {
 	    z-index: 99999999999;
 	}
+
+    .row_grid_product .vc_btn3-container.vc_btn3-center {
+	    margin-top: 50px;
+	}
 /* row_grid_product */
 
 /* row_grid_testimonial */
@@ -2133,14 +2140,17 @@
     .row_grid_testimonial .vc_grid.vc_row{
         padding-right: 0 !important;
     }
+    .row_grid_advice .vc_gitem-zone-img{
+    	display: none !important;
+    }
     .block_sliders_and_sidebar .vc_col-sm-8,
     .block_sliders_and_sidebar .vc_col-sm-8 .vc_column-inner{
         padding: 0 !important;
     }
 
-        .block_sliders_and_sidebar p{
-            font-size: 14px;
-        }
+    .block_sliders_and_sidebar p{
+        font-size: 14px;
+    }
     .block_sliders_and_sidebar .vc_row-has-fill+.vc_row>.vc_column_container>.vc_column-inner, 
     .block_sliders_and_sidebar .vc_row-has-fill>.vc_column_container>.vc_column-inner{
         padding-top: 0 !important;
@@ -2398,7 +2408,7 @@
 	    margin: 0 auto !important;
 	}
 	.woocommerce nav.woocommerce-pagination {
-	    border: solid 1px #dedede;
+	    border: 0;
 	    height: 38px;
 	    margin-bottom: 20px;
 	    width: 70%;
@@ -2444,6 +2454,47 @@
 	.products.columns-4 .produit p {
 	    line-height: 17px;
 	}
+
+	/* NJ */
+	.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+	    border: initial;
+	    border-radius: initial;
+	    padding: initial;
+	    height: initial;
+	}
+
+	.woocommerce ul.products li.product, .woocommerce-page ul.products li.product .produit {
+	    width: 100%;
+	}
+
+
+	.woocommerce-page ul.products li.product .produit img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail {
+	    width: auto;
+	    height: 120px;
+	}
+
+	.containeur-vote {
+	    position: relative !important;
+	    bottom: 0px !important;
+	    padding-left: 0px !important;
+	}
+
+	div#ns-rating-woocom-post-rate-div-897 {
+	    height: 50px !important;
+	}
+
+	.ns-rating-woocom-rate-info {
+	    display: none !important;
+	}
+
+	.pagination-footer {
+	    margin-top: 0 !important;  
+	}
+	   
+	.woocommerce ul.products.columns-4 li.product, .woocommerce-page ul.products.columns-4 li.product {
+	    width: 22%;
+	}
+
 
 /* woocommerce products list*/
 
@@ -2759,6 +2810,10 @@
 		.vc_row_header {
 		    width: 60%;
 		}
+		.woof_list label {
+		    font-size: 12px;
+		}
+
 	}
 	@media (max-width: 1350px) {
 		/*.header {
@@ -2845,6 +2900,9 @@
     @media (max-width: 1326px){
 		.site-header-menu{
 			margin-left: 15%;
+		}
+		.woof_list label {
+		    font-size: 12px;
 		}
     }
     @media (max-width: 1300px){

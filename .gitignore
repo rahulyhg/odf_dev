@@ -5,7 +5,6 @@
 wp-content/wflogs
 .maintenance
 versionpress.maintenance
-/.htaccess
 /web.config
 
 #------------------------

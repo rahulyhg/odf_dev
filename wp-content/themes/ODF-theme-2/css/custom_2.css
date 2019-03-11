@@ -10,7 +10,7 @@
 
 .paginationc{
   height: auto;
-  padding-top: 8px;
+  padding-top: 0;
   padding-left: 8px;
   padding-right: 8px;
   overflow:hidden;
@@ -36,7 +36,8 @@
   font-size: 16px;
   outline: none;
   border: none;
-  width: 160px;
+  width: 70px;
+  margin-top: 5px;
 }
 .liens-pagination .view{
   color:#424242;
@@ -56,7 +57,7 @@
   height: 330px;
   position: relative;
   text-align: center;
-  margin-top:15px;
+  margin-top:0;
   margin-right: 12px;
   float:left;
   border-radius: 10px;
@@ -542,6 +543,12 @@
     }
 
     @media (max-width: 1024px){
+		.btns-single-product{
+			width: 90%;
+		}
+		.advice-details-accordion{
+			min-height:auto;
+		}
 		.woocommerce .products ul, .woocommerce ul.products{
 			width: 70%;
 		}
@@ -563,9 +570,6 @@
 			margin: 0 auto;
 		}
 		.product-detail-2{
-			width:100%;
-		}
-		.btns-single-product{
 			width:100%;
 		}
 		.feedback-carousel.owl-carousel .owl-item{
@@ -875,6 +879,10 @@
     }
 
     @media (max-width: 320px){
+		.row_grid_product_2_column .vc_gitem-row-position-bottom .vc_col-sm-6.vc_gitem-col{
+			float:left;
+			width:49%;
+		}
 		.advice-details-accordion{
 			min-height: auto;
 		}

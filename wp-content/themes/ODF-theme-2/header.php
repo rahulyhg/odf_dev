@@ -30,7 +30,14 @@
 		    	}else{
 		    		echo 'none;';
 		    	}
-	    	 ?>; 
+	    	 ?>;  
+	    	--odf-display-rating: <?php 
+	    		if(get_option( 'enable_rating' ) == "on") {
+		    		echo 'block;';
+		    	}else{
+		    		echo 'none;';
+		    	}
+	    	 ?>;
 	    }
 		
 		/************ loader **********/
@@ -221,7 +228,7 @@
 				</div>
 				
 				<div id="div_searchform" style="display: none;">
-					<form role="search" method="get" id="searchform" action="/">
+					<form role="search" method="get" id="searchform" action="index.php">
 						<div>
 							<i class="fa fa-times ic_search" id="ic_search_icon" aria-hidden="true" style="display: inline;"></i>
 							<input type="text" value="" name="s" id="s" placeholder="Search">

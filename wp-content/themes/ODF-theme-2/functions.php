@@ -1299,7 +1299,20 @@ function my_general_section()
             'enable_button_buy' // Should match Option ID
         )
     );
+
+    add_settings_field( // Option 1
+        'enable_rating', // Option ID
+        'Enable Rating ?', // Label
+        'enable_rating_callback', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_catalog_section', // Name of our section
+        array( // The $args
+            'enable_rating' // Should match Option ID
+        )
+    );
+    
     register_setting('general', 'enable_button_buy', 'esc_attr');
+    register_setting('general', 'enable_rating', 'esc_attr');
 
 }
 
@@ -1409,6 +1422,12 @@ function enable_button_buy_callback($args) {
 	echo '<input "'.$checked.'" id="' . $args[0] . '" name="' . $args[0] . '" type="checkbox" />';
 }
 
+function enable_rating_callback($args) {
+	$options = get_option('plugin_options');
+    $option = get_option($args[0]);
+	if($option) { $checked = ' checked="checked" '; }
+	echo '<input "'.$checked.'" id="' . $args[0] . '" name="' . $args[0] . '" type="checkbox" />';
+}
 
 
 /**
@@ -1570,7 +1589,7 @@ function fcn_product_start($attr){
 			color: #FFED85 !important;
 		}
 	</style>
-	<div class="ns-rating-woocom-post-rate" id="ns-rating-woocom-post-rate-div-<?php echo $post->ID ?>">
+	<div class="ns-rating-woocom-post-rate odf_display_rating" id="ns-rating-woocom-post-rate-div-<?php echo $post->ID ?>">
 	    <div id="ns-rating-woocom-rating-container-<?php echo $post->ID ?>" class="ns-rating-woocom-rating">
 	        <form method="post" id="ns-rating-woocom-post-rate-<?php echo $post->ID ?>" class="ns-rating-woocom-form">
 

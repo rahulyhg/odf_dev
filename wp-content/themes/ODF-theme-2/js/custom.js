@@ -12,6 +12,8 @@ jQuery(document).ready(function() {
 	    jQuery('#div_searchform').hide();
 	});
 
-
+	// catalog: duplicat pagination block
+	jQuery('.products').prepend(jQuery('.woocommerce-pagination').clone().css('width','100%'));
+	
 });
 

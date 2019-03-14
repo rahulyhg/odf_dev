@@ -371,6 +371,13 @@
 	    margin-bottom: 0;
     	z-index: 9;
 	}
+	.header_slider .forcefullwidth_wrapper_tp_banner {
+	    height: 87vh !important;
+	}
+	.rev_slider {
+	    height: 87vh !important;
+	}
+	
 /* header */
 /* block header div search */
 	#div_searchform {
@@ -1646,8 +1653,8 @@
 
 /* row_grid_brand */
 	.section_brand{
-		background-color: #028cd0;
-		background-image:linear-gradient(-180deg, #05c0ea 0%, #028cd0 100%);
+		/*background-color: #028cd0;
+		background-image:linear-gradient(-180deg, #05c0ea 0%, #028cd0 100%);*/
 	}
 	.row_grid_brand{
 		margin-bottom: 0 !important;

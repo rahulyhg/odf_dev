@@ -90,7 +90,7 @@ $j(document).ready(function() {
 
     /* background configuration via amdin*/
 
-    
+    $j( '.cpa-color-picker' ).wpColorPicker();
 
 
 });

@@ -1050,7 +1050,8 @@ function button_catalog_access(){
 
     global $product;
     
-    echo '<a href="/catalog/" class="button_catalog_access">Catalog access</a>';
+    // echo '<a href="'.egt_site_url().'/?page_id=168" class="button_catalog_access">Catalog access</a>';
+    echo '<a href="'.get_permalink( get_page_by_title( "Catalog" )->ID).'" class="button_catalog_access">Catalog access</a>';
 }
 
 add_shortcode('theme2_all_advice','theme2_all_advice');
@@ -1636,3 +1637,271 @@ function fcn_product_start($attr){
 	<?php
 }
 
+
+//remove display notice - Showing all x results
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+//remove default sorting drop-down from WooCommerce
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+
+
+
+/*
+// https://www.advancedcustomfields.com/resources/custom-location-rules/
+
+add_filter('acf/location/rule_types', 'acf_location_rules_types');
+
+function acf_location_rules_types( $choices ) {
+	
+    $choices['Product']['model_sheet'] = 'Model sheet';
+
+    return $choices;
+    
+}
+
+add_filter('acf/location/rule_values/model_sheet', 'acf_location_rules_values_model_sheet');
+
+function acf_location_rules_values_model_sheet( $choices ) {
+
+	$choices['model-1-1'] = "Theme 1 model 1";
+	$choices['model-2-1'] = "Theme 2 model 1";
+	$choices['model-2-2'] = "Theme 2 model 2";
+    return $choices;
+}
+
+add_filter('acf/location/rule_match/model_sheet', 'acf_location_rules_match_model_sheet', 10, 3);
+function acf_location_rules_match_model_sheet( $match, $rule, $options )
+{
+    $current_user = wp_get_current_user();
+    $selected_user = (int) $rule['value'];
+
+    if($rule['operator'] == "==")
+    {
+    	$match = ( $current_user->ID == $selected_user );
+    }
+    elseif($rule['operator'] == "!=")
+    {
+    	$match = ( $current_user->ID != $selected_user );
+    }
+
+    return $match;
+}
+add_filter('acf/location/screen', 'acf_location_screen_options', 10, 2);
+
+function acf_location_screen_options( $options, $field_group ) {
+    
+    $options['field_group_id'] = $field_group['ID'];
+    
+    return $options;
+    
+}
+*/
+// ********************
+/*
+//add meta box (post type) to wordpress posts
+add_action('add_meta_boxes', 'add_types_metaboxes');
+
+function add_types_metaboxes()
+{
+    add_meta_box('ontex_product_model', 'Product Model', 'ontex_product_model', 'product', 'side', 'default');
+}
+
+// The Event Location Metabox
+
+function ontex_product_model()
+{
+
+	global $post;
+	if(get_post_type($post->ID) == 'product'){
+	    if (get_post_meta($post->ID, 'ontex-type', true)) {
+	        $selctedval = get_post_meta($post->ID, 'ontex-type', true);
+	        if ($selctedval == 1)
+	            $selcted1 = 'checked=checked';
+	        if ($selctedval == 2)
+	            $selcted2 = 'checked=checked';
+	        if ($selctedval == 3)
+	            $selcted3 = 'checked=checked';
+	        if ($selctedval == 4)
+	            $selcted4 = 'checked=checked';
+	    }
+	    // echo '<style>
+	    // .ontex-format {
+	    // border: 1px solid #aeaeae;
+	    // text-align: center;
+	    // margin: 5px;
+	    // padding: 5px;
+	    // }
+	    // .ontex-format input[type="radio"] {
+	    // display: block;
+	    // width: 15px;
+	    // margin: 0 auto;
+	    // }
+	    // </style>';
+	    // // Noncename needed to verify where the data originated
+	    // echo '<input type="hidden" name="eventmeta_noncename" id="eventmeta_noncename" value="' .
+	    //     wp_create_nonce(plugin_basename(__FILE__)) . '" />';
+	    // // get_site_url()
+	    // echo '<div class="blocks">';
+	    // echo '<div class="ontex-format"><img src="/images/format-1.png"/> <input type="radio" name="ontex-type" value="1" ' . $selcted1 . '/>Format 1</div>';
+	    // echo '<div class="ontex-format"><img src="/images/format-2.png"/> <input type="radio" name="ontex-type" value="2" ' . $selcted2 . '/>Format 2</div>';
+	    // echo '<div class="ontex-format"><img src="/images/format-3.png"/> <input type="radio" name="ontex-type" value="3" ' . $selcted3 . '/>Format 3</div>';
+	    // echo '<div class="ontex-format"><img src="/images/format-4.png"/> <input type="radio" name="ontex-type" value="4" ' . $selcted4 . '/>Format 4</div>';
+
+	    // echo '</div>';
+
+	    $product_model = '';
+
+	    echo '<style>';
+			echo '  .post-type-product .input-group {
+				    position: relative;
+				    display: -ms-flexbox;
+				    display: flex;
+				    -ms-flex-wrap: wrap;
+				    flex-wrap: wrap;
+				    -ms-flex-align: stretch;
+				    align-items: stretch;
+				    width: 100%;
+				    text-align: center;
+				}
+				.post-type-product .select-theme {
+				    margin: 0 auto;
+				    display: inline-block;
+					margin-bottom: 20px;
+					border-bottom: 1px solid #afbcac;
+				}
+				.post-type-product .select-theme p{
+					margin-top: 5px;
+					margin-bottom: 5px;
+				}
+				.post-type-product [type=radio]:checked + img {
+				    outline: 2px solid #f00;
+				    padding: 8px;
+				}
+				.post-type-product [type=radio] + img {
+				    cursor: pointer;
+				    padding: 12px;
+				}
+				.post-type-product [type=radio] {
+				    position: absolute;
+				    opacity: 0;
+				    width: 0;
+				    height: 0;
+				}';
+		echo '</style>'; 
+		echo '<tr class="form-field term-product_model-wrap">';
+		echo '<th scope="row">';
+		echo '	<label for="ontex-type">' . __( 'Product Theme Model', 'text_domain' ) . '</label>';
+		echo '</th>';  
+		echo '<td>';
+
+		echo ' <div class="input-group select-theme-container">';
+        echo '   <label class="select-theme"> <p>' . __( 'Theme 1 Model 1', 'text_domain' ) . '</p>';
+        echo '     <input type="radio" name="ontex-type" value="model-1-1" ' . checked( $product_model, 'model-1-1', false ) . '>';
+        echo '     <img src="'.get_stylesheet_directory_uri() . '/images/product_sheet_the_1_model_1.png" width="150">';
+        echo '   </label>';
+        echo '   <label class="select-theme"> <p>' . __( 'Theme 2 Model 1', 'text_domain' ) . '</p>';
+        echo '     <input type="radio" name="ontex-type" value="model-1" ' . checked( $product_model, 'model-1', false ) . '>';
+        echo '     <img src="'.get_stylesheet_directory_uri() . '/images/product_sheet_the_2_model_1.png" width="150">';
+        echo '   </label>';
+        echo '   <label class="select-theme"> <p>' . __( 'Theme 2 Model 2', 'text_domain' ) . '</p>';
+        echo '     <input type="radio" name="ontex-type" value="model-2" ' . checked( $product_model, 'model-2', false ) . '>';
+        echo '     <img src="'.get_stylesheet_directory_uri() . '/images/product_sheet_the_2_model_2.png" width="150">';
+        echo '   </label>';
+        echo ' </div>';
+
+		echo '	<p class="description">' . __( '', 'text_domain' ) . '</p>';
+		echo '</td>';
+		echo '</tr>';
+	}
+
+}
+
+// Save the Metabox Data
+
+function ontex_save_format_meta($post_id, $post)
+{	
+	if(get_post_type($post_id) == 'product'){
+
+	    // Is the user allowed to edit the post or page?
+	    if (!current_user_can('edit_post', $post->ID))
+	        return $post->ID;
+	    $ontextype = ($_POST['ontex-type']) ? $_POST['ontex-type'] : '1';
+	    // Add values of $events_meta as custom fields
+
+	    //if( $post->post_type == 'revision' ) return; // Don't store custom data twice
+	    if (get_post_meta($post->ID, 'ontex-type', true)) { // If the custom field already has a value
+	        update_post_meta($post->ID, 'ontex-type', $ontextype);
+	    } else { // If the custom field doesn't have a value
+	        add_post_meta($post->ID, 'ontex-type', $ontextype);
+	    }
+
+	}
+}
+
+add_action('save_post', 'ontex_save_format_meta', 1, 2); // save the custom fields
+*/
+
+
+
+
+
+
+
+/**
+ * Add a custom product tab.
+ */
+function custom_product_tabs( $tabs) {
+	$tabs['giftcard'] = array(
+		'label'		=> __( 'Product 3D title', 'woocommerce' ),
+		'target'	=> 'giftcard_options',
+		'class'		=> array( 'show_if_simple', 'show_if_variable'  ),
+	);
+	return $tabs;
+}
+add_filter( 'woocommerce_product_data_tabs', 'custom_product_tabs' );
+/**
+ * Contents of the gift card options product tab.
+ */
+function giftcard_options_product_tab_content() {
+	global $post;
+	
+	// Note the 'id' attribute needs to match the 'target' parameter set above
+	?><div id='giftcard_options' class='panel woocommerce_options_panel'><?php
+		?><div class='options_group'><?php
+
+			woocommerce_wp_text_input( array(
+				'id'				=> '_product_3d_title',
+				'label'				=> __( 'Product 3D title', 'woocommerce' ),
+				'desc_tip'			=> 'true',
+				'description'		=> __( '', 'woocommerce' ),
+				'type' 				=> 'text',
+			) );
+			
+			woocommerce_wp_textarea_input(
+				array(
+					'id'			=> '_product_3d_description',
+					'label' 		=> __( 'Product 3D description', 'woocommerce' ),
+					'placeholder' 	=> '',
+					'description' 	=> __( '.', 'woocommerce' )
+				)
+			);
+
+		?></div>
+
+	</div><?php
+}
+add_filter( 'woocommerce_product_data_panels', 'giftcard_options_product_tab_content' ); // WC 2.6 and up
+/**
+ * Save the custom fields.
+ */
+function save_giftcard_option_fields( $post_id ) {
+	
+	if ( isset( $_POST['_product_3d_title'] ) ) :
+		update_post_meta( $post_id, '_product_3d_title', $_POST['_product_3d_title'] );
+	endif;
+	
+	if ( isset( $_POST['_product_3d_description'] ) ) :
+		update_post_meta( $post_id, '_product_3d_description', $_POST['_product_3d_description'] );
+	endif;
+	
+}
+add_action( 'woocommerce_process_product_meta_simple', 'save_giftcard_option_fields'  );

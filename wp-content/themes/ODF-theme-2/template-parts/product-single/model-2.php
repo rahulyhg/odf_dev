@@ -11,7 +11,8 @@ get_header();
 global $product, $wpdb;
 
 ?>
-
+</div>
+<div>
 <div class="single-product">
    <h1><?php echo $product->get_title(); ?></h1>
    <div class="full-img-product">
@@ -21,9 +22,9 @@ global $product, $wpdb;
       <?php echo get_the_excerpt($product->get_id()); ?>
    </p>
    <div class="btns-single-product">
-      <a href="#modal" class="request-sample"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn1-detail-product.png" /></span><span>Request sample</span></a>
+      <a href="#modal" class="request-sample odf_display_none"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn1-detail-product.png" /></span><span>Request sample</span></a>
       <a href="<?php echo get_field('button_buy_url',$product->get_id()); ?>" class="buy odf_display_botton_buy"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn3-detail-product.png" /></span><span>Buy</span></a>
-      <a href="#" class="find-shop"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn2-detail-product.png" /></span><span>Find shop</span></a>
+      <a href="#" class="find-shop odf_display_none"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn2-detail-product.png" /></span><span>Find shop</span></a>
    </div>
    <br><br>
    <div class="product-details">
@@ -47,16 +48,26 @@ global $product, $wpdb;
       <?php } ?>
    </div>
    <div class="demo-product">
-      <h2>Demo product</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut commodo odio eros, eget placerat libero venenatis posuere. Mauris scelerisque dignissim lacus ac molestie. Sed a elit est. Donec in eros eu metus eleifend aliquet. Pellentesque non nibh turpis. Aenean eget dui interdum, facilisis justo sit amet, commodo lectus. Integer placerat, erat vitae auctor ornare, est nunc tempus leo, vel molestie lacus felis vitae tellus.</p>
+      <h2 class="demo-product">
+        <?php if(!empty(get_field('_product_3d_title', $product->get_id()))){
+           echo get_field('_product_3d_title', $product->get_id());
+        }else{ ?>
+           DEMO PRODUCT
+        <?php } ?>
+      </h2>
+      <p>
+        <?php if(!empty(get_field('_product_3d_description', $product->get_id()))){
+           echo get_field('_product_3d_description', $product->get_id());
+        } ?>
+      </p>
       <h3 class="title-demo-product">Product size</h3>
-
 
       <div class="img-above-360">
          <?php echo '<img src="'.get_field('product_small_image', $product->get_id()).'" width="150" />'; ?>
          <?php echo '<img src="'.get_field('product_medium_image', $product->get_id()).'" width="300" />'; ?>
          <?php echo '<img src="'.get_field('product_large_image', $product->get_id()).'" width="500" />'; ?>
       </div>
+      <br>
       <div class="img-360">
          <?php echo do_shortcode('[wr360embed name="view01" width="100%" height="500px" config="'.get_field('_wr360config', $product->get_id()).'"]'); ?>
       </div>
@@ -102,7 +113,7 @@ global $product, $wpdb;
 
 <div class="pagination_product_details">
    <?php next_post_link('%link', ''); ?>  
-   <a href="/?page_id=168" class="pagination_product_details_all">All</a>
+   <a href="<?php echo get_permalink( get_page_by_title( "Catalog" )->ID); ?>" class="pagination_product_details_all">All</a>
    <?php previous_post_link('%link', ''); ?>
 </div>
 

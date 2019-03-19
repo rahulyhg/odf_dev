@@ -11,6 +11,8 @@ get_header();
 global $product, $wpdb;
 
 ?>
+</div>
+<div>
 <div class="product-detail-2">
    <div class="img-medium-product">
       <img src="<?php echo get_the_post_thumbnail_url($product->get_id()); ?>" />
@@ -47,14 +49,20 @@ global $product, $wpdb;
       </form>
    </div>
 </div>
-<div class="clear"></div>
+<div class="clear"></div> 
 <div class="btns-single-product">
-   <a href="#modal" class="request-sample"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn1-detail-product.png" /></span><span>Request sample</span></a>
+   <a href="#modal" class="request-sample odf_display_none"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn1-detail-product.png" /></span><span>Request sample</span></a>
    <a href="<?php echo get_field('button_buy_url',$product->get_id()); ?>" class="buy odf_display_botton_buy"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn3-detail-product.png" /></span><span>Buy</span></a>
-   <a href="#" class="find-shop"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn2-detail-product.png" /></span><span>Find shop</span></a>
+   <a href="#" class="find-shop odf_display_none"><span class="icon-btn"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/template-parts/img/btn2-detail-product.png" /></span><span>Find shop</span></a>
 </div>
 <div class="clear"></div>
-<h2 class="demo-product">DEMO PRODUCT</h2>
+<h2 class="demo-product">
+  <?php if(!empty(get_field('_product_3d_title', $product->get_id()))){
+     echo get_field('_product_3d_title', $product->get_id());
+  }else{ ?>
+     DEMO PRODUCT
+  <?php } ?>
+</h2>
 <div class="demo-product-2">
    <?php echo do_shortcode('[wr360embed name="view01" width="100%" height="500px" config="'.get_field('_wr360config', $product->get_id()).'"]'); ?>
 </div>
@@ -63,7 +71,7 @@ global $product, $wpdb;
 
 <div class="pagination_product_details">
    <?php next_post_link('%link', ''); ?>  
-   <a href="/?page_id=168" class="pagination_product_details_all">All</a>
+   <a href="<?php echo get_permalink( get_page_by_title( "Catalog" )->ID); ?>" class="pagination_product_details_all">All</a>
    <?php previous_post_link('%link', ''); ?>
 </div>
 

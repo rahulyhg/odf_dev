@@ -60,7 +60,13 @@ global $product, $wpdb;
            echo get_field('_product_3d_description', $product->get_id());
         } ?>
       </p>
-      <h3 class="title-demo-product">Product size</h3>
+      <h3 class="title-demo-product">
+        <?php if(!empty(get_field('product_size_text', $product->get_id()))){
+           echo get_field('product_size_text', $product->get_id());
+        }else{ ?>
+            Product size
+        <?php } ?>          
+      </h3>
 
       <div class="img-above-360">
          <?php echo '<img src="'.get_field('product_small_image', $product->get_id()).'" width="150" />'; ?>

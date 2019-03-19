@@ -15,20 +15,28 @@ global $product, $wpdb;
 <div>
 <div class="product-detail-1-1">
    <div class="product-single-header">
-      <div class="left">
-         <img class="product-signle-product1" src="wp-content/themes/ODF-theme-1/images/product-single-model1.png" />
+      <!-- theme_1_header_image -->
+      <div class="left" style="background-image: url(<?php echo get_field('theme_1_header_image', $product->get_id()) ?>);">
+         <!-- <img class="product-signle-product1" src="wp-content/themes/ODF-theme-1/images/product-single-model1.png" /> -->
       </div>
       <div class="right">
          <h3>ACCESS CATALOG</h3>
          <hr>
          <label class="level1"><a href="#">Recommanded products</a></label>
-         <label class="level2"><a href="#">Product1</a></label>
-         <label class="level2"><a href="#">Product2</a></label>
-         <label class="level2"><a href="#">Product3</a></label>
+         <?php 
+            $recommanded_products = $wpdb->get_results("select * from {$wpdb->prefix}posts where post_type = 'product' and post_status = 'publish' order by post_date desc limit 3");
+            foreach ($recommanded_products as $recommanded_product) {
+               echo '<label class="level2"><a href="'.get_permalink($recommanded_product->ID).'">'.$recommanded_product->post_title.'</a></label>';
+               
+            }
+         ?>
          <label class="level1"><a href="#">Other products</a></label>
-         <label class="level2"><a href="#">Product4</a></label>
-         <label class="level2"><a href="#">Product5</a></label>
-         <label class="level2"><a href="#">Product6</a></label>
+         <?php 
+            $other_products = $wpdb->get_results("select * from {$wpdb->prefix}posts where post_type = 'product' and post_status = 'publish' order by post_date asc limit 3");
+            foreach ($other_products as $other_product) {
+               echo '<label class="level2"><a href="'.get_permalink($other_product->ID).'">'.$other_product->post_title.'</a></label>';              
+            }
+         ?>
 
          <div class="vc_btn3-container vc_btn3-center">
             <a onmouseleave="this.style.borderColor='#ffffff'; this.style.backgroundColor='transparent'; this.style.color='#ffffff'" onmouseenter="this.style.borderColor='#04a8de'; this.style.backgroundColor='#04a8de'; this.style.color='#ffffff';" style="border-color: rgb(255, 255, 255); color: rgb(255, 255, 255); background-color: transparent; margin-top: 60px;" class="vc_general vc_btn3 vc_btn3-size-md vc_btn3-shape-rounded vc_btn3-style-outline-custom" a="" href="<?php echo get_permalink( get_page_by_title( "Catalog" )->ID); ?>" title="Catalog access">Full catalog</a>

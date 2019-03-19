@@ -1042,7 +1042,25 @@ function slider_button_buy_product(){
 
     global $product;
     
-    echo '<a href="?page_id=777" class="slider_button_buy_product">Buy</a>';
+    echo '<a href="?page_id=777" class="slider_button_buy_product ">Buy</a>';
+    // odf_display_botton_buy
+}
+
+add_shortcode('button_product_slider_2','button_product_slider_2');
+function button_product_slider_2(){
+	if(get_option( 'enable_button_buy' ) == "on"){
+		echo '<div class="vc_col-sm-6"><a href="?page_id=777" class="slider_button_buy_product odf_display_botton_buy">Buy</a><div>';
+	    echo '<div class="vc_col-sm-6"><a href="?page_id=777" class="slider_button_details_product">Details</a><div>';
+	   }else{
+	   		echo '<div class="vc_col-sm-12 odf_display_center"><a href="?page_id=777" class="slider_button_details_product">Details</a><div>';
+	   		echo '<br>';echo get_the_title();echo '<br>';
+
+	   		echo '<pre>';
+	   		print_r("{{ post_data }}");
+	   		echo '</pre>';
+	   		
+
+	   }
 }
 
 add_shortcode('button_catalog_access','button_catalog_access');
@@ -1053,6 +1071,9 @@ function button_catalog_access(){
     // echo '<a href="'.egt_site_url().'/?page_id=168" class="button_catalog_access">Catalog access</a>';
     echo '<a href="'.get_permalink( get_page_by_title( "Catalog" )->ID).'" class="button_catalog_access">Catalog access</a>';
 }
+
+
+
 
 add_shortcode('theme2_all_advice','theme2_all_advice');
 function theme2_all_advice(){
@@ -1898,7 +1919,7 @@ function save_giftcard_option_fields( $post_id ) {
 	if ( isset( $_POST['_product_3d_title'] ) ) :
 		update_post_meta( $post_id, '_product_3d_title', $_POST['_product_3d_title'] );
 	endif;
-	
+
 	if ( isset( $_POST['_product_3d_description'] ) ) :
 		update_post_meta( $post_id, '_product_3d_description', $_POST['_product_3d_description'] );
 	endif;

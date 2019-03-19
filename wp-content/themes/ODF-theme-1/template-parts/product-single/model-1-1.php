@@ -21,6 +21,17 @@ global $product, $wpdb;
 		<div class="right">
 			<h3>ACCESS CATALOG</h3>
 			<hr>
+         <?php 
+         $recommanded_products = $wpdb->get_results("select * from {$wpdb->prefix}posts where post_type = 'product' and post_status = 'publish' order by post_date desc limit 3");
+         foreach ($recommanded_products as $recommanded_product) {
+            
+            echo '<pre>';
+            print_r($recommanded_product);
+            echo '</pre>';
+            
+         }
+
+         ?>
 			<label class="level1"><a href="#">Recommanded products</a></label>
 			<label class="level2"><a href="#">Product1</a></label>
 			<label class="level2"><a href="#">Product2</a></label>

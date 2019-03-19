@@ -111,6 +111,9 @@
 	.float_right{
 		float: right;
 	}
+	.odf_display_center{
+		text-align: center !important;
+	}
 	.odf_display_none{
 		display: none !important;
 	}

@@ -233,7 +233,7 @@
 							<i class="fa fa-times ic_search" id="ic_search_icon" aria-hidden="true" style="display: inline;"></i>
 							<input type="text" value="" name="s" id="s" placeholder="Search">
 							<input type="submit" id="searchsubmit" value="">
-							<input type="hidden" name="post_type" value="product">
+							<!-- <input type="hidden" name="post_type" value="product"> -->
 						</div>
 					</form>
 				</div>

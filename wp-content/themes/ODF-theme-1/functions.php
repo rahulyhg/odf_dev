@@ -1153,13 +1153,74 @@ function my_general_section()
 
 
     add_settings_field( // Option 1
-        'cpa_bg_field_2', // Option ID
-        'Hedear color icons', // Label
-        'bg_color_header', // !important - This is where the args go!
+        'header_color_theme_1', // Option ID
+        'Hedear color theme 1', // Label
+        'fn_header_color_theme_1', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
         'my_settings_theme_options_section', // Name of our section
         array( // The $args
-            'cpa_bg_field_2' // Should match Option ID
+            'header_color_theme_1' // Should match Option ID
+        )
+    );
+    add_settings_field( // Option 1
+        'header_color_multilang_gradient_left_theme_1', // Option ID
+        'Hedear color multilingue gradient left theme 1', // Label
+        'fn_header_color_multilang_gradient_left_theme_1', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_theme_options_section', // Name of our section
+        array( // The $args
+            'header_color_multilang_gradient_left_theme_1' // Should match Option ID
+        )
+    );
+    add_settings_field( // Option 1
+        'header_color_multilang_gradient_right_theme_1', // Option ID
+        'Hedear color multilingue gradient right theme 1', // Label
+        'fn_header_color_multilang_gradient_right_theme_1', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_theme_options_section', // Name of our section
+        array( // The $args
+            'header_color_multilang_gradient_right_theme_1' // Should match Option ID
+        )
+    );
+
+    add_settings_field( // Option 1
+        'product_slider_left_side_color_gradient_top_theme_1', // Option ID
+        'Product slider left side color gradient top theme 1', // Label
+        'fn_product_slider_left_side_color_gradient_top_theme_1', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_theme_options_section', // Name of our section
+        array( // The $args
+            'product_slider_left_side_color_gradient_top_theme_1' // Should match Option ID
+        )
+    );
+    add_settings_field( // Option 1
+        'product_slider_left_side_color_gradient_bottom_theme_1', // Option ID
+        'Product slider left side color gradient bottom theme 1', // Label
+        'fn_product_slider_left_side_color_gradient_bottom_theme_1', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_theme_options_section', // Name of our section
+        array( // The $args
+            'product_slider_left_side_color_gradient_bottom_theme_1' // Should match Option ID
+        )
+    );
+    add_settings_field( // Option 1
+        'product_slider_right_side_color_gradient_top_theme_1', // Option ID
+        'Product slider right side color gradient top theme 1', // Label
+        'fn_product_slider_right_side_color_gradient_top_theme_1', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_theme_options_section', // Name of our section
+        array( // The $args
+            'product_slider_right_side_color_gradient_top_theme_1' // Should match Option ID
+        )
+    );
+    add_settings_field( // Option 1
+        'product_slider_right_side_color_gradient_bottom_theme_1', // Option ID
+        'Product slider right side color gradient bottom theme 1', // Label
+        'fn_product_slider_right_side_color_gradient_bottom_theme_1', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_theme_options_section', // Name of our section
+        array( // The $args
+            'product_slider_right_side_color_gradient_bottom_theme_1' // Should match Option ID
         )
     );
 
@@ -1178,7 +1239,14 @@ function my_general_section()
     register_setting('general', 'mailto_url', 'esc_attr');
     register_setting('general', 'mailto_check', 'esc_attr');
 
-    register_setting('general', 'cpa_bg_field_2', 'esc_attr');
+    register_setting('general', 'header_color_theme_1', 'esc_attr');
+    register_setting('general', 'header_color_multilang_gradient_left_theme_1', 'esc_attr');
+    register_setting('general', 'header_color_multilang_gradient_right_theme_1', 'esc_attr');
+
+    register_setting('general', 'product_slider_left_side_color_gradient_top_theme_1', 'esc_attr');
+    register_setting('general', 'product_slider_left_side_color_gradient_bottom_theme_1', 'esc_attr');
+    register_setting('general', 'product_slider_right_side_color_gradient_top_theme_1', 'esc_attr');
+    register_setting('general', 'product_slider_right_side_color_gradient_bottom_theme_1', 'esc_attr');
 
 
     add_settings_section(
@@ -1232,10 +1300,46 @@ function my_section_catalog_callback()
 	// Section Callback
 }
 
-function bg_color_header($args) {
+
+
+function fn_header_color_theme_1($args) {
     $option = get_option($args[0]);
 	echo '<input type="text" class="cpa-color-picker" id="' . $args[0] . '"  name="' . $args[0] . '" value="' . $option . '" />';
 }
+
+function fn_header_color_multilang_gradient_left_theme_1($args) {
+    $option = get_option($args[0]);
+	echo '<input type="text" class="cpa-color-picker" id="' . $args[0] . '"  name="' . $args[0] . '" value="' . $option . '" />';
+}
+
+function fn_header_color_multilang_gradient_right_theme_1($args) {
+    $option = get_option($args[0]);
+	echo '<input type="text" class="cpa-color-picker" id="' . $args[0] . '"  name="' . $args[0] . '" value="' . $option . '" />';
+}
+
+
+function fn_product_slider_left_side_color_gradient_top_theme_1($args) {
+    $option = get_option($args[0]);
+	echo '<input type="text" class="cpa-color-picker" id="' . $args[0] . '"  name="' . $args[0] . '" value="' . $option . '" />';
+}
+function fn_product_slider_left_side_color_gradient_bottom_theme_1($args) {
+    $option = get_option($args[0]);
+	echo '<input type="text" class="cpa-color-picker" id="' . $args[0] . '"  name="' . $args[0] . '" value="' . $option . '" />';
+}
+function product_slider_right_side_color_gradient_top_theme_1($args) {
+    $option = get_option($args[0]);
+	echo '<input type="text" class="cpa-color-picker" id="' . $args[0] . '"  name="' . $args[0] . '" value="' . $option . '" />';
+}
+function product_slider_right_side_color_gradient_bottom_theme_1($args) {
+    $option = get_option($args[0]);
+	echo '<input type="text" class="cpa-color-picker" id="' . $args[0] . '"  name="' . $args[0] . '" value="' . $option . '" />';
+}
+
+
+
+
+
+
 function logo_url_callback($args)
 {  // Textbox Callback
     $option = get_option($args[0]);
@@ -1435,8 +1539,6 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 
 
-
-
 add_shortcode('show_slider_product_rating', 'show_slider_product_rating');
 function show_slider_product_rating(){
 	global $product, $post;
@@ -1550,9 +1652,78 @@ function fcn_product_start($attr){
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 //remove default sorting drop-down from WooCommerce
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+/*
+add_action( 'woocommerce_product_query', 'default_catalog_ordering_desc', 10, 2 );
+function default_catalog_ordering_desc( $q, $query ){
+    if( $q->get( 'orderby' ) == 'date' )
+        $q->set( 'order', 'DESC' );
+}
 
+// Filters
+add_filter( 'woocommerce_get_catalog_ordering_args', 'custom_woocommerce_get_catalog_ordering_args' );
+add_filter( 'woocommerce_default_catalog_orderby_options', 'custom_woocommerce_catalog_orderby' );
+add_filter( 'woocommerce_catalog_orderby', 'custom_woocommerce_catalog_orderby' );
+ 
+ // Apply custom args to main query
+function custom_woocommerce_get_catalog_ordering_args( $args ) {
+	$orderby_value = isset( $_GET['orderby'] ) ? woocommerce_clean( $_GET['orderby'] ) : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
+ 
+	if ( 'oldest_to_recent' == $orderby_value ) {
+		$args['orderby'] = 'date';
+		$args['order'] = 'DESC';
+	}
+ 
+	return $args;
+}
+ 
+// Create new sorting method
+function custom_woocommerce_catalog_orderby( $sortby ) {
+	
+	$sortby['oldest_to_recent'] = __( 'Oldest to most recent', 'woocommerce' );
+	
+	return $sortby;
+}
+*/
+add_filter( 'woocommerce_get_catalog_ordering_args','custom_query_sort_args' );
 
+function custom_query_sort_args() {
+	// Sort by and order
+    $current_order = ( isset( $_SESSION['orderby'] ) ) ? $_SESSION['orderby'] : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
 
+    switch ( $current_order ) {
+        case 'date' :
+            $orderby = 'date';
+            $order = 'desc';
+            $meta_key = '';
+        break;
+        case 'price' :
+            $orderby = 'meta_value_num';
+            $order = 'desc';
+            $meta_key = '_price';
+        break;
+        case 'title' :
+            $orderby = 'meta_value';
+            $order = 'desc';
+            $meta_key = '_woocommerce_product_short_title';
+        break;
+        default :
+            $orderby = 'menu_order title';
+            $order = 'desc';
+            $meta_key = '';         
+        break;
+    }
+
+    $args = array();
+
+    $args['orderby']        = $orderby;
+    $args['order']          = $order;
+
+    if ($meta_key) :
+        $args['meta_key'] = $meta_key;
+    endif;
+
+    return $args;
+}
 
 /*
 // https://www.advancedcustomfields.com/resources/custom-location-rules/
@@ -1805,7 +1976,7 @@ function save_giftcard_option_fields( $post_id ) {
 	if ( isset( $_POST['_product_3d_title'] ) ) :
 		update_post_meta( $post_id, '_product_3d_title', $_POST['_product_3d_title'] );
 	endif;
-	
+
 	if ( isset( $_POST['_product_3d_description'] ) ) :
 		update_post_meta( $post_id, '_product_3d_description', $_POST['_product_3d_description'] );
 	endif;

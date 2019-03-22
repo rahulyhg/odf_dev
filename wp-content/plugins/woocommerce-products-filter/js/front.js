@@ -199,7 +199,7 @@ jQuery(function ($) {
                 if(temp2[1]==undefined){
                     //return false;
                     var get2={0:"",1:""};
-                    
+
                 }else{
                     var get2 = temp2[1].split('#');
                 }
@@ -235,11 +235,11 @@ jQuery(function ($) {
     //+++
     woof_draw_products_top_panel();
     woof_shortcode_observer();
-	
-	//tooltip  
+
+	//tooltip
 	woof_init_tooltip();
 
- 
+
 //+++
     //if we use redirect attribute in shortcode [woof is_ajax=0]
     //not for ajax, for redirect mode only
@@ -268,9 +268,9 @@ function woof_redirect_init() {
 		//***
 		/*
 		 var events = ['click', 'change', 'ifChecked', 'ifUnchecked'];
-		 
+
 		 for (var i = 0; i < events.length; i++) {
-		 
+
 		 jQuery('div.woof input, div.woof option, div.woof div, div.woof label').live(events[i], function (e) {
 		 try {
 		 if (jQuery(this).parents('.woof').data('redirect').length > 0) {
@@ -281,7 +281,7 @@ function woof_redirect_init() {
 		 }
 		 e.stopPropagation();
 		 });
-		 
+
 		 }
 		 */
 		//***
@@ -299,7 +299,7 @@ function woof_redirect_init() {
 function woof_init_orderby() {
     jQuery('form.woocommerce-ordering').life('submit', function () {
         /* woo3.3 */
-        if(!jQuery("#is_woo_shortcode").length){ 
+        if(!jQuery("#is_woo_shortcode").length){
             return false;
         }
         /* +++ */
@@ -317,12 +317,12 @@ function woof_init_orderby() {
 }
 
 function woof_init_reset_button() {
-    jQuery('.woof_reset_search_form').on('click', function () {       
+    jQuery('.woof_reset_search_form').on('click', function () {
 	//var link = jQuery(this).data('link');
 	woof_ajax_page_num = 1;
-        woof_ajax_redraw = 0; 
+        woof_ajax_redraw = 0;
 	if (woof_is_permalink) {
-	    woof_current_values = {};           
+	    woof_current_values = {};
 	    woof_submit_link(woof_get_submit_link().split("page/")[0]);
 	} else {
 	    var link = woof_shop_page;
@@ -433,7 +433,7 @@ function woof_init_search_form() {
 
 var woof_submit_link_locked = false;
 function woof_submit_link(link) {
-    
+
 
     if (woof_submit_link_locked) {
 	return;
@@ -443,7 +443,7 @@ function woof_submit_link(link) {
     woof_show_info_popup(woof_lang_loading);
 
     if (woof_is_ajax === 1 && !woof_ajax_redraw) {
-        
+
 	woof_ajax_first_done = true;
 	var data = {
 	    action: "woof_draw_products",
@@ -452,7 +452,7 @@ function woof_submit_link(link) {
 	    shortcode: jQuery('#woof_results_by_ajax').data('shortcode'),
 	    woof_shortcode: jQuery('div.woof').data('shortcode')
 	};
-     
+
 	jQuery.post(woof_ajaxurl, data, function (content) {
 	    content = jQuery.parseJSON(content);
 	    if (jQuery('.woof_results_by_ajax_shortcode').length) {
@@ -480,10 +480,10 @@ function woof_submit_link(link) {
 	    woof_js_after_ajax_done();
             //***  change  link  in button "add to cart"
             woof_change_link_addtocart();
-			
+
 		/*tooltip*/
         woof_init_tooltip();
-			
+
 	});
 
     } else {
@@ -591,12 +591,14 @@ function woof_get_submit_link() {
 		delete woof_current_values.page_id;
 	    }
 	} else {
-	    link = location.protocol + '//' + location.host + "?" + swoof_search_slug + "=1";
+      //modif sss
+	    //link = location.protocol + '//' + location.host + "?" + swoof_search_slug + "=1";
+      link = "index.php?" + swoof_search_slug + "=1";
 	    /*
 	     if (!woof_is_ajax) {
 	     link = location.protocol + '//' + location.host + "?" + swoof_search_slug + "=1";
 	     }
-	     
+
 	     if (woof_current_values.hasOwnProperty('page_id')) {
 	     link = location.protocol + '//' + location.host + "?" + swoof_search_slug + "=1";
 	     }
@@ -834,18 +836,18 @@ function woof_draw_products_top_panel() {
 
 //control conditions if proucts shortcode uses on the page
 function woof_shortcode_observer() {
-  
+
     var redirect=true;
     if(jQuery('.woof_shortcode_output').length || (jQuery('.woocommerce .products').length && !jQuery('.single-product').length)){
         redirect=false;
     }
     if(jQuery('.woocommerce .woocommerce-info').length ){
         redirect=false;
-    }   
+    }
     if( typeof woof_not_redirect!== 'undefined' && woof_not_redirect==1 ){
         redirect=false;
     }
-    
+
     if (!redirect) {
         woof_current_page_link = location.protocol + '//' + location.host + location.pathname;
     }
@@ -946,7 +948,7 @@ function woof_checkboxes_slide() {
 
 
                 var span_class = 'woof_is_closed';
-                if(woof_supports_html5_storage()){ 
+                if(woof_supports_html5_storage()){
                     //test mode  from 06.11.2017
                          var preulstate=localStorage.getItem( jQuery(ul).closest('li').find('label').first().text());
                         if(preulstate && preulstate=='woof_is_opened'){
@@ -954,7 +956,7 @@ function woof_checkboxes_slide() {
                            jQuery(ul).show();
                         }
                         jQuery(ul).before('<a href="javascript:void(0);" class="woof_childs_list_opener"><span class="' + span_class + '"></span></a>');
-                    //++   
+                    //++
                 }else{
                     if (jQuery(ul).find('input[type=checkbox],input[type=radio]').is(':checked')) {
                         jQuery(ul).show();
@@ -963,7 +965,7 @@ function woof_checkboxes_slide() {
                     jQuery(ul).before('<a href="javascript:void(0);" class="woof_childs_list_opener"><span class="' + span_class + '"></span></a>');
 
                 }
- 
+
             });
 
 	    jQuery.each(jQuery('a.woof_childs_list_opener'), function (index, a) {
@@ -980,13 +982,13 @@ function woof_checkboxes_slide() {
 			span.removeClass('woof_is_opened');
 			span.addClass('woof_is_closed');
 		    }
-                    
-                    if(woof_supports_html5_storage()){ 
+
+                    if(woof_supports_html5_storage()){
                         //test mode  from 06.11.2017
                         var ullabel=jQuery(this).closest("li").find("label").first().text();
                         var ullstate=jQuery(this).children("span").attr("class");
                         localStorage.setItem(ullabel,ullstate);
-                        //++  
+                        //++
                     }
 		    return false;
 		});
@@ -998,7 +1000,7 @@ function woof_checkboxes_slide() {
 function woof_init_ion_sliders() {
     jQuery.each(jQuery('.woof_range_slider'), function (index, input) {
 	try {
-            
+
 	    jQuery(input).ionRangeSlider({
 		min: jQuery(input).data('min'),
 		max: jQuery(input).data('max'),
@@ -1278,7 +1280,7 @@ function woof_price_filter_radio_init() {
 
 	jQuery('.woof_price_filter_radio').iCheck({
 	    radioClass: 'iradio_' + icheck_skin.skin + '-' + icheck_skin.color,
-	    //radioClass: 'iradio_square-green'        
+	    //radioClass: 'iradio_square-green'
 	});
 
 	jQuery('.woof_price_filter_radio').siblings('div').removeClass('checked');
@@ -1377,8 +1379,8 @@ function woof_infinite() {
     if (typeof yith_infs === 'undefined') {
 	return;
     }
-    
-  
+
+
     //***
     var infinite_scroll1 = {
 	//'nextSelector': ".woof_infinity .nav-links .next",
@@ -1397,7 +1399,7 @@ var get="";
 	delete temp['paged'];
 	get = decodeURIComponent(jQuery.param(temp))
     }
-    
+
   var page_link = jQuery('.woocommerce-pagination li .next').attr("href");
     //console.log(page_link);
     if(page_link==undefined){
@@ -1409,14 +1411,14 @@ var page="";
     if (ajax_link[1] != undefined) {
 	var temp1 = woof_serialize(ajax_link[1]);
         if(temp1['paged']!=undefined){
-          page= "page/"+ temp1['paged']+"/"; 
+          page= "page/"+ temp1['paged']+"/";
         }
     }
 
     page_link = curr_link[0] +page+ '?' + get;
     //console.log(page_link);
     jQuery('.woocommerce-pagination li .next').attr('href', page_link);
-    
+
     jQuery(window).unbind("yith_infs_start"), jQuery(yith_infs.contentSelector).yit_infinitescroll(infinite_scroll1)
 }
 //End infinity scroll
@@ -1433,9 +1435,9 @@ function woof_change_link_addtocart(){
         if(link_items[1]!=undefined){
             link= site_link_items[0]+"?"+link_items[1];
             jQuery(elem).attr('href',link);
-        }     
+        }
     });
-    
+
 }
 //https://github.com/kvz/phpjs/blob/master/functions/strings/number_format.js
 function woof_front_number_format(number, decimals, dec_point, thousands_sep) {

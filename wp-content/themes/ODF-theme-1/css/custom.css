@@ -105,6 +105,10 @@
 		color:var(--main-color)!important;
 		border: 1px solid var(--main-color)!important;
 	}
+	.error-404{
+	    margin-bottom: 100px !important;
+	    margin-top: 50px;
+	}
 	.text-center{
 		text-align: center;
 	}
@@ -194,7 +198,7 @@
 	    float: right;
 	}
 	.hr_costom_header{
-		background-color: #2e94d4;
+		background-color: var(--header-color-theme-1);
 	    border: 0;
 	    height: 2px;
 	    margin: 0;
@@ -379,7 +383,7 @@
 		top: 52px;
 		right: 20px;
 		width: 230px;
-		background-color: #c617f4;
+		background-color: var(--header-color-theme-1);
 		padding: 15px 20px;
 		margin: 0;
 	}
@@ -412,7 +416,6 @@
 	    line-height: 37px;
 	    padding: 0 4%;
 	    border: none;
-	    color: #a6a6a6;
 	    font-family: FontAwesome,sans-serif !important;
 	    cursor: pointer;
 	    white-space: nowrap;
@@ -422,7 +425,7 @@
 	    -o-transition: all .2s ease-in-out;
 	    -ms-transition: all .2s ease-in-out;
 	    background: 0 0;
-	    color: #0a457a;
+	    color: var(--header-color-theme-1);
 	    background-color: #efefef;
 	    width: 30px;
 	    height: 30px;
@@ -434,11 +437,11 @@
 	#div_searchform, #div_searchform .fa-times {
 	    display: none;
 	}
-	 .fa-times {
+	.fa-times {
 	    display: inline-block;
 	    float: left;
 	    margin: 4px 0px 0px 7px;
-	    color: #c617f4;
+	    color: var(--header-color-theme-1);
 	}
 	#div_header_mon_compte .fa-search, #div_searchform .fa-times {
 	    width: 20px;
@@ -448,11 +451,19 @@
 	    background: none;
 	    font-size: 20px;
 	    cursor: pointer;
+	    color : var(--header-color-theme-1)
+	}
+	.vc_row_header .fa{
+		color: var(--header-color-theme-1);
+	}
+	.footer_social .fa{
+		color: #acacac;
 	}
 	.fa {
 	    display: inline-block;
 	    font: normal normal normal 14px/1 FontAwesome;
-	    font-size: inherit;
+	    /*font-size: inherit;*/
+	   	font-size: 30px;
 	    text-rendering: auto;
 	    -webkit-font-smoothing: antialiased;
 	    -moz-osx-font-smoothing: grayscale;
@@ -1743,7 +1754,8 @@
         color: #ffffff;        
     }
     .row_grid_product .left_side{        
-        background-image: linear-gradient(-180deg, #05c0ea 0%, #028cd0 100%);
+        /*background-image: linear-gradient(-180deg, #05c0ea 0%, #028cd0 100%);*/
+        background-color: var(--product-slider-left-side-color-theme-1);
         width: 531px;
         height: 396px;
     }
@@ -1760,7 +1772,7 @@
         border-top: 30px solid transparent;
         border-right: 30px solid transparent;
         border-bottom: 30px solid transparent;
-        border-left: 30px solid #04a7dd;
+        border-left: 30px solid var(--product-slider-left-side-color-theme-1);
         z-index: 99999;
     }
     .row_grid_product h3,
@@ -1856,7 +1868,7 @@
 	}
 	.row_grid_product .vc_gitem-zone-a .vc_col-sm-6:nth-child(2) {
 	    padding-top: 30px !important;
-	    background: radial-gradient(ellipse at center, rgba(255,255,255, 1) -190%, rgba(0,0,0,1) 110%);
+	    background: radial-gradient(ellipse at center, var(--product-slider-right-side-color-gradient-in-theme-1) -190%, var(--product-slider-right-side-color-gradient-out-theme-1) 110%);
 	}
 
 /* row_grid_product */
@@ -2331,6 +2343,13 @@
 	#wpadminbar {
 	    z-index: 999999999 !important;
 	}
+	#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1 .mega-toggle-label,
+	#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1:before{
+		color: var(--header-color-theme-1) !important;
+	}
+	#mega-menu-wrap-primary .mega-menu-toggle.mega-menu-open + #mega-menu-primary {
+	    background: var(--header-color-theme-1);
+	}
 	/* admin menu */
     .wpml_ls_menu_item .dropdown-toggle.nav-link{
         background-image: url(../images/select_arrow_white.png);
@@ -2345,28 +2364,51 @@
         padding-left: 15px;
         background-color: transparent;
         /* margin-bottom: 20px !important; */
-        background-image: linear-gradient(-90deg, #cb16fb 0%, #4e215a 100%);
+        background-image: linear-gradient(-90deg, var(--header-color-multilang-gradient-right-theme-1) 0%, var(--header-color-multilang-gradient-left-theme-1) 100%);
     }
     .wpml-ls-legacy-dropdown .wpml-ls-sub-menu a {
-	    background-image: linear-gradient(-90deg, #cb16fb 0%, #4e215a 100%);
-	    color: #ffffff;
+		background-image: linear-gradient(-90deg, var(--header-color-multilang-gradient-right-theme-1) 0%, var(--header-color-multilang-gradient-left-theme-1) 100%);
+		color: #ffffff;
+		width: 130px;
+		border-width: 0;
+		font-size: 13px;
+		margin-left: 20px;
+		padding: 3px 10px;
+	}
+	.wpml-ls-legacy-dropdown .wpml-ls-sub-menu li:last-child a{
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+	}
+	.wpml-ls-legacy-dropdown .wpml-ls-current-language:hover>a {
+	    color: #fff;
+	}
+	.wpml-ls-legacy-dropdown .wpml-ls-item {
+	    font-size: 11px;
 	}
 
     .wpml-ls-legacy-dropdown a.wpml-ls-item-toggle{
 	    background-image: url(../images/select_arrow_white.png);
 	    color: #ffffff;
-	    font-size: 11px;
+	    font-size: 13px;
 	    width: 130px;
-	    background-image: linear-gradient(-90deg, #cb16fb 0%, #4e215a 100%);
+	    background-image: linear-gradient(-90deg, var(--header-color-multilang-gradient-right-theme-1) 0%, var(--header-color-multilang-gradient-left-theme-1) 100%);
 	    border-radius: 10px;
 	    border: none;
 	}
 
 
     .wpml-ls-legacy-dropdown a.wpml-ls-item-toggle:hover{
-    	background-image: linear-gradient(-90deg, #cb16fb 0%, #4e215a 100%);
-    	color: #ffffff;
+		color: #ffffff;    	
     }
+    .wpml-ls-legacy-dropdown a:hover, .wpml-ls-legacy-dropdown a:focus,
+    .wpml-ls-legacy-dropdown .wpml-ls-current-language:hover>a {
+	    background-image: linear-gradient(-90deg, var(--header-color-multilang-gradient-right-theme-1) 0%, var(--header-color-multilang-gradient-left-theme-1) 100%);
+		border-bottom-left-radius: 0px;
+		border-bottom-right-radius: 0px;
+	}
+    .wpml-ls-legacy-dropdown .wpml-ls-sub-menu {
+	    top: 23.5px;
+	}
     #mega-menu-primary{
     	height: 100vh;
 	    position: absolute;
@@ -2708,7 +2750,9 @@
 	    float: left;
 	}
 	.product-detail-1-1 .detail-product-icon img{
-	  max-width: 50px !important;
+		max-width: 50px !important;
+		display: block;
+    	margin: 0 auto;
 	}
 	.product-detail-1-1 .detail-product-icon span{
 	  font-size: 14px !important;

@@ -4,7 +4,7 @@ var $j = jQuery.noConflict();
 $j(document).ready(function() {
     "use strict";
 
-    console.log('test custom js admin');
+    // console.log('test custom js admin');
 
     /*
         <div class="upload_button_div">
@@ -90,6 +90,7 @@ $j(document).ready(function() {
 
     /* background configuration via amdin*/
 
+    $j( '.cpa-color-picker' ).wpColorPicker();
     
 
 

@@ -1022,3 +1022,121 @@
 /*.button_allfaq{
 	display:none!important;
 }*/
+
+
+
+.search-result .post-author{
+  background:url(../images/user.png) no-repeat;
+  padding-left:22px;
+  margin-left:30px;
+}
+.search-result .post-time{
+  background:url(../images/clock.png) no-repeat;
+  padding-left:22px;
+  margin: 20px;
+}
+.search-result{
+  max-width:800px;
+  margin:0 auto;
+}
+.search-result .entry-header{
+  margin:0;
+}
+.search-result .entry-summary{
+  margin:0;
+}
+.search-result .entry-header h2{
+  margin:10px 0;
+  font-size: 2rem;
+}
+.search-result{
+  margin-bottom: 2em;
+}
+.search-result a{
+  color:#afa3a3;
+}
+.search-result .entry-title a{
+  color: #007acc;
+}
+.search-result a.more-link{
+  color: #007acc;
+}
+.search-result-text{
+  font-size: 32px;
+    margin-left: -250px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/*** Responsives ***/
+
+    @media (max-width: 1326px){
+
+    }
+    @media (max-width: 1300px){
+
+    }
+
+    /*@media (max-width: 1200px){
+
+    }
+*/
+    @media (max-width: 1199px){
+
+    }
+
+    @media (max-width: 1024px){
+
+  }
+    /*@media (max-width: 1000px){
+
+    }*/
+
+    @media (max-width: 959px){
+
+    }
+
+    /*@media (max-width: 910px){
+
+    }*/
+
+    @media (max-width: 768px){
+    .search-results .vc_column_container>.vc_column-inner{
+      padding:0;
+    }
+    .search-results .vc_row{
+      margin:0;
+    }
+    }
+
+    @media (max-width: 676px){
+
+    }
+
+
+    @media (max-width: 600px){
+
+    }
+
+    @media (max-width: 425px){
+    .search-results .search-result-text{
+      margin-left: 0;
+    }
+    .search-results .post-thumbnail{
+      margin-top: 20px;
+    }
+
+    }
+
+    @media (max-width: 414px){
+
+    }
+
+    @media (max-width: 375px){
+    
+  }
+
+    @media (max-width: 320px){
+    
+  }
+/*** Responsives ***/

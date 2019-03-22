@@ -8,14 +8,22 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article class="search-result" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
+	
+	
+	
+	<span class="post-time"><?php the_time('j F Y') ?></span>
+	<span class="post-author">By <?php the_author(); ?></span>
+	
+	
+	
 	<header class="entry-header">
-		<h2 class="entry-title"><?php the_title(); ?></h2>
+		<h2 class="entry-title"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
 	</header><!-- .entry-header -->
 
 	<div class="vc_col-sm-8">
-		<?php twentysixteen_excerpt(); ?>
+		<a href="<?php the_permalink() ?>"><?php twentysixteen_excerpt(); ?></a>
 	</div>
 	<div class="vc_col-sm-4">
 		<?php twentysixteen_post_thumbnail(); ?>

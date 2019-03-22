@@ -38,6 +38,34 @@
 		    		echo 'none;';
 		    	}
 	    	 ?>;
+
+	    	--header-color-theme-2: <?php
+	    							if(!empty(get_option('header_color_theme_2'))){
+	    								echo get_option('header_color_theme_2');
+	    							}else{	    								
+	    								update_option( 'header_color_theme_2', '#ea971d' );
+	    								echo '#ea971d';
+	    							}
+	    							?>;
+
+			--header-color-multilang-gradient-left-theme-2: <?php
+	    							if(!empty(get_option('header_color_multilang_gradient_left_theme_2'))){
+	    								echo get_option('header_color_multilang_gradient_left_theme_2');
+	    							}else{	    								
+	    								update_option( 'header_color_multilang_gradient_left_theme_2', '#ea971d' );
+	    								echo '#ea971d';
+	    							}
+	    							?>;
+
+			--header-color-multilang-gradient-right-theme-2: <?php
+	    							if(!empty(get_option('header_color_multilang_gradient_right_theme_2'))){
+	    								echo get_option('header_color_multilang_gradient_right_theme_2');
+	    							}else{	    								
+	    								update_option( 'header_color_multilang_gradient_right_theme_2', '#ffffff' );
+	    								echo '#ffffff';
+	    							}
+	    							?>;
+	    							
 	    }
 		
 		/************ loader **********/
@@ -195,22 +223,22 @@
 
 					<?php if(get_option( 'mailto_check' )=="on") {?>
 						<a href="<?php echo get_option( 'mailto_url' ) ?>" target="_blank" class="header_social text-center">
-							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-mail-orange.png">
+							<i class="fa fa-edit"></i>
 						</a>
 					<?php } ?>
 					<?php if(get_option( 'youtube_check' )=="on") {?>
 						<a href="<?php echo get_option( 'youtube_url' ) ?>" target="_blank" class="header_social text-center">
-							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-youtube-orange.png">
+							<i class="fa fa-youtube-play"></i>
 						</a>
 					<?php } ?>
 					<?php if(get_option( 'facebook_check' )=="on") {?>
 						<a href="<?php echo get_option( 'facebook_url' ) ?>" target="_blank" class="header_social text-center">
-							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-facebook-orange.png">
+							<i class="fa fa-facebook"></i>
 						</a>
 					<?php } ?>
 					<?php if(get_option( 'instagram_check' )=="on") {?>
 						<a href="<?php echo get_option( 'instagram_url' ) ?>" target="_blank" class="header_social text-center">
-							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-instagram-orange.png">
+							<i class="fa fa-instagram"></i>
 						</a>
 					<?php } ?>
 
@@ -223,7 +251,7 @@
 					?>
 
 					<a href="javascript:void(0)" id="div_header_mon_compte">
-						<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-search-orange.png">
+						<i class="fa fa-search" aria-hidden="true"></i>
 					</a>
 				</div>
 				

@@ -1039,8 +1039,14 @@ add_action('admin_init', 'my_general_section');
 function my_general_section()
 {
     add_settings_section(
+        'my_settings_theme_options_title', // Section ID
+        '<span style="border-bottom: 1px solid #c7c5c5; margin-top: 20px; padding: 10px 0;font-size: 23px; line-height: 75px;">Theme options</span>', // Section Title
+        'my_section_options_callback', // Callback
+        'general' // What Page?  This makes the section show up on the General Settings Page
+    );
+    add_settings_section(
         'my_settings_theme_options_section', // Section ID
-        '<span style="border-bottom: 1px solid #c7c5c5; margin-top: 20px; padding: 10px 0;">Theme options</span>', // Section Title
+        '<span style="border-bottom: 1px solid #c7c5c5; margin-top: 20px; padding: 10px 0;">Header settings</span>', // Section Title
         'my_section_options_callback', // Callback
         'general' // What Page?  This makes the section show up on the General Settings Page
     );
@@ -1154,7 +1160,7 @@ function my_general_section()
 
     add_settings_field( // Option 1
         'header_color_theme_1', // Option ID
-        'Hedear color theme 1', // Label
+        'Hedear color', // Label
         'fn_header_color_theme_1', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
         'my_settings_theme_options_section', // Name of our section
@@ -1164,7 +1170,7 @@ function my_general_section()
     );
     add_settings_field( // Option 1
         'header_color_multilang_gradient_left_theme_1', // Option ID
-        'Hedear color multilingue gradient left theme 1', // Label
+        'Hedear color multilingue gradient left', // Label
         'fn_header_color_multilang_gradient_left_theme_1', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
         'my_settings_theme_options_section', // Name of our section
@@ -1174,53 +1180,12 @@ function my_general_section()
     );
     add_settings_field( // Option 1
         'header_color_multilang_gradient_right_theme_1', // Option ID
-        'Hedear color multilingue gradient right theme 1', // Label
+        'Hedear color multilingue gradient right', // Label
         'fn_header_color_multilang_gradient_right_theme_1', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
         'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'header_color_multilang_gradient_right_theme_1' // Should match Option ID
-        )
-    );
-
-    add_settings_field( // Option 1
-        'product_slider_left_side_color_gradient_top_theme_1', // Option ID
-        'Product slider left side color gradient top theme 1', // Label
-        'fn_product_slider_left_side_color_gradient_top_theme_1', // !important - This is where the args go!
-        'general', // Page it will be displayed (General Settings)
-        'my_settings_theme_options_section', // Name of our section
-        array( // The $args
-            'product_slider_left_side_color_gradient_top_theme_1' // Should match Option ID
-        )
-    );
-    add_settings_field( // Option 1
-        'product_slider_left_side_color_gradient_bottom_theme_1', // Option ID
-        'Product slider left side color gradient bottom theme 1', // Label
-        'fn_product_slider_left_side_color_gradient_bottom_theme_1', // !important - This is where the args go!
-        'general', // Page it will be displayed (General Settings)
-        'my_settings_theme_options_section', // Name of our section
-        array( // The $args
-            'product_slider_left_side_color_gradient_bottom_theme_1' // Should match Option ID
-        )
-    );
-    add_settings_field( // Option 1
-        'product_slider_right_side_color_gradient_top_theme_1', // Option ID
-        'Product slider right side color gradient top theme 1', // Label
-        'fn_product_slider_right_side_color_gradient_top_theme_1', // !important - This is where the args go!
-        'general', // Page it will be displayed (General Settings)
-        'my_settings_theme_options_section', // Name of our section
-        array( // The $args
-            'product_slider_right_side_color_gradient_top_theme_1' // Should match Option ID
-        )
-    );
-    add_settings_field( // Option 1
-        'product_slider_right_side_color_gradient_bottom_theme_1', // Option ID
-        'Product slider right side color gradient bottom theme 1', // Label
-        'fn_product_slider_right_side_color_gradient_bottom_theme_1', // !important - This is where the args go!
-        'general', // Page it will be displayed (General Settings)
-        'my_settings_theme_options_section', // Name of our section
-        array( // The $args
-            'product_slider_right_side_color_gradient_bottom_theme_1' // Should match Option ID
         )
     );
 
@@ -1243,10 +1208,48 @@ function my_general_section()
     register_setting('general', 'header_color_multilang_gradient_left_theme_1', 'esc_attr');
     register_setting('general', 'header_color_multilang_gradient_right_theme_1', 'esc_attr');
 
-    register_setting('general', 'product_slider_left_side_color_gradient_top_theme_1', 'esc_attr');
-    register_setting('general', 'product_slider_left_side_color_gradient_bottom_theme_1', 'esc_attr');
-    register_setting('general', 'product_slider_right_side_color_gradient_top_theme_1', 'esc_attr');
-    register_setting('general', 'product_slider_right_side_color_gradient_bottom_theme_1', 'esc_attr');
+
+    add_settings_section(
+        'my_settings_home_1_slider_product_section', // Section ID
+        '<span style="border-bottom: 1px solid #c7c5c5; margin-top: 20px; padding: 10px 0;">Home Slider product colors</span>', // Section Title
+        'my_section_options_callback', // Callback
+        'general' // What Page?  This makes the section show up on the General Settings Page
+    );
+
+    add_settings_field( // Option 1
+        'product_slider_left_side_color_theme_1', // Option ID
+        'Product slider left side color', // Label
+        'fn_product_slider_left_side_color_theme_1', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_home_1_slider_product_section', // Name of our section
+        array( // The $args
+            'product_slider_left_side_color_theme_1' // Should match Option ID
+        )
+    );
+    add_settings_field( // Option 1
+        'product_slider_right_side_color_gradient_in_theme_1', // Option ID
+        'Product slider right side color gradient IN', // Label
+        'fn_product_slider_right_side_color_gradient_in_theme_1', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_home_1_slider_product_section', // Name of our section
+        array( // The $args
+            'product_slider_right_side_color_gradient_in_theme_1' // Should match Option ID
+        )
+    );
+    add_settings_field( // Option 1
+        'product_slider_right_side_color_gradient_out_theme_1', // Option ID
+        'Product slider right side color gradient OUT', // Label
+        'fn_product_slider_right_side_color_gradient_out_theme_1', // !important - This is where the args go!
+        'general', // Page it will be displayed (General Settings)
+        'my_settings_home_1_slider_product_section', // Name of our section
+        array( // The $args
+            'product_slider_right_side_color_gradient_out_theme_1' // Should match Option ID
+        )
+    );
+
+    register_setting('general', 'product_slider_left_side_color_theme_1', 'esc_attr');
+    register_setting('general', 'product_slider_right_side_color_gradient_in_theme_1', 'esc_attr');
+    register_setting('general', 'product_slider_right_side_color_gradient_out_theme_1', 'esc_attr');
 
 
     add_settings_section(
@@ -1318,19 +1321,15 @@ function fn_header_color_multilang_gradient_right_theme_1($args) {
 }
 
 
-function fn_product_slider_left_side_color_gradient_top_theme_1($args) {
+function fn_product_slider_left_side_color_theme_1($args) {
     $option = get_option($args[0]);
 	echo '<input type="text" class="cpa-color-picker" id="' . $args[0] . '"  name="' . $args[0] . '" value="' . $option . '" />';
 }
-function fn_product_slider_left_side_color_gradient_bottom_theme_1($args) {
+function fn_product_slider_right_side_color_gradient_in_theme_1($args) {
     $option = get_option($args[0]);
 	echo '<input type="text" class="cpa-color-picker" id="' . $args[0] . '"  name="' . $args[0] . '" value="' . $option . '" />';
 }
-function product_slider_right_side_color_gradient_top_theme_1($args) {
-    $option = get_option($args[0]);
-	echo '<input type="text" class="cpa-color-picker" id="' . $args[0] . '"  name="' . $args[0] . '" value="' . $option . '" />';
-}
-function product_slider_right_side_color_gradient_bottom_theme_1($args) {
+function fn_product_slider_right_side_color_gradient_out_theme_1($args) {
     $option = get_option($args[0]);
 	echo '<input type="text" class="cpa-color-picker" id="' . $args[0] . '"  name="' . $args[0] . '" value="' . $option . '" />';
 }
@@ -1987,4 +1986,21 @@ add_action( 'woocommerce_process_product_meta_simple', 'save_giftcard_option_fie
 
  
 
+add_filter( 'pre_get_posts', 'tgm_io_cpt_search' );
+/**
+ * This function modifies the main WordPress query to include an array of 
+ * post types instead of the default 'post' post type.
+ *
+ * @param object $query  The original query.
+ * @return object $query The amended query.
+ */
+// function tgm_io_cpt_search( $query ) {
+	
+//     if ( $query->is_search ) {
+// 	$query->set( 'post_type', array( 'post', 'movies', 'products', 'portfolio' ) );
+//     }
+    
+//     return $query;
+    
+// }
 

@@ -74,17 +74,18 @@
 					<div class="vc_col-sm-1 footer_social">
 						<?php if(get_option( 'youtube_check' )=="on") {?>
 							<a href="<?php echo get_option( 'youtube_url' ) ?>" target="_blank">
-								<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-youtube-white.png">
+								<i class="fa fa-youtube-play"></i>
 							</a>
 						<?php } ?>
 						<?php if(get_option( 'facebook_check' )=="on") {?>
 							<a href="<?php echo get_option( 'facebook_url' ) ?>" target="_blank">
-								<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-facebook-white.png">
+								<i class="fa fa-facebook"></i>
 							</a>
 						<?php } ?>
 						<?php if(get_option( 'instagram_check' )=="on") {?>
 							<a href="<?php echo get_option( 'instagram_url' ) ?>" target="_blank">
-								<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-instagram-white.png">
+								<i class="fa fa-instagram"></i>
+
 							</a>
 						<?php } ?>
 					</div>

@@ -18,20 +18,20 @@ get_header(); ?>
 				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentysixteen' ), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h1>
 			</header> --><!-- .page-header -->
 
-			<div data-vc-full-width="true" data-vc-full-width-init="true" data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid">
+			<div data-vc-full-width="false" data-vc-full-width-init="false" data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid">
 			   <div class="wpb_column vc_column_container vc_col-sm-12">
 			      <div class="vc_column-inner">
 			         <div class="wpb_wrapper">
 			            <div class="wpb_text_column wpb_content_element  vc_custom_1550230179944000">
 			               <div class="wpb_wrapper">
-			                  <h1 style="text-align: center;"><span style="color: #ffffff;"></span></h1>
+			                  <h1 class="search-result-text" style="text-align: center;"><span style="color: #ffffff;">Search results</span></h1>
 			               </div>
 			            </div>
 			         </div>
 			      </div>
 			   </div>
 			</div>
-
+			<br><br><br>
 			<?php
 			// Start the loop.
 			while ( have_posts() ) : the_post();
@@ -62,6 +62,6 @@ get_header(); ?>
 
 		</main><!-- .site-main -->
 	</section><!-- .content-area -->
-
+	<br><br><br>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -1178,8 +1178,14 @@ add_action('admin_init', 'my_general_section');
 function my_general_section()
 {
     add_settings_section(
-        'my_settings_section', // Section ID
-        'Theme options', // Section Title
+        'my_settings_theme_options_title', // Section ID
+        '<span style="border-bottom: 1px solid #c7c5c5; margin-top: 20px; padding: 10px 0;font-size: 23px; line-height: 75px;">Theme options</span>', // Section Title
+        'my_section_options_callback', // Callback
+        'general' // What Page?  This makes the section show up on the General Settings Page
+    );
+    add_settings_section(
+        'my_settings_theme_options_section', // Section ID
+        '<span style="border-bottom: 1px solid #c7c5c5; margin-top: 20px; padding: 10px 0;">Header settings</span>', // Section Title
         'my_section_options_callback', // Callback
         'general' // What Page?  This makes the section show up on the General Settings Page
     );
@@ -1189,7 +1195,7 @@ function my_general_section()
         'Logo URL', // Label
         'logo_url_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'logo_url' // Should match Option ID
         )
@@ -1200,7 +1206,7 @@ function my_general_section()
         'Favicon URL', // Label
         'favicon_url_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'favicon_url' // Should match Option ID
         )
@@ -1211,7 +1217,7 @@ function my_general_section()
         'Facebook URL', // Label
         'facebook_url_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'facebook_url' // Should match Option ID
         )
@@ -1221,7 +1227,7 @@ function my_general_section()
         'Enable Facebook icon ?', // Label
         'facebook_check_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'facebook_check' // Should match Option ID
         )
@@ -1232,7 +1238,7 @@ function my_general_section()
         'Youtube URL', // Label
         'youtube_url_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'youtube_url' // Should match Option ID
         )
@@ -1242,7 +1248,7 @@ function my_general_section()
         'Enable Youtube icon ?', // Label
         'youtube_check_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'youtube_check' // Should match Option ID
         )
@@ -1253,7 +1259,7 @@ function my_general_section()
         'Instagram URL', // Label
         'instagram_url_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'instagram_url' // Should match Option ID
         )
@@ -1263,7 +1269,7 @@ function my_general_section()
         'Enable Instagram icon ?', // Label
         'instagram_check_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'instagram_check' // Should match Option ID
         )
@@ -1274,7 +1280,7 @@ function my_general_section()
         'Set blog url', // Label
         'mailto_url_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'mailto_url' // Should match Option ID
         )
@@ -1284,7 +1290,7 @@ function my_general_section()
         'Enable Blog icon ?', // Label
         'mailto_check_callback', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
-        'my_settings_section', // Name of our section
+        'my_settings_theme_options_section', // Name of our section
         array( // The $args
             'mailto_check' // Should match Option ID
         )
@@ -1293,7 +1299,7 @@ function my_general_section()
 
     add_settings_field( // Option 1
         'header_color_theme_2', // Option ID
-        'Hedear color theme 2', // Label
+        'Hedear color', // Label
         'fn_header_color_theme_2', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
         'my_settings_theme_options_section', // Name of our section
@@ -1303,7 +1309,7 @@ function my_general_section()
     );
     add_settings_field( // Option 1
         'header_color_multilang_gradient_left_theme_2', // Option ID
-        'Hedear color multilang gradient left theme 2', // Label
+        'Hedear color multilang gradient left', // Label
         'fn_header_color_multilang_gradient_left_theme_2', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
         'my_settings_theme_options_section', // Name of our section
@@ -1313,7 +1319,7 @@ function my_general_section()
     );
     add_settings_field( // Option 1
         'header_color_multilang_gradient_right_theme_2', // Option ID
-        'Hedear color multilang gradient right theme 2', // Label
+        'Hedear color multilang gradient right', // Label
         'fn_header_color_multilang_gradient_right_theme_2', // !important - This is where the args go!
         'general', // Page it will be displayed (General Settings)
         'my_settings_theme_options_section', // Name of our section

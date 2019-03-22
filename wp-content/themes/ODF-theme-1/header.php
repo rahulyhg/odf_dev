@@ -38,6 +38,61 @@
 		    		echo 'none;';
 		    	}
 	    	 ?>;
+
+	    	--header-color-theme-1: <?php
+	    							if(!empty(get_option('header_color_theme_1'))){
+	    								echo get_option('header_color_theme_1');
+	    							}else{
+	    								update_option( 'header_color_theme_1', '#7100e2' );
+	    								echo '#7100e2';
+	    							}
+	    							?>;
+
+			--header-color-multilang-gradient-left-theme-1: <?php
+	    							if(!empty(get_option('header_color_multilang_gradient_left_theme_1'))){
+	    								echo get_option('header_color_multilang_gradient_left_theme_1');
+	    							}else{
+	    								update_option( 'header_color_multilang_gradient_left_theme_1', '#7100e2' );
+	    								echo '#7100e2';
+	    							}
+	    							?>;
+
+			--header-color-multilang-gradient-right-theme-1: <?php
+	    							if(!empty(get_option('header_color_multilang_gradient_right_theme_1'))){
+	    								echo get_option('header_color_multilang_gradient_right_theme_1');
+	    							}else{
+	    								update_option( 'header_color_multilang_gradient_right_theme_1', '#964ae2' );
+	    								echo '#d09994';
+	    							}
+	    							?>;
+
+			--product-slider-left-side-color-theme-1: <?php
+	    							if(!empty(get_option('product_slider_left_side_color_theme_1'))){
+	    								echo get_option('product_slider_left_side_color_theme_1');
+	    							}else{
+	    								update_option( 'product_slider_left_side_color_theme_1', '#028cd0 ' );
+	    								echo '#028cd0 ';
+	    							}
+	    							?>;
+
+			--product-slider-right-side-color-gradient-in-theme-1: <?php
+	    							if(!empty(get_option('product_slider_right_side_color_gradient_in_theme_1'))){
+	    								echo get_option('product_slider_right_side_color_gradient_in_theme_1');
+	    							}else{
+	    								update_option( 'product_slider_right_side_color_gradient_in_theme_1', '#000000' );
+	    								echo '#fff';
+	    							}
+	    							?>;
+
+			--product-slider-right-side-color-gradient-out-theme-1: <?php
+	    							if(!empty(get_option('product_slider_right_side_color_gradient_out_theme_1'))){
+	    								echo get_option('product_slider_right_side_color_gradient_out_theme_1');
+	    							}else{
+	    								update_option( 'product_slider_right_side_color_gradient_out_theme_1', '#ffffff' );
+	    								echo '#000';
+	    							}
+	    							?>;
+	    
 	    }
 		
 		/************ loader **********/
@@ -195,22 +250,22 @@
 
 					<?php if(get_option( 'mailto_check' )=="on") {?>
 						<a href="<?php echo get_option( 'mailto_url' ) ?>" target="_blank" class="header_social text-center">
-							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-mail-move.png">
+							<i class="fa fa-edit"></i>
 						</a>
 					<?php } ?>
 					<?php if(get_option( 'youtube_check' )=="on") {?>
 						<a href="<?php echo get_option( 'youtube_url' ) ?>" target="_blank" class="header_social text-center">
-							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-youtube-move.png">
+							<i class="fa fa-youtube-play"></i>
 						</a>
 					<?php } ?>
 					<?php if(get_option( 'facebook_check' )=="on") {?>
 						<a href="<?php echo get_option( 'facebook_url' ) ?>" target="_blank" class="header_social text-center">
-							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-facebook-move.png">
+							<i class="fa fa-facebook"></i>
 						</a>
 					<?php } ?>
 					<?php if(get_option( 'instagram_check' )=="on") {?>
 						<a href="<?php echo get_option( 'instagram_url' ) ?>" target="_blank" class="header_social text-center">
-							<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-instagram-move.png">
+							<i class="fa fa-instagram"></i>
 						</a>
 					<?php } ?>
 
@@ -223,7 +278,7 @@
 					?>
 
 					<a href="javascript:void(0)" id="div_header_mon_compte">
-						<img src="<?php echo get_stylesheet_directory_uri() ; ?>/images/icon-search-move.png">
+						<i class="fa fa-search" aria-hidden="true"></i>
 					</a>
 				</div>
 				

@@ -791,7 +791,7 @@ function custom_post_type() {
         'show_in_nav_menus'     => true,
         'can_export'            => true,
         'has_archive'           => true,
-        'exclude_from_search'   => true,
+        'exclude_from_search'   => false,
         'publicly_queryable'    => false,
         'rewritre'				=> false,
         'capability_type'       => 'page',
@@ -1984,7 +1984,6 @@ function save_giftcard_option_fields( $post_id ) {
 add_action( 'woocommerce_process_product_meta_simple', 'save_giftcard_option_fields'  );
 
 
- 
 
 add_filter( 'pre_get_posts', 'tgm_io_cpt_search' );
 /**
@@ -1994,13 +1993,13 @@ add_filter( 'pre_get_posts', 'tgm_io_cpt_search' );
  * @param object $query  The original query.
  * @return object $query The amended query.
  */
-// function tgm_io_cpt_search( $query ) {
+function tgm_io_cpt_search( $query ) {
 	
-//     if ( $query->is_search ) {
-// 	$query->set( 'post_type', array( 'post', 'movies', 'products', 'portfolio' ) );
-//     }
+    if ( $query->is_search ) {
+	$query->set( 'post_type', array( 'post', 'product', 'product_details', 'page', 'advice', 'brand' ) );
+    }
     
-//     return $query;
+    return $query;
     
-// }
+}
 

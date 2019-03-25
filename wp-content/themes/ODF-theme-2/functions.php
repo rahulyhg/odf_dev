@@ -2078,7 +2078,7 @@ add_filter( 'pre_get_posts', 'tgm_io_cpt_search' );
 function tgm_io_cpt_search( $query ) {
 	
     if ( $query->is_search ) {
-	$query->set( 'post_type', array( 'post', 'products', 'product_details' ) );
+	$query->set( 'post_type', array( 'post', 'product', 'product_details', 'page', 'advice', 'brand' ) );
     }
     
     return $query;

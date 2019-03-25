@@ -448,7 +448,7 @@
 	text-align: center;
 	display: block;
 	float: left;
-	width: 141px;
+	/*width: 141px;*/
 }
 .feedback{
   width: 800px;

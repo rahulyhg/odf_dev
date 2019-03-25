@@ -2665,7 +2665,11 @@
 	    background-image: linear-gradient(-90deg, var(--header-color-multilang-gradient-right-theme-2) 0%, var(--header-color-multilang-gradient-left-theme-2) 100%);
 		border-bottom-left-radius: 0px;
 		border-bottom-right-radius: 0px;
+	}	
+	.wpml-ls a {
+	    text-decoration: none;
 	}
+
     #mega-menu-primary{
     	height: 100vh;
 	    position: absolute;

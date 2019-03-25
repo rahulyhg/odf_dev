@@ -448,7 +448,7 @@
 	text-align: center;
 	display: block;
 	float: left;
-	width: 141px;
+	/*width: 141px;*/
 }
 .feedback{
   width: 800px;
@@ -1050,7 +1050,8 @@
   font-size: 2rem;
 }
 .search-result{
-  margin-bottom: 2em;
+  margin-bottom: 2em !important;
+  padding-bottom: 1em;
 }
 .search-result a{
   color:#afa3a3;
@@ -1059,13 +1060,23 @@
   color: #007acc;
 }
 .search-result a.more-link{
-  color: #007acc;
+  display: block;
+  color: #ffffff;
+  border-radius: 20px;
+  width: 170px;
+  padding: 5px 20px;
+  background-image: linear-gradient(-90deg, #2791ce 0%, #263878 100%);
+  margin-top: 10px;
+  text-decoration: none;
 }
 .search-result-text{
   font-size: 32px;
     margin-left: -250px;
     color: #ffffff;
     font-weight: bold;
+}
+.search-result .post-thumbnail {
+  margin-bottom: 0 !important;
 }
 
 /*** Responsives ***/

@@ -29,7 +29,7 @@
 	</header><!-- .entry-header -->
 
 	<div class="vc_col-sm-8">
-		<a href="<?php the_permalink() ?>"><?php twentysixteen_excerpt(); ?></a>
+		<?php twentysixteen_excerpt(); ?>
 	</div>
 	<div class="vc_col-sm-4">
 		<?php twentysixteen_post_thumbnail(); ?>

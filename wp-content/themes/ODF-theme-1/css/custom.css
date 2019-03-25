@@ -127,6 +127,9 @@
 	.odf_display_rating{
 		display: var(--odf-display-rating) !important;
 	}
+	a:hover {
+	    text-decoration: none !important;
+	}
 /* general setting */
 
 /* header */

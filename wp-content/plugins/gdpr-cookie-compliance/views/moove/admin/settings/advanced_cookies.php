@@ -11,7 +11,7 @@
             die( 'Security check' );
         else :
             if ( is_array( $_POST ) ) :
-                if ( isset( $_POST['moove_gdpr_advanced_cookies_enable'] ) && intval( $_POST['moove_gdpr_advanced_cookies_enable'] ) === 1 ) :
+                if ( isset( $_POST['moove_gdpr_advanced_cookies_enable'] ) ) :
                     $value  = 1;
                 else :
                     $value  = 0;
@@ -20,6 +20,11 @@
                     if ( ( isset( $_POST[ 'moove_gdpr_advanced_cookies_header_scripts' ] ) && strlen( $_POST[ 'moove_gdpr_advanced_cookies_header_scripts' ] ) == 0 ) && ( isset( $_POST[ 'moove_gdpr_advanced_cookies_body_scripts' ] ) && strlen( $_POST[ 'moove_gdpr_advanced_cookies_body_scripts' ] ) == 0 ) &&    ( isset( $_POST[ 'moove_gdpr_advanced_cookies_footer_scripts' ] ) && strlen( $_POST[ 'moove_gdpr_advanced_cookies_footer_scripts' ] ) == 0 ) ) :
                         $empty_scripts = true;
                     endif;
+                endif;
+
+                $gdpr_options['moove_gdpr_advanced_cookies_enable_first_visit'] = 0;
+                if ( isset( $_POST['moove_gdpr_advanced_cookies_enable_first_visit'] ) ) :
+                    $gdpr_options['moove_gdpr_advanced_cookies_enable_first_visit'] = 1;
                 endif;
                 if ( ! $empty_scripts ) :
                     $gdpr_options['moove_gdpr_advanced_cookies_enable'] = $value;
@@ -37,7 +42,7 @@
                             update_option( $option_name, $gdpr_options );
                             $gdpr_options               = get_option( $option_name );
 
-                        elseif ( $form_key !== 'moove_gdpr_advanced_cookies_enable' ) :
+                        elseif ( $form_key !== 'moove_gdpr_advanced_cookies_enable' && $form_key !== 'moove_gdpr_advanced_cookies_enable_first_visit' ) :
                             $value  = sanitize_text_field( wp_unslash( $form_value ) );
                             $gdpr_options[$form_key] = $value;
                             update_option( $option_name, $gdpr_options );
@@ -77,19 +82,27 @@
                     <label for="moove_gdpr_advanced_cookies_enable"><?php _e('Turn','gdpr-cookie-compliance'); ?></label>
                 </th>
                 <td>
-                    <input name="moove_gdpr_advanced_cookies_enable" type="radio" value="1" id="moove_gdpr_advanced_cookies_enable_on" <?php echo isset( $gdpr_options['moove_gdpr_advanced_cookies_enable'] ) ? ( intval( $gdpr_options['moove_gdpr_advanced_cookies_enable'] ) === 1  ? 'checked' : '' ) : 'checked'; ?> class="on-off"> <label for="moove_gdpr_advanced_cookies_enable_on"><?php _e('On','gdpr-cookie-compliance'); ?></label> <span class="separator"></span>
-                    <input name="moove_gdpr_advanced_cookies_enable" type="radio" value="0" id="moove_gdpr_advanced_cookies_enable_off" <?php echo isset( $gdpr_options['moove_gdpr_advanced_cookies_enable'] ) ? ( intval( $gdpr_options['moove_gdpr_advanced_cookies_enable'] ) === 0  ? 'checked' : '' ) : 'checked'; ?> class="on-off"> <label for="moove_gdpr_advanced_cookies_enable_off"><?php _e('Off','gdpr-cookie-compliance'); ?></label>
+                    <!-- GDPR Rounded switch -->
+                    <label class="gdpr-checkbox-toggle">
+                        <input type="checkbox" name="moove_gdpr_advanced_cookies_enable" id="moove_gdpr_advanced_cookies_enable" <?php echo isset( $gdpr_options['moove_gdpr_advanced_cookies_enable'] ) ? ( intval( $gdpr_options['moove_gdpr_advanced_cookies_enable'] ) === 1  ? 'checked' : ( ! isset( $gdpr_options['moove_gdpr_advanced_cookies_enable'] ) ? 'checked' : '' ) ) : ''; ?> >
+                        <span class="gdpr-checkbox-slider" data-enable="<?php _e('On','gdpr-cookie-compliance'); ?>" data-disable="<?php _e('Off','gdpr-cookie-compliance'); ?>"></span>
+                    </label>
                 </td>
             </tr>
 
             <tr>
                 <th scope="row">
-                    <label for="moove_gdpr_advanced_cookies_enable_first_visit"><?php _e('Enable by default','gdpr-cookie-compliance'); ?></label>
+                    <label for="moove_gdpr_advanced_cookies_enable_first_visit"><?php _e('Default status','gdpr-cookie-compliance'); ?></label>
+                    <p class="description"><?php _e('by default cookies should be','gdpr-cookie-compliance'); ?>:</p>
+                    <!--  .description -->
                 </th>
-                <td>
-                    <input name="moove_gdpr_advanced_cookies_enable_first_visit" type="radio" value="0" id="moove_gdpr_advanced_cookies_enable_first_visit_off" <?php echo isset( $gdpr_options['moove_gdpr_advanced_cookies_enable_first_visit'] ) ? ( ( intval( $gdpr_options['moove_gdpr_advanced_cookies_enable_first_visit'] ) === 0 || intval( $gdpr_options['moove_gdpr_advanced_cookies_enable_first_visit'] ) > 1 )  ? 'checked' : '' ) : 'checked'; ?> class="on-off"> <label for="moove_gdpr_advanced_cookies_enable_first_visit_off"><?php _e('Disable','gdpr-cookie-compliance'); ?></label> <span class="separator"></span>
-                    
-                    <input name="moove_gdpr_advanced_cookies_enable_first_visit" type="radio" value="1" id="moove_gdpr_advanced_cookies_enable_first_visit_on" <?php echo isset( $gdpr_options['moove_gdpr_advanced_cookies_enable_first_visit'] ) ? ( intval( $gdpr_options['moove_gdpr_advanced_cookies_enable_first_visit'] ) === 1  ? 'checked' : '' ) : ''; ?> class="on-off"> <label for="moove_gdpr_advanced_cookies_enable_first_visit_on"><?php _e('Enable','gdpr-cookie-compliance'); ?></label>
+                <td style="vertical-align: top; padding-top: 20px">
+                    <!-- GDPR Rounded switch -->
+                    <label class="gdpr-checkbox-toggle">
+                        <input type="checkbox" name="moove_gdpr_advanced_cookies_enable_first_visit" id="moove_gdpr_advanced_cookies_enable_first_visit" <?php echo isset( $gdpr_options['moove_gdpr_advanced_cookies_enable_first_visit'] ) ? ( intval( $gdpr_options['moove_gdpr_advanced_cookies_enable_first_visit'] ) === 1  ? 'checked' : ( ! isset( $gdpr_options['moove_gdpr_advanced_cookies_enable_first_visit'] ) ? 'checked' : '' ) ) : ''; ?> >
+                        <span class="gdpr-checkbox-slider" data-enable="<?php _e('Enabled','gdpr-cookie-compliance'); ?>" data-disable="<?php _e('Disabled','gdpr-cookie-compliance'); ?>"></span>
+                    </label>
+
                 </td>
             </tr>
 
@@ -124,59 +137,120 @@
                     ?>
                 </th>
             </tr>
-
-            <tr>
-                <th scope="row" colspan="2" style="padding-bottom: 0;">
-                    <div class="alert script-error" style="display: none;"><?php _e('Please fill out at least one of these fields:','gdpr-cookie-compliance'); ?></div>
-                </th>
-            </tr>
-
-            <tr>
-                <th scope="row" colspan="2" style="padding-bottom: 0;">
-                    <label for="moove_gdpr_advanced_cookies_header_scripts"><?php _e('The below script will be added to the page HEAD section if user enables this cookie.','gdpr-cookie-compliance'); ?></label>
-                </th>
-            </tr>
-            <tr class="moove_gdpr_advanced_cookies_header_scripts">
-                <th scope="row" colspan="2">
-                    <?php $content =  isset( $gdpr_options['moove_gdpr_advanced_cookies_header_scripts'] ) && $gdpr_options['moove_gdpr_advanced_cookies_header_scripts'] ? maybe_unserialize( $gdpr_options['moove_gdpr_advanced_cookies_header_scripts'] ) : '';
-                    ?>
-                    <textarea name="moove_gdpr_advanced_cookies_header_scripts" id="moove_gdpr_advanced_cookies_header_scripts" class="large-text code" rows="13"><?php echo $content; ?></textarea>
-                    <p class="description" id="moove_gdpr_advanced_cookies_header_scripts-description"><?php _e('For example, you can use it for Google Tag Manager script or any other 3rd party code snippets.','gdpr-cookie-compliance'); ?></p>
-                </th>
-            </tr>
-
-
-            <tr>
-                <th scope="row" colspan="2" style="padding-bottom: 0;">
-                    <label for="moove_gdpr_advanced_cookies_body_scripts"><?php _e('The below script will be added right after the BODY section if user enables this cookie.','gdpr-cookie-compliance'); ?></label>
-                </th>
-            </tr>
-            <tr class="moove_gdpr_advanced_cookies_body_scripts">
-                <th scope="row" colspan="2">
-                    <?php $content =  isset( $gdpr_options['moove_gdpr_advanced_cookies_body_scripts'] ) && $gdpr_options['moove_gdpr_advanced_cookies_body_scripts'] ? maybe_unserialize( $gdpr_options['moove_gdpr_advanced_cookies_body_scripts'] ) : '';
-                    ?>
-                    <textarea name="moove_gdpr_advanced_cookies_body_scripts" id="moove_gdpr_advanced_cookies_body_scripts" class="large-text code" rows="13"><?php echo $content; ?></textarea>
-                    <p class="description" id="moove_gdpr_advanced_cookies_body_scripts-description"><?php _e('For example, you can use it for Google Tag Manager script or any other 3rd party code snippets.','gdpr-cookie-compliance'); ?></p>
-                </th>
-            </tr>
-
-            <tr>
-                <th scope="row" colspan="2" style="padding-bottom: 0;">
-                    <label for="moove_gdpr_advanced_cookies_footer_scripts"><?php _e('The below script will be added to the page FOOTER section if user enables this cookie.','gdpr-cookie-compliance'); ?></label>
-                </th>
-            </tr>
-            <tr class="moove_gdpr_advanced_cookies_footer_scripts">
-                <th scope="row" colspan="2">
-                    <?php $content =  isset( $gdpr_options['moove_gdpr_advanced_cookies_footer_scripts'] ) && $gdpr_options['moove_gdpr_advanced_cookies_footer_scripts'] ? wp_unslash( $gdpr_options['moove_gdpr_advanced_cookies_footer_scripts'] ) : '';
-                    ?>
-                    <textarea name="moove_gdpr_advanced_cookies_footer_scripts" id="moove_gdpr_advanced_cookies_footer_scripts" class="large-text code" rows="13"><?php echo $content; ?></textarea>
-                    <p class="description" id="moove_gdpr_advanced_cookies_footer_scripts-description"><?php _e('For example, you can use it for Google Analytics script or any other 3rd party code snippets.','gdpr-cookie-compliance'); ?></p>
-                </th>
-            </tr>
         </tbody>
     </table>
+
+    <div class="gdpr-script-tab-content">
+        <hr />
+        <h3><?php _e('Paste your codes and snippets below. They will be added to all pages if user enables these cookies.','gdpr-cookie-compliance'); ?></h3>
+        <div class="alert script-error" style="display: none;"><?php _e('Please fill out at least one of these fields:','gdpr-cookie-compliance'); ?></div>
+        
+        <div class="gdpr-tab-code-section-nav">
+            <ul>
+                <li>
+                    <a href="#advnaced_cookies_head" class="gdpr-active">Head Section</a>
+                </li>
+                <li>
+                    <a href="#advnaced_cookies_body">Body Section</a>
+                </li>
+                <li>
+                    <a href="#advnaced_cookies_footer">Footer Section</a>
+                </li>
+            </ul>
+        </div>
+        <!--  .gdpr-tab-code-section-nav -->
+        <div class="gdpr-script-tabs-main-cnt">
+
+            <div class="gdpr-tab-code-section gdpr-active" id="advnaced_cookies_head">
+                <h4 for="moove_gdpr_advnaced_cookies_header_scripts"><?php _e('Add scripts that you would like to be inserted to the HEAD section of your pages when user accepts these cookies','gdpr-cookie-compliance'); ?></h4>
+                <table>
+                    <tbody>
+                        <tr class="moove_gdpr_advanced_cookies_header_scripts">
+                            <td scope="row" colspan="2" style="padding: 20px 0;">
+                                <?php $content =  isset( $gdpr_options['moove_gdpr_advanced_cookies_header_scripts'] ) && $gdpr_options['moove_gdpr_advanced_cookies_header_scripts'] ? maybe_unserialize( $gdpr_options['moove_gdpr_advanced_cookies_header_scripts'] ) : '';
+                                ?>
+                                <textarea name="moove_gdpr_advanced_cookies_header_scripts" id="moove_gdpr_advanced_cookies_header_scripts" class="large-text code" rows="13"><?php echo $content; ?></textarea>
+                                <div class="gdpr-code"></div>
+                                <!--  .gdpr-code -->
+                                <p class="description" id="moove_gdpr_advanced_cookies_header_scripts-description"><?php _e('For example, you can use it for Google Tag Manager script or any other 3rd party code snippets.','gdpr-cookie-compliance'); ?></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--  .gdpr-tab-code-section -->
+
+            <div class="gdpr-tab-code-section" id="advnaced_cookies_body">
+                 <h4 for="moove_gdpr_advnaced_cookies_header_scripts"><?php _e('Add scripts that you would like to be inserted to the BODY section of your pages when user accepts these cookies','gdpr-cookie-compliance'); ?></h4>
+                <table>
+                    <tbody>                   
+                        <tr class="moove_gdpr_advanced_cookies_body_scripts">
+                            <td scope="row" colspan="2" style="padding: 20px 0;">
+                                <?php $content =  isset( $gdpr_options['moove_gdpr_advanced_cookies_body_scripts'] ) && $gdpr_options['moove_gdpr_advanced_cookies_body_scripts'] ? maybe_unserialize( $gdpr_options['moove_gdpr_advanced_cookies_body_scripts'] ) : '';
+                                ?>
+                                <textarea name="moove_gdpr_advanced_cookies_body_scripts" id="moove_gdpr_advanced_cookies_body_scripts" class="large-text code" rows="13"><?php echo $content; ?></textarea>
+                                <div class="gdpr-code"></div>
+                                <!--  .gdpr-code -->
+                                <p class="description" id="moove_gdpr_advanced_cookies_body_scripts-description"><?php _e('For example, you can use it for Google Tag Manager script or any other 3rd party code snippets.','gdpr-cookie-compliance'); ?></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--  .gdpr-tab-code-section -->
+
+            <div class="gdpr-tab-code-section" id="advnaced_cookies_footer">
+                <h4 for="moove_gdpr_advnaced_cookies_header_scripts"><?php _e('Add scripts that you would like to be inserted to the FOOTER section of your pages when user accepts these cookies','gdpr-cookie-compliance'); ?></h4>
+                <table>
+                    <tbody>
+                        <tr class="moove_gdpr_advanced_cookies_footer_scripts">
+                            <td scope="row" colspan="2" style="padding: 20px 0;">
+                                <?php $content =  isset( $gdpr_options['moove_gdpr_advanced_cookies_footer_scripts'] ) && $gdpr_options['moove_gdpr_advanced_cookies_footer_scripts'] ? wp_unslash( $gdpr_options['moove_gdpr_advanced_cookies_footer_scripts'] ) : '';
+                                ?>
+                                <textarea name="moove_gdpr_advanced_cookies_footer_scripts" id="moove_gdpr_advanced_cookies_footer_scripts" class="large-text code" rows="13"><?php echo $content; ?></textarea>
+                                <div class="gdpr-code"></div>
+                                <!--  .gdpr-code -->
+                                <p class="description" id="moove_gdpr_advanced_cookies_footer_scripts-description"><?php _e('For example, you can use it for Google Analytics script or any other 3rd party code snippets.','gdpr-cookie-compliance'); ?></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--  .gdpr-tab-code-section -->
+        </div>
+        <!--  .gdpr-script-tabs-main-cnt -->
+    </div>
+    <!--  .gdpr-script-tab-content -->
 
     <hr />
     <br />
     <button type="submit" class="button button-primary"><?php _e('Save changes','gdpr-cookie-compliance'); ?></button>
+
+    <script type="text/javascript" src="<?php echo moove_gdpr_get_plugin_directory_url(); ?>/dist/scripts/codemirror.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            jQuery('.gdpr-tab-section-cnt textarea.code').each(function(){
+                var element = jQuery(this).closest('tr').find('.gdpr-code')[0];
+                var id = jQuery(this).attr('id');
+                console.log(element);
+                jQuery(this).css({
+                    'opacity'   : '0',
+                    'height'    : '0',
+                });
+                var  editor = CodeMirror( element, {
+                    mode: "text/html",
+                    lineWrapping: true,
+                    lineNumbers: true,
+                    value: document.getElementById(id).value
+                });
+                editor.on('change',function(cMirror){
+                  // get value right from instance
+                  document.getElementById(id).innerHTML = cMirror.getValue();
+                });
+
+            });
+            
+            
+        };
+    </script>
 </form>

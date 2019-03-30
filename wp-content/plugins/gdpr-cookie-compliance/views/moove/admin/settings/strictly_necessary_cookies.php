@@ -24,6 +24,11 @@
                         $gdpr_options[$form_key.$wpml_lang] = $value;
                         update_option( $option_name, $gdpr_options );
                         $gdpr_options = get_option( $option_name );
+                    elseif ( $form_key === 'moove_gdpr_modal_strictly_secondary_notice' ) :
+                        $value  = wpautop( wp_unslash( $form_value ) );
+                        $gdpr_options[$form_key.$wpml_lang] = $value;
+                        update_option( $option_name, $gdpr_options );
+                        $gdpr_options = get_option( $option_name );
                     elseif ( $form_key === 'moove_gdpr_strictly_necessary_cookies_warning' ) :
                         $value  = wp_unslash( $form_value );
                         $gdpr_options[$form_key.$wpml_lang] = $value;
@@ -83,7 +88,7 @@
                 </th>
             </tr>
             <tr class="moove_gdpr_table_form_holder">
-                <th colspan="2" scope="row">
+                <td colspan="2" scope="row" style="padding-left: 0;">
                     <?php
                         $content =  isset( $gdpr_options['moove_gdpr_strict_necessary_cookies_tab_content'.$wpml_lang] ) && $gdpr_options['moove_gdpr_strict_necessary_cookies_tab_content'.$wpml_lang] ? wp_unslash( $gdpr_options['moove_gdpr_strict_necessary_cookies_tab_content'.$wpml_lang] ) : false;
                         if ( ! $content ) :
@@ -97,7 +102,7 @@
                         );
                         wp_editor( $content, 'moove_gdpr_strict_necessary_cookies_tab_content', $settings );
                     ?>
-                </th>
+                </td>
             </tr>
 
             <tr>
@@ -106,18 +111,41 @@
                 </th>
             </tr>
             <tr>
-                <th style="padding-top: 10px;"  colspan="2">
+                <td style="padding-top: 10px; padding-left: 0;"  colspan="2">
                     <?php $content = isset( $gdpr_options['moove_gdpr_strictly_necessary_cookies_warning'.$wpml_lang] ) && $gdpr_options['moove_gdpr_strictly_necessary_cookies_warning'.$wpml_lang] ? $gdpr_options['moove_gdpr_strictly_necessary_cookies_warning'.$wpml_lang] : $gdpr_default_content->moove_gdpr_get_strict_necessary_warning(); ?>
                     <?php
                         $settings = array (
                             'media_buttons'     =>  false,
-                            'editor_height'     =>  50,
+                            'editor_height'     =>  100,
                         );
                         wp_editor( $content, 'moove_gdpr_strictly_necessary_cookies_warning', $settings );
                     ?>
-                    <p class="description" id="moove_gdpr_strictly_necessary_cookies_warning-description"><?php _e('Will be displayed below the Checkbox in the front-end!','gdpr-cookie-compliance'); ?></p>
+                    <p class="description"><?php _e('This warning message will be displayed when user disables the Strictly Necessary Cookies.','gdpr-cookie-compliance'); ?></p>
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row" style="padding-bottom: 0;" colspan="2">
+                    <label for="moove_gdpr_modal_strictly_secondary_notice"><?php _e('Strictly necessary required message.','gdpr-cookie-compliance'); ?></label>
                 </th>
             </tr>
+            <tr>
+                <td colspan="2" style="padding-left: 0;">
+                    <?php $content = isset( $gdpr_options['moove_gdpr_modal_strictly_secondary_notice'.$wpml_lang] ) && $gdpr_options['moove_gdpr_modal_strictly_secondary_notice'.$wpml_lang] ? $gdpr_options['moove_gdpr_modal_strictly_secondary_notice'.$wpml_lang] : $gdpr_default_content->moove_gdpr_get_secondary_notice() ; ?>
+                    <?php
+                        $settings = array (
+                            'media_buttons'     =>  false,
+                            'editor_height'     =>  100,
+                        );
+                        wp_editor( $content, 'moove_gdpr_modal_strictly_secondary_notice', $settings );
+                    ?>
+
+                    
+                    <p class="description"><?php _e('This warning message will be displayed if the Strictly necessary cookies are not enabled and the user try to enable the "Third Party" or "Additional cookies"','gdpr-cookie-compliance'); ?></p>
+                </td>
+
+            </tr>
+
         </tbody>
     </table>
 

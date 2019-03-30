@@ -9,7 +9,37 @@
         if ( ! wp_verify_nonce( $nonce, 'moove_gdpr_nonce_field' ) ) :
             die( 'Security check' );
         else :
-            if ( is_array( $_POST ) ) :               
+            if ( is_array( $_POST ) ) :     
+                $restricted_keys = array(
+                    'moove_gdpr_floating_button_enable',
+                    'moove_gdpr_infobar_visibility',
+                    'moove_gdpr_reject_button_enable',
+                    'moove_gdpr_colour_scheme'
+                );
+                
+                // Cookie Banner Visibility
+                $moove_gdpr_infobar_visibility = 'hidden';
+                if ( isset( $_POST['moove_gdpr_infobar_visibility'] ) ) :
+                    $moove_gdpr_infobar_visibility = 'visible';
+                endif;
+                $gdpr_options['moove_gdpr_infobar_visibility'] = $moove_gdpr_infobar_visibility;
+
+                // Cookie Banner Reject Button
+                $moove_gdpr_reject_enable = '0';
+                if ( isset( $_POST['moove_gdpr_reject_button_enable'] ) ) :
+                    $moove_gdpr_reject_enable = '1';
+                endif;
+                $gdpr_options['moove_gdpr_reject_button_enable'] = $moove_gdpr_reject_enable;
+
+                // Cookie Banner Colour Scheme
+                $moove_gdpr_colour_scheme = '2';
+                if ( isset( $_POST['moove_gdpr_colour_scheme'] ) ) :
+                    $moove_gdpr_colour_scheme = '1';
+                endif;
+                $gdpr_options['moove_gdpr_colour_scheme'] = $moove_gdpr_colour_scheme;
+
+                update_option( $option_name, $gdpr_options );
+
                 foreach ( $_POST as $form_key => $form_value ) :
                     if ( $form_key === 'moove_gdpr_info_bar_content' ) :
                         $value  = wpautop( wp_unslash( $form_value ) );
@@ -21,7 +51,7 @@
                         $gdpr_options[$form_key] = $value;
                         update_option( $option_name, $gdpr_options );
                         $gdpr_options = get_option( $option_name );
-                    elseif ( $form_key !== 'moove_gdpr_floating_button_enable' ) :
+                    elseif ( ! in_array( $form_key, $restricted_keys ) ) :
                         $value  = sanitize_text_field( wp_unslash( $form_value ) );
                         $gdpr_options[$form_key] = $value;
                         update_option( $option_name, $gdpr_options );
@@ -46,6 +76,20 @@
     <table class="form-table">
         <tbody>
             <tr>
+                <th scope="row">
+                    <label for="moove_gdpr_infobar_visibility"><?php _e('Turn','gdpr-cookie-compliance'); ?></label>
+                </th>
+                <td>
+                    <!-- GDPR Rounded switch -->
+                    <label class="gdpr-checkbox-toggle">
+                        <input type="checkbox" name="moove_gdpr_infobar_visibility" <?php echo isset( $gdpr_options['moove_gdpr_infobar_visibility'] ) ? ( $gdpr_options['moove_gdpr_infobar_visibility'] === 'visible' ? 'checked' : '' ) : 'checked'; ?> >
+                        <span class="gdpr-checkbox-slider" data-enable="<?php _e('On','gdpr-cookie-compliance'); ?>" data-disable="<?php _e('Off','gdpr-cookie-compliance'); ?>"></span>
+                    </label>
+                    <?php do_action('gdpr_cc_moove_gdpr_infobar_visibility_settings'); ?>
+                </td>
+            </tr>
+            
+            <tr>
                 <th scope="row" colspan="2" style="padding-bottom: 0;">
                     <label for="moove_gdpr_info_bar_content"><?php _e('Cookie Banner Content','gdpr-cookie-compliance'); ?></label>
                 </th>
@@ -68,7 +112,7 @@
                         );
                         wp_editor( $content, 'moove_gdpr_info_bar_content', $settings );
                     ?>
-                    <p class="description"><?php _e('You can use the following shortcut to link the settings modal:<br><span><strong>[setting]</strong>settings<strong>[/setting]</strong></span>','gdpr-cookie-compliance'); ?></p>
+                    <p class="description"><?php _e('You can use the following shortcut to link the Cookie Settings Screen:<br><span><strong>[setting]</strong>settings<strong>[/setting]</strong></span>','gdpr-cookie-compliance'); ?></p>
                 </th>
             </tr>
 
@@ -81,22 +125,29 @@
                 </td>
             </tr>
 
-            
-
             <tr>
                 <th scope="row">
-                    <label for="moove_gdpr_infobar_visibility"><?php _e('Select your preference for Cookie Banner','gdpr-cookie-compliance'); ?></label>
+                    <label for="moove_gdpr_reject_button_enable"><?php _e('Reject button','gdpr-cookie-compliance-addon'); ?></label>
                 </th>
                 <td>
-                    
-                    <input name="moove_gdpr_infobar_visibility" type="radio" value="visible" id="moove_gdpr_infobar_visibility_top" <?php echo isset( $gdpr_options['moove_gdpr_infobar_visibility'] ) ? ( $gdpr_options['moove_gdpr_infobar_visibility'] === 'visible' ? 'checked' : '' ) : 'checked'; ?> class="on-top"> <label for="moove_gdpr_infobar_visibility_top"><?php _e('Visible','gdpr-cookie-compliance'); ?></label> 
-                    <span class="separator"></span>
 
-                    <input name="moove_gdpr_infobar_visibility" type="radio" value="hidden" id="moove_gdpr_infobar_visibility_bottom" <?php echo isset( $gdpr_options['moove_gdpr_infobar_visibility'] ) ? ( $gdpr_options['moove_gdpr_infobar_visibility']  === 'hidden' ? 'checked' : '' ) : ''; ?> class="on-off"> <label for="moove_gdpr_infobar_visibility_bottom"><?php _e('Hidden','gdpr-cookie-compliance'); ?></label>
+                    <!-- GDPR Rounded switch -->
+                    <label class="gdpr-checkbox-toggle">
+                        <input type="checkbox" name="moove_gdpr_reject_button_enable" id="moove_gdpr_reject_button_enable" <?php echo isset( $gdpr_options['moove_gdpr_reject_button_enable'] ) ? ( intval( $gdpr_options['moove_gdpr_reject_button_enable'] ) === 1  ? 'checked' : ( ! isset( $gdpr_options['moove_gdpr_reject_button_enable'] ) ? 'checked' : '' ) ) : ''; ?> >
+                        <span class="gdpr-checkbox-slider" data-enable="<?php _e('Enabled','gdpr-cookie-compliance'); ?>" data-disable="<?php _e('Disabled','gdpr-cookie-compliance'); ?>"></span>
+                    </label>
 
-                    <?php do_action('gdpr_cc_moove_gdpr_infobar_visibility_settings'); ?>
-                    
-                    
+          
+                    <p class="description" id="moove_gdpr_reject_button_enable-description" ><?php _e("If it's enabled, the Cookie Banner will be extended with a button that allows users to reject all cookies.",'gdpr-cookie-compliance-addon'); ?></p>
+                    <!--  .description -->
+                </td>
+            </tr>
+            <tr class="gdpr-conditional-field" data-dependency="#moove_gdpr_reject_button_enable">
+                <th scope="row">
+                    <label for="moove_gdpr_infobar_reject_button_label"><?php _e('Reject - Button Label','gdpr-cookie-compliance'); ?></label>
+                </th>
+                <td>
+                    <input name="moove_gdpr_infobar_reject_button_label<?php echo $wpml_lang; ?>" type="text" id="moove_gdpr_infobar_reject_button_label" value="<?php echo isset( $gdpr_options['moove_gdpr_infobar_reject_button_label'.$wpml_lang] ) && $gdpr_options['moove_gdpr_infobar_reject_button_label'.$wpml_lang] ? $gdpr_options['moove_gdpr_infobar_reject_button_label'.$wpml_lang] : __('Reject','gdpr-cookie-compliance'); ?>" class="regular-text">
                 </td>
             </tr>
 
@@ -122,17 +173,10 @@
                     <label for="moove_gdpr_colour_scheme"><?php _e('Colour scheme','gdpr-cookie-compliance'); ?></label>
                 </th>
                 <td>
-                    <fieldset>
-                        <legend class="screen-reader-text"><span><?php _e('Enable','gdpr-cookie-compliance'); ?></span></legend>
-                            <input name="moove_gdpr_colour_scheme" type="radio" <?php echo isset( $gdpr_options['moove_gdpr_colour_scheme'] ) ? ( intval( $gdpr_options['moove_gdpr_colour_scheme'] ) === 1  ? 'checked' : ( ! isset( $gdpr_options['moove_gdpr_colour_scheme'] ) ? 'checked' : '' ) ) : 'checked'; ?> id="moove_gdpr_colour_scheme_dark" value="1">
-                            <label for="moove_gdpr_colour_scheme_dark"><?php _e('Dark','gdpr-cookie-compliance'); ?></label> <br>
-
-                            <input name="moove_gdpr_colour_scheme" type="radio" <?php echo isset( $gdpr_options['moove_gdpr_colour_scheme'] ) ? ( intval( $gdpr_options['moove_gdpr_colour_scheme'] ) === 2  ? 'checked' : '' ) : ''; ?> id="moove_gdpr_colour_scheme_light" value="2">
-                            <label for="moove_gdpr_colour_scheme_light"><?php _e('Light','gdpr-cookie-compliance'); ?></label>
-
-                            <?php do_action('gdpr_cc_moove_gdpr_colour_scheme_settings'); ?>
-
-                    </fieldset>
+                    <label class="gdpr-checkbox-toggle gdpr-color-scheme-toggle">
+                        <input type="checkbox" name="moove_gdpr_colour_scheme" <?php echo isset( $gdpr_options['moove_gdpr_colour_scheme'] ) ? ( intval( $gdpr_options['moove_gdpr_colour_scheme'] ) === 1  ? 'checked' : ( ! isset( $gdpr_options['moove_gdpr_colour_scheme'] ) ? 'checked' : '' ) ) : 'checked'; ?> >
+                        <span class="gdpr-checkbox-slider" data-enable="<?php _e('Dark','gdpr-cookie-compliance'); ?>" data-disable="<?php _e('Light','gdpr-cookie-compliance'); ?>"></span>
+                    </label>                   
                 </td>
             </tr>
 

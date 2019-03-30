@@ -31,7 +31,7 @@ class Moove_GDPR_Content {
 	 * @return string Filtered Content
 	 */
 	public function moove_gdpr_get_privacy_overview_content() {
-		$_content   = __( '<p>This website uses cookies so that we can provide you with the best user experience possible. Cookie information is stored in your browser and performs functions such as recognising you when you return to our website and helping our team to understand which sections of the website you find most interesting and useful.</p><p>You can adjust all of your cookie settings by navigating the tabs on the left hand side.</p>','gdpr-cookie-compliance' );
+		$_content   = '<p>' . __( 'This website uses cookies so that we can provide you with the best user experience possible. Cookie information is stored in your browser and performs functions such as recognising you when you return to our website and helping our team to understand which sections of the website you find most interesting and useful.','gdpr-cookie-compliance' ) . '</p>';
 		return $_content;
 	}
 
@@ -41,7 +41,7 @@ class Moove_GDPR_Content {
 	 * @return string Filtered Content
 	 */
 	public function moove_gdpr_get_strict_necessary_content() {
-		$_content   = __( '<p>Strictly Necessary Cookie should be enabled at all times so that we can save your preferences for cookie settings.</p>','gdpr-cookie-compliance' );
+		$_content   = '<p>' . __( 'Strictly Necessary Cookie should be enabled at all times so that we can save your preferences for cookie settings.','gdpr-cookie-compliance' ) . '</p>';
 		return $_content;
 	}
 
@@ -68,7 +68,7 @@ class Moove_GDPR_Content {
 	 * @return string Filtered Content
 	 */
 	public function moove_gdpr_get_advanced_cookies_content() {
-		$_content   = __( '<p>This website uses the following additional cookies:</p><p>(List the cookies that you are using on the website here.)</p>','gdpr-cookie-compliance' );
+		$_content   = '<p>' . __( 'This website uses the following additional cookies:</p><p>(List the cookies that you are using on the website here.)','gdpr-cookie-compliance' ) . '</p>';
 		return $_content;
 	}
 
@@ -78,7 +78,8 @@ class Moove_GDPR_Content {
 	 * @return string Filtered Content
 	 */
 	public function moove_gdpr_get_third_party_content() {
-		$_content   = __( '<p>This website uses Google Analytics to collect anonymous information such as the number of visitors to the site, and the most popular pages.</p><p>Keeping this cookie enabled helps us to improve our website.</p>','gdpr-cookie-compliance' );
+		$_content   = '<p>' . __( 'This website uses Google Analytics to collect anonymous information such as the number of visitors to the site, and the most popular pages.','gdpr-cookie-compliance');
+		$_content .= '<p>' . __('Keeping this cookie enabled helps us to improve our website.','gdpr-cookie-compliance' ) . '</p>';
 		return $_content;
 	}
 
@@ -91,9 +92,24 @@ class Moove_GDPR_Content {
 		$privacy_policy_page = get_option( 'wp_page_for_privacy_policy' );
     	$privacy_policy_link = $privacy_policy_page ? esc_url( get_permalink( $privacy_policy_page ) ) : false;
     	$privacy_policy_link = $privacy_policy_link ? $privacy_policy_link : '#';
-    	$_content = sprintf( __( '<p>More information about our <a href="%s" target="_blank">Cookie Policy</a></p>', 'gdpr-cookie-compliance' ), $privacy_policy_link );
+    	$_content = '<p>' . sprintf( __( 'More information about our <a href="%s" target="_blank">Cookie Policy</a>', 'gdpr-cookie-compliance' ), $privacy_policy_link ) . '</p>';
 		return $_content;
 	}
+
+	/**
+	 * Cookie Policy Tab Content
+	 *
+	 * @return string Filtered Content
+	 */
+	public function moove_gdpr_ifb_content() {
+		$_content   = '<h2>' . __( 'Sorry,<br /> the content is blocked!','gdpr-cookie-compliance'); 
+		$_content  .= '<p>' . __('To unlock, please enable the cookies!','gdpr-cookie-compliance'); 
+		$_content  .= '<br><br>';
+		$_content  .= __('[accept]Accept[/accept] [setting]Adjust your settings[/setting]','gdpr-cookie-compliance' );
+		return $_content;
+	}
+
+	
 
 	/**
 	 * Get option name
@@ -124,11 +140,15 @@ class Moove_GDPR_Content {
 		  	return '_'.ICL_LANGUAGE_CODE;
 		} elseif ( isset( $GLOBALS['q_config']['language'] ) ) {
 			return $GLOBALS['q_config']['language'];
+		} elseif ( function_exists( 'wpm_get_user_language' ) ) {
+			return wpm_get_user_language();
 		}
 		return '';
 	}
 
-
+	/**
+	 * PHP Cookie Checker, available from version 1.3.0
+	 */
 	public function gdpr_get_php_cookies() {
 		$cookies_accepted = array(
 			'strict'		=> false,

@@ -36,12 +36,14 @@ class Moove_GDPR_Options {
 	 * @return  void
 	 */
 	public function moove_gdpr_admin_menu() {
-		$gdpr_settings_page = add_options_page(
-			'GDPR Cookie',
-			'GDPR Cookie',
-			'manage_options',
-			'moove-gdpr',
-			array( &$this, 'moove_gdpr_settings_page' )
+		$gdpr_settings_page = add_menu_page(
+			'GDPR Cookie', // Page_title.
+			'GDPR Cookie Compliance', // Menu_title.
+			'manage_options', // Capability.
+			'moove-gdpr', // Menu_slug.
+			array( &$this, 'moove_gdpr_settings_page' ), // Function.
+			'dashicons-shield',
+			90 // Position.
 		);
 		add_action( 'load-' . $gdpr_settings_page, array( 'Moove_GDPR_Actions', 'moove_gdpr_admin_scripts' ) );
 	}

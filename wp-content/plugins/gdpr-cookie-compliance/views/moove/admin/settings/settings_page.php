@@ -1,5 +1,11 @@
+<div class="gdpr-cookie-compliance-header-section">
+    <h2><?php _e('GDPR Cookie Compliance Plugin','gdpr-cookie-compliance'); ?> <span class="gdpr-plugin-version"><?php echo 'v'.MOOVE_GDPR_VERSION ?></span></h2>
+    <h4><?php _e('General Data Protection Regulation (GDPR) is a <a href="http://www.eugdpr.org/" target="_blank">European regulation</a> to strengthen and unify the data protection of EU citizens.','gdpr-cookie-compliance'); ?><br> </h4>
+</div>
+<!--  .gdpr-header-section -->
+<script type="text/javascript" src="<?php echo moove_gdpr_get_plugin_directory_url(); ?>/dist/scripts/colorpicker.js"></script>
 <div class="wrap moove-clearfix" id="moove_form_checker_wrap">
-    <h1><?php _e('GDPR Cookie Compliance Plugin Settings','gdpr-cookie-compliance'); ?></h1>
+    <h1></h1>
     <div id="moove-gdpr-setting-error-settings_updated" class="updated settings-error notice is-dismissible" style="display:none;">
         <p><strong><?php _e('Settings saved.','gdpr-cookie-compliance'); ?></strong></p>
         <button type="button" class="notice-dismiss">
@@ -16,7 +22,7 @@
         </button>
     </div>
 
-    <h4><?php _e('General Data Protection Regulation (GDPR) is a <a href="http://www.eugdpr.org/" target="_blank">European regulation</a> to strengthen and unify the data protection of EU citizens.','gdpr-cookie-compliance'); ?><br> </h4>
+    
 
     <?php
         $gdpr_default_content = new Moove_GDPR_Content();
@@ -24,7 +30,7 @@
         if( isset( $current_tab ) &&  $current_tab !== '' ) :
             $active_tab = $current_tab;
         else :
-            $active_tab = "general_settings";
+            $active_tab = "branding";
         endif; // end if
 
         ob_start();
@@ -41,10 +47,10 @@
     <div class="gdpr-tab-section-cnt">
 
         <h2 class="nav-tab-wrapper">
-            <a href="?page=moove-gdpr&amp;tab=general_settings" class="nav-tab <?php echo $active_tab == 'general_settings' ? 'nav-tab-active' : ''; ?>">
-                <?php _e('General Settings','gdpr-cookie-compliance'); ?>
+            <a href="?page=moove-gdpr&amp;tab=branding" class="nav-tab <?php echo $active_tab == 'branding' ? 'nav-tab-active' : ''; ?>">
+                <?php _e('Branding','gdpr-cookie-compliance'); ?>
             </a>
-
+  
             <a href="?page=moove-gdpr&amp;tab=banner_settings" class="nav-tab <?php echo $active_tab == 'banner_settings' ? 'nav-tab-active' : ''; ?>">
                 <?php _e('Banner Settings','gdpr-cookie-compliance'); ?>
             </a>
@@ -53,14 +59,18 @@
                 <?php _e('Floating Button','gdpr-cookie-compliance'); ?>
             </a>
 
+            <a href="?page=moove-gdpr&amp;tab=general_settings" class="nav-tab <?php echo $active_tab == 'general_settings' ? 'nav-tab-active' : ''; ?>">
+                <?php _e('General Settings','gdpr-cookie-compliance'); ?>
+            </a>
 
-        
             <?php
                 $nav_label  = isset( $modal_options['moove_gdpr_privacy_overview_tab_title'.$wpml_lang] ) && $modal_options['moove_gdpr_privacy_overview_tab_title'.$wpml_lang] ? $modal_options['moove_gdpr_privacy_overview_tab_title'.$wpml_lang] : __('Privacy Overview','gdpr-cookie-compliance');
             ?>
             <a href="?page=moove-gdpr&amp;tab=privacy_overview" class="nav-tab <?php echo $active_tab == 'privacy_overview' ? 'nav-tab-active' : ''; ?>">
                 <?php echo $nav_label; ?>
             </a>
+
+            
 
             <?php
                 $nav_label  = isset( $modal_options['moove_gdpr_strictly_necessary_cookies_tab_title'.$wpml_lang] ) && $modal_options['moove_gdpr_strictly_necessary_cookies_tab_title'.$wpml_lang] ? $modal_options['moove_gdpr_strictly_necessary_cookies_tab_title'.$wpml_lang] : __('Strictly Necessary Cookies','gdpr-cookie-compliance');
@@ -87,6 +97,10 @@
             ?>
             <a href="?page=moove-gdpr&amp;tab=cookie_policy" class="nav-tab <?php echo $active_tab == 'cookie_policy' ? 'nav-tab-active' : ''; ?>">
                 <?php echo $nav_label; ?>
+            </a>
+
+            <a href="?page=moove-gdpr&amp;tab=help" class="nav-tab <?php echo $active_tab == 'help' ? 'nav-tab-active' : ''; ?>">
+                <?php _e('Help','gdpr-cookie-compliance'); ?>
             </a>
 
             <?php do_action('gdpr_settings_tab_nav_extensions', $active_tab); ?>

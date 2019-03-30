@@ -35,37 +35,49 @@
 		</div>
 		<!--  .box-header -->
 		<div class="box-content">
-			<p>Enjoyed this plugin? <br />You can help by <a href="https://wordpress.org/support/plugin/gdpr-cookie-compliance/reviews/?rate=5#new-post" target="_blank">rating this plugin on wordpress.org.</a></p>
-			<hr />
 			<?php if ( $plugin_details ) : ?>
-			<div class="plugin-stats">
-				<div class="plugin-downloads">
-					Downloads: <strong><?php echo number_format( $plugin_details->downloaded, 0, '', ','); ?></strong>
-				</div>
-				<!--  .plugin-downloads -->
-				<div class="plugin-active-installs">
-					Active installations: <strong><?php echo number_format( $plugin_details->active_installs, 0, '', ','); ?>+</strong>
-				</div>
-				<!--  .plugin-downloads -->
 				<div class="plugin-rating">
-					<?php 
-						$rating_val = $plugin_details->rating * 5 / 100;
-						if ( $rating_val > 0 ) :
-                            $args = array(
-                                'rating' 	=> $rating_val,
-                                'number' 	=> $plugin_details->num_ratings,
-                                'echo'		=> false
-                            );
-                            $rating = wp_star_rating( $args );
-                        endif;
-					?>
-					<?php if ( $rating ) : ?>
-						<?php echo $rating; ?>
-					<?php endif; ?>
+					<span class="plugin-stars">
+						<?php 
+							$rating_val = $plugin_details->rating * 5 / 100;
+							if ( $rating_val > 0 ) :
+		                        $args = array(
+		                            'rating' 	=> $rating_val,
+		                            'number' 	=> $plugin_details->num_ratings,
+		                            'echo'		=> false
+		                        );
+		                        $rating = wp_star_rating( $args );
+		                    endif;
+						?>
+						<?php if ( $rating ) : ?>
+							<?php echo $rating; ?>
+						<?php endif; ?>
+					</span>					
 				</div>
 				<!--  .plugin-rating -->
-			</div>
-			<!--  .plugin-stats -->
+			<?php endif; ?>
+			<p>Enjoyed this plugin? <br />You can help by <a href="https://wordpress.org/support/plugin/gdpr-cookie-compliance/reviews/?rate=5#new-post" target="_blank">rating this plugin on wordpress.org.</a></p>
+			
+			<?php if ( $plugin_details ) : ?>
+
+
+				<span class="gdpr-review-container">
+					<a href="https://wordpress.org/support/plugin/gdpr-cookie-compliance/reviews/?rate=5#new-post" target="_blank" class="gdpr-review-bnt">Write a review</a>
+				</span>
+		
+				<hr />
+				<div class="plugin-stats">
+					<div class="plugin-downloads">
+						Downloads: <strong><?php echo number_format( $plugin_details->downloaded, 0, '', ','); ?></strong>
+					</div>
+					<!--  .plugin-downloads -->
+					<div class="plugin-active-installs">
+						Active installations: <strong><?php echo number_format( $plugin_details->active_installs, 0, '', ','); ?>+</strong>
+					</div>
+					<!--  .plugin-downloads -->
+					
+				</div>
+				<!--  .plugin-stats -->
 			<?php endif; ?>
 		</div>
 		<!--  .box-content -->

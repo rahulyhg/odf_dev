@@ -46,15 +46,15 @@
         <tbody>
             <tr>
                 <th scope="row">
-                    <label for="moove_gdpr_floating_button_enable"><?php _e('Enable Floating Button','gdpr-cookie-compliance'); ?></label>
+                    <label for="moove_gdpr_floating_button_enable"><?php _e('Floating Button','gdpr-cookie-compliance'); ?></label>
                 </th>
                 <td>
-                    <fieldset>
-                        <legend class="screen-reader-text"><span><?php _e('Enable','gdpr-cookie-compliance'); ?></span></legend>
-                        <label for="moove_gdpr_floating_button_enable">
-                            <input name="moove_gdpr_floating_button_enable" type="checkbox" <?php echo isset( $gdpr_options['moove_gdpr_floating_button_enable'] ) ? ( intval( $gdpr_options['moove_gdpr_floating_button_enable'] ) === 1  ? 'checked' : '' ) : ''; ?> id="moove_gdpr_floating_button_enable" value="1">
-                            <?php _e('Enable','gdpr-cookie-compliance'); ?></label>
-                    </fieldset>
+                    <!-- GDPR Rounded switch -->
+                    <label class="gdpr-checkbox-toggle">
+                        <input type="checkbox" name="moove_gdpr_floating_button_enable" id="moove_gdpr_floating_button_enable" <?php echo isset( $gdpr_options['moove_gdpr_floating_button_enable'] ) ? ( intval( $gdpr_options['moove_gdpr_floating_button_enable'] ) === 1  ? 'checked' : '' ) : ''; ?> >
+                        <span class="gdpr-checkbox-slider" data-enable="<?php _e('Enabled','gdpr-cookie-compliance'); ?>" data-disable="<?php _e('Disabled','gdpr-cookie-compliance'); ?>"></span>
+                    </label>
+
                 </td>
             </tr>
 

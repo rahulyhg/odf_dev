@@ -34,7 +34,11 @@ class Moove_GDPR_Controller {
         add_editor_style( moove_gdpr_get_plugin_directory_url() . 'dist/styles/custom-editor-style.css' );
     }
 
-
+    /**
+     * Reading plugin statistics from WordPress.org 
+     * - star rating
+     * - downloads & active installations
+     */
     function get_gdpr_plugin_details( $plugin_slug = '' ) {
         $plugin_return = false;
         $wp_repo_plugins    = '';
@@ -127,7 +131,8 @@ class Moove_GDPR_Controller {
         ob_start();
         ?>
         #moove_gdpr_cookie_modal,
-        #moove_gdpr_cookie_info_bar {
+        #moove_gdpr_cookie_info_bar,
+        .gdpr_cookie_settings_shortcode_content {
             font-family: <?php echo $font_family; ?>;
         }
         #moove_gdpr_save_popup_settings_button {
@@ -143,13 +148,15 @@ class Moove_GDPR_Controller {
             background-color: <?php echo $primary_colour; ?>;
         }
         #moove_gdpr_cookie_modal .moove-gdpr-modal-content .moove-gdpr-modal-footer-content .moove-gdpr-button-holder a.mgbutton,
-        #moove_gdpr_cookie_modal .moove-gdpr-modal-content .moove-gdpr-modal-footer-content .moove-gdpr-button-holder button.mgbutton {
+        #moove_gdpr_cookie_modal .moove-gdpr-modal-content .moove-gdpr-modal-footer-content .moove-gdpr-button-holder button.mgbutton,
+        .gdpr_cookie_settings_shortcode_content .gdpr-shr-button.button-green {
             background-color: <?php echo $primary_colour; ?>;
             border-color: <?php echo $primary_colour; ?>;
         }
 
         #moove_gdpr_cookie_modal .moove-gdpr-modal-content .moove-gdpr-modal-footer-content .moove-gdpr-button-holder a.mgbutton:hover,
-        #moove_gdpr_cookie_modal .moove-gdpr-modal-content .moove-gdpr-modal-footer-content .moove-gdpr-button-holder button.mgbutton:hover {
+        #moove_gdpr_cookie_modal .moove-gdpr-modal-content .moove-gdpr-modal-footer-content .moove-gdpr-button-holder button.mgbutton:hover,
+        .gdpr_cookie_settings_shortcode_content .gdpr-shr-button.button-green:hover {
             background-color: #fff;
             color: <?php echo $primary_colour; ?>;
         }
@@ -240,7 +247,18 @@ class Moove_GDPR_Controller {
             $option_name            = $gdpr_default_content->moove_gdpr_get_option_name();
             $modal_options          = get_option( $option_name );
 
-            $cache_array = array();
+            $cache_array = array(
+                'thirdparty'    => array(
+                    'header'    => '',
+                    'body'      => '',
+                    'footer'    => ''
+                ),
+                'advanced'      => array(
+                    'header'    => '',
+                    'body'      => '',
+                    'footer'    => ''
+                )
+            );
 
             // THIRD PARTY - SCRIPT CACHE
             ob_start();
@@ -329,6 +347,9 @@ class Moove_GDPR_Controller {
         die();
     }
 
+    /**
+     * Removing all the cookies including www and non-www domains
+     */
     public static function moove_gdpr_remove_php_cookies() {
         $urlparts   = parse_url( site_url('/') );
         $domain     = preg_replace('/www\./i', '', $urlparts['host']);

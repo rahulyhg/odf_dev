@@ -11,7 +11,7 @@
             die( 'Security check' );
         else :
             if ( is_array( $_POST ) ) :
-                if ( isset( $_POST['moove_gdpr_cookie_policy_enable'] ) && intval( $_POST['moove_gdpr_cookie_policy_enable'] ) === 1 ) :
+                if ( isset( $_POST['moove_gdpr_cookie_policy_enable'] ) ) :
                     $value  = 1;
                 else :
                     $value  = 0;
@@ -56,8 +56,12 @@
                     <label for="moove_gdpr_cookie_policy_enable"><?php _e('Turn','gdpr-cookie-compliance'); ?></label>
                 </th>
                 <td>
-                    <input name="moove_gdpr_cookie_policy_enable" type="radio" value="1" id="moove_gdpr_cookie_policy_enable_on" <?php echo isset( $gdpr_options['moove_gdpr_cookie_policy_enable'] ) ? ( intval( $gdpr_options['moove_gdpr_cookie_policy_enable'] ) === 1  ? 'checked' : '' ) : 'checked'; ?> class="on-off"> <label for="moove_gdpr_cookie_policy_enable_on"><?php _e('On','gdpr-cookie-compliance'); ?></label> <span class="separator"></span>
-                    <input name="moove_gdpr_cookie_policy_enable" type="radio" value="0" id="moove_gdpr_cookie_policy_enable_off" <?php echo isset( $gdpr_options['moove_gdpr_cookie_policy_enable'] ) ? ( intval( $gdpr_options['moove_gdpr_cookie_policy_enable'] ) === 0  ? 'checked' : '' ) : 'checked'; ?> class="on-off"> <label for="moove_gdpr_cookie_policy_enable_off"><?php _e('Off','gdpr-cookie-compliance'); ?></label>
+
+                    <!-- GDPR Rounded switch -->
+                    <label class="gdpr-checkbox-toggle">
+                        <input type="checkbox" name="moove_gdpr_cookie_policy_enable" id="moove_gdpr_cookie_policy_enable" <?php echo isset( $gdpr_options['moove_gdpr_cookie_policy_enable'] ) ? ( intval( $gdpr_options['moove_gdpr_cookie_policy_enable'] ) === 1  ? 'checked' : ( ! isset( $gdpr_options['moove_gdpr_cookie_policy_enable'] ) ? 'checked' : '' ) ) : ''; ?> >
+                        <span class="gdpr-checkbox-slider" data-enable="<?php _e('On','gdpr-cookie-compliance'); ?>" data-disable="<?php _e('Off','gdpr-cookie-compliance'); ?>"></span>
+                    </label>
 
                 </td>
             </tr>

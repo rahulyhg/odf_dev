@@ -9,6 +9,12 @@
 
 get_header(); ?>
 
+<style>
+	.search-result-text{
+		display: none;
+	}
+</style>
+
 	<section id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
@@ -31,7 +37,33 @@ get_header(); ?>
 			      </div>
 			   </div>
 			</div>
-			<br><br><br>
+			<div style="
+				    width: 100%;
+				    float: left;
+				    margin: 50px auto;
+				">
+				<form role="search" method="get" id="searchform" action="index.php" style="
+				    border: 1px solid #61a3dc;
+				    border-radius: 15px;
+				    width: 80%;
+				    float: left;
+				    margin: 0;
+				    margin-left: 10%;
+				    z-index: 9999;
+				    position: relative;
+				    ">
+					<div>
+						
+						<input type="text" value="" name="s" id="s" placeholder="Search" style="width: 90%;">
+						<input type="submit" id="searchsubmit" value="" style="
+						    background-color: #ffffff;
+						    padding: 0 3%;
+						    color: #61a3dc;
+						    ">
+						<!-- <input type="hidden" name="post_type" value="product"> -->
+					</div>
+			    </form>
+			</div>
 			<?php
 			// Start the loop.
 			while ( have_posts() ) : the_post();

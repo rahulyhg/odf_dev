@@ -8,12 +8,6 @@
  */
 ?>
 
-<style>
-	.search-result-text{
-		display: none;
-	}
-</style>
-
 <article class="search-result" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	

@@ -25,6 +25,8 @@
  * @since ODF-theme-1 1.0
  */
 
+define( 'WPCF7_CAPTCHA_TMP_DIR', '/site/wwwroot/wp-content/uploads/tmp' );  
+
 /**
  * Twenty Sixteen only works in WordPress 4.4 or later.
  */
@@ -2003,3 +2005,40 @@ function tgm_io_cpt_search( $query ) {
     
 }
 
+
+
+
+add_action( 'phpmailer_init', 'my_phpmailer_example' );
+function my_phpmailer_example( $phpmailer ) {
+    $phpmailer->isSMTP();     
+    $phpmailer->Host = 'email-smtp.eu-west-1.amazonaws.com';
+    $phpmailer->SMTPAuth = true; // Force it to use Username and Password to authenticate
+    $phpmailer->Port = 25;
+    $phpmailer->Username = 'AKIAIZVBXFA7UKVMU4HQ';
+    $phpmailer->Password = 'BLKm9NXLrprmwkWR+Gl1lihhaB6dh/dv2yW1lcSrgq5x';
+
+    // Additional settings…
+    //$phpmailer->SMTPSecure = "tls"; // Choose SSL or TLS, if necessary for your server
+    //$phpmailer->From = "you@yourdomail.com";
+    //$phpmailer->FromName = "Your Name";
+}
+
+
+/*$to = 'amaayed@gmail.com';
+$subject = 'The subject';
+$body = 'The email body content';
+$headers = array('Content-Type: text/html; charset=UTF-8');
+ 
+if(wp_mail( $to, $subject, $body, $headers )){
+	echo '<br>';
+	echo '<br>';
+	echo 'envoi mail ok';
+	echo '<br>';
+	echo '<br>';
+}else{
+	echo '<br>';
+	echo '<br>';
+	echo 'envoi mail ko !!';
+	echo '<br>';
+	echo '<br>';
+}*/

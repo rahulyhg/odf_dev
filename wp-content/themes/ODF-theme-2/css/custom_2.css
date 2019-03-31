@@ -1036,7 +1036,7 @@
   margin: 20px;
 }
 .search-result{
-  max-width:800px;
+  max-width:80%;
   margin:0 auto;
 }
 .search-result .entry-header{

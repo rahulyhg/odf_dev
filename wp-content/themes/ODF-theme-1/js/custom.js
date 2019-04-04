@@ -22,5 +22,9 @@ jQuery(document).ready(function() {
 	// catalog: duplicat pagination block
 	jQuery('.products').prepend(jQuery('.woocommerce-pagination').clone().css('width','100%'));
 
+	jQuery('.wr360_player').bind("DOMSubtreeModified", function(){
+		jQuery('[id^="wr360placer_wr360_view01_playerid"]').remove();
+	});
+	
 });
 

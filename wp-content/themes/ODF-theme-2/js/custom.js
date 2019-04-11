@@ -19,5 +19,14 @@ jQuery(document).ready(function() {
 		jQuery('[id^="wr360placer_wr360_view01_playerid"]').remove();
 	});
 	
+	// <button class="mgbutton moove-gdpr-infobar-cancel" rel="nofollow">I do not accept</button> 
+	/*jQuery('.moove-gdpr-info-bar-content .moove-gdpr-button-holder').append('<button data-href="#moove_gdpr_cookie_modal" class="mgbutton">Manage my cookies</button>');
+    jQuery('.moove-gdpr-infobar-cancel').live('click', function(){
+    	jQuery('#moove_gdpr_cookie_info_bar').hide();
+    });*/
+	jQuery(".change-settings-button").appendTo(".moove-gdpr-info-bar-content .moove-gdpr-button-holder");
+    jQuery('.change-settings-button').replaceWith(jQuery('<button data-href="#moove_gdpr_cookie_modal" class="mgbutton">' + jQuery('.change-settings-button').text() + '</button>'));
+	
+	
 });
 

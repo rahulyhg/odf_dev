@@ -16,6 +16,19 @@
  *
  * @package WordPress
  */
+
+
+
+define( 'SMTP_USER',   'amaayed@gmail.com' );    // Username to use for SMTP authentication
+define( 'SMTP_PASS',   'Wildayed1.' );       // Password to use for SMTP authentication
+define( 'SMTP_HOST',   'smtp.gmail.com' );    // The hostname of the mail server
+define( 'SMTP_FROM',   'amaayed@gmail.com' ); // SMTP From email address
+define( 'SMTP_NAME',   'Ayed' );    // SMTP From name
+define( 'SMTP_PORT',   '587' );                   // SMTP port number - likely to be 25, 465 or 587
+define( 'SMTP_SECURE', 'tls' );                 // Encryption system to use - ssl or tls
+define( 'SMTP_AUTH',    true );                 // Use SMTP authentication (true|false)
+define( 'SMTP_DEBUG',   1 );                      // for debugging purposes only set to 1 or 2
+
 include_once __DIR__ . '/wp-config.common.php';
 // ** Réglages MySQL - Votre hébergeur doit vous fournir ces informations. ** //
 $DB_NAME = getenv("CUSTOMCONNSTR_DB_NAME");

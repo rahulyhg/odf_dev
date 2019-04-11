@@ -25,6 +25,46 @@
  * @since ODF-theme-1 1.0
  */
 
+
+
+add_action( 'phpmailer_init', 'send_smtp_email' );
+function send_smtp_email( $phpmailer ) {
+	error_reporting(E_ALL);
+	if ( ! is_object( $phpmailer ) ) {
+		$phpmailer = (object) $phpmailer;
+	}
+
+	$phpmailer->Mailer     = 'smtp';
+	$phpmailer->Host       = SMTP_HOST;
+	$phpmailer->SMTPAuth   = SMTP_AUTH;
+	$phpmailer->Port       = SMTP_PORT;
+	$phpmailer->Username   = SMTP_USER;
+	$phpmailer->Password   = SMTP_PASS;
+	$phpmailer->SMTPSecure = SMTP_SECURE;  
+
+	$phpmailer->isSMTP();    
+
+
+echo "Run Init Mailer";   
+$phpmailer->addAddress('amaayed@gmail.com', 'My Friend');
+$phpmailer->Subject  = 'First PHPMailer Message';   
+$phpmailer->Body     = 'Hi! This is my first e-mail sent through PHPMailer.';
+try{
+	if(!$phpmailer->send()) {
+  echo 'Message was not sent.';
+  echo 'Mailer error: ' . $phpmailer->ErrorInfo;
+} else {
+  echo 'Message has been sent.';
+}
+
+}catch(Exception $e){
+	echo $e->getMessage();
+}
+
+
+}
+
+
 define( 'WPCF7_CAPTCHA_TMP_DIR', '/site/wwwroot/wp-content/uploads/tmp' );  
 
 /**

@@ -27,7 +27,7 @@
 
 
 
-add_action( 'phpmailer_init', 'send_smtp_email' );
+/*add_action( 'phpmailer_init', 'send_smtp_email' );
 function send_smtp_email( $phpmailer ) {
 	error_reporting(E_ALL);
 	if ( ! is_object( $phpmailer ) ) {
@@ -62,7 +62,7 @@ try{
 }
 
 
-}
+}*/
 
 
 define( 'WPCF7_CAPTCHA_TMP_DIR', '/site/wwwroot/wp-content/uploads/tmp' );  

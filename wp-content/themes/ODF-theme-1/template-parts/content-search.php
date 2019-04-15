@@ -23,7 +23,54 @@
 	</header><!-- .entry-header -->
 
 	<div class="vc_col-sm-8">
-		<?php twentysixteen_excerpt(); ?>
+		<?php if ( 'product_details' === get_post_type() ) :
+			$class = 'entry-summary';
+			$class = esc_attr( $class );
+			if ( has_excerpt() || is_search() ) : ?>
+				<div class="<?php echo $class; ?>">
+					<p>
+						<?php echo wp_trim_words(get_the_content(), 30, '...'); ?>
+
+						<div class="entry-content">
+					        <?php 
+					        /*
+					         *  Query posts for a relationship value.
+					         *  This method uses the meta_query LIKE to match the string "123" to the database value a:1:{i:0;s:3:"123";} (serialized array)
+					         */
+
+					         $product_caracteristics_multiples = get_posts(array(
+					                     'post_type' => 'product',
+					                     'meta_query' => array(
+					                      array(
+					                            'key' => 'product_caracteristics_multiple', // name of custom field
+					                            'value' => '"' . get_the_ID() . '"', // matches exaclty "123", not just 123. This prevents a match for "1234"
+					                            'compare' => 'LIKE'
+					                                )
+					                            )
+					                        ));
+
+					                        ?>
+					        <?php if( $product_caracteristics_multiples ): ?>
+					             <ul>
+					             <?php foreach( $product_caracteristics_multiples as $pcm ): ?>
+					                <li>
+					                   <a href="<?php echo get_permalink( $pcm->ID ); ?>" target="_blanc">
+					                     <?php echo get_the_title( $pcm->ID ); ?>
+					                   </a>
+					                </li>
+					             <?php endforeach; ?>
+					            </ul>
+					      <?php endif; ?>
+
+						</div>
+					</p>
+
+				</div><!-- .<?php echo $class; ?> -->
+			<?php endif;
+
+		else : ?>
+			<?php twentysixteen_excerpt(); ?>
+		<?php endif; ?>
 	</div>
 	<div class="vc_col-sm-4">
 		<?php twentysixteen_post_thumbnail(); ?>

@@ -1,0 +1,88 @@
+/*!
+Plugin Name: AJAX-ZOOM
+Plugin URI: http://www.ajax-zoom.com/index.php?cid=modules&module=woocommerce
+Description: Combination of responsive mouseover zoom, 360 degree player with deep zoom, thumbnail slider and 360 degree "Product Tour" for WooCommerce product details view.
+Author: AJAX-ZOOM
+Version: 1.1.3
+Author URI: http://www.ajax-zoom.com/
+*/
+
+body {
+	height: 100%;
+}
+
+.azfix_clearfix{
+	box-sizing: border-box;
+}
+.azfix_clearfix::before,
+.azfix_clearfix::after {
+	content: " ";
+	display: table;
+} 
+
+.azfix_clearfix::after {
+	clear: both;
+}
+
+.azfix_clearfix {
+	*zoom: 1;
+}
+
+.axZm_mouseOverZoomHint {
+	box-sizing: content-box;
+}
+
+ul.axZmThumbSlider li {
+	box-sizing: content-box;
+}
+
+.axZmThumbSlider li {
+	border-radius: 0 !important;
+}
+
+.images {
+	opacity: 1 !important;
+	border-width: 0 !important;
+	overflow: visible !important;
+}
+
+/*.thumbnails,*/
+.woocommerce-main-image,
+.images>img[alt="Placeholder"],
+.single-product-thumbnail>*:not(.images):not(#axZm_mouseOverWithGalleryContainer),
+/*#header-featured-image,
+.product_summary_thumbnails_wrapper,
+.featured_img_temp,*/
+.images>*:not(#axZm_mouseOverWithGalleryContainer):not([class$="badge"]){
+	display: none !important;
+}
+
+/* Fixes for some great written themes... */
+
+.single-product div.product {
+	overflow: visible !important;
+}
+
+#axZm_mouseOverWithGalleryContainer img {
+	background: transparent !important;
+	padding: 0 !important;
+}
+
+.axZm_mouseOverImg img {
+	margin-bottom: 0 !important;
+	margin-top: 0 !important;
+}
+
+#axZm_mouseOverWithGalleryContainer img {
+	border: none !important;
+	-webkit-transform: none;
+	-ms-transform: none;
+	transform: none;
+}
+
+.azVideoIframe.azVideoHtml5 .vjs-big-play-button {
+	left: 50%;
+	top: 50%;
+	margin-left: -1.5em;
+	margin-top: -0.75em;
+}

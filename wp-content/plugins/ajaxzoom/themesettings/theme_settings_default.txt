@@ -1,0 +1,65 @@
+a:13:{i:0;a:8:{s:5:"theme";s:10:"Shopkeeper";s:4:"atoo";s:7:".images";s:7:"atoocss";s:0:"";s:5:"zoomw";s:14:".product_infos";s:5:"zoomh";s:23:".product-images-wrapper";s:6:"csstag";s:415:".product_summary_thumbnails_wrapper,
+.xxlarge-1.columns.show-for-xxlarge-only,
+.featured_img_temp {
+  display: none !important;
+}
+@media only screen and (min-width: 64em) {
+  .large-5 {
+    width: 50%;
+  }
+}
+@media only screen and (min-width: 100em) {
+  .xxlarge-5 {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .axZm_mouseOverZoomContainerWrap {
+    border-width: 0;
+  }
+}";s:2:"js";s:0:"";s:3:"act";s:1:"1";}i:1;a:8:{s:5:"theme";s:6:"Floris";s:4:"atoo";s:12:".sale-slider";s:7:"atoocss";s:0:"";s:5:"zoomw";s:14:".sale-desc|-30";s:5:"zoomh";s:23:".product-images-wrapper";s:6:"csstag";s:225:".sale-slider {
+  padding-top: 120px;
+  padding-left: 20px;
+}
+@media (max-width: 992px) {
+  .sale-slider {
+    padding-left: 0px;
+    width: 100%;
+  }
+  .axZm_mouseOverZoomContainerWrap {
+    border-width: 0;
+  }
+}";s:2:"js";s:0:"";s:3:"act";s:1:"1";}i:2;a:8:{s:5:"theme";s:7:"inVogue";s:4:"atoo";s:43:".htheme_single_product_holder .htheme_col_8";s:7:"atoocss";s:0:"";s:5:"zoomw";s:22:".htheme_single_heading";s:5:"zoomh";s:0:"";s:6:"csstag";s:183:".htheme_single_product_holder .htheme_col_8 {
+  padding-right: 20px;
+}
+@media (max-width: 768px) {
+  .htheme_single_product_holder .htheme_col_8 {
+    padding-right: 0px;
+  }
+}";s:2:"js";s:0:"";s:3:"act";s:1:"1";}i:3;a:8:{s:5:"theme";s:5:"Venus";s:4:"atoo";s:15:".product-images";s:7:"atoocss";s:0:"";s:5:"zoomw";s:20:".product-summary|+20";s:5:"zoomh";s:0:"";s:6:"csstag";s:0:"";s:2:"js";s:0:"";s:3:"act";s:1:"1";}i:4;a:8:{s:5:"theme";s:8:"WR Nitro";s:4:"atoo";s:16:".p-single-images";s:7:"atoocss";s:0:"";s:5:"zoomw";s:18:".p-single-info|-20";s:5:"zoomh";s:0:"";s:6:"csstag";s:57:".axZm_mouseOverZoomContainerWrap {
+  border-width: 0;
+}";s:2:"js";s:0:"";s:3:"act";s:1:"1";}i:5;a:8:{s:5:"theme";s:8:"Calafate";s:4:"atoo";s:7:".images";s:7:"atoocss";s:0:"";s:5:"zoomw";s:13:".summary|+100";s:5:"zoomh";s:0:"";s:6:"csstag";s:271:".single-product #main {
+  padding-top: 0 !important;
+}
+.axZm_mouseOverZoomContainerWrap {
+  border-width: 0;
+}
+.axZm_mouseOverFlyOut {
+  box-shadow: none;
+}
+.fancybox-skin {
+  padding: 10px !important;
+}
+.fancybox-item.fancybox-close {
+  z-index: 99999999
+}";s:2:"js";s:0:"";s:3:"act";s:1:"1";}i:6;a:8:{s:5:"theme";s:6:"Milano";s:4:"atoo";s:21:".w-slider.slider-page";s:7:"atoocss";s:0:"";s:5:"zoomw";s:22:".summary.entry-summary";s:5:"zoomh";s:0:"";s:6:"csstag";s:0:"";s:2:"js";s:0:"";s:3:"act";s:1:"1";}i:7;a:8:{s:5:"theme";s:6:"XStore";s:4:"atoo";s:7:".images";s:7:"atoocss";s:0:"";s:5:"zoomw";s:20:".product-information";s:5:"zoomh";s:0:"";s:6:"csstag";s:0:"";s:2:"js";s:0:"";s:3:"act";s:1:"1";}i:8;a:8:{s:5:"theme";s:5:"Noren";s:4:"atoo";s:7:".images";s:7:"atoocss";s:0:"";s:5:"zoomw";s:26:".summary.entry-summary|+30";s:5:"zoomh";s:0:"";s:6:"csstag";s:0:"";s:2:"js";s:0:"";s:3:"act";s:1:"1";}i:9;a:9:{s:5:"theme";s:12:"Merchandiser";s:4:"atoo";s:16:".first_col_split";s:7:"atoocss";s:0:"";s:5:"zoomw";s:18:".product_infos|-20";s:5:"zoomh";s:0:"";s:6:"csstag";s:106:".axZm_mouseOverZoomContainerWrap {
+  border-width: 0;
+}
+.axZm_mouseOverFlyOut {
+  box-shadow: none;
+}";s:2:"js";s:0:"";s:3:"act";s:1:"1";s:3:"opt";a:1:{i:0;a:2:{s:1:"k";s:7:"adjustX";s:1:"v";s:2:"20";}}}i:10;a:8:{s:5:"theme";s:5:"Bronx";s:4:"atoo";s:16:".product-gallery";s:7:"atoocss";s:0:"";s:5:"zoomw";s:20:".product-information";s:5:"zoomh";s:0:"";s:6:"csstag";s:0:"";s:2:"js";s:0:"";s:3:"act";s:1:"1";}i:11;a:8:{s:5:"theme";s:5:"Notio";s:4:"atoo";s:16:".product-gallery";s:7:"atoocss";s:0:"";s:5:"zoomw";s:20:".product-information";s:5:"zoomh";s:0:"";s:6:"csstag";s:0:"";s:2:"js";s:0:"";s:3:"act";s:1:"1";}i:12;a:8:{s:5:"theme";s:15:"Shophistic Lite";s:4:"atoo";s:7:".images";s:7:"atoocss";s:0:"";s:5:"zoomw";s:0:"";s:5:"zoomh";s:0:"";s:6:"csstag";s:152:".col-md-2.col-sm-2.ql_thumbnail_column {
+  display: none !important;
+}
+.col-md-10.col-sm-10.ql_main_image_column_wrap {
+  width: 100% !important;
+}";s:2:"js";s:0:"";s:3:"act";s:1:"1";}}

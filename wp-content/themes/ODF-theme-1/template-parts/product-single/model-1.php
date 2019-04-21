@@ -64,6 +64,17 @@ global $product, $wpdb;
   <?php } ?>
 </h2>
 <div class="demo-product-2">
+    <?php if(!empty(get_post_meta(get_the_ID(), 'product_animation', true ))){ ?>
+       <br>
+       <?php echo do_shortcode('[smart-product id='.get_post_meta(get_the_ID(), 'product_animation', true ).' scrollbar=top width=1200]'); ?>
+       <br>
+    <?php if(!empty(get_post_meta(get_the_ID(), 'product_360_spin', true ))){ ?>
+    <?php } ?>
+       <br>
+       <?php echo do_shortcode('[smart-product id='.get_post_meta(get_the_ID(), 'product_360_spin', true ).' width=1200]'); ?>
+       <br>
+    <?php } ?>
+
    <?php echo do_shortcode('[wr360embed name="view01" width="100%" height="500px" config="'.get_field('_wr360config', $product->get_id()).'"]'); ?>
 </div>
 

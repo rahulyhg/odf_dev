@@ -2907,7 +2907,8 @@
 	    height: 25px !important;
 	    text-align: center !important;
 	}
-	.wr360_player .container:after {
+	.wr360_player .container:after  ,
+	.threesixty-image.threesixty-hand-open:after{
 	    content: url('../images/webrotate.png.png');
 	    position: absolute;
 	    bottom: 0;
@@ -3107,7 +3108,12 @@
 	.threesixty-scrollbar-top .threesixty-scrollbar {
 	    width: 90%;
 	    margin-left: 5%;
-	    margin-top: 10px;
+	    margin-top: 20px;
+	}
+	.threesixty-images .current-image {
+	    width: 70%;
+	    margin-left: 15%;
+	    margin-top: 10%;
 	}
 
 /* woocommerce product details*/

@@ -305,6 +305,13 @@ function twentysixteen_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'twentysixteen_scripts' );
 
+function admin_style()
+{
+    wp_enqueue_style('admin-styles', get_stylesheet_directory_uri() . '/css/custom_admin.css');
+}
+
+add_action('admin_enqueue_scripts', 'admin_style');
+
 /**
  * Adds custom classes to the array of body classes.
  *

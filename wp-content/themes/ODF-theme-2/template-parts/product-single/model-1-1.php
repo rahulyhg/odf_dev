@@ -10,6 +10,21 @@
 get_header(); 
 global $product, $wpdb;
 
+// echo '<pre>';
+// echo '<br>';
+// echo get_post_meta(get_the_ID(), 'smart_product_meta', true )['id'];
+// echo '<br>';
+// print_r(get_post_meta(get_the_ID(), 'smart_product_meta', true ));
+// echo '<br>';
+// print_r(maybe_unserialize( get_post_meta(get_the_ID(), 'smart_product_meta', true ) ));
+// echo '<br>';
+
+
+// print_r(get_post_meta($product->get_id()));
+// echo '</pre>';
+
+
+
 ?>
 </div>
 <div>
@@ -86,7 +101,24 @@ global $product, $wpdb;
          DEMO PRODUCT
       <?php } ?>
    </h2>
+
+<style>
+.threesixty-image {
+   margin: 0 auto;
+}
+</style> 
    <div class="demo-product-2">
+      <?php if(!empty(get_post_meta(get_the_ID(), 'product_animation', true ))){ ?>
+         <br>
+         <?php echo do_shortcode('[smart-product id='.get_post_meta(get_the_ID(), 'product_animation', true ).' scrollbar=top width=1200]'); ?>
+         <br>
+      <?php if(!empty(get_post_meta(get_the_ID(), 'product_360_spin', true ))){ ?>
+      <?php } ?>
+         <br>
+         <?php echo do_shortcode('[smart-product id='.get_post_meta(get_the_ID(), 'product_360_spin', true ).' width=1200]'); ?>
+         <br>
+      <?php } ?>
+         
       <?php echo do_shortcode('[wr360embed name="view01" width="100%" height="500px" config="'.get_field('_wr360config', $product->get_id()).'"]'); ?>
    </div>
 

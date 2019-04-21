@@ -1,8 +1,0 @@
-[VP] Updated plugin 'Yoast SEO'
-
-VP-Action: plugin/update/wordpress-seo/wp-seo.php
-VP-Plugin-Name: Yoast SEO
-
-
-X-VP-Version: 4.0-beta
-X-VP-Environment: default

@@ -119,7 +119,7 @@ global $product, $wpdb;
          <br>
       <?php } ?>
          
-      <?php echo do_shortcode('[wr360embed name="view01" width="100%" height="500px" config="'.get_field('_wr360config', $product->get_id()).'"]'); ?>
+      <?php //echo do_shortcode('[wr360embed name="view01" width="100%" height="500px" config="'.get_field('_wr360config', $product->get_id()).'"]'); ?>
    </div>
 
    <?php 

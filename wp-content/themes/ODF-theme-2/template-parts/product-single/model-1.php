@@ -74,7 +74,7 @@ global $product, $wpdb;
        <?php echo do_shortcode('[smart-product id='.get_post_meta(get_the_ID(), 'product_360_spin', true ).' width=1200]'); ?>
        <br>
     <?php } ?>
-   <?php echo do_shortcode('[wr360embed name="view01" width="100%" height="500px" config="'.get_field('_wr360config', $product->get_id()).'"]'); ?>
+   <?php //echo do_shortcode('[wr360embed name="view01" width="100%" height="500px" config="'.get_field('_wr360config', $product->get_id()).'"]'); ?>
 </div>
 
 <?php //echo do_shortcode('[testimonial_view id="2"]'); ?>

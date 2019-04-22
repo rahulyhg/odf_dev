@@ -18,11 +18,11 @@ jQuery(document).ready(function() {
 	jQuery('.wr360_player').bind("DOMSubtreeModified", function(){
 		jQuery('[id^="wr360placer_wr360_view01_playerid"]').remove();
 	});
-
-	/* product 3D animate*/	
+	
 	jQuery(".change-settings-button").appendTo(".moove-gdpr-info-bar-content .moove-gdpr-button-holder");
     jQuery('.change-settings-button').replaceWith(jQuery('<button data-href="#moove_gdpr_cookie_modal" class="mgbutton">' + jQuery('.change-settings-button').text() + '</button>'));
 
+	/* product 3D animate*/
 	setTimeout(function(){ 
 
 		jQuery('.threesixty-scrollbar').prepend('<span style=" float: right; right: -5%; ">LIQUID FULL</span>');

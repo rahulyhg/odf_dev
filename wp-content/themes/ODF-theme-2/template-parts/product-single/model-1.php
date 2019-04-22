@@ -71,7 +71,7 @@ global $product, $wpdb;
     <?php if(!empty(get_post_meta(get_the_ID(), 'product_360_spin', true ))){ ?>
     <?php } ?>
        <br>
-       <?php echo do_shortcode('[smart-product id='.get_post_meta(get_the_ID(), 'product_360_spin', true ).' width=1200]'); ?>
+       <?php echo do_shortcode('[smart-product id='.get_post_meta(get_the_ID(), 'product_360_spin', true ).' width=1200 interval=80]'); ?>
        <br>
     <?php } ?>
    <?php //echo do_shortcode('[wr360embed name="view01" width="100%" height="500px" config="'.get_field('_wr360config', $product->get_id()).'"]'); ?>

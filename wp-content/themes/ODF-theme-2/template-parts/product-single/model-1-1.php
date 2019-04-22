@@ -102,11 +102,6 @@ global $product, $wpdb;
       <?php } ?>
    </h2>
 
-<style>
-.threesixty-image {
-   margin: 0 auto;
-}
-</style> 
    <div class="demo-product-2">
       <?php if(!empty(get_post_meta(get_the_ID(), 'product_animation', true ))){ ?>
          <br>
